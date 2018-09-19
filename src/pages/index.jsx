@@ -14,6 +14,8 @@ import { colors } from '../../tailwind';
 import triangle from '../images/triangle.svg';
 import avatar from '../images/avatar.jpg';
 import '../styles/global';
+import config from '../../config/website';
+import '../../node_modules/@ibm/plex/scss/ibm-plex.scss';
 
 const Divider = styled(ParallaxLayer)`
   ${tw('absolute w-full h-full')};
@@ -41,12 +43,14 @@ const Inner = styled.div`
 `;
 
 const BigTitle = styled.h1`
-  ${tw('text-5xl lg:text-6xl font-serif text-white mb-6 tracking-wide')};
+  font-family:'IBM Plex Mono';
+  ${tw('text-5xl lg:text-6xl text-white mb-6 tracking-wide')};
   text-shadow: 0 5px 35px rgba(255, 255, 255, 0.15);
 `;
 
 const Title = styled.h1`
-  ${tw('text-4xl lg:text-4xl font-serif text-white mb-8 tracking-wide relative inline-block')};
+  font-family:'IBM Plex Mono';
+  ${tw('text-4xl lg:text-4xl text-white mb-8 tracking-wide relative inline-block')};
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   &:before {
     content: '';
@@ -62,7 +66,8 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.p`
-  ${tw('text-2xl lg:text-4xl font-sans text-white mt-8 xxl:w-3/4')};
+  font-family:'IBM Plex Mono';
+  ${tw('text-2xl lg:text-4xl text-white mt-8 xxl:w-3/4')};
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 `;
 
@@ -102,15 +107,18 @@ const Avatar = styled.img`
 `;
 
 const AboutSub = styled.span`
+  font-family:'IBM Plex Mono';
   ${tw('text-white pt-12 lg:pt-0 lg:pl-12 text-2xl lg:text-3xl xl:text-4xl')};
 `;
 
 const AboutDesc = styled.p`
-  ${tw('text-grey-light text-lg md:text-xl lg:text-2xl font-sans pt-6 md:pt-12 text-justify')};
+  font-family:'IBM Plex Mono';
+  ${tw('text-grey-light text-lg md:text-xl lg:text-2xl pt-6 md:pt-12 text-justify')};
 `;
 
 const ContactText = styled.p`
-  ${tw('text-grey-light font-sans text-xl md:text-2xl lg:text-3xl')};
+font-family:'IBM Plex Mono';
+  ${tw('text-grey-light text-xl md:text-2xl lg:text-3xl')};
   a {
     color: #e07628;
     text-decoration: none;
@@ -118,7 +126,8 @@ const ContactText = styled.p`
 `;
 
 const Footer = styled.footer`
-  ${tw('text-center text-grey absolute pin-b p-6 font-sans text-md lg:text-lg')};
+font-family:'IBM Plex Mono';
+  ${tw('text-center text-grey absolute pin-b p-6 text-md lg:text-lg')};
   a {
     color: #e07628;
     text-decoration: none;
@@ -244,7 +253,7 @@ const Index = () => (
       </Divider>
       <Content speed={0.4} offset={2}>
         <Inner>
-          <Title>About</Title>
+          <Title>ABOUT</Title>
           <AboutHero>
             <Avatar src={avatar} alt="John Doe" />
             <AboutSub>
@@ -265,7 +274,7 @@ const Index = () => (
         <WaveWrapper>
           <InnerWave>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 338.05" preserveAspectRatio="none">
-              <path className={waveAnimation}>
+              <path className={{waveAnimation}}>
                 <animate
                   attributeName="d"
                   values="M 0 100 Q 250 50 400 200 Q 550 350 800 300 L 800 0 L 0 0 L 0 100 Z;M 0 100 Q 200 150 400 200 Q 600 250 800 300 L 800 0 L 0 0 L 0 100 Z;M 0 100 Q 150 350 400 200 Q 650 50 800 300 L 800 0 L 0 0 L 0 100 Z"
@@ -279,16 +288,16 @@ const Index = () => (
       </Divider>
       <Content speed={0.4} offset={3}>
         <Inner>
-          <Title>Get in touch</Title>
+          <Title>GET IN TOUCH</Title>
           <ContactText>
-            Say <a href="mailto:plizNoSp4m@domain.tld">Hi</a> or find me on other platforms:{' '}
-            <a href="https://dribbble.com/LekoArts">Dribbble</a> &{' '}
-            <a href="https://www.instagram.com/lekoarts.de/">Instagram</a>
+            Say <a href="mailto:s_alexander@hotmail.de">Hi</a> or find me on other platforms:{' '}
+            <a href={config.siteFacebook}>Facebook</a> &{' '}
+            <a href={config.siteInstagram}>Instagram</a>
           </ContactText>
         </Inner>
         <Footer>
-          &copy; 2018 by Gatsby Starter Portfolio Cara.{' '}
-          <a href="https://github.com/LeKoArts/gatsby-starter-portfolio-cara">Github Repository</a>.
+          &copy; 2018 by Alexander Stricker.{' '}
+          <a href={config.github}>Github Repository</a>.
         </Footer>
       </Content>
       <Divider speed={0.1} offset={3}>

@@ -14,11 +14,13 @@ const Wrapper = styled.a`
 `;
 
 const Text = styled.div`
-  ${tw('opacity-75 font-sans')};
+  font-family:'IBM Plex Mono';
+  ${tw('opacity-75')};
 `;
 
 const Title = styled.div`
-  ${tw('text-white uppercase text-2xl md:text-3xl xl:text-4xl tracking-wide font-sans pt-8')};
+  font-family:'IBM Plex Mono';
+  ${tw('text-white uppercase text-2xl md:text-3xl xl:text-4xl tracking-wide pt-8')};
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 `;
 
