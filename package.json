@@ -6,8 +6,9 @@
   "license": "MIT",
   "dependencies": {
     "@ibm/plex": "^1.1.6",
-    "babel-plugin-tailwind": "^0.1.10",
     "babel-literal-to-ast": "2.0.0",
+    "babel-plugin-tailwind": "^0.1.10",
+    "bin-wrapper": "^4.0.0",
     "emotion": "^9.2.9",
     "emotion-server": "^9.2.9",
     "gatsby": "^2.0.4",
