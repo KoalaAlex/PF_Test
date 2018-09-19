@@ -159,12 +159,12 @@ const Index = () => (
       <Content speed={0.4} offset={0}>
         <Hero>
           <BigTitle>
-            Hello, <br /> I'm John Doe.
+            Hello, <br /> I'm Alex.
           </BigTitle>
           <Subtitle>I'm creating noice web experiences for the next generation of consumer-facing companies.</Subtitle>
         </Hero>
       </Content>
-      <DividerMiddle bg="linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)" speed={-0.2} offset={1.1} />
+      <DividerMiddle bg="linear-gradient(to right, OrangeRed 0%, DarkOrange 100%)" speed={-0.2} offset={1.1} />
       <Content speed={0.4} offset={1}>
         <Inner>
           <Title>Projects</Title>

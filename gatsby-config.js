@@ -45,6 +45,7 @@ module.exports = {
         ],
       },
     },
+    'gatsby-plugin-netlify-cms',
     /* Must be placed at the end */
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify',
