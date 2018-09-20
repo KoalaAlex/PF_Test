@@ -176,7 +176,7 @@ const Index = () => (
       <DividerMiddle bg="linear-gradient(to right, OrangeRed 0%, DarkOrange 100%)" speed={-0.2} offset={1.1} />
       <Content speed={0.4} offset={1}>
         <Inner>
-          <Title>Projects</Title>
+          <Title>PROJECTS</Title>
           <ProjectsWrapper>
             <ProjectCard
               title="Freiheit"

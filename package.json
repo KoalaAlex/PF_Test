@@ -6,6 +6,8 @@
   "license": "MIT",
   "dependencies": {
     "@ibm/plex": "^1.1.6",
+    "ajv": "^6.5.3",
+    "babel-eslint": "^9.0.0",
     "babel-literal-to-ast": "2.0.0",
     "babel-plugin-tailwind": "^0.1.10",
     "bin-wrapper": "^4.0.0",
@@ -23,7 +25,11 @@
     "gatsby-plugin-sharp": "^2.0.5",
     "gatsby-source-filesystem": "^2.0.1",
     "gatsby-transformer-sharp": "^2.1.1",
+    "immutable": "^3.8.2",
     "netlify-cms": "^2.1.2",
+    "netlify-cms-lib-auth": "^2.0.4",
+    "netlify-cms-lib-util": "^2.1.0",
+    "netlify-cms-ui-default": "^2.0.6",
     "node-sass": "^4.9.3",
     "postcss": "^7.0.2",
     "postcss-cli": "^6.0.0",
@@ -33,6 +39,7 @@
     "react-emotion": "^9.2.9",
     "react-helmet": "^5.2.0",
     "react-spring": "^5.8.0",
+    "slate": "^0.40.2",
     "tailwindcss": "^0.6.5",
     "typeface-cantata-one": "^0.0.54",
     "typeface-open-sans": "^0.0.54"
@@ -53,7 +60,6 @@
   },
   "devDependencies": {
     "babel-core": "6.26.3",
-    "babel-eslint": "^9.0.0",
     "css-loader": "^1.0.0",
     "eslint": "^5.6.0",
     "eslint-config-airbnb": "^17.1.0",
