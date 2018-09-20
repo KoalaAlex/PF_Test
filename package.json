@@ -27,6 +27,7 @@
     "gatsby-source-filesystem": "^2.0.1",
     "gatsby-transformer-sharp": "^2.1.1",
     "immutable": "^3.8.2",
+    "netlify-cli": "^1.2.3",
     "netlify-cms": "^2.1.2",
     "netlify-cms-lib-auth": "^2.0.4",
     "netlify-cms-lib-util": "^2.1.0",
