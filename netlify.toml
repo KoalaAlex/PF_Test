@@ -1,4 +1,3 @@
 [build.environment]
   NPM_VERSION = "6.4.1"
-  NODE_VERSION = "8.12.0"
-  NPM_FLAGS = "gatsby-plugin-sharp"
+  NODE_VERSION = "10.10.0"
