@@ -24,8 +24,8 @@ const Title = styled.div`
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 `;
 
-const ProjectCard = ({ title, link, children, bg }) => (
-  <Wrapper href={link} target="_blank" rel="noopener noreferrer" bg={bg}>
+const ProjectCard = ({ title, onOpenArticle, link, children, bg }) => (
+  <Wrapper href="javascript:;" onClick={() => {onOpenArticle(link)}} bg={bg}>
     <Text>{children}</Text>
     <Title>{title}</Title>
   </Wrapper>
@@ -35,6 +35,7 @@ export default ProjectCard;
 
 ProjectCard.propTypes = {
   title: PropTypes.string.isRequired,
+  onOpenArticle: PropTypes.func,
   link: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
   bg: PropTypes.string.isRequired,

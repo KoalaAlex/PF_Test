@@ -7,7 +7,6 @@ import 'typeface-open-sans';
 
 import SEO from '../components/SEO';
 import SVG from '../components/SVG';
-import ProjectCard from '../components/ProjectCard';
 import { rotate, UpDown, UpDownWide, waveAnimation } from '../styles/animations';
 import { hidden } from '../styles/utils';
 import { colors } from '../../tailwind';
@@ -16,6 +15,10 @@ import avatar from '../images/avatar.jpg';
 import '../styles/global';
 import config from '../../config/website';
 import '../../node_modules/@ibm/plex/scss/ibm-plex.scss';
+
+import Layout from '../components/layout'
+import Header from '../components/Header';
+import Main from '../components/Main';
 
 const Divider = styled(ParallaxLayer)`
   ${tw('absolute w-full h-full')};
@@ -71,20 +74,6 @@ const Subtitle = styled.p`
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 `;
 
-const ProjectsWrapper = styled.div`
-  ${tw('flex flex-wrap justify-between mt-8')};
-  display: grid;
-  grid-gap: 4rem;
-  grid-template-columns: repeat(2, 1fr);
-  @media (max-width: 1200px) {
-    grid-gap: 3rem;
-  }
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-    grid-gap: 2rem;
-  }
-`;
-
 const WaveWrapper = styled.div`
   ${tw('absolute pin-b w-full')};
   transform: matrix(1, 0, 0, -1, 0, 0);
@@ -134,7 +123,76 @@ font-family:'IBM Plex Mono';
   }
 `;
 
-const Index = () => (
+// const Index = () => (
+class Index extends React.Component {
+  constructor(props) {
+  super(props)
+  this.state = {
+    isArticleVisible: false,
+    timeout: false,
+    articleTimeout: false,
+    article: '',
+    loading: 'is-loading'
+  }
+  this.handleOpenArticle = this.handleOpenArticle.bind(this)
+  this.handleCloseArticle = this.handleCloseArticle.bind(this)
+}
+
+componentDidMount () {
+  this.timeoutId = setTimeout(() => {
+      this.setState({loading: ''});
+  }, 100);
+}
+
+componentWillUnmount () {
+  if (this.timeoutId) {
+      clearTimeout(this.timeoutId);
+  }
+}
+
+handleOpenArticle(article) {
+
+  this.setState({
+    isArticleVisible: !this.state.isArticleVisible,
+    article
+  })
+
+  setTimeout(() => {
+    this.setState({
+      timeout: !this.state.timeout
+    })
+  }, 325)
+
+  setTimeout(() => {
+    this.setState({
+      articleTimeout: !this.state.articleTimeout
+    })
+  }, 350)
+
+}
+
+handleCloseArticle() {
+
+  this.setState({
+    articleTimeout: !this.state.articleTimeout
+  })
+
+  setTimeout(() => {
+    this.setState({
+      timeout: !this.state.timeout
+    })
+  }, 325)
+
+  setTimeout(() => {
+    this.setState({
+      isArticleVisible: !this.state.isArticleVisible,
+      article: ''
+    })
+  }, 350)
+
+}
+  render() {
+    return (
   <React.Fragment>
     <SEO />
     <Parallax pages={4}>
@@ -177,36 +235,20 @@ const Index = () => (
       <Content speed={0.4} offset={1}>
         <Inner>
           <Title>PROJECTS</Title>
-          <ProjectsWrapper>
-            <ProjectCard
-              title="Freiheit"
-              link="https://www.behance.net/gallery/58937147/Freiheit"
-              bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)"
-            >
-              This project is my entry to Adobe's #ChallengeYourPerspective contest.
-            </ProjectCard>
-            <ProjectCard
-              title="Harry Potter"
-              link="https://www.behance.net/gallery/52915793/Harry-Potter"
-              bg="linear-gradient(to right, #662D8C 0%, #ED1E79 100%)"
-            >
-              I entered the DOCMA 2017 award with this Harry Potter inspired image.
-            </ProjectCard>
-            <ProjectCard
-              title="Tomb Raider"
-              link="https://www.behance.net/gallery/43907099/Tomb-Raider"
-              bg="linear-gradient(to right, #009245 0%, #FCEE21 100%)"
-            >
-              Recreation of a Tomb Raider Wallpaper (Fan Art)
-            </ProjectCard>
-            <ProjectCard
-              title="Eagle"
-              link="https://www.behance.net/gallery/38068151/Eagle"
-              bg="linear-gradient(to right, #D585FF 0%, #00FFEE 100%)"
-            >
-              A fantasy image manipulation relocating the habitat of wild animals.
-            </ProjectCard>
-          </ProjectsWrapper>
+            <Layout location={this.props.location}>
+                <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
+                  <div id="wrapper">
+                <Header onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
+                <Main
+                  isArticleVisible={this.state.isArticleVisible}
+                  timeout={this.state.timeout}
+                  articleTimeout={this.state.articleTimeout}
+                  article={this.state.article}
+                  onCloseArticle={this.handleCloseArticle}
+                />
+                </div>
+            </div>
+          </Layout>
         </Inner>
       </Content>
       <Divider speed={0.1} offset={1}>
@@ -255,7 +297,7 @@ const Index = () => (
         <Inner>
           <Title>ABOUT</Title>
           <AboutHero>
-            <Avatar src={avatar} alt="John Doe" />
+            <Avatar type="image/jpg" src={avatar} alt="John Doe" />
             <AboutSub>
               The English language can not fully capture the depth and complexity of my thoughts. So I'm incorporating
               Emoji into my speech to better express myself. Winky face.
@@ -318,5 +360,7 @@ const Index = () => (
     </Parallax>
   </React.Fragment>
 );
+}
+}
 
 export default Index;

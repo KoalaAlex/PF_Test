@@ -24,9 +24,9 @@ const SEO = () => {
       <meta charSet="utf-8" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.jpg" />
+      <link rel="icon" type="image/jpg" sizes="32x32" href="/favicons/favicon-32x32.jpg" />
+      <link rel="icon" type="image/jpg" sizes="16x16" href="/favicons/favicon-16x16.jpg" />
       <link rel="shortcut icon" href="/favicons/favicon.ico" />
       <meta name="msapplication-TileColor" content={config.backgroundColor} />
       <meta name="msapplication-config" content="browserconfig.xml" />

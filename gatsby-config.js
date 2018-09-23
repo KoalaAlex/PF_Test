@@ -6,6 +6,7 @@ module.exports = {
   /* General Information */
   pathPrefix: config.pathPrefix,
   siteMetadata: {
+    title: "TEST",
     siteUrl: config.siteUrl + pathPrefix,
   },
   /* Plugins */
@@ -33,14 +34,14 @@ module.exports = {
         display: 'fullscreen',
         icons: [
           {
-            src: '/favicons/android-chrome-192x192.png',
+            src: '/favicons/android-chrome-192x192.jpg',
             sizes: '192x192',
-            type: 'image/png',
+            type: 'image/jpg',
           },
           {
-            src: '/favicons/android-chrome-512x512.png',
+            src: '/favicons/android-chrome-512x512.jpg',
             sizes: '512x512',
-            type: 'image/png',
+            type: 'image/jpg',
           },
         ],
       },
