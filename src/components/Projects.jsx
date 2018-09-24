@@ -17,48 +17,48 @@ const ProjectsWrapper = styled.div`
   }
 `;
 
-const Header = (props) => (
-    <header id="header" style={props.timeout ? {display: 'none'} : {}}>
+const Projects = (props) => (
+    <div id="projects" style={props.timeout ? {display: 'none'} : {}}>
         <ProjectsWrapper>
           <ProjectCard
-            title="Freiheit"
+            title="MULTIPLAYER VR"
             onOpenArticle={props.onOpenArticle}
-            link="intro"
+            link="vr-multi"
             bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)"
           >
-            This project is my entry to Adobe's #ChallengeYourPerspective contest.
+            This projects uses Vive Support from SteamVR and you can meet eatch other in VR with the multiplyer mode.
           </ProjectCard>
           <ProjectCard
-            title="Harry Potter"
+            title="INTERACTIVE AND TOUCH"
             onOpenArticle={props.onOpenArticle}
-            link="work"
+            link="touch"
             bg="linear-gradient(to right, #662D8C 0%, #ED1E79 100%)"
           >
-            I entered the DOCMA 2017 award with this Harry Potter inspired image.
+            Here is a collection of some nice Apps that are made with Unity.
           </ProjectCard>
           <ProjectCard
-            title="Tomb Raider"
+            title="WEB"
             onOpenArticle={props.onOpenArticle}
-            link="about"
-            bg="linear-gradient(to right, #009245 0%, #FCEE21 100%)"
+            link="web"
+            bg="linear-gradient(to right,#ff28ba 0%,#49fef8 100%)"
           >
-            Recreation of a Tomb Raider Wallpaper (Fan Art)
+            Here you can see some nice websites and fun projects
           </ProjectCard>
           <ProjectCard
-            title="Eagle"
+            title="CRANE SIUMULATOR"
             onOpenArticle={props.onOpenArticle}
-            link="contact"
-            bg="linear-gradient(to right, #D585FF 0%, #00FFEE 100%)"
+            link="simulator"
+            bg="linear-gradient(to right,#068cff 0%,#00ff55 100%)"
           >
-            A fantasy image manipulation relocating the habitat of wild animals.
+            This was a mega project made with Liebherr and also in VR. It was a complete Simulatom for the behaviour of a cran.
           </ProjectCard>
         </ProjectsWrapper>
-    </header>
+    </div>
 )
 
-Header.propTypes = {
+Projects.propTypes = {
     onOpenArticle: PropTypes.func,
     timeout: PropTypes.bool
 }
 
-export default Header
+export default Projects

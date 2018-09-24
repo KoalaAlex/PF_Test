@@ -32,6 +32,12 @@
 			border-radius: _size(border-radius);
 			opacity: 0;
 
+			span{
+				img{
+					width: 100%;
+				}
+			}
+
 			&.timeout {
 				display: none;
 			}

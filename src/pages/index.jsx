@@ -17,7 +17,7 @@ import config from '../../config/website';
 import '../../node_modules/@ibm/plex/scss/ibm-plex.scss';
 
 import Layout from '../components/layout'
-import Header from '../components/Header';
+import Projects from '../components/Projects';
 import Main from '../components/Main';
 
 const Divider = styled(ParallaxLayer)`
@@ -199,8 +199,8 @@ handleCloseArticle() {
       <Divider speed={0.2} offset={0}>
         <UpDown>
           <SVG icon="triangle" className={hidden} width={48} stroke={colors.orange} left="10%" top="20%" />
-          <SVG icon="hexa" width={48} stroke={colors.red} left="60%" top="70%" />
-          <SVG icon="box" width={6} fill={colors['grey-darker']} left="60%" top="15%" />
+          <SVG icon="imac" width={48} fill={colors.red} left="60%" top="70%" />
+          <SVG icon="badge" width={6} fill={colors['grey-darker']} left="60%" top="15%" />
         </UpDown>
         <UpDownWide>
           <SVG icon="arrowUp" className={hidden} width={16} fill={colors['blue-dark']} left="80%" top="10%" />
@@ -210,7 +210,7 @@ handleCloseArticle() {
           <SVG icon="circle" width={6} fill={colors['grey-darkest']} left="75%" top="10%" />
           <SVG icon="upDown" className={hidden} width={8} fill={colors['grey-darkest']} left="45%" top="10%" />
         </UpDownWide>
-        <SVG icon="circle" className={hidden} width={24} fill={colors['grey-darker']} left="5%" top="70%" />
+        <SVG icon="ps4" className={hidden} width={24} fill={colors['grey-darker']} left="5%" top="70%" />
         <SVG icon="circle" width={6} fill={colors['grey-darkest']} left="4%" top="20%" />
         <SVG icon="circle" width={12} fill={colors['grey-darkest']} left="50%" top="60%" />
         <SVG icon="upDown" width={8} fill={colors['grey-darkest']} left="95%" top="90%" />
@@ -219,7 +219,7 @@ handleCloseArticle() {
         <SVG icon="circle" width={64} fill={colors.green} left="95%" top="5%" />
         <SVG icon="box" className={hidden} width={64} fill={colors.purple} left="5%" top="90%" />
         <SVG icon="box" width={6} fill={colors['grey-darkest']} left="10%" top="10%" />
-        <SVG icon="box" width={12} fill={colors['grey-darkest']} left="40%" top="30%" />
+        <SVG icon="imac" width={12} fill={colors['grey-darkest']} left="40%" top="30%" />
         <SVG icon="hexa" width={16} stroke={colors['grey-darker']} left="10%" top="50%" />
         <SVG icon="hexa" width={8} stroke={colors['grey-darker']} left="80%" top="70%" />
       </Divider>
@@ -228,27 +228,25 @@ handleCloseArticle() {
           <BigTitle>
             Hello, <br /> I'm Alex.
           </BigTitle>
-          <Subtitle>I'm creating noice web experiences for the next generation of consumer-facing companies.</Subtitle>
+          <Subtitle>I'm creating state of the art web, VR and app experiences.</Subtitle>
         </Hero>
       </Content>
       <DividerMiddle bg="linear-gradient(to right, OrangeRed 0%, DarkOrange 100%)" speed={-0.2} offset={1.1} />
       <Content speed={0.4} offset={1}>
         <Inner>
           <Title>PROJECTS</Title>
-            <Layout location={this.props.location}>
-                <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
-                  <div id="wrapper">
-                <Header onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
-                <Main
-                  isArticleVisible={this.state.isArticleVisible}
-                  timeout={this.state.timeout}
-                  articleTimeout={this.state.articleTimeout}
-                  article={this.state.article}
-                  onCloseArticle={this.handleCloseArticle}
-                />
-                </div>
-            </div>
-          </Layout>
+           <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
+              <div id="wrapper">
+                  <Projects onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
+                  <Main
+                    isArticleVisible={this.state.isArticleVisible}
+                    timeout={this.state.timeout}
+                    articleTimeout={this.state.articleTimeout}
+                    article={this.state.article}
+                    onCloseArticle={this.handleCloseArticle}
+                  />
+              </div>
+          </div>
         </Inner>
       </Content>
       <Divider speed={0.1} offset={1}>
@@ -261,7 +259,7 @@ handleCloseArticle() {
         <UpDownWide>
           <SVG icon="arrowUp" className={hidden} width={16} fill={colors.green} left="20%" top="90%" />
           <SVG icon="triangle" width={12} stroke={colors.white} left="90%" top="30%" />
-          <SVG icon="circle" width={16} fill={colors.yellow} left="70%" top="90%" />
+          <SVG icon="smartphone" width={16} fill={colors.yellow} left="70%" top="90%" />
           <SVG icon="triangle" className={hidden} width={16} stroke={colors.teal} left="18%" top="75%" />
           <SVG icon="circle" width={6} fill={colors.white} left="75%" top="10%" />
           <SVG icon="upDown" className={hidden} width={8} fill={colors.green} left="45%" top="10%" />
@@ -354,7 +352,7 @@ handleCloseArticle() {
         </UpDownWide>
         <SVG icon="circle" width={6} fill={colors.white} left="4%" top="20%" />
         <SVG icon="circle" width={12} fill={colors['grey-darkest']} left="70%" top="60%" />
-        <SVG icon="box" width={12} fill={colors['grey-darkest']} left="20%" top="30%" />
+        <SVG icon="imac" width={12} fill={colors['grey-darkest']} left="20%" top="30%" />
         <SVG icon="hexa" width={8} stroke={colors['grey-darkest']} left="80%" top="70%" />
       </Divider>
     </Parallax>

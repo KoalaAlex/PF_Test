@@ -6,7 +6,7 @@ module.exports = {
   /* General Information */
   pathPrefix: config.pathPrefix,
   siteMetadata: {
-    title: "TEST",
+    title: "Portfolio - Alex",
     siteUrl: config.siteUrl + pathPrefix,
   },
   /* Plugins */
