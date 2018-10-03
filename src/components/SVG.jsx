@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { width as twWidth } from '../../tailwind';
 
+const myCoolBg = 'linear-gradient( to bottom,#46C9E5 0%,#D26AC2 100% )';
+
 const Wrapper = styled.svg`
   ${tw('stroke-current absolute')};
   color: ${props => props.stroke};
@@ -27,7 +29,7 @@ const icons = {
   },
   circle: {
     shape: (
-      <path d="M15,30A15,15,0,1,1,30,15,15,15,0,0,1,15,30ZM15,6.23A8.77,8.77,0,1,0,23.77,15,8.77,8.77,0,0,0,15,6.23Z" />
+        <path d="M15,30A15,15,0,1,1,30,15,15,15,0,0,1,15,30ZM15,6.23A8.77,8.77,0,1,0,23.77,15,8.77,8.77,0,0,0,15,6.23Z" />
     ),
     viewBox: '0 0 30 30',
   },

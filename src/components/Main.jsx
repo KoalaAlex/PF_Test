@@ -12,7 +12,6 @@ class Main extends React.Component {
 
     return (
       <div id="main" style={this.props.timeout ? {display: 'flex'} : {display: 'none'}}>
-
         <article id="vr-multi" className={`${this.props.article === 'vr-multi' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Muliplayer VR</h2>
           <span className="image main"><img src={cranesim01} alt="" /></span>
@@ -21,7 +20,6 @@ class Main extends React.Component {
           <a href="https://stollvongati.com/de/projekte/lisim-simulator-fuer-liebherr-turmdrehkrane.html">Website SvG</a>
           {close}
         </article>
-
         <article id="touch" className={`${this.props.article === 'touch' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Interactive and Touch</h2>
           <span className="image main"><img src={pic02} alt="" /></span>

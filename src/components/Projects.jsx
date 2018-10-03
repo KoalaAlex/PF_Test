@@ -24,7 +24,7 @@ const Projects = (props) => (
             title="MULTIPLAYER VR"
             onOpenArticle={props.onOpenArticle}
             link="vr-multi"
-            bg="linear-gradient(to right, #D4145A 0%, #FBB03B 100%)"
+    
           >
             This projects uses Vive Support from SteamVR and you can meet eatch other in VR with the multiplyer mode.
           </ProjectCard>
@@ -32,7 +32,7 @@ const Projects = (props) => (
             title="INTERACTIVE AND TOUCH"
             onOpenArticle={props.onOpenArticle}
             link="touch"
-            bg="linear-gradient(to right, #662D8C 0%, #ED1E79 100%)"
+
           >
             Here is a collection of some nice Apps that are made with Unity.
           </ProjectCard>
@@ -40,7 +40,7 @@ const Projects = (props) => (
             title="WEB"
             onOpenArticle={props.onOpenArticle}
             link="web"
-            bg="linear-gradient(to right,#ff28ba 0%,#49fef8 100%)"
+
           >
             Here you can see some nice websites and fun projects
           </ProjectCard>
@@ -48,7 +48,7 @@ const Projects = (props) => (
             title="CRANE SIUMULATOR"
             onOpenArticle={props.onOpenArticle}
             link="simulator"
-            bg="linear-gradient(to right,#068cff 0%,#00ff55 100%)"
+
           >
             This was a mega project made with Liebherr and also in VR. It was a complete Simulatom for the behaviour of a cran.
           </ProjectCard>

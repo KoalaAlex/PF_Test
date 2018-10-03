@@ -6,10 +6,18 @@ import styled from 'react-emotion';
 const Wrapper = styled.a`
   width: 100%;
   ${tw('shadow-lg relative no-underline rounded-lg px-8 py-16 text-white')};
-  background: ${props => props.bg};
+
+  border: 5px solid rgba(255,255,255,.75);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   &:hover {
     transform: translateY(-5px);
+  }
+  &:before{
+    content: '';
+    position: absolute;
+    top: 0; left:0; right:0; bottom:0;
+    background: #ffffff30;
+    filter: blur(10px);
   }
 `;
 
@@ -24,11 +32,11 @@ const Title = styled.div`
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 `;
 
-const ProjectCard = ({ title, onOpenArticle, link, children, bg }) => (
-  <Wrapper href="javascript:;" onClick={() => {onOpenArticle(link)}} bg={bg}>
-    <Text>{children}</Text>
-    <Title>{title}</Title>
-  </Wrapper>
+const ProjectCard = ({ title, onOpenArticle, link, children}) => (
+    <Wrapper href="javascript:;" onClick={() => {onOpenArticle(link)}}>
+      <Text>{children}</Text>
+      <Title>{title}</Title>
+    </Wrapper>
 );
 
 export default ProjectCard;
@@ -38,5 +46,4 @@ ProjectCard.propTypes = {
   onOpenArticle: PropTypes.func,
   link: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
-  bg: PropTypes.string.isRequired,
 };

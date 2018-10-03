@@ -40,6 +40,15 @@ const upDownWideAnimation = keyframes`
   }
 `;
 
+const blurAnim = keyframes`
+  from {
+    filter: blur(4px);
+  }
+  to {
+    filter: blur(46px);
+  }
+`;
+
 export const UpDown = styled.div`
   animation: ${upDownAnimation} 4s ease-in-out infinite alternate;
   ${tw('pin absolute')};
@@ -52,4 +61,8 @@ export const UpDownWide = styled.div`
 
 export const waveAnimation = css`
   animation: ${wave} 20s linear infinite alternate;
+`;
+
+export const circleBlur = css`
+  animation: ${blurAnim} 2s ease-in-out infinite alternate;
 `;
