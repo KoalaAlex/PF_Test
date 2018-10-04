@@ -7,7 +7,7 @@ import { Parallax, ParallaxLayer } from 'react-spring';
 import SVG from '../components/SVG';
 import { colors } from '../../tailwind';
 import { hidden } from '../styles/utils';
-import { UpDown, UpDownWide, blurNormal, blurBig, blurFast } from '../styles/animations';
+import { UpDown, UpDownWide, blurNormal, blurBig } from '../styles/animations';
 import { width as twWidth } from '../../tailwind';
 
 const Divider = styled(ParallaxLayer)`
@@ -43,8 +43,8 @@ export const SVGTop = () => {
       <SVG icon="upDown" width={8} fill={colors['grey-darkest']} left="95%" top="90%" />
       <SVG icon="pencilcase" className={hidden} width={24} fill={colors['grey-darker']} left="40%" top="80%" />
       <SVG icon="triangle" width={8} stroke={colors['grey-darker']} left="25%" top="5%" />
-      <SVG icon="usb" width={88} fill={colors['green-light']} left="90%" top="5%" />
-      <SVG icon="usb" className={blurBig} width={88} fill={colors['green-light']} left="90%" top="5%" />
+      <SVG icon="usb" width={78} fill={colors['green-light']} left="90%" top="5%" />
+      <SVG icon="usb" className={blurBig} width={78} fill={colors['green-light']} left="90%" top="5%" />
       <SVG icon="puzzle" className={hidden} width={64} fill={colors.purple} left="5%" top="90%" />
       <SVG icon="box" width={6} fill={colors['grey-darkest']} left="10%" top="10%" />
       <SVG icon="imac" width={24} fill={colors['grey-darkest']} left="40%" top="30%" />
