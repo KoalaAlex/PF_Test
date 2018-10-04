@@ -40,7 +40,25 @@ const upDownWideAnimation = keyframes`
   }
 `;
 
+const rotateAndBack = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(10deg);
+  }
+`;
+
 const blurAnim = keyframes`
+  from {
+    filter: blur(4px);
+  }
+  to {
+    filter: blur(24px);
+  }
+`;
+
+const blurAnimBig = keyframes`
   from {
     filter: blur(4px);
   }
@@ -63,6 +81,14 @@ export const waveAnimation = css`
   animation: ${wave} 20s linear infinite alternate;
 `;
 
-export const circleBlur = css`
-  animation: ${blurAnim} 2s ease-in-out infinite alternate;
+export const blurNormal = css`
+  animation: ${blurAnim} 3s ease-in-out infinite alternate;
+`;
+
+export const blurBig = css`
+  animation: ${blurAnimBig} 2s ease-in-out infinite alternate;
+`;
+
+export const blurFast = css`
+  animation: ${blurAnim} 1s ease-in-out infinite alternate;
 `;

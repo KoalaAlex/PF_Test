@@ -24,7 +24,7 @@ const Projects = (props) => (
             title="MULTIPLAYER VR"
             onOpenArticle={props.onOpenArticle}
             link="vr-multi"
-    
+
           >
             This projects uses Vive Support from SteamVR and you can meet eatch other in VR with the multiplyer mode.
           </ProjectCard>

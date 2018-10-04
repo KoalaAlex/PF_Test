@@ -10,7 +10,7 @@ import { SVGTop, SVGMiddle, SVGDown } from '../components/SVGManager';
 import Layout from '../components/layout'
 import Projects from '../components/Projects';
 import Main from '../components/Main';
-import { rotate, UpDown, UpDownWide, waveAnimation, circleBlur } from '../styles/animations';
+import { rotate, UpDown, UpDownWide, waveAnimation, blurNormal, blurBig } from '../styles/animations';
 import { hidden } from '../styles/utils';
 import { colors } from '../../tailwind';
 import triangle from '../images/triangle.svg';
@@ -32,18 +32,23 @@ const Divider = styled(ParallaxLayer)`
   clip-path: ${props => props.clipPath};
 `;
 
-const DividerMiddle = styled(Divider)`
-  clip-path: polygon(0 0%,100% 10%,96% 55%, 100% 100%,0 90%, 4% 45%);
+const DividerMiddleBlur = styled.div`
+  ${tw('absolute w-full h-full')};
+  @supports not (background: linear-gradient(to right, #ff00db 0%,#7f00ff 100%)) {
+    background: #7f00ff;
+  }
+  background: linear-gradient(to right, #ff00db 0%,#7f00ff 100%);
+  transform: rotate(3deg);
+  top: -0.25%;
+  left: -0.25%;
+  height:90.5%;
+  width:100.5%;
 `;
-
-const DividerMiddleBlur = styled(Divider)`
-  clip-path: polygon(0 0%,100% 10%,96% 55%, 100% 100%,0 90%, 4% 45%);
-  background: linear-gradient(to right, OrangeRed 0%, DarkOrange 100%);
-  filter: blur(20px);
-`;
-const DividerMiddleMain = styled(Divider)`
-  clip-path: polygon(0 0%,100% 10%,96% 55%, 100% 100%,0 90%, 4% 45%);
-  background: linear-gradient(to right, OrangeRed 0%, DarkOrange 100%);
+const DividerMiddleMain = styled.div`
+  ${tw('absolute w-full h-full')};
+  background: linear-gradient(to right, #262626 0%, #202020 100%);
+  height:90%;
+  transform: rotate(3deg);
 `;
 
 const Content = styled(ParallaxLayer)`
@@ -122,7 +127,7 @@ const ContactText = styled.p`
 font-family:'IBM Plex Mono';
   ${tw('text-grey-light text-xl md:text-2xl lg:text-3xl')};
   a {
-    color: #e07628;
+    color: #ff0057;
     text-decoration: none;
   }
 `;
@@ -131,7 +136,7 @@ const Footer = styled.footer`
 font-family:'IBM Plex Mono';
   ${tw('text-center text-grey absolute pin-b p-6 text-md lg:text-lg')};
   a {
-    color: #e07628;
+    color: #ff0057;
     text-decoration: none;
   }
 `;
@@ -218,10 +223,10 @@ handleCloseArticle() {
           <Subtitle>I'm creating state of the art web, VR and app experiences.</Subtitle>
         </Hero>
       </Content>
-      <DividerMiddle bg="linear-gradient(to right, OrangeRed 0%, DarkOrange 100%)" speed={-0.2} offset={1.1}>
-      <DividerMiddleBlur />
+      <Divider speed={-0.2} offset={1.1}>
+      <DividerMiddleBlur className={blurNormal}/>
       <DividerMiddleMain />
-      </DividerMiddle>
+      </Divider>
       <Content speed={0.4} offset={1}>
         <Inner>
           <Title>PROJECTS</Title>
