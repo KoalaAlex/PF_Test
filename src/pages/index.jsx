@@ -7,9 +7,8 @@ import { Parallax, ParallaxLayer } from 'react-spring';
 import SEO from '../components/SEO';
 import SVG from '../components/SVG';
 import { SVGTop, SVGMiddle, SVGDown } from '../components/SVGManager';
-import Layout from '../components/layout'
 import Projects from '../components/Projects';
-import Main from '../components/Main';
+import ProjectContent from '../components/ProjectContent';
 import { rotate, UpDown, UpDownWide, waveAnimation, blurNormal, blurBig, boxShadowAnim } from '../styles/animations';
 import { hidden } from '../styles/utils';
 import { colors } from '../../tailwind';
@@ -162,9 +161,12 @@ componentWillUnmount () {
 }
 
 handleOpenArticle(article) {
+  if(this.state.isArticleVisible){
+    return;
+  }
 
   this.setState({
-    isArticleVisible: !this.state.isArticleVisible,
+    isArticleVisible: true,
     article
   })
 
@@ -176,16 +178,18 @@ handleOpenArticle(article) {
 
   setTimeout(() => {
     this.setState({
-      articleTimeout: !this.state.articleTimeout
+      articleTimeout: true
     })
   }, 350)
-
 }
 
 handleCloseArticle() {
+  if(!this.state.articleTimeout){
+    return;
+  }
 
   this.setState({
-    articleTimeout: !this.state.articleTimeout
+    articleTimeout: false
   })
 
   setTimeout(() => {
@@ -195,8 +199,8 @@ handleCloseArticle() {
   }, 325)
 
   setTimeout(() => {
-    this.setState({
-      isArticleVisible: !this.state.isArticleVisible,
+  this.setState({
+      isArticleVisible: false,
       article: ''
     })
   }, 350)
@@ -225,7 +229,7 @@ handleCloseArticle() {
            <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
               <div id="wrapper">
                   <Projects onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
-                  <Main
+                  <ProjectContent
                     isArticleVisible={this.state.isArticleVisible}
                     timeout={this.state.timeout}
                     articleTimeout={this.state.articleTimeout}

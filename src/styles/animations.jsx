@@ -103,7 +103,7 @@ export const blurNormal =css`
 `;
 
 export const blurBig = css`
-  animation: ${blurAnimBig} 2s ease-in-out infinite alternate;
+  animation: ${blurAnimBig} 3s ease-in-out infinite alternate;
   will-change: animation, filter;
   ${tw('absolute')};
 `;
