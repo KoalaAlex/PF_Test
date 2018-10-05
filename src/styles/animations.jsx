@@ -70,31 +70,40 @@ const blurAnimBig = keyframes`
   }
 `;
 
+export const boxShadowAnim = keyframes`
+  from {
+    box-shadow: 0px 0px 1rem #7f00ff;
+  }
+  to {
+    box-shadow: 0px 0px 4rem #7f00ff;
+  }
+`;
+
 export const UpDown = styled.div`
   animation: ${upDownAnimation} 4s ease-in-out infinite alternate;
-  will-change: animation;
+  will-change: animation, transform;
   ${tw('pin absolute')};
 `;
 
 export const UpDownWide = styled.div`
   animation: ${upDownWideAnimation} 18s ease-in-out infinite alternate;
-  will-change: animation;
+  will-change: animation, transform;
   ${tw('pin absolute')};
 `;
 
 export const waveAnimation = css`
   animation: ${wave} 20s linear infinite alternate;
-  will-change: animation;
+  will-change: animation, d;
 `;
 
 export const blurNormal =css`
   animation: ${blurAnim} 3s ease-in-out infinite alternate;
-  will-change: animation;
+  will-change: animation, filter;
   ${tw('absolute')};
 `;
 
 export const blurBig = css`
   animation: ${blurAnimBig} 2s ease-in-out infinite alternate;
-  will-change: animation;
+  will-change: animation, filter;
   ${tw('absolute')};
 `;

@@ -17,44 +17,49 @@ const ProjectsWrapper = styled.div`
   }
 `;
 
-const Projects = (props) => (
-    <div id="projects" style={props.timeout ? {display: 'none'} : {}}>
-        <ProjectsWrapper>
-          <ProjectCard
-            title="MULTIPLAYER VR"
-            onOpenArticle={props.onOpenArticle}
-            link="vr-multi"
+//const Projects = (props) => (
+class Projects extends React.PureComponent {
+  render(){
+    return (
+      <div id="projects" style={this.props.timeout ? {display: 'none'} : {}}>
+          <ProjectsWrapper>
+            <ProjectCard
+              title="MULTIPLAYER VR"
+              onOpenArticle={this.props.onOpenArticle}
+              link="vr-multi"
 
-          >
-            This projects uses Vive Support from SteamVR and you can meet eatch other in VR with the multiplyer mode.
-          </ProjectCard>
-          <ProjectCard
-            title="INTERACTIVE AND TOUCH"
-            onOpenArticle={props.onOpenArticle}
-            link="touch"
+            >
+              This projects uses Vive Support from SteamVR and you can meet eatch other in VR with the multiplyer mode.
+            </ProjectCard>
+            <ProjectCard
+              title="INTERACTIVE AND TOUCH"
+              onOpenArticle={this.props.onOpenArticle}
+              link="touch"
 
-          >
-            Here is a collection of some nice Apps that are made with Unity.
-          </ProjectCard>
-          <ProjectCard
-            title="WEB"
-            onOpenArticle={props.onOpenArticle}
-            link="web"
+            >
+              Here is a collection of some nice Apps that are made with Unity.
+            </ProjectCard>
+            <ProjectCard
+              title="WEB"
+              onOpenArticle={this.props.onOpenArticle}
+              link="web"
 
-          >
-            Here you can see some nice websites and fun projects
-          </ProjectCard>
-          <ProjectCard
-            title="CRANE SIUMULATOR"
-            onOpenArticle={props.onOpenArticle}
-            link="simulator"
+            >
+              Here you can see some nice websites and fun projects
+            </ProjectCard>
+            <ProjectCard
+              title="CRANE SIUMULATOR"
+              onOpenArticle={this.props.onOpenArticle}
+              link="simulator"
 
-          >
-            This was a mega project made with Liebherr and also in VR. It was a complete Simulatom for the behaviour of a cran.
-          </ProjectCard>
-        </ProjectsWrapper>
-    </div>
-)
+            >
+              This was a mega project made with Liebherr and also in VR. It was a complete Simulatom for the behaviour of a cran.
+            </ProjectCard>
+          </ProjectsWrapper>
+      </div>
+    )
+  }
+};
 
 Projects.propTypes = {
     onOpenArticle: PropTypes.func,

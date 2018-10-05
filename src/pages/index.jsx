@@ -10,7 +10,7 @@ import { SVGTop, SVGMiddle, SVGDown } from '../components/SVGManager';
 import Layout from '../components/layout'
 import Projects from '../components/Projects';
 import Main from '../components/Main';
-import { rotate, UpDown, UpDownWide, waveAnimation, blurNormal, blurBig } from '../styles/animations';
+import { rotate, UpDown, UpDownWide, waveAnimation, blurNormal, blurBig, boxShadowAnim } from '../styles/animations';
 import { hidden } from '../styles/utils';
 import { colors } from '../../tailwind';
 import triangle from '../images/triangle.svg';
@@ -20,8 +20,6 @@ import config from '../../config/website';
 
 // import Fonts
 import '../../node_modules/@ibm/plex/scss/ibm-plex.scss';
-import 'typeface-cantata-one';
-import 'typeface-open-sans';
 
 const Divider = styled(ParallaxLayer)`
   ${tw('absolute w-full h-full')};
@@ -33,22 +31,17 @@ const Divider = styled(ParallaxLayer)`
 `;
 
 const DividerMiddleBlur = styled.div`
-  ${tw('absolute w-full h-full')};
-  @supports not (background: linear-gradient(to right, #ff00db 0%,#7f00ff 100%)) {
-    background: #7f00ff;
-  }
-  background: linear-gradient(to right, #ff00db 0%,#7f00ff 100%);
+  ${tw('absolute')};
   transform: rotate(3deg);
-  top: -0.25%;
-  left: -0.25%;
-  height:90.5%;
-  width:100.5%;
+  animation: ${boxShadowAnim} 2s ease-in-out infinite alternate;
+  background: linear-gradient(to right, #262626 0%, #202020 100%);
+  width: 100%;
+  height:90%;
+  will-change: animation, box-shadow;
 `;
 const DividerMiddleMain = styled.div`
-  ${tw('absolute w-full h-full')};
-  background: linear-gradient(to right, #262626 0%, #202020 100%);
   height:90%;
-  transform: rotate(3deg);
+  opacity: 0.9;
 `;
 
 const Content = styled(ParallaxLayer)`
@@ -224,8 +217,7 @@ handleCloseArticle() {
         </Hero>
       </Content>
       <Divider speed={-0.2} offset={1.1}>
-      <DividerMiddleBlur className={blurNormal}/>
-      <DividerMiddleMain />
+      <DividerMiddleBlur />
       </Divider>
       <Content speed={0.4} offset={1}>
         <Inner>
@@ -290,6 +282,7 @@ handleCloseArticle() {
       </Content>
       <SVGDown />
     </Parallax>
+    <noscript>Your browser does not support JavaScript!</noscript>
   </React.Fragment>
 );
 }

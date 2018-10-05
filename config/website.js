@@ -5,10 +5,10 @@ module.exports = {
 
   siteTitle: 'Portfolio - Alex', // Navigation and Site Title
   siteTitleAlt: 'Alex', // Alternative Site title for SEO
-  siteUrl: '.', // Domain of your site. No trailing slash!
+  siteUrl: 'https://vigorous-hypatia-b48f29.netlify.com', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
   siteLogo: '/logos/logo-1024.jpg', // Used for SEO and manifest
-  siteDescription: 'Portfolio with Parallax effect',
+  siteDescription: 'Portfolio With React, Parallax And Blur Effects',
 
   siteFBAppID: '123456789', // Facebook App ID
   siteFacebook: 'https://www.facebook.com/alexander.stricker.12',

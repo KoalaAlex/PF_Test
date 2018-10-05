@@ -260,19 +260,24 @@ const icons = {
   },
 };
 
-const SVG = ({ stroke, fill, width, icon, left, top, className }) => (
-  <Wrapper
-    viewBox={icons[icon].viewBox}
-    stroke={stroke}
-    fill={fill}
-    svgWidth={twWidth[`${width}`]}
-    left={left}
-    top={top}
-    className={className}
-  >
-    {icons[icon].shape}
-  </Wrapper>
-);
+//const SVG = ({ stroke, fill, width, icon, left, top, className }) => (
+class SVG extends React.PureComponent {
+  render(){
+    return (
+      <Wrapper
+        viewBox={icons[this.props.icon].viewBox}
+        stroke={this.props.stroke}
+        fill={this.props.fill}
+        svgWidth={twWidth[`${this.props.width}`]}
+        left={this.props.left}
+        top={this.props.top}
+        className={this.props.className}
+      >
+        {icons[this.props.icon].shape}
+      </Wrapper>
+    );
+  }
+}
 
 export default SVG;
 
