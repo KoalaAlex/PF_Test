@@ -16,6 +16,7 @@ import triangle from '../images/triangle.svg';
 import avatar from '../images/avatar.jpg';
 import '../styles/global';
 import config from '../../config/website';
+import MediaQuery from 'react-responsive';
 
 // import Fonts
 import '../../node_modules/@ibm/plex/scss/ibm-plex.scss';
@@ -36,7 +37,7 @@ const DividerMiddleBlur = styled.div`
   background: linear-gradient(to right, #262626 0%, #202020 100%);
   width: 100%;
   height:90%;
-  will-change: animation, box-shadow;
+  will-change: box-shadow;
 `;
 const DividerMiddleMain = styled.div`
   height:90%;
@@ -52,7 +53,7 @@ const Hero = styled.div`
 `;
 
 const Inner = styled.div`
-  ${tw('w-full xxl:w-2/3 text-center lg:text-left')};
+  ${tw('w-full xxl:w-5/6 text-center lg:text-left')};
 `;
 
 const BigTitle = styled.h1`
@@ -142,23 +143,42 @@ class Index extends React.Component {
     timeout: false,
     articleTimeout: false,
     article: '',
-    loading: 'is-loading'
+    loading: 'is-loading',
+    isSmallMobile: false
   }
   this.handleOpenArticle = this.handleOpenArticle.bind(this)
   this.handleCloseArticle = this.handleCloseArticle.bind(this)
+  this.updateDimensions = this.updateDimensions.bind(this);
 }
 
 componentDidMount () {
   this.timeoutId = setTimeout(() => {
       this.setState({loading: ''});
   }, 100);
+  this.updateDimensions();
+  window.addEventListener("resize", this.updateDimensions);
 }
 
 componentWillUnmount () {
   if (this.timeoutId) {
       clearTimeout(this.timeoutId);
   }
+  window.removeEventListener("resize", this.updateDimensions);
 }
+
+updateDimensions() {
+  if(window.innerWidth <= 450){
+    this.setState({
+      isSmallMobile: true
+    })
+  }
+  else{
+    this.setState({
+      isSmallMobile: false
+    })
+  }
+}
+
 
 handleOpenArticle(article) {
   if(this.state.isArticleVisible){
@@ -210,7 +230,7 @@ handleCloseArticle() {
     return (
   <React.Fragment>
     <SEO />
-    <Parallax pages={4}>
+    <Parallax pages={this.state.isSmallMobile ? 5.5 : 4}>
       <SVGTop />
       <Content speed={0.4} offset={0}>
         <Hero>
@@ -220,10 +240,10 @@ handleCloseArticle() {
           <Subtitle>I'm creating beautiful web, VR and app experiences. Go on and have a look at my projects</Subtitle>
         </Hero>
       </Content>
-      <Divider speed={-0.2} offset={1.1}>
-      <DividerMiddleBlur />
-      </Divider>
-      <Content speed={0.4} offset={1}>
+        <Divider speed={-0.2} offset={1.1} >
+          <DividerMiddleBlur />
+        </Divider>
+      <Content speed={0.4} offset={this.state.isSmallMobile ? 1.7 : 1}>
         <Inner>
           <Title>PROJECTS</Title>
            <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
@@ -241,25 +261,24 @@ handleCloseArticle() {
         </Inner>
       </Content>
       <SVGMiddle />
-      <Content speed={0.4} offset={2}>
+      <Content speed={0.4} offset={this.state.isSmallMobile ? 3.5 : 2}>
         <Inner>
           <Title>ABOUT</Title>
           <AboutHero>
             <Avatar type="image/jpg" src={avatar} alt="Alexander Stricker" />
             <AboutSub>
-              In every work i made i am experiences the need to insert a little special. You can call it an Eastegg.
+              In every work i made i am experiences the need to insert a little special. You can call it an Easteregg.
               It can range from a Ligthsaber sound until a complete minigame.
               You can try one for yourself here...
             </AboutSub>
           </AboutHero>
           <AboutDesc>
-            Only your mind is the border of your own limitation. All thinks you confront creates your own personality. Some of them improves decrease or creates a new one.
+            Only your mind is the border of your own limitation. All things you confront creates your own personality. Some of them improves decrease or creates a new one.
             it can depend on Mangas, movie shows, freindships or your socity. I do like a lot Mangas and Animes.
-
           </AboutDesc>
         </Inner>
       </Content>
-      <Divider fill="#23262b" speed={0.2} offset={3}>
+      <Divider fill="#23262b" speed={0.2} offset={this.state.isSmallMobile ? 4.5 : 3}>
         <WaveWrapper>
           <InnerWave>
             <svg viewBox="0 0 800 338.05" preserveAspectRatio="none">
@@ -269,7 +288,7 @@ handleCloseArticle() {
           </InnerWave>
         </WaveWrapper>
       </Divider>
-      <Content speed={0.4} offset={3}>
+      <Content speed={0.4} offset={this.state.isSmallMobile ? 4.5 : 3}>
         <Inner>
           <Title>GET IN TOUCH</Title>
           <ContactText>

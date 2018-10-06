@@ -6,7 +6,7 @@
 
 /* Main */
 
-	#main {
+	#project-content {
 		@include vendor('flex-grow', '1');
 		@include vendor('flex-shrink', '1');
 		@include vendor('display', 'flex');
@@ -15,8 +15,10 @@
 		@include vendor('flex-direction', 'column');
 		position: relative;
 		max-width: 100%;
+		color: white;
 		z-index: 3;
 		display: none;
+		font-family: 'IBM Plex Mono';
 
 		article {
 			@include vendor('transform', 'translateY(0.25rem)');
@@ -26,11 +28,16 @@
 			));
 			@include padding(2.5rem, 2.5rem, (2rem, 0, 1rem, 0));
 			position: relative;
-			width: 40rem;
+			width: 60rem;
 			max-width: 100%;
-			background-color: transparentize(_palette(bg), 0.15);
+			background-color: rgba(255, 255, 255, .3);
+			@supports ((-webkit-backdrop-filter: blur(2em)) or (backdrop-filter: blur(2em))) {
+						background-color: rgba(255, 255, 255, .3);
+						backdrop-filter: blur(1em);
+			}
 			border-radius: _size(border-radius);
 			opacity: 0;
+			will-change: opacity, transform;
 
 			span{
 				img{
@@ -77,6 +84,7 @@
 					background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 20 20" zoomAndPan="disable"><style>line { stroke: #{_palette(border)}; stroke-width: 1; }</style><line x1="2" y1="2" x2="18" y2="18" /><line x1="18" y1="2" x2="2" y2="18" /></svg>');
 					background-size: 20px 20px;
 					background-repeat: no-repeat;
+					will-change: background-color;
 				}
 
 				&:hover {

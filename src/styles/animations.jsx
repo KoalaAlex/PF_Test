@@ -81,29 +81,29 @@ export const boxShadowAnim = keyframes`
 
 export const UpDown = styled.div`
   animation: ${upDownAnimation} 4s ease-in-out infinite alternate;
-  will-change: animation, transform;
+  will-change: transform;
   ${tw('pin absolute')};
 `;
 
 export const UpDownWide = styled.div`
   animation: ${upDownWideAnimation} 18s ease-in-out infinite alternate;
-  will-change: animation, transform;
+  will-change: transform;
   ${tw('pin absolute')};
 `;
 
 export const waveAnimation = css`
   animation: ${wave} 20s linear infinite alternate;
-  will-change: animation, d;
+  will-change: d;
 `;
 
 export const blurNormal =css`
   animation: ${blurAnim} 3s ease-in-out infinite alternate;
-  will-change: animation, filter;
+  will-change: filter;
   ${tw('absolute')};
 `;
 
 export const blurBig = css`
   animation: ${blurAnimBig} 3s ease-in-out infinite alternate;
-  will-change: animation, filter;
+  will-change: filter;
   ${tw('absolute')};
 `;

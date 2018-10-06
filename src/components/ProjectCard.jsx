@@ -18,11 +18,9 @@ const Wrapper = styled.a`
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background-color: rgba(255, 255, 255, .3);
-    will-change: background-color;
     @supports ((-webkit-backdrop-filter: blur(2em)) or (backdrop-filter: blur(2em))) {
           background-color: rgba(255, 255, 255, .3);
           backdrop-filter: blur(1em);
-          will-change: backdrop-filter;
     }
   }
 `;

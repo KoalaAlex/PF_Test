@@ -17,11 +17,14 @@
 		));
 		max-width: 100%;
 		text-align: center;
+		will-change: transform, opacity, filter;
 
 		> * {
 			@include vendor('transition', 'opacity #{_duration(article)} ease-in-out');
 			position: relative;
 			margin-top: 3.5rem;
+
+			will-change:opacity;
 
 			&:before {
 				content: '';
@@ -74,6 +77,7 @@
 				padding: 3rem 2rem;
 				max-height: 40rem;
 				overflow: hidden;
+				will-change: max-height, padding, opacity;
 
 				> :last-child {
 					margin-bottom: 0;

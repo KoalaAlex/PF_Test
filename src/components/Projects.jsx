@@ -7,8 +7,12 @@ const ProjectsWrapper = styled.div`
   ${tw('flex flex-wrap justify-between mt-8')};
   display: grid;
   grid-gap: 4rem;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  @media (max-width: 1800px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
   @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 3rem;
   }
   @media (max-width: 900px) {
@@ -51,6 +55,14 @@ class Projects extends React.PureComponent {
               title="CRANE SIUMULATOR"
               onOpenArticle={this.props.onOpenArticle}
               link="simulator"
+
+            >
+              This was a mega project made with Liebherr and also in VR. It was a complete Simulatom for the behaviour of a cran.
+            </ProjectCard>
+            <ProjectCard
+              title="Augmented Reality"
+              onOpenArticle={this.props.onOpenArticle}
+              link="augmented"
 
             >
               This was a mega project made with Liebherr and also in VR. It was a complete Simulatom for the behaviour of a cran.
