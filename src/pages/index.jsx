@@ -217,7 +217,7 @@ handleCloseArticle() {
           <BigTitle>
             Hello, <br /> I'm Alex.
           </BigTitle>
-          <Subtitle>I'm creating state of the art web, VR and app experiences.</Subtitle>
+          <Subtitle>I'm creating beautiful web, VR and app experiences. Go on and have a look at my projects</Subtitle>
         </Hero>
       </Content>
       <Divider speed={-0.2} offset={1.1}>
@@ -245,18 +245,17 @@ handleCloseArticle() {
         <Inner>
           <Title>ABOUT</Title>
           <AboutHero>
-            <Avatar type="image/jpg" src={avatar} alt="John Doe" />
+            <Avatar type="image/jpg" src={avatar} alt="Alexander Stricker" />
             <AboutSub>
-              The English language can not fully capture the depth and complexity of my thoughts. So I'm incorporating
-              Emoji into my speech to better express myself. Winky face.
+              In every work i made i am experiences the need to insert a little special. You can call it an Eastegg.
+              It can range from a Ligthsaber sound until a complete minigame.
+              You can try one for yourself here...
             </AboutSub>
           </AboutHero>
           <AboutDesc>
-            You know the way you feel when you see a picture of two otters holding hands? That's how you're gonna feel
-            every day. My mother cried the day I was born because she knew she’d never be prettier than me. You should
-            make me your campaign manager. I was born for politics. I have great hair and I love lying. Captain? The
-            kids want to know where Paulie the Pigeon is. I told them he got sucked up into an airplane engine, is that
-            all right?
+            Only your mind is the border of your own limitation. All thinks you confront creates your own personality. Some of them improves decrease or creates a new one.
+            it can depend on Mangas, movie shows, freindships or your socity. I do like a lot Mangas and Animes.
+
           </AboutDesc>
         </Inner>
       </Content>
