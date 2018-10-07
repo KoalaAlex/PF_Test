@@ -29,14 +29,14 @@ const icons = {
       />
     ),
     viewBox: '0 0 30 30',
-    duplication: (<use href="#original-triangle" />),
+    duplication: (<use xlinkHref="#original-triangle" />),
   },
   circle: {
     shape: (
         <path id="original-circle" d="M15,30A15,15,0,1,1,30,15,15,15,0,0,1,15,30ZM15,6.23A8.77,8.77,0,1,0,23.77,15,8.77,8.77,0,0,0,15,6.23Z" />
     ),
     viewBox: '0 0 30 30',
-    duplication: (<use href="#original-circle" />),
+    duplication: (<use xlinkHref="#original-circle" />),
   },
   arrowUp: {
     shape: (
@@ -61,7 +61,7 @@ const icons = {
       <path id="original-box" d="M28,2V28H2V2H28m.13-2H1.88A1.88,1.88,0,0,0,0,1.88V28.13A1.88,1.88,0,0,0,1.88,30H28.13A1.87,1.87,0,0,0,30,28.13V1.88A1.88,1.88,0,0,0,28.13,0Z" />
     ),
     viewBox: '0 0 30 30',
-    duplication: (<use href="#original-box" />),
+    duplication: (<use xlinkHref="#original-box" />),
   },
   hexa: {
     shape: (
@@ -80,7 +80,7 @@ const icons = {
       />
       ),
     viewBox: '0 0 48 48',
-    duplication: (<use href="#original-badge" />),
+    duplication: (<use xlinkHref="#original-badge" />),
   },
   imac: {
     shape: (
@@ -88,7 +88,7 @@ const icons = {
         />
       ),
     viewBox: '-18 -18 84 84',
-    duplication: (<use href="#original-imac" />),
+    duplication: (<use xlinkHref="#original-imac" />),
   },
   ps4: {
     shape: (
@@ -96,7 +96,7 @@ const icons = {
       />
       ),
     viewBox: '0 0 48 48',
-    duplication: (<use href="#original-ps4" />),
+    duplication: (<use xlinkHref="#original-ps4" />),
   },
   smartphone: {
     shape: (
@@ -104,7 +104,7 @@ const icons = {
       />
       ),
     viewBox: '0 0 48 48',
-    duplication: (<use href="#original-smartphone" />),
+    duplication: (<use xlinkHref="#original-smartphone" />),
   },
   puzzle: {
     shape: (
@@ -112,7 +112,7 @@ const icons = {
       />
       ),
     viewBox: '0 0 48 48',
-    duplication: (<use href="#original-puzzle" />),
+    duplication: (<use xlinkHref="#original-puzzle" />),
   },
   //Todo imporve
   pencilcase: {
@@ -135,7 +135,7 @@ const icons = {
       />
       ),
     viewBox: '-18 -18 84 84',
-    duplication: (<use href="#original-flask" />),
+    duplication: (<use xlinkHref="#original-flask" />),
     },
   cube: {
     shape: (
@@ -143,7 +143,7 @@ const icons = {
       />
       ),
     viewBox: '0 0 48 48',
-    duplication: (<use href="#original-cube" />),
+    duplication: (<use xlinkHref="#original-cube" />),
   },
   bubble: {
     shape: (
@@ -158,7 +158,7 @@ const icons = {
       />
       ),
     viewBox: '0 0 48 48',
-    duplication: (<use href="#original-cloud" />),
+    duplication: (<use xlinkHref="#original-cloud" />),
   },
   network: {
     shape: (
@@ -166,7 +166,7 @@ const icons = {
       />
       ),
     viewBox: '0 0 48 48',
-    duplication: (<use href="#original-network" />),
+    duplication: (<use xlinkHref="#original-network" />),
   },
   //Todo improve
   star: {
@@ -175,7 +175,7 @@ const icons = {
       />
       ),
     viewBox: '0 0 48 48',
-    duplication: (<use href="#original-star" />),
+    duplication: (<use xlinkHref="#original-star" />),
   },
   usb: {
     shape: (
@@ -183,7 +183,7 @@ const icons = {
       />
       ),
     viewBox: '-18 -18 84 84',
-    duplication: (<use href="#original-usb" />),
+    duplication: (<use xlinkHref="#original-usb" />),
   },
   pokeball: {
     shape: (
