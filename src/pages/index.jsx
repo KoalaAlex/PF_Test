@@ -6,7 +6,7 @@ import { Parallax, ParallaxLayer } from 'react-spring';
 // import Components
 import SEO from '../components/SEO';
 import SVG from '../components/SVG';
-import { SVGPageOne, SVGPageTwo, SVGPageThree, SVGPageFour } from '../components/SVGManager';
+import { SVGOriginals, SVGPageOne, SVGPageTwo, SVGPageThree, SVGPageFour } from '../components/SVGManager';
 import Projects from '../components/Projects';
 import ProjectContent from '../components/ProjectContent';
 import { rotate, UpDown, UpDownWide, waveAnimation, blurNormal, blurBig, boxShadowAnim } from '../styles/animations';
@@ -17,6 +17,8 @@ import avatar from '../images/avatar.jpg';
 import '../styles/global';
 import config from '../../config/website';
 import MediaQuery from 'react-responsive';
+
+import '../assets/scss/base/_page.scss';
 
 // import Fonts
 import '../../node_modules/@ibm/plex/scss/ibm-plex.scss';
@@ -34,7 +36,7 @@ const DividerMiddleBlur = styled.div`
   ${tw('absolute')};
   transform: rotate(3deg);
   animation: ${boxShadowAnim} 2s ease-in-out infinite alternate;
-  background: linear-gradient(to right, #262626 0%, #202020 100%);
+  background: #262626;
   width: 100%;
   height:90%;
   will-change: box-shadow;
@@ -57,16 +59,14 @@ const Inner = styled.div`
 `;
 
 const BigTitle = styled.h1`
-  font-family:'IBM Plex Mono';
   ${tw('text-5xl lg:text-6xl text-white mb-6 tracking-wide')};
   text-shadow: 0 5px 35px rgba(255, 255, 255, 0.15);
 `;
 
 const Title = styled.h1`
-  font-family:'IBM Plex Mono';
   ${tw('text-4xl lg:text-4xl text-white mb-8 tracking-wide relative inline-block')};
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  &:before {
+  &::before {
     content: '';
     width: 40px;
     height: 40px;
@@ -74,13 +74,13 @@ const Title = styled.h1`
     position: absolute;
     background-size: 40px;
     animation: ${rotate} 4s linear infinite;
+    will-change: transform;
     left: -60px;
     top: 5px;
   }
 `;
 
 const Subtitle = styled.p`
-  font-family:'IBM Plex Mono';
   ${tw('text-2xl lg:text-4xl text-white mt-8 xxl:w-3/4')};
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 `;
@@ -106,20 +106,17 @@ const Avatar = styled.img`
   ${tw('rounded-full w-32 xl:w-48 shadow-lg h-full')};
 `;
 
-const AboutSub = styled.span`
-  font-family:'IBM Plex Mono';
+const AboutSub = styled.p`
   ${tw('text-white pt-12 lg:pt-0 lg:pl-12 text-2xl lg:text-3xl xl:text-4xl')};
 `;
 
 const AboutDesc = styled.p`
-  font-family:'IBM Plex Mono';
   ${tw('text-grey-light text-lg md:text-xl lg:text-2xl pt-6 md:pt-12 text-justify')};
 `;
 
 const offset = 100;
 
 const ContactText = styled.p`
-font-family:'IBM Plex Mono';
   ${tw('text-grey-light text-xl md:text-2xl lg:text-3xl')};
   a {
     color: #ff0057;
@@ -128,7 +125,6 @@ font-family:'IBM Plex Mono';
 `;
 
 const Footer = styled.footer`
-font-family:'IBM Plex Mono';
   ${tw('text-center text-grey absolute pin-b p-6 text-md lg:text-lg')};
   a {
     color: #ff0057;
@@ -267,6 +263,7 @@ handleCloseArticle() {
     return (
   <React.Fragment>
     <SEO />
+    <SVG icon="triangle" width={8} stroke={colors['grey-darker']} left="25%" top="5%" />
     <Parallax pages={this.state.isSmallMobile ? 5.5 : 4} ref={ref => this.parallax = ref}>
       <Divider speed={0.2} offset={0}>
         <SVGPageOne />
@@ -343,7 +340,7 @@ handleCloseArticle() {
           </ContactText>
         </Inner>
         <Footer>
-          &copy; 2018 by Alexander Stricker.{' '}
+          <p>&copy; 2018 by Alexander Stricker.{' '}</p>
           <a href={config.github}>Github Repository</a>.
         </Footer>
       </Content>
@@ -351,6 +348,7 @@ handleCloseArticle() {
         <SVGPageFour />
       </Divider>
     </Parallax>
+    <SVGOriginals />
     <noscript>Your browser does not support JavaScript!</noscript>
   </React.Fragment>
 );

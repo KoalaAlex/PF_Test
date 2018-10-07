@@ -18,17 +18,38 @@
 	}
 }
 
+@keyframes changeOpacity {
+	0% {
+		opacity:0.3;
+	}
+	100% {
+		opacity: 1.0;
+	}
+}
+
+@keyframes changeOpacityMonitor {
+	0% {
+		opacity:1.0;
+	}
+	100% {
+		opacity: 0.3;
+	}
+}
+
 // Layout.
 #tiangle-blur {
 	position: absolute;
 	//animation: myBlur 3s ease-in-out infinite alternate;
-  //will-change: animation, filter;
+	animation: changeOpacity 2s ease-in-out infinite alternate;
+  will-change: opacity;
 	-webkit-filter: blur(46px);
   filter: blur(46px);
 }
 
 #imac-blur {
 	position: absolute;
+	animation: changeOpacityMonitor 3s ease-in-out infinite alternate;
+	will-change: opacity;
 	//animation: myBlur 3s ease-in-out infinite alternate;
 	-webkit-filter: blur(24px);
 	filter: blur(24px);

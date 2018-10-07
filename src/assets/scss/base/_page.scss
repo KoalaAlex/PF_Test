@@ -1,3 +1,8 @@
+@import '../libs/vars';
+@import '../libs/functions';
+@import '../libs/mixins';
+@import '../libs/skel';
+@import '../../css/font-awesome.min.css';
 ///
 /// Dimension by HTML5 UP
 /// html5up.net | @ajlkn
@@ -5,7 +10,6 @@
 ///
 
 /* Basic */
-
 	// MSIE: Required for IEMobile.
 		@-ms-viewport {
 			width: device-width;
@@ -16,6 +20,10 @@
 			html, body {
 				min-width: 320px;
 			}
+		}
+
+		h1, p{
+			  font-family:'IBM Plex Mono';
 		}
 
 	body {

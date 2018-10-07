@@ -10,7 +10,7 @@ import traktionsStrom01 from '../images/traktions/rec_03_800x454.jpg';
 
 import '../assets/scss/components/ProjectContent.scss';
 
-class ProjectContent extends React.PureComponent {
+class ProjectContent extends React.Component {
   render() {
 
     let close = <div className="close" onClick={() => {this.props.onCloseArticle()}}></div>

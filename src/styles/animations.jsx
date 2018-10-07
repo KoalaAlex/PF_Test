@@ -98,12 +98,12 @@ export const waveAnimation = css`
 
 export const blurNormal =css`
   //animation: ${blurAnim} 3s ease-in-out infinite alternate;
-  will-change: filter;
+  //will-change: filter;
   ${tw('absolute')};
 `;
 
 export const blurBig = css`
 //  animation: ${blurAnimBig} 3s ease-in-out infinite alternate;
-  will-change: filter;
+  //will-change: filter;
   ${tw('absolute')};
 `;
