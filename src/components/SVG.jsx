@@ -283,6 +283,7 @@ class SVG extends React.PureComponent {
   render(){
     return (
       <Wrapper
+        id={this.props.id}
         viewBox={icons[this.props.icon].viewBox}
         stroke={this.props.stroke}
         duplicate ={this.props.duplicate}
@@ -312,6 +313,7 @@ SVG.propTypes = {
   left: PropTypes.string,
   top: PropTypes.string,
   className: PropTypes.string,
+  id: PropTypes.string
 };
 
 SVG.defaultProps = {

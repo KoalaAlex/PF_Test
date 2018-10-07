@@ -6,7 +6,7 @@ import { Parallax, ParallaxLayer } from 'react-spring';
 // import Components
 import SEO from '../components/SEO';
 import SVG from '../components/SVG';
-import { SVGTop, SVGMiddle, SVGDown } from '../components/SVGManager';
+import { SVGPageOne, SVGPageTwo, SVGPageThree, SVGPageFour } from '../components/SVGManager';
 import Projects from '../components/Projects';
 import ProjectContent from '../components/ProjectContent';
 import { rotate, UpDown, UpDownWide, waveAnimation, blurNormal, blurBig, boxShadowAnim } from '../styles/animations';
@@ -116,6 +116,8 @@ const AboutDesc = styled.p`
   ${tw('text-grey-light text-lg md:text-xl lg:text-2xl pt-6 md:pt-12 text-justify')};
 `;
 
+const offset = 100;
+
 const ContactText = styled.p`
 font-family:'IBM Plex Mono';
   ${tw('text-grey-light text-xl md:text-2xl lg:text-3xl')};
@@ -146,9 +148,40 @@ class Index extends React.Component {
     loading: 'is-loading',
     isSmallMobile: false
   }
+  this.parallax;
+  this.spaceKeyWasPressed;
   this.handleOpenArticle = this.handleOpenArticle.bind(this)
   this.handleCloseArticle = this.handleCloseArticle.bind(this)
   this.updateDimensions = this.updateDimensions.bind(this);
+  this.keyDownFunction = this.keyDownFunction.bind(this);
+  this.keyUpFunction = this.keyUpFunction.bind(this);
+}
+
+keyDownFunction(event){
+    if(!this.spaceKeyWasPressed && event.keyCode === 32) {
+      this.spaceKeyWasPressed = true;
+      if(this.parallax.current < (this.parallax.space - offset))
+      {
+        this.parallax.scrollTo(1);
+      }
+      else if(this.parallax.current < ((this.parallax.space * 2) - offset))
+      {
+       this.parallax.scrollTo(2);
+      }
+      else if(this.parallax.current < ((this.parallax.space * 3) - offset))
+      {
+        this.parallax.scrollTo(3);
+      }
+      else{
+        this.parallax.scrollTo(4);
+      }
+    }
+}
+
+keyUpFunction(event){
+  if(this.spaceKeyWasPressed && event.keyCode === 32) {
+    this.spaceKeyWasPressed = false;
+  }
 }
 
 componentDidMount () {
@@ -157,6 +190,8 @@ componentDidMount () {
   }, 100);
   this.updateDimensions();
   window.addEventListener("resize", this.updateDimensions);
+  document.addEventListener("keydown", this.keyDownFunction, false);
+  document.addEventListener("keyup", this.keyUpFunction, false);
 }
 
 componentWillUnmount () {
@@ -164,6 +199,8 @@ componentWillUnmount () {
       clearTimeout(this.timeoutId);
   }
   window.removeEventListener("resize", this.updateDimensions);
+  document.removeEventListener("keydown", this.keyDownFunction, false);
+  document.removeEventListener("keyup", this.keyUpFunction, false);
 }
 
 updateDimensions() {
@@ -230,8 +267,10 @@ handleCloseArticle() {
     return (
   <React.Fragment>
     <SEO />
-    <Parallax pages={this.state.isSmallMobile ? 5.5 : 4}>
-      <SVGTop />
+    <Parallax pages={this.state.isSmallMobile ? 5.5 : 4} ref={ref => this.parallax = ref}>
+      <Divider speed={0.2} offset={0}>
+        <SVGPageOne />
+      </Divider>
       <Content speed={0.4} offset={0}>
         <Hero>
           <BigTitle>
@@ -260,7 +299,13 @@ handleCloseArticle() {
           </div>
         </Inner>
       </Content>
-      <SVGMiddle />
+      <Divider speed={0.1} offset={1}>
+        <SVGPageTwo />
+      </Divider>
+      <Divider bg="#23262b" clipPath="polygon(0 16%, 100% 4%, 100% 82%, 0 94%)" speed={0.2} offset={2} />
+      <Divider speed={0.1} offset={2}>
+        <SVGPageThree />
+      </Divider>
       <Content speed={0.4} offset={this.state.isSmallMobile ? 3.5 : 2}>
         <Inner>
           <Title>ABOUT</Title>
@@ -302,7 +347,9 @@ handleCloseArticle() {
           <a href={config.github}>Github Repository</a>.
         </Footer>
       </Content>
-      <SVGDown />
+      <Divider speed={0.1} offset={3}>
+        <SVGPageFour />
+      </Divider>
     </Parallax>
     <noscript>Your browser does not support JavaScript!</noscript>
   </React.Fragment>

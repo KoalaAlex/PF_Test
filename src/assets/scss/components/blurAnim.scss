@@ -1,0 +1,35 @@
+@import '../libs/vars';
+@import '../libs/functions';
+@import '../libs/mixins';
+@import '../libs/skel';
+@import '../../css/font-awesome.min.css';
+
+// Base.
+
+// Component.
+
+// @keyframes
+@keyframes myBlur {
+	from {
+		filter: blur(4px);
+	}
+	to {
+		filter: blur(46px);
+	}
+}
+
+// Layout.
+#tiangle-blur {
+	position: absolute;
+	//animation: myBlur 3s ease-in-out infinite alternate;
+  //will-change: animation, filter;
+	-webkit-filter: blur(46px);
+  filter: blur(46px);
+}
+
+#imac-blur {
+	position: absolute;
+	//animation: myBlur 3s ease-in-out infinite alternate;
+	-webkit-filter: blur(24px);
+	filter: blur(24px);
+}
