@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'react-emotion';
 import { Parallax, ParallaxLayer } from 'react-spring';
+import { CSSParallax, CSSParallaxLayer } from '../components/CSSParallax';
 
 // import Components
 import SEO from '../components/SEO';
@@ -23,7 +24,7 @@ import '../assets/scss/base/_page.scss';
 // import Fonts
 import '../../node_modules/@ibm/plex/scss/ibm-plex.scss';
 
-const Divider = styled(ParallaxLayer)`
+const Divider = styled(CSSParallaxLayer)`
   ${tw('absolute w-full h-full')};
   background: ${props => props.bg};
   svg {
@@ -46,7 +47,7 @@ const DividerMiddleMain = styled.div`
   opacity: 0.9;
 `;
 
-const Content = styled(ParallaxLayer)`
+const Content = styled(CSSParallaxLayer)`
   ${tw('p-6 md:p-12 lg:p-24 justify-center items-center flex z-50')};
 `;
 
@@ -264,7 +265,7 @@ handleCloseArticle() {
   <React.Fragment>
     <SEO />
     <SVG icon="triangle" width={8} stroke={colors['grey-darker']} left="25%" top="5%" />
-    <Parallax pages={this.state.isSmallMobile ? 5.5 : 4} ref={ref => this.parallax = ref}>
+    <CSSParallax pages={this.state.isSmallMobile ? 5.5 : 4} ref={ref => this.parallax = ref}>
       <Divider speed={0.2} offset={0}>
         <SVGPageOne />
       </Divider>
@@ -347,7 +348,7 @@ handleCloseArticle() {
       <Divider speed={0.1} offset={3}>
         <SVGPageFour />
       </Divider>
-    </Parallax>
+    </CSSParallax>
     <SVGOriginals />
     <noscript>Your browser does not support JavaScript!</noscript>
   </React.Fragment>
