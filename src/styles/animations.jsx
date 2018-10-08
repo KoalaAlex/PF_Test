@@ -95,15 +95,3 @@ export const waveAnimation = css`
   animation: ${wave} 20s linear infinite alternate;
   will-change: d;
 `;
-
-export const blurNormal =css`
-  //animation: ${blurAnim} 3s ease-in-out infinite alternate;
-  //will-change: filter;
-  ${tw('absolute')};
-`;
-
-export const blurBig = css`
-//  animation: ${blurAnimBig} 3s ease-in-out infinite alternate;
-  //will-change: filter;
-  ${tw('absolute')};
-`;

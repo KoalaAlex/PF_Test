@@ -6,15 +6,36 @@ import PropTypes from 'prop-types';
 import SVG from '../components/SVG';
 import { colors } from '../../tailwind';
 import { hidden } from '../styles/utils';
-import { UpDown, UpDownWide, blurNormal, blurBig } from '../styles/animations';
+import { UpDown, UpDownWide} from '../styles/animations';
 
 import '../assets/scss/components/blurAnim.scss';
+
+const SVGAbsolute = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  SVG {
+    position: absolute;
+  }
+`;
+
+const SVGAbsoluteOriginal = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  display: none;
+  SVG {
+    position: absolute;
+  }
+`;
 
 //export const SVGPageZero = () => {
 export class SVGOriginals extends React.PureComponent {
   render(){
     return (
-      <React.Fragment>
+      <SVGAbsoluteOriginal>
         <SVG icon="imac" isOriginal={true} />
         <SVG icon="pin" isOriginal={true} />
         <SVG icon="circle" isOriginal={true} />
@@ -32,7 +53,8 @@ export class SVGOriginals extends React.PureComponent {
         <SVG icon="pencil" isOriginal={true} />
         <SVG icon="flask" isOriginal={true} />
         <SVG icon="arrowUp" isOriginal={true} />
-      </React.Fragment>
+        <SVG icon="triangle" isOriginal={true}/>
+      </SVGAbsoluteOriginal>
     );
   }
 };
@@ -41,13 +63,13 @@ export class SVGOriginals extends React.PureComponent {
 export class SVGPageOne extends React.PureComponent {
   render(){
     return (
-      <React.Fragment>
-        <SVG icon="triangle" isOriginal={true} width={8} stroke={colors['grey-darker']} left="25%" top="5%" />
+      <SVGAbsolute>
+        <SVG icon="triangle" width={8} stroke={colors['grey-darker']} left="25%" top="5%" />
         <UpDown>
           <SVG icon="triangle" width={60} stroke="#ff006f" left="10%" top="20%" />
-          <SVG icon="triangle" id="tiangle-blur"className={blurBig} width={60} stroke="#ff0057" left="10%" top="20%" />
+          <SVG icon="triangle" id="tiangle-blur" width={60} stroke="#ff0057" left="10%" top="20%" />
           <SVG icon="imac" className={hidden} width={78} fill="#00dcff" left="5%" top="15%" />
-          <SVG icon="imac" id="imac-blur"className={hidden + " " + blurBig} width={78} fill="#00dcff" left="5%" top="15%" />
+          <SVG icon="imac" id="imac-blur"className={hidden} width={78} fill="#00dcff" left="5%" top="15%" />
         </UpDown>
         <UpDownWide>
           <SVG icon="cube" className={hidden} width={24} fill={colors['blue-dark']} left="80%" top="10%" />
@@ -70,7 +92,7 @@ export class SVGPageOne extends React.PureComponent {
         <SVG icon="imac" width={24} fill={colors['grey-darkest']} left="40%" top="30%" />
         <SVG icon="cloud" width={16} fill={colors['grey-darker']} left="10%" top="50%" />
         <SVG icon="cloud" width={8} fill={colors['grey-darker']} left="80%" top="70%" />
-      </React.Fragment>
+      </SVGAbsolute>
     );
   }
 };
@@ -79,7 +101,7 @@ export class SVGPageOne extends React.PureComponent {
 export class SVGPageTwo extends React.PureComponent {
   render(){
     return (
-      <React.Fragment>
+      <SVGAbsolute>
         <UpDown>
           <SVG icon="box" width={6} fill={colors.white} left="85%" top="75%" />
           <SVG icon="cloud" width={8} fill={colors.teal} left="80%" top="20%" />
@@ -95,8 +117,8 @@ export class SVGPageTwo extends React.PureComponent {
         <SVG icon="circle" width={6} fill={colors.white} left="4%" top="20%" />
         <SVG icon="pokeball" width={12} fill={colors['teal-light']} left="10%" top="10%" />
         <SVG icon="flask" width={96} fill="#0037ff" left="60%" top="5%" />
-        <SVG icon="flask" className={blurBig} width={96} fill="#0037ff" left="60%" top="5%" />
-      </React.Fragment>
+        <SVG icon="flask" width={96} fill="#0037ff" left="60%" top="5%" />
+      </SVGAbsolute>
     );
   }
 };
@@ -104,7 +126,7 @@ export class SVGPageTwo extends React.PureComponent {
 export class SVGPageThree extends React.PureComponent {
   render(){
     return (
-      <React.Fragment>
+      <SVGAbsolute>
         <UpDown>
           <SVG icon="box" className={hidden} width={6} fill={colors.blue} left="50%" top="75%" />
           <SVG icon="upDown" className={hidden} width={8} fill={colors['grey-darkest']} left="70%" top="20%" />
@@ -121,7 +143,7 @@ export class SVGPageThree extends React.PureComponent {
         <SVG icon="flash" width={12} fill="#ff0057" left="10%" top="10%" />
         <SVG icon="box" width={12} fill={colors['grey-darkest']} left="20%" top="30%" />
         <SVG icon="hexa" isOriginal={true} width={8} stroke={colors['grey-darkest']} left="80%" top="70%" />
-      </React.Fragment>
+      </SVGAbsolute>
     );
   }
 };
@@ -130,7 +152,7 @@ export class SVGPageThree extends React.PureComponent {
 export class SVGPageFour extends React.PureComponent {
   render(){
     return (
-      <React.Fragment>
+      <SVGAbsolute>
         <UpDown>
           <SVG icon="upDown" className={hidden} width={8} fill={colors['grey-darkest']} left="70%" top="20%" />
           <SVG icon="triangle" width={8} stroke={colors['grey-darkest']} left="25%" top="5%" />
@@ -144,7 +166,7 @@ export class SVGPageFour extends React.PureComponent {
         <SVG icon="circle" width={12} fill={colors['grey-darkest']} left="70%" top="60%" />
         <SVG icon="imac" width={12} fill={colors['grey-darkest']} left="20%" top="30%" />
         <SVG icon="hexa" width={8} stroke={colors['grey-darkest']} left="80%" top="70%" />
-      </React.Fragment>
+      </SVGAbsolute>
     );
   }
 };

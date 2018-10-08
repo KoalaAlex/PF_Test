@@ -26,11 +26,18 @@ import '../../node_modules/@ibm/plex/scss/ibm-plex.scss';
 
 const Divider = styled(CSSParallaxLayer)`
   ${tw('absolute w-full h-full')};
+  fill: ${props => props.fill};
   background: ${props => props.bg};
   svg {
     fill: ${props => props.fill};
   }
   clip-path: ${props => props.clipPath};
+`;
+
+const NoOverflow = styled.div`
+  div {
+    overflow: hidden;
+  }
 `;
 
 const DividerMiddleBlur = styled.div`
@@ -42,6 +49,7 @@ const DividerMiddleBlur = styled.div`
   height:90%;
   will-change: box-shadow;
 `;
+
 const DividerMiddleMain = styled.div`
   height:90%;
   opacity: 0.9;
@@ -49,6 +57,7 @@ const DividerMiddleMain = styled.div`
 
 const Content = styled(CSSParallaxLayer)`
   ${tw('p-6 md:p-12 lg:p-24 justify-center items-center flex z-50')};
+  position: absolute;
 `;
 
 const Hero = styled.div`
@@ -264,7 +273,7 @@ handleCloseArticle() {
     return (
   <React.Fragment>
     <SEO />
-    <SVG icon="triangle" width={8} stroke={colors['grey-darker']} left="25%" top="5%" />
+    <SVGOriginals />
     <CSSParallax pages={this.state.isSmallMobile ? 5.5 : 4} ref={ref => this.parallax = ref}>
       <Divider speed={0.2} offset={0}>
         <SVGPageOne />
@@ -277,9 +286,12 @@ handleCloseArticle() {
           <Subtitle>I'm creating beautiful web, VR and app experiences. Go on and have a look at my projects</Subtitle>
         </Hero>
       </Content>
-        <Divider speed={-0.2} offset={1.1} >
-          <DividerMiddleBlur />
-        </Divider>
+      <Divider speed={-0.2} offset={1} >
+        <DividerMiddleBlur />
+      </Divider>
+      <Divider speed={0.1} offset={1}>
+        <SVGPageTwo />
+      </Divider>
       <Content speed={0.4} offset={this.state.isSmallMobile ? 1.7 : 1}>
         <Inner>
           <Title>PROJECTS</Title>
@@ -297,9 +309,6 @@ handleCloseArticle() {
           </div>
         </Inner>
       </Content>
-      <Divider speed={0.1} offset={1}>
-        <SVGPageTwo />
-      </Divider>
       <Divider bg="#23262b" clipPath="polygon(0 16%, 100% 4%, 100% 82%, 0 94%)" speed={0.2} offset={2} />
       <Divider speed={0.1} offset={2}>
         <SVGPageThree />
@@ -331,7 +340,7 @@ handleCloseArticle() {
           </InnerWave>
         </WaveWrapper>
       </Divider>
-      <Content speed={0.4} offset={this.state.isSmallMobile ? 4.5 : 3}>
+      <Content speed={0} offset={this.state.isSmallMobile ? 4.5 : 3}>
         <Inner>
           <Title>GET IN TOUCH</Title>
           <ContactText>
@@ -346,10 +355,11 @@ handleCloseArticle() {
         </Footer>
       </Content>
       <Divider speed={0.1} offset={3}>
-        <SVGPageFour />
+        <NoOverflow>
+          <SVGPageFour />
+        </NoOverflow>
       </Divider>
     </CSSParallax>
-    <SVGOriginals />
     <noscript>Your browser does not support JavaScript!</noscript>
   </React.Fragment>
 );

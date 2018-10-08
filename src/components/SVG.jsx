@@ -21,12 +21,7 @@ const icons = {
   triangle: {
     shape: (
       <defs>
-        <polygon
-          id ="original-triangle"
-          strokeWidth="1px"
-          strokeLinejoin="round"
-          strokeMiterlimit="10"
-          points="14.921,2.27 28.667,25.5 1.175,25.5 "
+        <path id="original-triangle" strokeLinejoin="round" d="M14.921,2.27 28.667,25.5 1.175,25.5 z"
         />
       </defs>
     ),
@@ -252,8 +247,10 @@ const icons = {
   },
   flash: {
     shape: (
-      <path id="original-flash" d="M32 4H14.8l-2.6 24H21v15l15.4-25H26l6-14zm-3 12h11L20.9 47a1 1 0 0 1-1.9-.5V30h-9l3-28h22l-6 14z"
-      />
+      <defs>
+        <path id="original-flash" d="M32 4H14.8l-2.6 24H21v15l15.4-25H26l6-14zm-3 12h11L20.9 47a1 1 0 0 1-1.9-.5V30h-9l3-28h22l-6 14z"
+        />
+      </defs>
       ),
     viewBox: '0 0 48 48',
     duplication: (<use xlinkHref="#original-flash" />),
@@ -324,7 +321,6 @@ class SVG extends React.PureComponent {
         viewBox={icons[this.props.icon].viewBox}
         stroke={this.props.stroke}
         isOriginal ={this.props.isOriginal}
-        blur={this.props.blurBig}
         fill={this.props.fill}
         svgWidth={twWidth[`${this.props.width}`]}
         left={this.props.left}
@@ -332,7 +328,6 @@ class SVG extends React.PureComponent {
         className={this.props.className}
       >
         {this.props.isOriginal ? icons[this.props.icon].shape : icons[this.props.icon].duplication}
-        {this.props.blur ? icons[this.props.icon].duplication : null}
       </Wrapper>
     );
   }
@@ -343,7 +338,6 @@ export default SVG;
 SVG.propTypes = {
   stroke: PropTypes.string,
   isOriginal: PropTypes.bool,
-  blur: PropTypes.bool,
   fill: PropTypes.string,
   width: PropTypes.number,
   icon: PropTypes.oneOf(icontTypes).isRequired,
@@ -356,7 +350,6 @@ SVG.propTypes = {
 SVG.defaultProps = {
   stroke: 'transparent',
   isOriginal: false,
-  blur: false,
   width: 8,
   fill: 'none',
   left: '0%',

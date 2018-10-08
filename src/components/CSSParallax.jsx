@@ -5,30 +5,27 @@ import styled from 'react-emotion';
 const Wrapper = styled.div`
   perspective: 1px;
   height: 100vh;
-  //height: ${(props => props.pages)}vh;
-  height: 100vh;
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
   transform-style: preserve-3d;
 `;
 
-const CSSParallaxGroup =  styled.div`
-  position: absolute;
-  height: 100vh;
-  transform-style: preserve-3d;
-`;
-
 const WrapperLayer = styled.div`
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  width: 100vw;
   height: 100vh;
   // pageOffset={(-(this.props.speed + 1) * 150) + (this.props.offset * 100 * ((1 + ((this.props.speed + 1))) / 1))}
   perspective-origin-x: 100%;
-  transform: translate3d(0vh, ${(props => props.pageOffset)}vh, 0vh) translateZ(${(props => props.zOffset)}px) scale(${(props => props.scale)});;
+  transform: translateZ(${(props => props.zOffset)}px) scale(${(props => props.scale)});
+`;
+
+const ParallaxGroup = styled.div`
+  position: absolute;
+  transform-style: preserve-3d;
+  width: 100%;
+  transform: translate3d(0vh, ${(props => props.pageOffset)}vh, 0vh);
+  z-index: ${(props => props.zIndex)};
 `;
 
 export class CSSParallax extends React.PureComponent {
@@ -53,9 +50,11 @@ CSSParallax.defaultProps = {
 export class CSSParallaxLayer extends React.PureComponent {
   render() {
     return (
-      <WrapperLayer pageOffset={((this.props.offset * 100)) * ((1 + (-this.props.speed)) / 1 )} zOffset={-(-this.props.speed)} scale={((1 + (-this.props.speed)) / 1)} className="parallax-layer">
-        {this.props.children}
-      </WrapperLayer>
+      <ParallaxGroup pageOffset={((this.props.offset * 100 / ((1 + (-this.props.speed)) / 1))) * ((1 + (-this.props.speed)) / 1 )} zIndex={(this.props.offset + 1)} >
+        <WrapperLayer zOffset={-(-this.props.speed)} scale={((1 + (-this.props.speed)) / 1)} className="parallax-layer">
+          {this.props.children}
+        </WrapperLayer>
+      </ParallaxGroup>
     )
   }
 }
