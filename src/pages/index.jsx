@@ -25,7 +25,7 @@ import '../assets/scss/base/_page.scss';
 import '../../node_modules/@ibm/plex/scss/ibm-plex.scss';
 
 const Divider = styled(CSSParallaxLayer)`
-  ${tw('absolute w-full h-full')};
+  ${tw('absolute')};
   fill: ${props => props.fill};
   background: ${props => props.bg};
   svg {
@@ -62,10 +62,12 @@ const Content = styled(CSSParallaxLayer)`
 
 const Hero = styled.div`
   ${tw('w-full xl:w-2/3')};
+  margin: auto;
 `;
 
 const Inner = styled.div`
   ${tw('w-full xxl:w-5/6 text-center lg:text-left')};
+  margin: auto;
 `;
 
 const BigTitle = styled.h1`
@@ -152,15 +154,21 @@ class Index extends React.Component {
     articleTimeout: false,
     article: '',
     loading: 'is-loading',
-    isSmallMobile: false
+    isSmallMobile: false,
+    debugOn: false
   }
   this.parallax;
   this.spaceKeyWasPressed;
-  this.handleOpenArticle = this.handleOpenArticle.bind(this)
-  this.handleCloseArticle = this.handleCloseArticle.bind(this)
+  this.handleOpenArticle = this.handleOpenArticle.bind(this);
+  this.handleCloseArticle = this.handleCloseArticle.bind(this);
   this.updateDimensions = this.updateDimensions.bind(this);
   this.keyDownFunction = this.keyDownFunction.bind(this);
   this.keyUpFunction = this.keyUpFunction.bind(this);
+  this.setDebugOn = this.setDebugOn.bind(this);
+}
+
+setDebugOn(value){
+  this.setState({debugOn: value});
 }
 
 keyDownFunction(event){
@@ -275,10 +283,11 @@ handleCloseArticle() {
     <SEO />
     <SVGOriginals />
     <CSSParallax pages={this.state.isSmallMobile ? 5.5 : 4} ref={ref => this.parallax = ref}>
-      <Divider speed={0.2} offset={0}>
+    <a onClick={() => {this.setDebugOn(true)}}>CLICK ME</a>
+      <Divider debugOn={this.state.debugOn} speed={0.2} offset={0}>
         <SVGPageOne />
       </Divider>
-      <Content speed={0.4} offset={0}>
+      <Content debugOn={this.state.debugOn} speed={0.4} offset={0}>
         <Hero>
           <BigTitle>
             Hello, <br /> I'm Alex.
@@ -286,13 +295,13 @@ handleCloseArticle() {
           <Subtitle>I'm creating beautiful web, VR and app experiences. Go on and have a look at my projects</Subtitle>
         </Hero>
       </Content>
-      <Divider speed={-0.2} offset={1} >
+      <Divider debugOn={this.state.debugOn} speed={-0.2} offset={1} >
         <DividerMiddleBlur />
       </Divider>
-      <Divider speed={0.1} offset={1}>
+      <Divider debugOn={this.state.debugOn} speed={0.1} offset={1}>
         <SVGPageTwo />
       </Divider>
-      <Content speed={0.4} offset={this.state.isSmallMobile ? 1.7 : 1}>
+      <Content debugOn={this.state.debugOn} speed={0.4} offset={this.state.isSmallMobile ? 1.7 : 1}>
         <Inner>
           <Title>PROJECTS</Title>
            <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
@@ -309,11 +318,11 @@ handleCloseArticle() {
           </div>
         </Inner>
       </Content>
-      <Divider bg="#23262b" clipPath="polygon(0 16%, 100% 4%, 100% 82%, 0 94%)" speed={0.2} offset={2} />
-      <Divider speed={0.1} offset={2}>
+      <Divider debugOn={this.state.debugOn} bg="#23262b" clipPath="polygon(0 16%, 100% 4%, 100% 82%, 0 94%)" speed={0.2} offset={2} />
+      <Divider debugOn={this.state.debugOn} speed={0.1} offset={2}>
         <SVGPageThree />
       </Divider>
-      <Content speed={0.4} offset={this.state.isSmallMobile ? 3.5 : 2}>
+      <Content debugOn={this.state.debugOn} speed={0.4} offset={this.state.isSmallMobile ? 3.5 : 2}>
         <Inner>
           <Title>ABOUT</Title>
           <AboutHero>
@@ -330,7 +339,7 @@ handleCloseArticle() {
           </AboutDesc>
         </Inner>
       </Content>
-      <Divider fill="#23262b" speed={0.2} offset={this.state.isSmallMobile ? 4.5 : 3}>
+      <Divider debugOn={this.state.debugOn} fill="#23262b" speed={0.2} offset={this.state.isSmallMobile ? 4.5 : 3}>
         <WaveWrapper>
           <InnerWave>
             <svg viewBox="0 0 800 338.05" preserveAspectRatio="none">
@@ -340,7 +349,7 @@ handleCloseArticle() {
           </InnerWave>
         </WaveWrapper>
       </Divider>
-      <Content speed={0} offset={this.state.isSmallMobile ? 4.5 : 3}>
+      <Content debugOn={this.state.debugOn} speed={0} offset={this.state.isSmallMobile ? 4.5 : 3}>
         <Inner>
           <Title>GET IN TOUCH</Title>
           <ContactText>
@@ -354,7 +363,7 @@ handleCloseArticle() {
           <a href={config.github}>Github Repository</a>.
         </Footer>
       </Content>
-      <Divider speed={0.1} offset={3}>
+      <Divider debugOn={this.state.debugOn} speed={0.1} offset={3}>
         <NoOverflow>
           <SVGPageFour />
         </NoOverflow>

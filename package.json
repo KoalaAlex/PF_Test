@@ -46,7 +46,8 @@
     "react-responsive": "^5.0.0",
     "react-spring": "^5.9.2",
     "slate": "^0.40.4",
-    "tailwindcss": "^0.6.6"
+    "tailwindcss": "^0.6.6",
+    "w3-css": "^4.1.0"
   },
   "keywords": [
     "gatsby",

@@ -11,293 +11,293 @@
 /* Definition der Animationen */
 /* 1. Bewegung des Sliders */
 @keyframes slidesStart01 {
-    0%, 15% {left: 0;}
-    25%, 40% {left: -100%;}
-    50%, 65% {left: -200%;}
-    75%, 90% {left: -300%;}
-    100% {left: -400%;}
+    0%, 15% { transform: translate3d(0,0,0);}
+    25%, 40% {transform: translate3d(-25%,0,0);}
+    50%, 65% {transform: translate3d(-50%,0,0);}
+    75%, 90% {transform: translate3d(-75%,0,0);}
+    100% {transform: translate3d(-100%,0,0);}
 }
 
 @-webkit-keyframes slidesStart01 {
-    0%, 15% {left: 0;}
-    25%, 40% {left: -100%;}
-    50%, 65% {left: -200%;}
-    75%, 90% {left: -300%;}
-    100% {left: -400%;}
+	0%, 15% { transform: translate3d(0,0,0);}
+	25%, 40% {transform: translate3d(-25%,0,0);}
+	50%, 65% {transform: translate3d(-50%,0,0);}
+	75%, 90% {transform: translate3d(-75%,0,0);}
+	100% {transform: translate3d(-100%,0,0);}
 }
 
 @keyframes slidesStart101 {
-    0%, 15% {left: 0;}
-    25%, 40% {left: -100%;}
-    50%, 65% {left: -200%;}
-    75%, 90% {left: -300%;}
-    100% {left: -400%;}
+	0%, 15% { transform: translate3d(0,0,0);}
+	25%, 40% {transform: translate3d(-25%,0,0);}
+	50%, 65% {transform: translate3d(-50%,0,0);}
+	75%, 90% {transform: translate3d(-75%,0,0);}
+	100% {transform: translate3d(-100%,0,0);}
 }
 
 @-webkit-keyframes slidesStart101 {
-    0%, 15% {left: 0;}
-    25%, 40% {left: -100%;}
-    50%, 65% {left: -200%;}
-    75%, 90% {left: -300%;}
-    100% {left: -400%;}
+	0%, 15% { transform: translate3d(0,0,0);}
+	25%, 40% {transform: translate3d(-25%,0,0);}
+	50%, 65% {transform: translate3d(-50%,0,0);}
+	75%, 90% {transform: translate3d(-75%,0,0);}
+	100% {transform: translate3d(-100%,0,0);}
 }
 
 @keyframes slidesStart02 {
-    90.01% {left: 0;}
-    0%, 15%, 100% {left: -100%;}
-    25%, 40% {left: -200%;}
-    50%, 65% {left: -300%;}
-    75%, 90% {left: -400%;}
+    90.01% {transform: translate3d(0,0,0);}
+    0%, 15%, 100% {transform: translate3d(-25%,0,0);}
+    25%, 40% {transform: translate3d(-50%,0,0);}
+    50%, 65% {transform: translate3d(-75%,0,0);}
+    75%, 90% {transform: translate3d(-100%,0,0);}
 }
 
 @-webkit-keyframes slidesStart02 {
-    90.01% {left: 0;}
-    0%, 15%, 100% {left: -100%;}
-    25%, 40% {left: -200%;}
-    50%, 65% {left: -300%;}
-    75%, 90% {left: -400%;}
+	90.01% {transform: translate3d(0,0,0);}
+	0%, 15%, 100% {transform: translate3d(-25%,0,0);}
+	25%, 40% {transform: translate3d(-50%,0,0);}
+	50%, 65% {transform: translate3d(-75%,0,0);}
+	75%, 90% {transform: translate3d(-100%,0,0);}
 }
 
 @keyframes slidesStart102 {
-    90.01% {left: 0;}
-    0%, 15%, 100% {left: -100%;}
-    25%, 40% {left: -200%;}
-    50%, 65% {left: -300%;}
-    75%, 90% {left: -400%;}
+	90.01% {transform: translate3d(0,0,0);}
+	0%, 15%, 100% {transform: translate3d(-25%,0,0);}
+	25%, 40% {transform: translate3d(-50%,0,0);}
+	50%, 65% {transform: translate3d(-75%,0,0);}
+	75%, 90% {transform: translate3d(-100%,0,0);}
 }
 
 @-webkit-keyframes slidesStart102 {
-    90.01% {left: 0;}
-    0%, 15%, 100% {left: -100%;}
-    25%, 40% {left: -200%;}
-    50%, 65% {left: -300%;}
-    75%, 90% {left: -400%;}
+	90.01% {transform: translate3d(0,0,0)}
+	0%, 15%, 100% {transform: translate3d(-25%,0,0);}
+	25%, 40% {transform: translate3d(-50%,0,0);}
+	50%, 65% {transform: translate3d(-75%,0,0);}
+	75%, 90% {transform: translate3d(-100%,0,0);}
 }
 
 @keyframes slidesStart03 {
-    65.01% {left: 0;}
-    0%, 15%, 100% {left: -200%;}
-    25%, 40% {left: -300%;}
-    50%, 65% {left: -400%;}
-    75%, 90% {left: -100%;}
+    65.01% {transform: translate3d(0,0,0);}
+    0%, 15%, 100% {transform: translate3d(-50%,0,0);}
+    25%, 40% {transform: translate3d(-75%,0,0);}
+    50%, 65% {transform: translate3d(-100%,0,0);}
+    75%, 90% {transform: translate3d(-25%,0,0);}
 }
 
 @-webkit-keyframes slidesStart03 {
-    65.01% {left: 0;}
-    0%, 15%, 100% {left: -200%;}
-    25%, 40% {left: -300%;}
-    50%, 65% {left: -400%;}
-    75%, 90% {left: -100%;}
+	65.01% {transform: translate3d(0,0,0);}
+	0%, 15%, 100% {transform: translate3d(-50%,0,0);}
+	25%, 40% {transform: translate3d(-75%,0,0);}
+	50%, 65% {transform: translate3d(-100%,0,0);}
+	75%, 90% {transform: translate3d(-25%,0,0);}
 }
 
 @keyframes slidesStart103 {
-    65.01% {left: 0;}
-    0%, 15%, 100% {left: -200%;}
-    25%, 40% {left: -300%;}
-    50%, 65% {left: -400%;}
-    75%, 90% {left: -100%;}
+	65.01% {transform: translate3d(0,0,0);}
+	0%, 15%, 100% {transform: translate3d(-50%,0,0);}
+	25%, 40% {transform: translate3d(-75%,0,0);}
+	50%, 65% {transform: translate3d(-100%,0,0);}
+	75%, 90% {transform: translate3d(-25%,0,0);}
 }
 
 @-webkit-keyframes slidesStart103 {
-    65.01% {left: 0;}
-    0%, 15%, 100% {left: -200%;}
-    25%, 40% {left: -300%;}
-    50%, 65% {left: -400%;}
-    75%, 90% {left: -100%;}
+	65.01% {transform: translate3d(0,0,0);}
+	0%, 15%, 100% {transform: translate3d(-50%,0,0);}
+	25%, 40% {transform: translate3d(-75%,0,0);}
+	50%, 65% {transform: translate3d(-100%,0,0);}
+	75%, 90% {transform: translate3d(-25%,0,0);}
 }
 
 @keyframes slidesStart04 {
-    40.01% {left: 0;}
-    0%, 15%, 100% {left: -300%;}
-    25%, 40% {left: -400%;}
-    50%, 65% {left: -100%;}
-    75%, 90% {left: -200%;}
+    40.01% {transform: translate3d(0,0,0);}
+    0%, 15%, 100% {transform: translate3d(-75%,0,0);}
+    25%, 40% {transform: translate3d(-100%,0,0);}
+    50%, 65% {transform: translate3d(-25%,0,0);}
+    75%, 90% {transform: translate3d(-50%,0,0);}
 }
 
 @-webkit-keyframes slidesStart04 {
-    40.01% {left: 0;}
-    0%, 15%, 100% {left: -300%;}
-    25%, 40% {left: -400%;}
-    50%, 65% {left: -100%;}
-    75%, 90% {left: -200%;}
+	40.01% {transform: translate3d(0,0,0);}
+	0%, 15%, 100% {transform: translate3d(-75%,0,0);}
+	25%, 40% {transform: translate3d(-100%,0,0);}
+	50%, 65% {transform: translate3d(-25%,0,0);}
+	75%, 90% {transform: translate3d(-50%,0,0);}
 }
 
 @keyframes slidesStart104 {
-    40.01% {left: 0;}
-    0%, 15%, 100% {left: -300%;}
-    25%, 40% {left: -400%;}
-    50%, 65% {left: -100%;}
-    75%, 90% {left: -200%;}
+	40.01% {transform: translate3d(0,0,0);}
+	0%, 15%, 100% {transform: translate3d(-75%,0,0);}
+	25%, 40% {transform: translate3d(-100%,0,0);}
+	50%, 65% {transform: translate3d(-25%,0,0);}
+	75%, 90% {transform: translate3d(-50%,0,0);}
 }
 
 @-webkit-keyframes slidesStart104 {
-    40.01% {left: 0;}
-    0%, 15%, 100% {left: -300%;}
-    25%, 40% {left: -400%;}
-    50%, 65% {left: -100%;}
-    75%, 90% {left: -200%;}
+	40.01% {transform: translate3d(0,0,0);}
+	0%, 15%, 100% {transform: translate3d(-75%,0,0);}
+	25%, 40% {transform: translate3d(-100%,0,0);}
+	50%, 65% {transform: translate3d(-25%,0,0);}
+	75%, 90% {transform: translate3d(-50%,0,0);}
 }
 
 /* 2. Wechsel des ersten Slides ans Ende und zurück */
 @keyframes slide01ToEndStart01 {
-    89.99% {left: 0;}
-    90%, 100% {left: 100%;}
+    89.99% {transform: translate3d(0,0,0);}
+    90%, 100% {transform: translate3d(100%,0,0);}
 }
 
 @-webkit-keyframes slide01ToEndStart01 {
-    89.99% {left: 0;}
-    90%, 100% {left: 100%;}
+    89.99% {transform: translate3d(0,0,0);}
+    90%, 100% {transform: translate3d(100%,0,0);}
 }
 
 @keyframes slide01ToEndStart101 {
-    89.99% {left: 0;}
-    90%, 100% {left: 100%;}
+    89.99% {transform: translate3d(0,0,0);}
+    90%, 100% {transform: translate3d(100%,0,0);}
 }
 
 @-webkit-keyframes slide01ToEndStart101 {
-    89.99% {left: 0;}
-    90%, 100% {left: 100%;}
+    89.99% {transform: translate3d(0,0,0);}
+    90%, 100% {transform: translate3d(100%,0,0);}
 }
 
 @keyframes slide01ToEndStart02 {
-    49.99%, 90.01% {left: 0;}
-    50%, 90% {left: 100%;}
+    49.99%, 90.01% {transform: translate3d(0,0,0);}
+    50%, 90% {transform: translate3d(100%,0,0);}
 }
 
 @-webkit-keyframes slide01ToEndStart02 {
-    49.99%, 90.01% {left: 0;}
-    50%, 90% {left: 100%;}
+    49.99%, 90.01% {transform: translate3d(0,0,0);}
+    50%, 90% {transform: translate3d(100%,0,0);}
 }
 
 @keyframes slide01ToEndStart102 {
-    49.99%, 90.01% {left: 0;}
-    50%, 90% {left: 100%;}
+    49.99%, 90.01% {transform: translate3d(0,0,0);}
+    50%, 90% {transform: translate3d(100%,0,0);}
 }
 
 @-webkit-keyframes slide01ToEndStart102 {
-    49.99%, 90.01% {left: 0;}
-    50%, 90% {left: 100%;}
+    49.99%, 90.01% {transform: translate3d(0,0,0);}
+    50%, 90% {transform: translate3d(100%,0,0);}
 }
 
 @keyframes slide01ToEndStart03 {
-    24.99%, 65.01% {left: 0;}
-    25%, 65% {left: 100%;}
+    24.99%, 65.01% {transform: translate3d(0,0,0);}
+    25%, 65% {transform: translate3d(100%,0,0);}
 }
 
 @-webkit-keyframes slide01ToEndStart03 {
-    24.99%, 65.01% {left: 0;}
-    25%, 65% {left: 100%;}
+    24.99%, 65.01% {transform: translate3d(0,0,0);}
+    25%, 65% {transform: translate3d(100%,0,0);}
 }
 
 @keyframes slide01ToEndStart103 {
-    24.99%, 65.01% {left: 0;}
-    25%, 65% {left: 100%;}
+    24.99%, 65.01% {transform: translate3d(0,0,0);}
+    25%, 65% {transform: translate3d(100%,0,0);}
 }
 
 @-webkit-keyframes slide01ToEndStart103 {
-    24.99%, 65.01% {left: 0;}
-    25%, 65% {left: 100%;}
+    24.99%, 65.01% {transform: translate3d(0,0,0);}
+    25%, 65% {transform: translate3d(100%,0,0);}
 }
 
 @keyframes slide01ToEndStart04 {
-    40.01% {left: 0;}
-    0%, 40% {left: 100%;}
+    40.01% {transform: translate3d(0,0,0);}
+    0%, 40% {transform: translate3d(100%,0,0);}
 }
 
 @-webkit-keyframes slide01ToEndStart04 {
-    40.01% {left: 0;}
-    0%, 40% {left: 100%;}
+    40.01% {transform: translate3d(0,0,0);}
+    0%, 40% {transform: translate3d(100%,0,0);}
 }
 
 @keyframes slide01ToEndStart104 {
-    40.01% {left: 0;}
-    0%, 40% {left: 100%;}
+    40.01% {transform: translate3d(0,0,0);}
+    0%, 40% {transform: translate3d(100%,0,0);}
 }
 
 @-webkit-keyframes slide01ToEndStart104 {
-    40.01% {left: 0;}
-    0%, 40% {left: 100%;}
+    40.01% {transform: translate3d(0,0,0);}
+    0%, 40% {transform: translate3d(100%,0,0);}
 }
 
 /* 3. Animationen für den Farbwechsel in den Controls */
 @keyframes slideControl01 {
-    24.99% {background: #68b022;}
-    25%, 100% {background: none;}
+    24.99% {opacity: 1;}
+    25%, 100% {opacity: 0;}
 }
 
 @-webkit-keyframes slideControl01 {
-    24.99% {background: #68b022;}
-    25%, 100% {background: none;}
+	24.99% {opacity: 1;}
+	25%, 100% {opacity: 0;}
 }
 
 @keyframes slideControl101 {
-    24.99% {background: #68b022;}
-    25%, 100% {background: none;}
+	24.99% {opacity: 1;}
+	25%, 100% {opacity: 0;}
 }
 
 @-webkit-keyframes slideControl101 {
-    24.99% {background: #68b022;}
-    25%, 100% {background: none;}
+	24.99% {opacity: 1;}
+	25%, 100% {opacity: 0;}
 }
 
 @keyframes slideControl02 {
-    24.99%, 50% {background: none;}
-    25%, 49.99% {background: #68b022;}
+    24.99%, 50% {opacity: 0;}
+    25%, 49.99% {opacity: 1;}
 }
 
 @-webkit-keyframes slideControl02 {
-    24.99%, 50% {background: none;}
-    25%, 49.99% {background: #68b022;}
+	24.99%, 50% {opacity: 0;}
+	25%, 49.99% {opacity: 1;}
 }
 
 @keyframes slideControl102 {
-    24.99%, 50% {background: none;}
-    25%, 49.99% {background: #68b022;}
+	24.99%, 50% {opacity: 0;}
+	25%, 49.99% {opacity: 1;}
 }
 
 @-webkit-keyframes slideControl102 {
-    24.99%, 50% {background: none;}
-    25%, 49.99% {background: #68b022;}
+	24.99%, 50% {opacity: 0;}
+	25%, 49.99% {opacity: 1;}
 }
 
 @keyframes slideControl03 {
-    49.99%, 75% {background: none;}
-    50%, 74.99% {background: #68b022;}
+    49.99%, 75% {opacity: 0;}
+    50%, 74.99% {opacity: 1;}
 }
 
 @-webkit-keyframes slideControl03 {
-    49.99%, 75% {background: none;}
-    50%, 74.99% {background: #68b022;}
+	49.99%, 75% {opacity: 0;}
+	50%, 74.99% {opacity: 1;}
 }
 
 @keyframes slideControl103 {
-    49.99%, 75% {background: none;}
-    50%, 74.99% {background: #68b022;}
+	49.99%, 75% {opacity: 0;}
+	50%, 74.99% {opacity: 1;}
 }
 
 @-webkit-keyframes slideControl103 {
-    49.99%, 75% {background: none;}
-    50%, 74.99% {background: #68b022;}
+	49.99%, 75% {opacity: 0;}
+	50%, 74.99% {opacity: 1;}
 }
 
 @keyframes slideControl04 {
-    74.99% {background: none;}
-    75%, 100% {background: #68b022;}
+    74.99% {opacity: 0;}
+    75%, 100% {opacity: 1;}
 }
 
 @-webkit-keyframes slideControl04 {
-    74.99% {background: none;}
-    75%, 100% {background: #68b022;}
+	74.99% {opacity: 0;}
+	75%, 100% {opacity: 1;}
 }
 
 @keyframes slideControl104 {
-    74.99% {background: none;}
-    75%, 100% {background: #68b022;}
+	74.99% {opacity: 0;}
+	75%, 100% {opacity: 1;}
 }
 
 @-webkit-keyframes slideControl104 {
-    74.99% {background: none;}
-    75%, 100% {background: #68b022;}
+	74.99% {opacity: 0;}
+	75%, 100% {opacity: 1;}
 }
 
 /* Basisfunktionalität des Sliders */
@@ -369,92 +369,107 @@
 #slide01:checked ~ .slideList {
     -webkit-animation-name: slidesStart01;
     animation-name: slidesStart01;
-    left: 0;
+    transform: translate3d(-25%,0,0);
+		will-change: transform;
 }
 
 #slide02:checked ~ .slideList {
     -webkit-animation-name: slidesStart02;
     animation-name: slidesStart02;
-    left: -100%;
+    transform: translate3d(-25%,0,0);
+		will-change: transform;
 }
 
 #slide03:checked ~ .slideList {
     -webkit-animation-name: slidesStart03;
     animation-name: slidesStart03;
-    left: -200%;
+    transform: translate3d(-50%,0,0);
 }
 
 #slide04:checked ~ .slideList {
     -webkit-animation-name: slidesStart04;
     animation-name: slidesStart04;
-    left: -300%;
+    transform: translate3d(-75%,0,0);
+		will-change: transform;
 }
 
 /* Damit der Wechsel von 01 zu 101, 02 zu 102 usw. klappt, muss jeweils eine andere Animation aufgerufen werden*/
 #slide101:checked ~ .slideList {
     -webkit-animation-name: slidesStart101;
     animation-name: slidesStart101;
-    left: 0;
+    transform: translate3d(0,0,0);
+		will-change: transform;
 }
 
 #slide102:checked ~ .slideList {
     -webkit-animation-name: slidesStart102;
     animation-name: slidesStart102;
-    left: -100%;
+    transform: translate3d(-25%,0,0);
+		will-change: transform;
 }
 
 #slide103:checked ~ .slideList {
     -webkit-animation-name: slidesStart103;
     animation-name: slidesStart103;
-    left: -200%;
+    transform: translate3d(-50%,0,0);
+		will-change: transform;
 }
 
 #slide104:checked ~ .slideList {
     -webkit-animation-name: slidesStart104;
     animation-name: slidesStart104;
-    left: -300%;
+    transform: translate3d(-75%,0,0);
+		will-change: transform;
 }
 
 /* Der erste Slide wird jeweils zur rechten Zeit an den Anfang oder das Ende gestellt */
 #slide01:checked ~ .slideList .slide01 {
     -webkit-animation-name: slide01ToEndStart01;
     animation-name: slide01ToEndStart01;
+		will-change: transform;
 }
 
 #slide02:checked ~ .slideList .slide01 {
     -webkit-animation-name: slide01ToEndStart02;
     animation-name: slide01ToEndStart02;
+		will-change: transform;
 }
 
 #slide03:checked ~ .slideList .slide01 {
     -webkit-animation-name: slide01ToEndStart03;
     animation-name: slide01ToEndStart03;
+		will-change: transform;
 }
 
 #slide04:checked ~ .slideList .slide01 {
     -webkit-animation-name: slide01ToEndStart04;
     animation-name: slide01ToEndStart04;
+		will-change: transform;
 }
 
 /* Separate Animations-Namen für die zweite Steuerung */
 #slide101:checked ~ .slideList .slide01 {
     -webkit-animation-name: slide01ToEndStart101;
     animation-name: slide01ToEndStart101;
+		will-change: transform;
 }
 
 #slide102:checked ~ .slideList .slide01 {
     -webkit-animation-name: slide01ToEndStart102;
     animation-name: slide01ToEndStart102;
+		will-change: transform;
 }
 
 #slide103:checked ~ .slideList .slide01 {
     -webkit-animation-name: slide01ToEndStart103;
     animation-name: slide01ToEndStart103;
+		will-change: transform;
 }
 
 #slide104:checked ~ .slideList .slide01 {
     -webkit-animation-name: slide01ToEndStart104;
     animation-name: slide01ToEndStart104;
+		will-change: transform;
 }
 
 /* nur zur Deko */
@@ -523,6 +538,8 @@
     -webkit-animation-name: slideControl01;
     animation-name: slideControl01;
     background: #68b022;
+		opacity: 1;
+		will-change: opacity;
 }
 
 #slide101:checked ~ .slideControl label[for="slide01"],
@@ -532,6 +549,8 @@
     -webkit-animation-name: slideControl101;
     animation-name: slideControl101;
     background: #68b022;
+		opacity: 1;
+		will-change: opacity;
 }
 
 #slide01:checked ~ .slideControl label[for="slide102"],
@@ -540,6 +559,8 @@
 #slide04:checked ~ .slideControl label[for="slide101"] {
     -webkit-animation-name: slideControl02;
     animation-name: slideControl02;
+		opacity: 1;
+		will-change: opacity;
 }
 
 #slide101:checked ~ .slideControl label[for="slide02"],
@@ -548,6 +569,8 @@
 #slide104:checked ~ .slideControl label[for="slide01"]  {
     -webkit-animation-name: slideControl102;
     animation-name: slideControl102;
+		opacity: 1;
+		will-change: opacity;
 }
 
 #slide01:checked ~ .slideControl label[for="slide103"],
@@ -556,6 +579,8 @@
 #slide04:checked ~ .slideControl label[for="slide102"]  {
     -webkit-animation-name: slideControl03;
     animation-name: slideControl03;
+		opacity: 1;
+		will-change: opacity;
 }
 
 #slide101:checked ~ .slideControl label[for="slide03"],
@@ -564,6 +589,8 @@
 #slide104:checked ~ .slideControl label[for="slide02"]  {
     -webkit-animation-name: slideControl103;
     animation-name: slideControl103;
+		opacity: 1;
+		will-change: opacity;
 }
 
 #slide01:checked ~ .slideControl label[for="slide104"],
@@ -572,6 +599,8 @@
 #slide04:checked ~ .slideControl label[for="slide103"] {
     -webkit-animation-name: slideControl04;
     animation-name: slideControl04;
+		opacity: 1;
+		will-change: opacity;
 }
 
 #slide101:checked ~ .slideControl label[for="slide04"],
@@ -580,4 +609,10 @@
 #slide104:checked ~ .slideControl label[for="slide03"]  {
     -webkit-animation-name: slideControl104;
     animation-name: slideControl104;
+		opacity: 1;
+		will-change: opacity;
+}
+
+.hideThis{
+	display: none;
 }

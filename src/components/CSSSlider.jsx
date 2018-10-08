@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
+import '../../node_modules/w3-css/w3.css';
+
 import '../assets/scss/components/CSSSlider.scss';
 
 const Wrapper = styled.div`
@@ -13,51 +15,136 @@ const Wrapper = styled.div`
   transform-style: preserve-3d;
 `;
 
-export default class CSSSlider extends React.PureComponent {
+const FullWideImgStyle = styled.img`
+  width: 100%;
+`;
+
+const hideClass = "hideThis";
+
+class FullWideImg extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isHidden: false,
+    }
+    this.setHidden = this.setHidden.bind(this);
+  }
+
+  setHidden(value) {
+    this.setState({
+      isHidden: value
+    });
+  }
+
   render() {
     return (
-      <div className="sliderWrapper">
-        <div className="slider">
-            <input type="radio" name="slider" className="control01" id="slide01" defaultChecked={true} />
-            <input type="radio" name="slider" className="control01" id="slide02" />
-            <input type="radio" name="slider" className="control01" id="slide03" />
-            <input type="radio" name="slider" className="control01" id="slide04" />
-            <input type="radio" name="slider" className="control02" id="slide101" />
-            <input type="radio" name="slider" className="control02" id="slide102" />
-            <input type="radio" name="slider" className="control02" id="slide103" />
-            <input type="radio" name="slider" className="control02" id="slide104" />
-            <ul className="slideList">
-                <li className="slide slide01">
-                    <img src={this.props.images[0]} alt="" width="600" height="400" />
-                    <p>Kegelschnitte</p>
-                </li>
-                <li className="slide slide02">
-                    <img src={this.props.images[1]} alt="Maßaufgaben" width="600" height="400" />
-                    <p>Maßaufgaben</p>
-                </li>
-                <li className="slide slide03">
-                    <img src={this.props.images[2]} alt="Würfelkomposition" width="600" height="400" />
-                    <p>Würfelkomposition</p>
-                </li>
-                <li className="slide slide04">
-                    <img src={this.props.images[3]} alt="Schnitt Zylinder - Hyperboloid" width="600" height="400" />
-                    <p>Schnittkurve von Zylinder und Hyperboloid</p>
-                </li>
-            </ul>
-            <ul className="slideControl slideControl01">
-                <li><label htmlFor="slide01">Nummer 1</label></li>
-                <li><label htmlFor="slide02">Nummer 2</label></li>
-                <li><label htmlFor="slide03">Nummer 3</label></li>
-                <li><label htmlFor="slide04">Nummer 4</label></li>
-            </ul>
-            <ul className="slideControl slideControl02">
-                <li><label htmlFor="slide101">Nummer 101</label></li>
-                <li><label htmlFor="slide102">Nummer 102</label></li>
-                <li><label htmlFor="slide103">Nummer 103</label></li>
-                <li><label htmlFor="slide104">Nummer 104</label></li>
-            </ul>
+       <FullWideImgStyle className={this.state.isHidden ? hideClass : this.props.className } src={this.props.src}/>
+    )
+  }
+}
+
+FullWideImg.propTypes = {
+  className: PropTypes.string,
+  src: PropTypes.string
+};
+
+FullWideImg.defaultProps = {
+  className: "mySlides",
+};
+
+class SmallWideImg extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isHidden: false,
+    }
+    this.setHidden = this.setHidden.bind(this);
+  }
+
+  setHidden(value) {
+    this.setState({
+      isHidden: value
+    });
+  }
+
+  render() {
+    return (
+       <FullWideImgStyle onClick={() => this.state.click} className={this.state.isHidden ? "" : this.props.className } src={this.props.src}/>
+    )
+  }
+}
+
+SmallWideImg.propTypes = {
+  className: PropTypes.string,
+  click: PropTypes.func,
+  src: PropTypes.string
+};
+
+SmallWideImg.defaultProps = {
+  className: "w3-opacity-off",
+};
+
+export default class CSSSlider extends React.PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = {
+      slideIndex: 1,
+    }
+    this._refArray = new Map();
+    this._refArrayDots = new Map();
+    this.myFirstRef = React.createRef();
+    this.showDivs = this.showDivs.bind(this);
+    this.currentDiv = this.currentDiv.bind(this);
+  }
+
+  currentDiv(n) {
+    console.log('Click');
+    this.showDivs(
+      this.setState({
+      slideIndex: n
+    }));
+  }
+
+  showDivs(n) {
+    if (n > this._refArray.length) {
+      this.setState({
+        slideIndex: 1
+      })
+    }
+    if (n < 1) {
+      this.setState({
+        slideIndex: this._refArray.length
+      })
+    }
+    console.log(this.myFirstRef);
+    console.log(this._refArray.get(0).props.className);
+    for (var i = 0; i < this._refArray.size; i++) {
+      i === this.state.slideIndex ? this._refArray.get(i).setHidden(false) : this._refArray.get(i).setHidden(true);
+    }
+    for (i = 0; i < this._refArrayDots.size; i++) {
+       i === this.state.slideIndex ? this._refArrayDots.get(i).setHidden(true) : this._refArrayDots.get(i).setHidden(false);
+    }
+  }
+
+  componentDidMount () {
+    this.showDivs(this.state.slideIndex);
+  }
+
+  render() {
+    return (
+      <div className="w3-content">
+        {this.props.images.map((value, i) => (
+            <FullWideImg key={i} className="mySlides" src={value} ref={c => this._refArray.set(i, c)}/>
+        ))}
+
+        <div className="w3-row-padding w3-section" ref={this.myFirstRef}>
+          {this.props.images.map((value, i) => (
+            <div className="w3-col s4" key={i}>
+              <SmallWideImg key={i} className="demo w3-opacity" src={value} click={() => this.currentDiv(i + 1)}  ref={c => this._refArrayDots.set(i, c)}/>
+            </div>
+          ))}
         </div>
-    </div>
+      </div>
     )
   }
 }
