@@ -11,8 +11,19 @@ const Wrapper = styled.svg`
   color: ${props => props.stroke};
   width: ${props => props.svgWidth};
   fill: ${props => props.fill};
-  left: ${props => props.left};
-  top: ${props => props.top};
+  @supports (transform: translate3d(0,0,0)) or (-webkit-transform: translate3d(0,0,0)) {
+    @supports (height: 100vh){
+      transform: translate3d(${props => props.left}vw, ${props => props.top}vh, 0);
+    }
+    @supports not (height: 100vh){
+      left:${props => props.left}%;
+      top: ${props => props.top}%;
+    }
+  }
+  @supports not (transform: translate3d(0,0,0)) or (-webkit-transform: translate3d(0,0,0)){
+    left:${props => props.left}%;
+    top: ${props => props.top}%;
+  }
 `;
 
 const icontTypes = ['triangle', 'circle', 'arrowUp', 'upDown', 'box', 'hexa', 'badge', 'imac', 'ps4', 'smartphone', 'puzzle', 'pencilcase', 'pencil', 'flask', 'cube', 'bubble', 'cloud', 'network' , 'star', 'usb', 'pokeball', 'pin', 'plane', 'key', 'flash', 'blub', 'usbSimple', 'error404', 'bug', 'shield', 'sword', 'coin'];
@@ -352,7 +363,7 @@ SVG.defaultProps = {
   isOriginal: false,
   width: 8,
   fill: 'none',
-  left: '0%',
-  top: '0%',
+  left: '0',
+  top: '0',
   className: 'fancy-icon',
 };

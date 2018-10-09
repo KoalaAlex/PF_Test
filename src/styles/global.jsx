@@ -2,9 +2,6 @@
 import { injectGlobal } from 'emotion';
 
 injectGlobal`
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
   html {
     text-rendering: optimizeLegibility;
     overflow-x: hidden;

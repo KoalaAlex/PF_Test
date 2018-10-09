@@ -144,6 +144,10 @@ const Footer = styled.footer`
   }
 `;
 
+const ProjectAndContentWrapper = styled.div`
+  box-sizing: border-box;
+`;
+
 // const Index = () => (
 class Index extends React.Component {
   constructor(props) {
@@ -158,6 +162,7 @@ class Index extends React.Component {
     debugOn: false
   }
   this.parallax;
+  this.timeoutId;
   this.spaceKeyWasPressed;
   this.handleOpenArticle = this.handleOpenArticle.bind(this);
   this.handleCloseArticle = this.handleCloseArticle.bind(this);
@@ -305,7 +310,7 @@ handleCloseArticle() {
         <Inner>
           <Title>PROJECTS</Title>
            <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
-              <div id="wrapper">
+              <ProjectAndContentWrapper id="wrapper">
                   <Projects onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
                   <ProjectContent
                     isArticleVisible={this.state.isArticleVisible}
@@ -314,7 +319,7 @@ handleCloseArticle() {
                     article={this.state.article}
                     onCloseArticle={this.handleCloseArticle}
                   />
-              </div>
+              </ProjectAndContentWrapper>
           </div>
         </Inner>
       </Content>

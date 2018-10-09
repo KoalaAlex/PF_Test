@@ -9,6 +9,7 @@ const Wrapper = styled.a`
   width: 100%;
   ${tw('shadow-lg relative no-underline rounded-lg p-4 text-white')};
   overflow: hidden;
+  box-sizing: border-box;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   background-color: rgba(255, 255, 255, .3);
   @supports ((-webkit-backdrop-filter: blur(2em)) or (backdrop-filter: blur(2em))) {

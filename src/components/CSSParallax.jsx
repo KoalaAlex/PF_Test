@@ -15,6 +15,7 @@ const Wrapper = styled.div`
 
 const WrapperLayer = styled.div`
   position: absolute;
+  box-sizing: border-box;
   width: 100vw;
   height: 100vh;
   // pageOffset={(-(this.props.speed + 1) * 150) + (this.props.offset * 100 * ((1 + ((this.props.speed + 1))) / 1))}
