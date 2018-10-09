@@ -40,14 +40,21 @@ const NoOverflow = styled.div`
   }
 `;
 
+const DividerMiddleBoxShadow= styled.div`
+  ${tw('absolute')};
+  animation: ${boxShadowAnim} 2s ease-in-out infinite alternate;
+  box-shadow: 0px 0px 4rem #7f00ff;
+  width: 100%;
+  height: 100%;
+  will-change: opacity;
+`;
+
 const DividerMiddleBlur = styled.div`
   ${tw('absolute')};
   transform: rotate(3deg);
-  animation: ${boxShadowAnim} 2s ease-in-out infinite alternate;
   background: #262626;
   width: 100%;
   height:90%;
-  will-change: box-shadow;
 `;
 
 const DividerMiddleMain = styled.div`
@@ -301,7 +308,9 @@ handleCloseArticle() {
         </Hero>
       </Content>
       <Divider debugOn={this.state.debugOn} speed={-0.2} offset={1} >
-        <DividerMiddleBlur />
+        <DividerMiddleBlur>
+          <DividerMiddleBoxShadow />
+        </DividerMiddleBlur>
       </Divider>
       <Divider debugOn={this.state.debugOn} speed={0.1} offset={1}>
         <SVGPageTwo />

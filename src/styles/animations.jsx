@@ -71,11 +71,19 @@ const blurAnimBig = keyframes`
 `;
 
 export const boxShadowAnim = keyframes`
+  /*
   from {
     box-shadow: 0px 0px 1rem #7f00ff;
   }
   to {
     box-shadow: 0px 0px 4rem #7f00ff;
+  }
+  */
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
   }
 `;
 
