@@ -16,19 +16,16 @@ const Container = styled.div`
   margin: 1rem;
 `;
 
-const Item = styled.div`
-  flex-grow: 1;
-`;
-
 const Wrapper = styled.div`
   max-width:980px;
   margin:auto;
 `;
 
-const BigImage= styled.div`
+const BigImageP= styled.picture`
   display: flex;
   width: 100%;
-  max-height: 50vh;
+  max-height: 80vw;
+  height: 40vh;
   align-items: center;
   overflow: hidden;
 `;
@@ -50,7 +47,10 @@ class WideImg extends React.Component {
 
   render() {
     return (
-       <FullWideImgStyle onClick={this.props.click} className={this.state.isHidden ? this.props.hiddenClass : this.props.className } src={this.props.src}/>
+      <BigImageP className={this.state.isHidden ? this.props.hiddenClass : ""}>
+        <source media="(max-width: 600px)" srcSet={this.props.srcSet} type="image/jpg" />
+        <FullWideImgStyle onClick={this.props.click} src={this.props.src} className={this.props.className} src={this.props.src}/>
+      </BigImageP>
     )
   }
 }
@@ -58,6 +58,7 @@ class WideImg extends React.Component {
 WideImg.propTypes = {
   className: PropTypes.string,
   hiddenClass: PropTypes.string,
+  srcSet: PropTypes.string,
   click: PropTypes.func,
   src: PropTypes.string
 };
@@ -65,6 +66,46 @@ WideImg.propTypes = {
 WideImg.defaultProps = {
   className: "",
   hiddenClass: "",
+  srcSet: "",
+};
+
+class SmallImg extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isHidden: false,
+    }
+    this.setHidden = this.setHidden.bind(this);
+  }
+
+  setHidden(value) {
+    this.setState({
+      isHidden: value
+    });
+  }
+
+  render() {
+    return (
+      <BigImageP>
+        <source media="(max-width: 600px)" srcSet={this.props.srcSet} type="image/jpg" />
+        <FullWideImgStyle onClick={this.props.click} src={this.props.src} className={this.state.isHidden ? this.props.hiddenClass : this.props.className} src={this.props.src}/>
+      </BigImageP>
+    )
+  }
+}
+
+SmallImg.propTypes = {
+  className: PropTypes.string,
+  hiddenClass: PropTypes.string,
+  srcSet: PropTypes.string,
+  click: PropTypes.func,
+  src: PropTypes.string
+};
+
+SmallImg.defaultProps = {
+  className: "",
+  hiddenClass: "",
+  srcSet: "",
 };
 
 export default class CSSSlider extends React.PureComponent {
@@ -76,6 +117,14 @@ export default class CSSSlider extends React.PureComponent {
     this._refArrayImg = new Map();
     this._refArrayDots = new Map();
     this.showImg = this.showImg.bind(this);
+    this.clickImg = this.clickImg.bind(this);
+  }
+
+  clickImg(n){
+    if(n == this.state.slideIndex){
+      return;
+    }
+    this.showImg(n)
   }
 
   showImg(n) {
@@ -103,16 +152,12 @@ export default class CSSSlider extends React.PureComponent {
   render() {
     return (
       <Wrapper>
-        <BigImage>
-          {this.props.images.map((value, i) => (
-              <WideImg key={i} className="mySlides" hiddenClass="hideThis" src={value} ref={c => this._refArrayImg.set(i, c)}/>
-          ))}
-        </BigImage>
+        {this.props.images.map((value, i) => (
+            <WideImg key={i + this.props.images.length} className="mySlides" hiddenClass="hideThis" src={value} srcSet={this.props.images2x[i]} ref={c => this._refArrayImg.set(i, c)}/>
+        ))}
         <Container>
           {this.props.images.map((value, i) => (
-            <div key={i}>
-              <WideImg className="demo w3-opacity" src={value} click={() => this.showImg(i)}  ref={c => this._refArrayDots.set(i, c)}/>
-            </div>
+            <SmallImg key={i} className="opacity" hiddenClass="opacity-off" src={value} srcSet={this.props.images2x[i]} click={() => this.clickImg(i)}  ref={c => this._refArrayDots.set(i, c)}/>
           ))}
         </Container>
       </Wrapper>
@@ -122,8 +167,10 @@ export default class CSSSlider extends React.PureComponent {
 
 CSSSlider.propTypes = {
   images: PropTypes.array.isRequired,
+  images2x: PropTypes.array,
 };
 
 CSSSlider.defaultProps = {
   images: [],
+  images2x: [],
 };

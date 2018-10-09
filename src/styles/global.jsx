@@ -12,8 +12,8 @@ injectGlobal`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  *{
-    backface-visibility: hidden;
+  body *{
+    //backface-visibility: hidden;
   }
   html, body {
     width: 100%;

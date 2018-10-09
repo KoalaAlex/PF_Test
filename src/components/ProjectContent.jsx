@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import CSSSlider from  './CSSSlider';
 
-import cranesim01 from '../images/cranesim01.jpg';
+import cranesim01 from '../images/cranesim/cranesim01.jpg';
+import cranesim01_800 from '../images/cranesim/cranesim01_800x450.jpg';
 import pic03 from '../images/pic03.jpg';
 import gemuevr01 from '../images/gemue-vr/gm_vr_01_800x450.jpg';
 import intensaDrum01 from '../images/intensa-drum/id_02_800x600.jpg';
@@ -21,9 +22,8 @@ class ProjectContent extends React.Component {
       <div id="project-content" style={this.props.timeout ? {display: 'flex'} : {display: 'none'}}>
         <article id="vr-multi" className={`${this.props.article === 'vr-multi' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Muliplayer VR</h2>
-          {/*}<span className="image main"><img src={cranesim01} alt="" /></span>*/}
           <span className="image main">
-            <CSSSlider images={[cranesim01, gemuevr01, intensaDrum01, recaro01]} />
+            <CSSSlider images={[cranesim01, gemuevr01, intensaDrum01, recaro01]} images2x={[cranesim01_800, gemuevr01, intensaDrum01, recaro01]}/>
           </span>
           <p>This was one of the funnies and also one of the toughest projects i made.</p>
           <p>The whole project was made in the GameEngine Unity and is highly driven from 3D objects from 3dsMax. The best part was the Multiplayer Mode. It is so much fun to meet peaple in VR just like the ones are realy in the same room only they appear as an Avatar.  The main aspect is a maintanance of a ventil with membran change.n df</p>

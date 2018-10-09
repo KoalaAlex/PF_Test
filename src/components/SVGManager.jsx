@@ -117,7 +117,6 @@ export class SVGPageTwo extends React.PureComponent {
         <SVG icon="circle" width={6} fill={colors.white} left="4" top="20" />
         <SVG icon="pokeball" width={12} fill={colors['teal-light']} left="10" top="10" />
         <SVG icon="flask" width={96} fill="#0037ff" left="60" top="5" />
-        <SVG icon="flask" width={96} fill="#0037ff" left="60" top="5" />
       </SVGAbsolute>
     );
   }

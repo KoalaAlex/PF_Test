@@ -108,7 +108,7 @@ const icons = {
       </defs>
       ),
     viewBox: '-18 -18 84 84',
-    duplication: (<use xlinkHref="#original-imac" />),
+    duplication: (<use href="#original-imac" xlinkHref="#original-imac" />),
   },
   ps4: {
     shape: (

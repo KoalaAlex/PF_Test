@@ -11,10 +11,10 @@ const Wrapper = styled.a`
   overflow: hidden;
   box-sizing: border-box;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  background-color: rgba(255, 255, 255, .3);
-  @supports ((-webkit-backdrop-filter: blur(2em)) or (backdrop-filter: blur(2em))) {
-        background-color: rgba(255, 255, 255, .3);
-        backdrop-filter: blur(1em);
+  background-color: rgba(255, 255, 255, .15);
+  @supports ((-webkit-backdrop-filter: blur(0.35em)) or (backdrop-filter: blur(0.35em))) {
+        -webkit-backdrop-filter: blur(0.35em);
+        backdrop-filter: blur(0.35em);
   }
   &:hover {
     transform: scale(1.02);

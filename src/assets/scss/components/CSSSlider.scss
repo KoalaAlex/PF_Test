@@ -1,22 +1,59 @@
 @import '../libs/vars';
 @import '../libs/functions';
-@import '../libs/mixins';
 @import '../libs/skel';
 @import '../../css/font-awesome.min.css';
 
-.hideThis{
-	display: none;
+@keyframes opacityAnim {
+	from {opacity: 1; display: block}
+  to {
+		opacity: 0; display: none;
+	}
 }
 
-.w3-opacity,.w3-hover-opacity:hover{
-  opacity:0.60
+picture.hideThis{
+	display: none;
+	animation: opacityAnim 1s ease-in;
+	will-change: opacity;
 }
-.w3-opacity-off,.w3-hover-opacity-off:hover{
-  opacity:1
+
+
+@keyframes grayScaleAnim {
+	from {filter: grayscale(100%); transform: scale(1);}
+  to {filter: grayscale(0%); transform: scale(1.1);}
 }
-.w3-opacity-max{
-  opacity:0.25
+
+@keyframes rotateAnim {
+	0% {transform:  scale(1.1) rotateZ(0deg);}
+  50% {transform:  scale(1.1) rotateZ(10deg);}
+	100%{transform:  scale(1.1) rotateZ(0deg);}
 }
-.w3-opacity-min{
-  opacity:0.75
+
+.opacity {
+	filter: grayscale(100%);
+	transform: scale(1);
+	will-change: filter, transform;
+};
+
+.opacity:hover{
+	filter: grayscale(0%);
+	transform: scale(1.1);
+	animation: grayScaleAnim 1s ease-in-out;
+}
+
+.opacity-off:active{
+	filter: grayscale(0%);
+	transform: scale(1.1);
+	animation: rotateAnim 0.1s ease-in-out;
+}
+
+.opacity-off{
+	filter: grayscale(0%);
+	transform: scale(1.1);
+}
+
+.opacity-max{
+  opacity:0.25;
+}
+.opacity-min{
+  opacity:0.75;
 }
