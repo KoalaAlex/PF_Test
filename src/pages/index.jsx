@@ -34,6 +34,17 @@ const Divider = styled(CSSParallaxLayer)`
   clip-path: ${props => props.clipPath};
 `;
 
+const RotateDivider = styled(Divider)`
+   transform: translateX(-5%) rotateZ(${props => props.rotate}deg);
+   width: 110%;
+`;
+
+
+const DividerMiddleBlur =  styled(Divider)`
+  transform: translate3D(2%, -10%, 0) rotateZ(${props => props.rotate}deg);
+  width: 96%;
+`;
+
 const NoOverflow = styled.div`
   div {
     overflow: hidden;
@@ -47,14 +58,6 @@ const DividerMiddleBoxShadow= styled.div`
   width: 100%;
   height: 100%;
   will-change: opacity;
-`;
-
-const DividerMiddleBlur = styled.div`
-  ${tw('absolute')};
-  transform: rotate(3deg);
-  background: #262626;
-  width: 100%;
-  height:90%;
 `;
 
 const DividerMiddleMain = styled.div`
@@ -307,11 +310,9 @@ handleCloseArticle() {
           <Subtitle>I'm creating beautiful web, VR and app experiences. Go on and have a look at my projects</Subtitle>
         </Hero>
       </Content>
-      <Divider debugOn={this.state.debugOn} speed={-0.2} offset={1} >
-        <DividerMiddleBlur>
-          <DividerMiddleBoxShadow />
-        </DividerMiddleBlur>
-      </Divider>
+      <DividerMiddleBlur rotate={-3} debugOn={this.state.debugOn} speed={-0.2} offset={1} bg="#262626">
+        <DividerMiddleBoxShadow />
+      </DividerMiddleBlur>
       <Divider debugOn={this.state.debugOn} speed={0.1} offset={1}>
         <SVGPageTwo />
       </Divider>
@@ -332,7 +333,8 @@ handleCloseArticle() {
           </div>
         </Inner>
       </Content>
-      <Divider debugOn={this.state.debugOn} bg="#23262b" clipPath="polygon(0 16%, 100% 4%, 100% 82%, 0 94%)" speed={0.2} offset={2} />
+      {/* <Divider debugOn={this.state.debugOn} bg="#23262b" clipPath="polygon(0 16%, 100% 4%, 100% 82%, 0 94%)" speed={0.2} offset={2} /> */}
+      <RotateDivider debugOn={this.state.debugOn} bg="#23262b" rotate={-3} speed={0.2} offset={2} />
       <Divider debugOn={this.state.debugOn} speed={0.1} offset={2}>
         <SVGPageThree />
       </Divider>

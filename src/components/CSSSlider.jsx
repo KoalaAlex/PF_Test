@@ -88,7 +88,6 @@ export default class CSSSlider extends React.PureComponent {
     this.setState({
       slideIndex: n
     })
-    console.log("click" + n);
     for (var i = 0; i < this._refArrayImg.size; i++) {
       i == n ? this._refArrayImg.get(i).setHidden(false) : this._refArrayImg.get(i).setHidden(true);
     }
