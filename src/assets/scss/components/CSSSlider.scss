@@ -16,7 +16,6 @@ picture.hideThis{
 	will-change: opacity;
 }
 
-
 @keyframes grayScaleAnim {
 	from {filter: grayscale(100%); transform: scale(1);}
   to {filter: grayscale(0%); transform: scale(1.1);}
@@ -32,6 +31,7 @@ picture.hideThis{
 	filter: grayscale(100%);
 	transform: scale(1);
 	will-change: filter, transform;
+  cursor: pointer;
 };
 
 .opacity:hover{
@@ -49,6 +49,7 @@ picture.hideThis{
 .opacity-off{
 	filter: grayscale(0%);
 	transform: scale(1.1);
+	cursor: pointer;
 }
 
 .opacity-max{

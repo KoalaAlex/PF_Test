@@ -13,7 +13,6 @@ import ProjectContent from '../components/ProjectContent';
 import { rotate, UpDown, UpDownWide, waveAnimation, blurNormal, blurBig, boxShadowAnim } from '../styles/animations';
 import { hidden } from '../styles/utils';
 import { colors } from '../../tailwind';
-import triangle from '../images/triangle.svg';
 import avatar from '../images/avatar.jpg';
 import '../styles/global';
 import config from '../../config/website';
@@ -27,8 +26,10 @@ import '../assets/scss/base/_page.scss';
 // import Fonts
 import '../../node_modules/@ibm/plex/scss/ibm-plex.scss';
 
-const Divider = styled(CSSParallaxLayer)`
+const NoClickDivider = styled(CSSParallaxLayer)`
   ${tw('absolute')};
+  pointer-events: none;
+  backface-visibility: none;
   fill: ${props => props.fill};
   background: ${props => props.bg};
   svg {
@@ -37,15 +38,19 @@ const Divider = styled(CSSParallaxLayer)`
   clip-path: ${props => props.clipPath};
 `;
 
-const RotateDivider = styled(Divider)`
-   transform: translateX(-5%) rotateZ(${props => props.rotate}deg);
+const RotateDivider = styled(NoClickDivider)`
+   transform: translateX(-5%) rotateZ(-3deg);
    width: 110%;
+   background: #23262b;
 `;
 
 
-const DividerMiddleBlur =  styled(Divider)`
-  transform: translate3D(2%, -10%, 0) rotateZ(${props => props.rotate}deg);
+const DividerMiddleBlur =  styled.div`
+  transform: translate3D(2%, 10%, 0) rotateZ(-3deg);
+  background: #262626;
+  backface-visibility: hidden;
   width: 96%;
+  height: 100%;
 `;
 
 const NoOverflow = styled.div`
@@ -55,12 +60,12 @@ const NoOverflow = styled.div`
 `;
 
 const DividerMiddleBoxShadow= styled.div`
-  ${tw('absolute')};
   animation: ${boxShadowAnim} 2s ease-in-out infinite alternate;
   box-shadow: 0px 0px 4rem #7f00ff;
   width: 100%;
   height: 100%;
   will-change: opacity;
+  backface-visibility: hidden;
 `;
 
 const DividerMiddleMain = styled.div`
@@ -91,18 +96,6 @@ const BigTitle = styled.h1`
 const Title = styled.h1`
   ${tw('text-4xl lg:text-4xl text-white mb-8 tracking-wide relative inline-block')};
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  &::before {
-    content: '';
-    width: 40px;
-    height: 40px;
-    background: url(${triangle});
-    position: absolute;
-    background-size: 40px;
-    animation: ${rotate} 4s linear infinite;
-    will-change: transform;
-    left: -60px;
-    top: 5px;
-  }
 `;
 
 const Subtitle = styled.p`
@@ -324,13 +317,15 @@ handleCloseArticle() {
   <React.Fragment>
     <SEO />
     <SVGOriginals />
-    <CSSParallax id="parallax-scroller" pages={this.state.isSmallMobile ? 5.5 : 4} ref={ref => this.parallax = ref}>
+    <CSSParallax id="parallax-scroller" pages={this.state.isSmallMobile ? 4 : 4} ref={ref => this.parallax = ref}>
+    {/*
         <Link activeClass="active" to="page3" smooth={true} duration={500} containerId="parallax-scroller">
             Go to first element inside container
         </Link>
-      <Divider debugOn={this.state.debugOn} speed={0.2} offset={0}>
+        */}
+      <NoClickDivider debugOn={this.state.debugOn} speed={0.2} offset={0}>
         <SVGPageOne />
-      </Divider>
+      </NoClickDivider>
       <Content name="page1" debugOn={this.state.debugOn} speed={0.4} offset={0}>
         <Hero>
           <BigTitle>
@@ -339,14 +334,18 @@ handleCloseArticle() {
           <Subtitle>I'm creating beautiful web, VR and app experiences. Go on and have a look at my projects</Subtitle>
         </Hero>
       </Content>
-      <DividerMiddleBlur rotate={-3} debugOn={this.state.debugOn} speed={-0.2} offset={1} bg="#262626">
-        <DividerMiddleBoxShadow />
-      </DividerMiddleBlur>
-      <Divider debugOn={this.state.debugOn} speed={0.1} offset={1}>
+      <NoClickDivider debugOn={this.state.debugOn} speed={-0.2} offset={1}>
+        <DividerMiddleBlur rotate={-3} bg="#262626">
+          <DividerMiddleBoxShadow />
+        </DividerMiddleBlur>
+      </NoClickDivider>
+      <NoClickDivider debugOn={this.state.debugOn} speed={0.1} offset={1}>
         <SVGPageTwo />
-      </Divider>
-      <RotateDivider debugOn={this.state.debugOn} bg="#23262b" rotate={-3} speed={0.2} offset={2} />
-      <Content name="page2" debugOn={this.state.debugOn} speed={0.4} offset={this.state.isSmallMobile ? 1.7 : 1}>
+      </NoClickDivider>
+      <NoClickDivider debugOn={this.state.debugOn} speed={0.2} offset={2} >
+        <RotateDivider />
+      </NoClickDivider>
+      <Content name="page2" debugOn={this.state.debugOn} speed={0.4} offset={this.state.isSmallMobile ? 1 : 1}>
         <Inner>
           <Title>PROJECTS</Title>
            <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
@@ -363,10 +362,10 @@ handleCloseArticle() {
           </div>
         </Inner>
       </Content>
-      <Divider debugOn={this.state.debugOn} speed={0.1} offset={2}>
+      <NoClickDivider debugOn={this.state.debugOn} speed={0.1} offset={2}>
         <SVGPageThree />
-      </Divider>
-      <Content name="page3" debugOn={this.state.debugOn} speed={0.4} offset={this.state.isSmallMobile ? 3.5 : 2}>
+      </NoClickDivider>
+      <Content name="page3" debugOn={this.state.debugOn} speed={0.4} offset={this.state.isSmallMobile ? 2 : 2}>
         <Inner>
           <Title>ABOUT</Title>
           <AboutHero>
@@ -377,13 +376,15 @@ handleCloseArticle() {
               You can try one for yourself <a onClick={() => {this.toggleDebug()}}>here</a>...
             </AboutSub>
           </AboutHero>
-          <AboutDesc>
-            Only your mind is the border of your own limitation. All things you confront creates your own personality. Some of them improves decrease or creates a new one.
-            it can depend on Mangas, movie shows, freindships or your socity. I do like a lot Mangas and Animes.
-          </AboutDesc>
+          <MediaQuery query="(min-width: 800px)">
+            <AboutDesc>
+              Only your mind is the border of your own limitation. All things you confront creates your own personality. Some of them improves decrease or creates a new one.
+              it can depend on Mangas, movie shows, freindships or your socity. I do like a lot Mangas and Animes.
+            </AboutDesc>
+          </MediaQuery>
         </Inner>
       </Content>
-      <Divider debugOn={this.state.debugOn} fill="#23262b" speed={0.2} offset={this.state.isSmallMobile ? 4.5 : 3}>
+      <NoClickDivider debugOn={this.state.debugOn} fill="#23262b" speed={0.2} offset={this.state.isSmallMobile ? 3 : 3}>
         <WaveWrapper>
           <InnerWave>
             <svg viewBox="0 0 800 338.05" preserveAspectRatio="none">
@@ -392,8 +393,8 @@ handleCloseArticle() {
             </svg>
           </InnerWave>
         </WaveWrapper>
-      </Divider>
-      <Content name="page4" debugOn={this.state.debugOn} speed={0} offset={this.state.isSmallMobile ? 4.5 : 3}>
+      </NoClickDivider>
+      <Content name="page4" debugOn={this.state.debugOn} speed={0} offset={this.state.isSmallMobile ? 3 : 3}>
         <Inner>
           <Title>GET IN TOUCH</Title>
           <ContactText>
@@ -407,11 +408,11 @@ handleCloseArticle() {
           <a href={config.github}>Github Repository</a>.
         </Footer>
       </Content>
-      <Divider debugOn={this.state.debugOn} speed={0.1} offset={3}>
+      <NoClickDivider debugOn={this.state.debugOn} speed={0.1} offset={3}>
         <NoOverflow>
           <SVGPageFour />
         </NoOverflow>
-      </Divider>
+      </NoClickDivider>
     </CSSParallax>
     <noscript>Your browser does not support JavaScript!</noscript>
   </React.Fragment>

@@ -7,8 +7,9 @@ import {Element} from 'react-scroll'
 const perspective = 100;
 
 const Wrapper = styled(Element)`
+  position: absolute;
   perspective: ${perspective}px;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
@@ -18,8 +19,8 @@ const Wrapper = styled(Element)`
 const WrapperLayer = styled.div`
   position: absolute;
   box-sizing: border-box;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   // pageOffset={(-(this.props.speed + 1) * 150) + (this.props.offset * 100 * ((1 + ((this.props.speed + 1))) / 1))}
   perspective-origin-x: 100%;
   transform: translateZ(${(props => props.zoffset)}px) scale(${(props => props.scale)});
@@ -29,9 +30,10 @@ const ParallaxGroup = styled(Element)`
   position: absolute;
   transform-style: preserve-3d;
   width: 100%;
+  height: 100%;
   transform: translate3d(${(props => props.xoffset)}vw, ${(props => props.pageoffset)}vh, ${(props => props.zoffset)}vw) ${(props => props.rotatey)};
   //z-index: ${(props => props.indexz)};
-  transition: all 1000ms cubic-bezier(0.6, -0.600, 0.50, 1.50);
+  transition: transform 1000ms cubic-bezier(0.6, -0.600, 0.50, 1.50);
   transition-timing-function: cubic-bezier(0.6, -0.600, 0.50, 1.50);
 `;
 
@@ -74,7 +76,7 @@ export class CSSParallaxLayer extends React.PureComponent {
         name={this.props.name}
         xoffset={this.props.debugOn ? 6 : 0}
         zoffset={this.props.debugOn ? -2 : 0}
-        rotatey={this.props.debugOn ? ('rotateY(' + 3 + 'deg)'): ''}
+        rotatey={this.props.debugOn ? ('rotateY(5deg)'): ''}
         pageoffset={(this.props.offset * 100 / this.state.scale) * this.state.scale}
         indexz={(this.props.offset + 1)} >
         <WrapperLayer

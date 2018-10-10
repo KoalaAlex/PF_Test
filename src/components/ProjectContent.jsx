@@ -19,7 +19,7 @@ class ProjectContent extends React.Component {
     let close = <div className="close" onClick={() => {this.props.onCloseArticle()}}></div>
 
     return (
-      <div id="project-content" style={this.props.timeout ? {display: 'flex'} : {display: 'none'}}>
+      <div id="project-content" style={this.props.timeout ? {display: 'grid'} : {display: 'none'}}>
         <article id="vr-multi" className={`${this.props.article === 'vr-multi' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Muliplayer VR</h2>
           <span className="image main">

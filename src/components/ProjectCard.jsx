@@ -3,6 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
+import MediaQuery from 'react-responsive';
+
 //Images
 
 const Wrapper = styled.a`
@@ -11,16 +13,16 @@ const Wrapper = styled.a`
   overflow: hidden;
   box-sizing: border-box;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  background-color: rgba(255, 255, 255, .15);
-  @supports ((-webkit-backdrop-filter: blur(0.35em)) or (backdrop-filter: blur(0.35em))) {
-        -webkit-backdrop-filter: blur(0.35em);
-        backdrop-filter: blur(0.35em);
+  background-color: rgba(255, 255, 255, .05);
+  // 0.35em
+  @supports ((-webkit-backdrop-filter: blur(1em)) or (backdrop-filter: blur(1em))) {
+        -webkit-backdrop-filter: blur(1em);
+        backdrop-filter: blur(1em);
   }
   &:hover {
     transform: scale(1.02);
   }
   will-change: transform;
-  }
 `;
 
 const Title = styled.p`
@@ -34,7 +36,9 @@ const Title = styled.p`
 const ProjectCard = ({ title, onOpenArticle, link, children}) => (
     <Wrapper href="javascript:;" onClick={() => {onOpenArticle(link)}}>
       <div>
-            <p>{children}</p>
+            <MediaQuery query="(min-width: 800px)">
+              <p>{children}</p>
+            </MediaQuery>
             <Title>{title}</Title>
       </div>
     </Wrapper>

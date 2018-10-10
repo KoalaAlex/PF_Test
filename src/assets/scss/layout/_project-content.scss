@@ -7,13 +7,9 @@
 /* Main */
 
 	#project-content {
-		@include vendor('flex-grow', '1');
-		@include vendor('flex-shrink', '1');
-		@include vendor('display', 'flex');
+		display: grid;
 		@include vendor('align-items', 'center');
 		@include vendor('justify-content', 'center');
-		@include vendor('flex-direction', 'column');
-		position: relative;
 		max-width: 100%;
 		color: white;
 		z-index: 3;
@@ -28,11 +24,11 @@
 				'transform #{_duration(article)} ease-in-out'
 			));
 			@include padding(2.5rem, 2.5rem, (2rem, 0, 1rem, 0));
-			position: relative;
 			width: 100%;
-			background-color: rgba(255, 255, 255, .15);
-			@supports ((-webkit-backdrop-filter: blur(.35em)) or (backdrop-filter: blur(.35em))) {
-						backdrop-filter: blur(.35em);
+			background-color: rgba(255, 255, 255, .05);
+			@supports ((-webkit-backdrop-filter: blur(1em)) or (backdrop-filter: blur(1em))) {
+						-webkit-backdrop-filter: blur(1em);
+						backdrop-filter: blur(1em);
 			}
 			border-radius: _size(border-radius);
 			opacity: 0;
