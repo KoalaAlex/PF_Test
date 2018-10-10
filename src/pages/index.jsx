@@ -38,17 +38,17 @@ const NoClickDivider = styled(CSSParallaxLayer)`
   clip-path: ${props => props.clipPath};
 `;
 
-const RotateDivider = styled(NoClickDivider)`
+const RotateDivider = styled.div`
    transform: translateX(-5%) rotateZ(-3deg);
    width: 110%;
    background: #23262b;
+   height: 100%;
 `;
 
 
 const DividerMiddleBlur =  styled.div`
-  transform: translate3D(2%, 10%, 0) rotateZ(-3deg);
+  transform: translate3D(2%, 0%, 0) rotateZ(-3deg);
   background: #262626;
-  backface-visibility: hidden;
   width: 96%;
   height: 100%;
 `;
@@ -335,7 +335,7 @@ handleCloseArticle() {
         </Hero>
       </Content>
       <NoClickDivider debugOn={this.state.debugOn} speed={-0.2} offset={1}>
-        <DividerMiddleBlur rotate={-3} bg="#262626">
+        <DividerMiddleBlur>
           <DividerMiddleBoxShadow />
         </DividerMiddleBlur>
       </NoClickDivider>
@@ -343,7 +343,7 @@ handleCloseArticle() {
         <SVGPageTwo />
       </NoClickDivider>
       <NoClickDivider debugOn={this.state.debugOn} speed={0.2} offset={2} >
-        <RotateDivider />
+        <DividerMiddleBlur />
       </NoClickDivider>
       <Content name="page2" debugOn={this.state.debugOn} speed={0.4} offset={this.state.isSmallMobile ? 1 : 1}>
         <Inner>

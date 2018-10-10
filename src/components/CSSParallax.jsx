@@ -21,6 +21,7 @@ const WrapperLayer = styled.div`
   box-sizing: border-box;
   width: 100%;
   height: 100%;
+  transform-style: preserve-3d;
   // pageOffset={(-(this.props.speed + 1) * 150) + (this.props.offset * 100 * ((1 + ((this.props.speed + 1))) / 1))}
   perspective-origin-x: 100%;
   transform: translateZ(${(props => props.zoffset)}px) scale(${(props => props.scale)});
@@ -66,8 +67,8 @@ export class CSSParallaxLayer extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      zoffset: -(-this.props.speed * perspective),
-      scale: (perspective + (-(this.props.speed * perspective))) / perspective,
+      zoffset: -(-this.props.speed * 1 * perspective),
+      scale: (perspective + (-(this.props.speed * 1 * perspective))) / perspective,
     }
   }
   render() {
@@ -76,7 +77,7 @@ export class CSSParallaxLayer extends React.PureComponent {
         name={this.props.name}
         xoffset={this.props.debugOn ? 6 : 0}
         zoffset={this.props.debugOn ? -2 : 0}
-        rotatey={this.props.debugOn ? ('rotateY(5deg)'): ''}
+        rotatey={this.props.debugOn ? ('rotateY(' + (0.05 * perspective) + 'deg)'): ''}
         pageoffset={(this.props.offset * 100 / this.state.scale) * this.state.scale}
         indexz={(this.props.offset + 1)} >
         <WrapperLayer

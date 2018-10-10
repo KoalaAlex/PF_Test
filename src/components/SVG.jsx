@@ -6,10 +6,8 @@ import { width as twWidth } from '../../tailwind';
 
 const myCoolBg = 'linear-gradient( to bottom,#46C9E5 0%,#D26AC2 100% )';
 
-const Wrapper = styled.svg`
-  ${tw('stroke-current absolute')};
-  color: ${props => props.stroke};
-  width: ${props => props.svgWidth};
+const Wrapper = styled.div`
+  position: relative;
   @supports (transform: translate3d(0,0,0)) or (-webkit-transform: translate3d(0,0,0)) {
     @supports (height: 100vh){
       transform: translate3d(${props => props.left}vw, ${props => props.top}vh, 0);
@@ -22,6 +20,19 @@ const Wrapper = styled.svg`
   @supports not (transform: translate3d(0,0,0)) or (-webkit-transform: translate3d(0,0,0)){
     left:${props => props.left}%;
     top: ${props => props.top}%;
+  }
+`;
+
+const WrapperTransform = styled.svg`
+  ${tw('stroke-current absolute')};
+  color: ${props => props.stroke};
+  width: ${props => props.svgWidth};
+  @supports (transform: translate3d(0,0,0)) or (-webkit-transform: translate3d(0,0,0)) {
+      transform: translate3d(${props => props.originOffsetX}, ${props => props.originOffsetY}, 0);
+  }
+  @supports not (transform: translate3d(0,0,0)) or (-webkit-transform: translate3d(0,0,0)){
+    left: ${props => props.originOffsetX};
+    top: ${props => props.originOffsetY};
   }
 `;
 
@@ -327,6 +338,10 @@ export class SVG extends React.PureComponent {
   render(){
     return (
       <Wrapper
+        left={this.props.left}
+        top={this.props.top}
+      >
+        <WrapperTransform
         id={this.props.id}
         viewBox={icons[this.props.icon].viewBox}
         stroke={this.props.stroke}
@@ -335,8 +350,11 @@ export class SVG extends React.PureComponent {
         left={this.props.left}
         top={this.props.top}
         className={this.props.className}
-      >
+        originOffsetX={this.props.scaleFromLeft ? '0': '-50%'}
+        originOffsetY={this.props.scaleFromTop ? '0': '-50%'}
+        >
         {icons[this.props.icon].duplication}
+        </WrapperTransform>
       </Wrapper>
     );
   }
@@ -345,21 +363,25 @@ export class SVG extends React.PureComponent {
 SVG.propTypes = {
   stroke: PropTypes.string,
   fill: PropTypes.string,
-  width: PropTypes.number,
+  width: PropTypes.string,
   icon: PropTypes.oneOf(icontTypes).isRequired,
   left: PropTypes.string,
   top: PropTypes.string,
   className: PropTypes.string,
-  id: PropTypes.string
+  id: PropTypes.string,
+  scaleFromTop: PropTypes.bool,
+  scaleFromLeft: PropTypes.bool,
 };
 
 SVG.defaultProps = {
   stroke: 'transparent',
-  width: 8,
+  width: '8',
   fill: 'none',
   left: '0',
   top: '0',
   className: 'fancy-icon',
+  scaleFromTop: false,
+  scaleFromLeft: false,
 };
 
 export class SVGOriginal extends React.PureComponent {

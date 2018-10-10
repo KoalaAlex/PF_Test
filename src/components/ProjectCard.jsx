@@ -25,6 +25,13 @@ const Wrapper = styled.a`
   will-change: transform;
 `;
 
+const SubText = styled.p`
+  font-size: 1rem;
+  margin-block-start: 0.67rem;
+  margin-block-end: 0.67rem;
+  ${tw('text-white')};
+`;
+
 const Title = styled.p`
   font-size: 2rem;
   margin-block-start: 0.67rem;
@@ -37,7 +44,7 @@ const ProjectCard = ({ title, onOpenArticle, link, children}) => (
     <Wrapper href="javascript:;" onClick={() => {onOpenArticle(link)}}>
       <div>
             <MediaQuery query="(min-width: 800px)">
-              <p>{children}</p>
+              <SubText>{children}</SubText>
             </MediaQuery>
             <Title>{title}</Title>
       </div>
