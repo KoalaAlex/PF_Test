@@ -19,6 +19,9 @@ import '../styles/global';
 import config from '../../config/website';
 import MediaQuery from 'react-responsive';
 
+// Scroll
+import {Events, Link, scroller} from 'react-scroll'
+
 import '../assets/scss/base/_page.scss';
 
 // import Fonts
@@ -66,7 +69,7 @@ const DividerMiddleMain = styled.div`
 `;
 
 const Content = styled(CSSParallaxLayer)`
-  ${tw('p-6 md:p-12 lg:p-24 justify-center items-center flex z-50')};
+  ${tw('p-6 md:p-12 lg:p-24 justify-center items-center flex')};
   position: absolute;
 `;
 
@@ -130,6 +133,10 @@ const Avatar = styled.img`
 
 const AboutSub = styled.p`
   ${tw('text-white pt-12 lg:pt-0 lg:pl-12 text-2xl lg:text-3xl xl:text-4xl')};
+  a {
+    color: #ff0057;
+    text-decoration: none;
+  }
 `;
 
 const AboutDesc = styled.p`
@@ -179,16 +186,24 @@ class Index extends React.Component {
   this.updateDimensions = this.updateDimensions.bind(this);
   this.keyDownFunction = this.keyDownFunction.bind(this);
   this.keyUpFunction = this.keyUpFunction.bind(this);
-  this.setDebugOn = this.setDebugOn.bind(this);
+  this.toggleDebug = this.toggleDebug.bind(this);
 }
 
-setDebugOn(value){
-  this.setState({debugOn: value});
+toggleDebug(){
+  this.setState({debugOn: !this.state.debugOn});
 }
 
 keyDownFunction(event){
     if(!this.spaceKeyWasPressed && event.keyCode === 32) {
       this.spaceKeyWasPressed = true;
+      console.log(scroller);
+       scroller.scrollTo('page2', {
+         duration: 800,
+         delay: 0,
+         smooth: 'easeInOutQuint',
+         containerId: 'parallax-scroller'
+       });
+      /*
       if(this.parallax.current < (this.parallax.space - offset))
       {
         this.parallax.scrollTo(1);
@@ -204,6 +219,7 @@ keyDownFunction(event){
       else{
         this.parallax.scrollTo(4);
       }
+      */
     }
 }
 
@@ -221,6 +237,15 @@ componentDidMount () {
   window.addEventListener("resize", this.updateDimensions);
   document.addEventListener("keydown", this.keyDownFunction, false);
   document.addEventListener("keyup", this.keyUpFunction, false);
+
+  // Scroll Listener
+  Events.scrollEvent.register('begin', function () {
+     console.log("begin", arguments);
+   });
+
+   Events.scrollEvent.register('end', function () {
+     console.log("end", arguments);
+   });
 }
 
 componentWillUnmount () {
@@ -230,6 +255,8 @@ componentWillUnmount () {
   window.removeEventListener("resize", this.updateDimensions);
   document.removeEventListener("keydown", this.keyDownFunction, false);
   document.removeEventListener("keyup", this.keyUpFunction, false);
+  Events.scrollEvent.remove('begin');
+  Events.scrollEvent.remove('end');
 }
 
 updateDimensions() {
@@ -297,12 +324,14 @@ handleCloseArticle() {
   <React.Fragment>
     <SEO />
     <SVGOriginals />
-    <CSSParallax pages={this.state.isSmallMobile ? 5.5 : 4} ref={ref => this.parallax = ref}>
-    <a onClick={() => {this.setDebugOn(true)}}>CLICK ME</a>
+    <CSSParallax id="parallax-scroller" pages={this.state.isSmallMobile ? 5.5 : 4} ref={ref => this.parallax = ref}>
+        <Link activeClass="active" to="page3" smooth={true} duration={500} containerId="parallax-scroller">
+            Go to first element inside container
+        </Link>
       <Divider debugOn={this.state.debugOn} speed={0.2} offset={0}>
         <SVGPageOne />
       </Divider>
-      <Content debugOn={this.state.debugOn} speed={0.4} offset={0}>
+      <Content name="page1" debugOn={this.state.debugOn} speed={0.4} offset={0}>
         <Hero>
           <BigTitle>
             Hello, <br /> I'm Alex.
@@ -316,7 +345,8 @@ handleCloseArticle() {
       <Divider debugOn={this.state.debugOn} speed={0.1} offset={1}>
         <SVGPageTwo />
       </Divider>
-      <Content debugOn={this.state.debugOn} speed={0.4} offset={this.state.isSmallMobile ? 1.7 : 1}>
+      <RotateDivider debugOn={this.state.debugOn} bg="#23262b" rotate={-3} speed={0.2} offset={2} />
+      <Content name="page2" debugOn={this.state.debugOn} speed={0.4} offset={this.state.isSmallMobile ? 1.7 : 1}>
         <Inner>
           <Title>PROJECTS</Title>
            <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
@@ -333,12 +363,10 @@ handleCloseArticle() {
           </div>
         </Inner>
       </Content>
-      {/* <Divider debugOn={this.state.debugOn} bg="#23262b" clipPath="polygon(0 16%, 100% 4%, 100% 82%, 0 94%)" speed={0.2} offset={2} /> */}
-      <RotateDivider debugOn={this.state.debugOn} bg="#23262b" rotate={-3} speed={0.2} offset={2} />
       <Divider debugOn={this.state.debugOn} speed={0.1} offset={2}>
         <SVGPageThree />
       </Divider>
-      <Content debugOn={this.state.debugOn} speed={0.4} offset={this.state.isSmallMobile ? 3.5 : 2}>
+      <Content name="page3" debugOn={this.state.debugOn} speed={0.4} offset={this.state.isSmallMobile ? 3.5 : 2}>
         <Inner>
           <Title>ABOUT</Title>
           <AboutHero>
@@ -346,7 +374,7 @@ handleCloseArticle() {
             <AboutSub>
               In every work i made i am experiences the need to insert a little special. You can call it an Easteregg.
               It can range from a Ligthsaber sound until a complete minigame.
-              You can try one for yourself here...
+              You can try one for yourself <a onClick={() => {this.toggleDebug()}}>here</a>...
             </AboutSub>
           </AboutHero>
           <AboutDesc>
@@ -365,7 +393,7 @@ handleCloseArticle() {
           </InnerWave>
         </WaveWrapper>
       </Divider>
-      <Content debugOn={this.state.debugOn} speed={0} offset={this.state.isSmallMobile ? 4.5 : 3}>
+      <Content name="page4" debugOn={this.state.debugOn} speed={0} offset={this.state.isSmallMobile ? 4.5 : 3}>
         <Inner>
           <Title>GET IN TOUCH</Title>
           <ContactText>

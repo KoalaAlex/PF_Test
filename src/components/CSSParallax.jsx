@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
-import '../assets/scss/components/CSSParallax.scss';
+import {Element} from 'react-scroll'
 
-const Wrapper = styled.div`
-  perspective: 1px;
+const perspective = 100;
+
+const Wrapper = styled(Element)`
+  perspective: ${perspective}px;
   height: 100vh;
   width: 100%;
   overflow-x: hidden;
@@ -20,21 +22,26 @@ const WrapperLayer = styled.div`
   height: 100vh;
   // pageOffset={(-(this.props.speed + 1) * 150) + (this.props.offset * 100 * ((1 + ((this.props.speed + 1))) / 1))}
   perspective-origin-x: 100%;
-  transform: translateZ(${(props => props.zOffset)}px) scale(${(props => props.scale)});
+  transform: translateZ(${(props => props.zoffset)}px) scale(${(props => props.scale)});
 `;
 
-const ParallaxGroup = styled.div`
+const ParallaxGroup = styled(Element)`
   position: absolute;
   transform-style: preserve-3d;
   width: 100%;
-  transform: translate3d(${(props => props.xOffset)}vh, ${(props => props.pageOffset)}vh, -${(props => props.debugOn)}vh) rotateY(${(props => props.debugOn)}deg);
-  z-index: ${(props => props.zIndex)};
+  transform: translate3d(${(props => props.xoffset)}vw, ${(props => props.pageoffset)}vh, ${(props => props.zoffset)}vw) ${(props => props.rotatey)};
+  //z-index: ${(props => props.indexz)};
+  transition: all 1000ms cubic-bezier(0.6, -0.600, 0.50, 1.50);
+  transition-timing-function: cubic-bezier(0.6, -0.600, 0.50, 1.50);
 `;
 
 export class CSSParallax extends React.PureComponent {
+  constructor(props) {
+    super(props)
+  }
   render() {
     return (
-      <Wrapper pages={this.props.pages * 100}>
+      <Wrapper id={this.props.id} pages={this.props.pages} className={this.props.className}>
         {this.props.children}
       </Wrapper>
     )
@@ -43,6 +50,7 @@ export class CSSParallax extends React.PureComponent {
 
 CSSParallax.propTypes = {
   pages: PropTypes.number,
+  id: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
 };
@@ -53,10 +61,26 @@ CSSParallax.defaultProps = {
 };
 
 export class CSSParallaxLayer extends React.PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = {
+      zoffset: -(-this.props.speed * perspective),
+      scale: (perspective + (-(this.props.speed * perspective))) / perspective,
+    }
+  }
   render() {
     return (
-      <ParallaxGroup xOffset={this.props.debugOn ? 10 : 0} debugOn={this.props.debugOn ? 0.03 : 0} pageOffset={((this.props.offset * 100 / ((1 + (-this.props.speed)) / 1))) * ((1 + (-this.props.speed)) / 1 )} zIndex={(this.props.offset + 1)} >
-        <WrapperLayer zOffset={-(-this.props.speed)} scale={((1 + (-this.props.speed)) / 1)} className={this.props.className}>
+      <ParallaxGroup
+        name={this.props.name}
+        xoffset={this.props.debugOn ? 6 : 0}
+        zoffset={this.props.debugOn ? -2 : 0}
+        rotatey={this.props.debugOn ? ('rotateY(' + 3 + 'deg)'): ''}
+        pageoffset={(this.props.offset * 100 / this.state.scale) * this.state.scale}
+        indexz={(this.props.offset + 1)} >
+        <WrapperLayer
+          zoffset={this.state.zoffset}
+          scale={this.state.scale}
+          className={this.props.className}>
           {this.props.children}
         </WrapperLayer>
       </ParallaxGroup>
@@ -70,6 +94,7 @@ CSSParallaxLayer.propTypes = {
   children:PropTypes.node,
   debugOn: PropTypes.bool,
   className: PropTypes.string,
+  name: PropTypes.string,
 };
 
 CSSParallaxLayer.defaultProps = {

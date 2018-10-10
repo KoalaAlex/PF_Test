@@ -10,7 +10,6 @@ const Wrapper = styled.svg`
   ${tw('stroke-current absolute')};
   color: ${props => props.stroke};
   width: ${props => props.svgWidth};
-  fill: ${props => props.fill};
   @supports (transform: translate3d(0,0,0)) or (-webkit-transform: translate3d(0,0,0)) {
     @supports (height: 100vh){
       transform: translate3d(${props => props.left}vw, ${props => props.top}vh, 0);
@@ -324,31 +323,27 @@ const icons = {
 };
 
 //const SVG = ({ stroke, fill, width, icon, left, top, className }) => (
-class SVG extends React.PureComponent {
+export class SVG extends React.PureComponent {
   render(){
     return (
       <Wrapper
         id={this.props.id}
         viewBox={icons[this.props.icon].viewBox}
         stroke={this.props.stroke}
-        isOriginal ={this.props.isOriginal}
         fill={this.props.fill}
         svgWidth={twWidth[`${this.props.width}`]}
         left={this.props.left}
         top={this.props.top}
         className={this.props.className}
       >
-        {this.props.isOriginal ? icons[this.props.icon].shape : icons[this.props.icon].duplication}
+        {icons[this.props.icon].duplication}
       </Wrapper>
     );
   }
 }
 
-export default SVG;
-
 SVG.propTypes = {
   stroke: PropTypes.string,
-  isOriginal: PropTypes.bool,
   fill: PropTypes.string,
   width: PropTypes.number,
   icon: PropTypes.oneOf(icontTypes).isRequired,
@@ -360,10 +355,23 @@ SVG.propTypes = {
 
 SVG.defaultProps = {
   stroke: 'transparent',
-  isOriginal: false,
   width: 8,
   fill: 'none',
   left: '0',
   top: '0',
   className: 'fancy-icon',
+};
+
+export class SVGOriginal extends React.PureComponent {
+  render(){
+    return (
+      <svg viewBox={icons[this.props.icon].viewBox}>
+        {icons[this.props.icon].shape}
+      </svg>
+    );
+  }
+}
+
+SVGOriginal.propTypes = {
+  icon: PropTypes.oneOf(icontTypes).isRequired,
 };
