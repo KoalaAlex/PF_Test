@@ -9,7 +9,6 @@ import SEO from '../components/SEO';
 import SVG from '../components/SVG';
 import { SVGOriginals, SVGPageOne, SVGPageTwo, SVGPageThree, SVGPageFour } from '../components/SVGManager';
 import Projects from '../components/Projects';
-import ProjectContent from '../components/ProjectContent';
 import { rotate, UpDown, UpDownWide, waveAnimation, blurNormal, blurBig, boxShadowAnim } from '../styles/animations';
 import { hidden } from '../styles/utils';
 import { colors } from '../../tailwind';
@@ -41,9 +40,12 @@ const NoClickLayer = styled(ContentLayer)`
 `;
 
 const NoClickLayerSVG = styled(CSSParallaxLayer)`
-  overflow: hidden;
   pointer-events: none;
   backface-visibility: none;
+`;
+
+const LastNoClickLayerSVG = styled(NoClickLayerSVG)`
+  overflow: hidden;
 `;
 
 const AnimationParallaxLayer = styled(CSSParallaxLayer)`
@@ -108,6 +110,11 @@ const Title = styled.h1`
 const Subtitle = styled.p`
   ${tw('text-2xl lg:text-4xl text-white mt-8 xxl:w-3/4')};
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  a {
+    color: #ff0057;
+    text-decoration: none;
+    text-shadow: 0 0.1rem 1rem rgb(30, 31, 36);
+  }
 `;
 
 const WaveWrapper = styled.div`
@@ -136,6 +143,7 @@ const AboutSub = styled.p`
   a {
     color: #ff0057;
     text-decoration: none;
+    text-shadow: 0 0.1rem 1rem rgb(30, 31, 36);
   }
 `;
 
@@ -150,6 +158,7 @@ const ContactText = styled.p`
   a {
     color: #ff0057;
     text-decoration: none;
+    text-shadow: 0 0.1rem 1rem rgb(30, 31, 36);
   }
 `;
 
@@ -158,11 +167,8 @@ const Footer = styled.footer`
   a {
     color: #ff0057;
     text-decoration: none;
+    text-shadow: 0 0.1rem 1rem rgb(30, 31, 36);
   }
-`;
-
-const ProjectAndContentWrapper = styled.div`
-  box-sizing: border-box;
 `;
 
 // const Index = () => (
@@ -178,7 +184,6 @@ class Index extends React.Component {
     isSmallMobile: false,
     debugOn: false
   }
-  this.parallax;
   this.timeoutId;
   this.spaceKeyWasPressed;
   this.handleOpenArticle = this.handleOpenArticle.bind(this);
@@ -187,10 +192,20 @@ class Index extends React.Component {
   this.keyDownFunction = this.keyDownFunction.bind(this);
   this.keyUpFunction = this.keyUpFunction.bind(this);
   this.toggleDebug = this.toggleDebug.bind(this);
+  this.moveToPage2 = this.moveToPage2.bind(this);
 }
 
 toggleDebug(){
   this.setState({debugOn: !this.state.debugOn});
+}
+
+moveToPage2(){
+  scroller.scrollTo('page2', {
+    duration: 1500,
+    delay: 0,
+    smooth: 'easeInOut',
+    containerId: 'parallax-scroller'
+  });
 }
 
 keyDownFunction(event){
@@ -324,25 +339,25 @@ handleCloseArticle() {
   <React.Fragment>
     <SEO />
     <SVGOriginals />
-    <CSSParallax id="parallax-scroller" pages={this.state.isSmallMobile ? 4 : 4} ref={ref => this.parallax = ref}>
+    <CSSParallax id="parallax-scroller" pages={this.state.isSmallMobile ? 4 : 4}>
     {/*
         <Link activeClass="active" to="page3" smooth={true} duration={500} containerId="parallax-scroller">
             Go to first element inside container
         </Link>
         */}
-      <NoClickDivider name="page1" debugOn={this.state.debugOn} offset={0}>
-        <ContentLayer speed={0.2}>
+      <CSSParallaxLayer name="page1" debugOn={this.state.debugOn} offset={0}>
+        <NoClickLayerSVG speed={0.2}>
           <SVGPageOne />
-        </ContentLayer>
+        </NoClickLayerSVG>
         <ContentLayer speed={0.4}>
         <Hero>
           <BigTitle>
             Hello, <br /> I'm Alex.
           </BigTitle>
-          <Subtitle>I'm creating beautiful web, VR and app experiences. Go on and have a look at my projects</Subtitle>
+          <Subtitle>I'm creating beautiful content for VR, AR, web and touch. Go on and have a look at my <a onClick={() => {this.moveToPage2()}}>projects</a></Subtitle>
         </Hero>
         </ContentLayer>
-      </NoClickDivider>
+      </CSSParallaxLayer>
       <NoClickDivider debugOn={this.state.debugOn} offset={1} >
       <CSSParallaxLayer speed={-0.2}>
         <DividerMiddleBlur>
@@ -362,18 +377,14 @@ handleCloseArticle() {
         <ContentLayer speed={0.4}>
         <Inner>
           <Title>PROJECTS</Title>
-           <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
-              <ProjectAndContentWrapper id="wrapper">
-                  <Projects onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
-                  <ProjectContent
-                    isArticleVisible={this.state.isArticleVisible}
-                    timeout={this.state.timeout}
-                    articleTimeout={this.state.articleTimeout}
-                    article={this.state.article}
-                    onCloseArticle={this.handleCloseArticle}
-                  />
-              </ProjectAndContentWrapper>
-          </div>
+              <Projects
+              onOpenArticle={this.handleOpenArticle}
+              timeout={this.state.timeout}
+              isArticleVisible={this.state.isArticleVisible}
+              articleTimeout={this.state.articleTimeout}
+              article={this.state.article}
+              onCloseArticle={this.handleCloseArticle}
+              />
         </Inner>
         </ContentLayer>
       </CSSParallaxGroup>
@@ -412,9 +423,9 @@ handleCloseArticle() {
             </InnerWave>
           </WaveWrapper>
         </AnimationParallaxLayer>
-        <NoClickLayerSVG speed={0.1}>
+        <LastNoClickLayerSVG speed={0.1}>
           <SVGPageFour />
-        </NoClickLayerSVG>
+        </LastNoClickLayerSVG>
         <ContentLayer speed={0}>
           <Inner>
             <Title>GET IN TOUCH</Title>

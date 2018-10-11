@@ -25,6 +25,8 @@ const WrapperLayer = styled.div`
   // pageOffset={(-(this.props.speed + 1) * 150) + (this.props.offset * 100 * ((1 + ((this.props.speed + 1))) / 1))}
   perspective-origin-x: 100%;
   transform: translateZ(${(props => props.zoffset)}px) scale(${(props => props.scale)});
+  //transition: none;
+  transition-timing-function: unset;
 `;
 
 const WrapperGroup = styled(Element)`
@@ -42,8 +44,8 @@ export class CSSParallaxLayer extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      zoffset: -(-this.props.speed * 1 * perspective),
-      scale: (perspective + (-(this.props.speed * 1 * perspective))) / perspective,
+      zoffset: -Math.floor(-this.props.speed * 1 * perspective),
+      scale: (perspective + (-Math.floor(this.props.speed * 1 * perspective))) / perspective,
     }
   }
   render() {
@@ -76,8 +78,8 @@ export class CSSParallaxGroup extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      zoffset: -(-this.props.speed * 1 * perspective),
-      scale: (perspective + (-(this.props.speed * 1 * perspective))) / perspective,
+      zoffset: -Math.floor(-this.props.speed * 1 * perspective),
+      scale: (perspective + (-Math.floor(this.props.speed * 1 * perspective))) / perspective,
     }
   }
   render() {

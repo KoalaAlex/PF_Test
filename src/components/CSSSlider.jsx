@@ -9,11 +9,19 @@ const FullWideImgStyle = styled.img`
 `;
 
 const Container = styled.div`
+/*
   display: flex;
   align-items: center;
   max-height: 10vh;
   overflow: hidden;
   margin: 1rem;
+  */
+  ${tw('justify-between mt-8')};
+  display: grid;
+  grid-gap: 1rem;
+  //  grid-row: 1;
+  //  grid-column: ${props => props.column};
+  grid-template-columns: repeat(${props => props.column}, 1fr);
 `;
 
 const Wrapper = styled.div`
@@ -22,11 +30,21 @@ const Wrapper = styled.div`
 `;
 
 const BigImageP= styled.picture`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
   width: 100%;
-  max-height: 80vw;
-  height: 40vh;
+  max-height: 60vh;
+  height: 40vw;
   align-items: center;
+  overflow: hidden;
+`;
+
+const SmallImageP= styled.picture`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+  align-items: center;
+  justify-items: center;
   overflow: hidden;
 `;
 
@@ -86,10 +104,10 @@ class SmallImg extends React.Component {
 
   render() {
     return (
-      <BigImageP>
+      <SmallImageP>
         <source media="(max-width: 600px)" srcSet={this.props.srcSet} type="image/jpg" />
         <FullWideImgStyle onClick={this.props.click} src={this.props.src} className={this.state.isHidden ? this.props.hiddenClass : this.props.className} src={this.props.src}/>
-      </BigImageP>
+      </SmallImageP>
     )
   }
 }
@@ -155,7 +173,7 @@ export default class CSSSlider extends React.PureComponent {
         {this.props.images.map((value, i) => (
             <WideImg key={i + this.props.images.length} className="mySlides" hiddenClass="hideThis" src={value} srcSet={this.props.images2x[i]} ref={c => this._refArrayImg.set(i, c)}/>
         ))}
-        <Container>
+        <Container column={this.props.images.length}>
           {this.props.images.map((value, i) => (
             <SmallImg key={i} className="opacity" hiddenClass="opacity-off" src={value} srcSet={this.props.images2x[i]} click={() => this.clickImg(i)}  ref={c => this._refArrayDots.set(i, c)}/>
           ))}

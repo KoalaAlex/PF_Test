@@ -26,28 +26,29 @@ const Wrapper = styled.a`
 `;
 
 const SubText = styled.p`
+  ${tw('text-white')};
   font-size: 1rem;
   margin-block-start: 0.67rem;
   margin-block-end: 0.67rem;
-  ${tw('text-white')};
 `;
 
 const Title = styled.p`
+  ${tw('text-white uppercase text-2xl md:text-3xl xl:text-4xl tracking-wide')};
   font-size: 2rem;
   margin-block-start: 0.67rem;
   margin-block-end: 0.67rem;
-  ${tw('text-white uppercase text-2xl md:text-3xl xl:text-4xl tracking-wide')};
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 `;
 
 const ProjectCard = ({ title, onOpenArticle, link, children}) => (
     <Wrapper href="javascript:;" onClick={() => {onOpenArticle(link)}}>
-      <div>
-            <MediaQuery query="(min-width: 800px)">
-              <SubText>{children}</SubText>
-            </MediaQuery>
-            <Title>{title}</Title>
-      </div>
+        <div>
+          <MediaQuery query="(min-width: 800px)">
+            <SubText>{children}</SubText>
+
+          </MediaQuery>
+        </div>
+        <Title>{title}</Title>
     </Wrapper>
 );
 

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import ProjectCard from '../components/ProjectCard';
+import ProjectContent from '../components/ProjectContent';
 
 const ProjectsWrapper = styled.div`
   ${tw('justify-between mt-8')};
@@ -21,61 +22,71 @@ const ProjectsWrapper = styled.div`
   }
 `;
 
+const ProjectAndContentWrapper = styled.div`
+  box-sizing: border-box;
+`;
+
 //const Projects = (props) => (
 class Projects extends React.Component {
   render(){
     return (
-      <div id="projects" style={this.props.timeout ? {display: 'none'} : {}}>
-          <ProjectsWrapper>
-            <ProjectCard
-              title="MULTIPLAYER VR"
-              onOpenArticle={this.props.onOpenArticle}
-              link="vr-multi"
-
-            >
-              This projects uses Vive Support from SteamVR and you can meet eatch other in VR with the multiplyer mode.
-            </ProjectCard>
-            <ProjectCard
-              title="INTERACTIVE AND TOUCH"
-              onOpenArticle={this.props.onOpenArticle}
-              link="touch"
-
-            >
-              Here is a collection of some nice Apps that are made with Unity.
-            </ProjectCard>
-            <ProjectCard
-              title="WEB"
-              onOpenArticle={this.props.onOpenArticle}
-              link="web"
-
-            >
-              Here you can see some nice websites and fun projects
-            </ProjectCard>
-            <ProjectCard
-              title="CRANE SIUMULATOR"
-              onOpenArticle={this.props.onOpenArticle}
-              link="simulator"
-
-            >
-              This was a mega project made with Liebherr and also in VR. It was a complete Simulatom for the behaviour of a cran.
-            </ProjectCard>
-            <ProjectCard
-              title="Augmented Reality"
-              onOpenArticle={this.props.onOpenArticle}
-              link="augmented"
-
-            >
-              This was a mega project made with Liebherr and also in VR. It was a complete Simulatom for the behaviour of a cran.
-            </ProjectCard>
-          </ProjectsWrapper>
-      </div>
+      <React.Fragment>
+        <ProjectsWrapper id="projects" style={this.props.timeout ? {display: 'none'} : {}}>
+          <ProjectCard
+            title="multiplayer vr"
+            onOpenArticle={this.props.onOpenArticle}
+            link="vr-multi"
+          >
+            You can play this project with an Oculus or a HTC Vive it is support by SteamVR and you can meet each other virtuell in a game zone.
+          </ProjectCard>
+          <ProjectCard
+            title="interactive and touch"
+            onOpenArticle={this.props.onOpenArticle}
+            link="touch"
+          >
+            Here is a collection of some nice Apps that are made with Unity for Mobile and Dektop Devices.
+          </ProjectCard>
+          <ProjectCard
+            title="simulators and configurators"
+            onOpenArticle={this.props.onOpenArticle}
+            link="simulator"
+          >
+            This was a mega project made with Liebherr and also in VR. It was a complete Simulatom for the behaviour of a cran.
+          </ProjectCard>
+          <ProjectCard
+            title="augmented reality"
+            onOpenArticle={this.props.onOpenArticle}
+            link="augmented"
+          >
+            This was a mega project made with Liebherr and also in VR. It was a complete Simulatom for the behaviour of a cran.
+          </ProjectCard>
+          <ProjectCard
+            title="WEB"
+            onOpenArticle={this.props.onOpenArticle}
+            link="web"
+          >
+            Here you can see some nice websites and fun projects
+          </ProjectCard>
+        </ProjectsWrapper>
+        <ProjectContent
+          isArticleVisible={this.props.isArticleVisible}
+          timeout={this.props.timeout}
+          articleTimeout={this.props.articleTimeout}
+          article={this.props.article}
+          onCloseArticle={this.props.onCloseArticle}
+        />
+      </React.Fragment>
     )
   }
 };
 
 Projects.propTypes = {
     onOpenArticle: PropTypes.func,
-    timeout: PropTypes.bool
+    timeout: PropTypes.bool,
+    article: PropTypes.string,
+    isArticleVisible: PropTypes.bool,
+    articleTimeout: PropTypes.bool,
+    onCloseArticle: PropTypes.func,
 }
 
 export default Projects
