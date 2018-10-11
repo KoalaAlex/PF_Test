@@ -27,7 +27,7 @@ const WrapperLayer = styled.div`
   transform: translateZ(${(props => props.zoffset)}px) scale(${(props => props.scale)});
 `;
 
-const ParallaxGroup = styled(Element)`
+const WrapperGroup = styled(Element)`
   position: absolute;
   transform-style: preserve-3d;
   width: 100%;
@@ -37,6 +37,85 @@ const ParallaxGroup = styled(Element)`
   transition: transform 1000ms cubic-bezier(0.6, -0.600, 0.50, 1.50);
   transition-timing-function: cubic-bezier(0.6, -0.600, 0.50, 1.50);
 `;
+
+export class CSSParallaxLayer extends React.PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = {
+      zoffset: -(-this.props.speed * 1 * perspective),
+      scale: (perspective + (-(this.props.speed * 1 * perspective))) / perspective,
+    }
+  }
+  render() {
+    return (
+        <WrapperLayer
+          zoffset={this.state.zoffset}
+          scale={this.state.scale}
+          className={this.props.className}>
+            {this.props.children}
+        </WrapperLayer>
+    )
+  }
+}
+
+CSSParallaxLayer.propTypes = {
+  scale: PropTypes.number,
+  speed: PropTypes.number,
+  children:PropTypes.node,
+  className: PropTypes.string,
+  name: PropTypes.string,
+};
+
+CSSParallaxLayer.defaultProps = {
+  speed: 0,
+  scale: 1,
+  className: 'parallax-layer',
+};
+
+export class CSSParallaxGroup extends React.PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = {
+      zoffset: -(-this.props.speed * 1 * perspective),
+      scale: (perspective + (-(this.props.speed * 1 * perspective))) / perspective,
+    }
+  }
+  render() {
+    return (
+      <WrapperGroup
+        name={this.props.name}
+        xoffset={this.props.debugOn ? 6 : 0}
+        zoffset={this.props.debugOn ? -2 : 0}
+        rotatey={this.props.debugOn ? ('rotateY(' + (0.05 * perspective) + 'deg)'): ''}
+        pageoffset={(this.props.offset * 100 / this.state.scale) * this.state.scale}
+        indexz={(this.props.offset + 1)}
+        className={this.props.className}
+        >
+            {React.Children.map(this.props.children, child => {
+                return React.cloneElement(child, {
+                  zoffset: this.state.offset,
+                })}
+            )}
+      </WrapperGroup>
+    )
+  }
+}
+
+CSSParallaxGroup.propTypes = {
+  speed: PropTypes.number,
+  offset: PropTypes.number,
+  children: PropTypes.node,
+  debugOn: PropTypes.bool,
+  className: PropTypes.string,
+  name: PropTypes.string,
+};
+
+CSSParallaxGroup.defaultProps = {
+  speed: 0,
+  offset: 0,
+  debugOn: false,
+  className: 'parallax-group',
+};
 
 export class CSSParallax extends React.PureComponent {
   constructor(props) {
@@ -61,48 +140,4 @@ CSSParallax.propTypes = {
 CSSParallax.defaultProps = {
   pages: 1,
   className: 'parallax',
-};
-
-export class CSSParallaxLayer extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      zoffset: -(-this.props.speed * 1 * perspective),
-      scale: (perspective + (-(this.props.speed * 1 * perspective))) / perspective,
-    }
-  }
-  render() {
-    return (
-      <ParallaxGroup
-        name={this.props.name}
-        xoffset={this.props.debugOn ? 6 : 0}
-        zoffset={this.props.debugOn ? -2 : 0}
-        rotatey={this.props.debugOn ? ('rotateY(' + (0.05 * perspective) + 'deg)'): ''}
-        pageoffset={(this.props.offset * 100 / this.state.scale) * this.state.scale}
-        indexz={(this.props.offset + 1)} >
-        <WrapperLayer
-          zoffset={this.state.zoffset}
-          scale={this.state.scale}
-          className={this.props.className}>
-          {this.props.children}
-        </WrapperLayer>
-      </ParallaxGroup>
-    )
-  }
-}
-
-CSSParallaxLayer.propTypes = {
-  speed: PropTypes.number,
-  offset: PropTypes.number,
-  children:PropTypes.node,
-  debugOn: PropTypes.bool,
-  className: PropTypes.string,
-  name: PropTypes.string,
-};
-
-CSSParallaxLayer.defaultProps = {
-  speed: 1,
-  offset: 0,
-  debugOn: false,
-  className: 'parallax-layer',
 };

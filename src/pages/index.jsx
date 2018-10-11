@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'react-emotion';
 import { Parallax, ParallaxLayer } from 'react-spring';
-import { CSSParallax, CSSParallaxLayer } from '../components/CSSParallax';
+import { CSSParallax, CSSParallaxGroup, CSSParallaxLayer } from '../components/CSSParallax';
 
 // import Components
 import SEO from '../components/SEO';
@@ -26,16 +26,30 @@ import '../assets/scss/base/_page.scss';
 // import Fonts
 import '../../node_modules/@ibm/plex/scss/ibm-plex.scss';
 
-const NoClickDivider = styled(CSSParallaxLayer)`
-  ${tw('absolute')};
+const NoClickDivider = styled(CSSParallaxGroup)`
   pointer-events: none;
   backface-visibility: none;
+`;
+
+const ContentLayer = styled(CSSParallaxLayer)`
+  ${tw('p-6 md:p-12 lg:p-24 justify-center items-center flex')};
+`;
+
+const NoClickLayer = styled(ContentLayer)`
+  pointer-events: none;
+  backface-visibility: none;
+`;
+
+const NoClickLayerSVG = styled(CSSParallaxLayer)`
+  overflow: hidden;
+  pointer-events: none;
+  backface-visibility: none;
+`;
+
+const AnimationParallaxLayer = styled(CSSParallaxLayer)`
   fill: ${props => props.fill};
-  background: ${props => props.bg};
-  svg {
-    fill: ${props => props.fill};
-  }
-  clip-path: ${props => props.clipPath};
+  pointer-events: none;
+  backface-visibility: none;
 `;
 
 const RotateDivider = styled.div`
@@ -53,12 +67,6 @@ const DividerMiddleBlur =  styled.div`
   height: 100%;
 `;
 
-const NoOverflow = styled.div`
-  div {
-    overflow: hidden;
-  }
-`;
-
 const DividerMiddleBoxShadow= styled.div`
   animation: ${boxShadowAnim} 2s ease-in-out infinite alternate;
   box-shadow: 0px 0px 4rem #7f00ff;
@@ -73,8 +81,7 @@ const DividerMiddleMain = styled.div`
   opacity: 0.9;
 `;
 
-const Content = styled(CSSParallaxLayer)`
-  ${tw('p-6 md:p-12 lg:p-24 justify-center items-center flex')};
+const Content = styled(CSSParallaxGroup)`
   position: absolute;
 `;
 
@@ -323,29 +330,36 @@ handleCloseArticle() {
             Go to first element inside container
         </Link>
         */}
-      <NoClickDivider debugOn={this.state.debugOn} speed={0.2} offset={0}>
-        <SVGPageOne />
-      </NoClickDivider>
-      <Content name="page1" debugOn={this.state.debugOn} speed={0.4} offset={0}>
+      <NoClickDivider name="page1" debugOn={this.state.debugOn} offset={0}>
+        <ContentLayer speed={0.2}>
+          <SVGPageOne />
+        </ContentLayer>
+        <ContentLayer speed={0.4}>
         <Hero>
           <BigTitle>
             Hello, <br /> I'm Alex.
           </BigTitle>
           <Subtitle>I'm creating beautiful web, VR and app experiences. Go on and have a look at my projects</Subtitle>
         </Hero>
-      </Content>
-      <NoClickDivider debugOn={this.state.debugOn} speed={-0.2} offset={1}>
+        </ContentLayer>
+      </NoClickDivider>
+      <NoClickDivider debugOn={this.state.debugOn} offset={1} >
+      <CSSParallaxLayer speed={-0.2}>
         <DividerMiddleBlur>
           <DividerMiddleBoxShadow />
         </DividerMiddleBlur>
+      </CSSParallaxLayer>
       </NoClickDivider>
-      <NoClickDivider debugOn={this.state.debugOn} speed={0.1} offset={1}>
-        <SVGPageTwo />
+      <NoClickDivider debugOn={this.state.debugOn} offset={2} >
+        <CSSParallaxLayer speed={0.2}>
+          <RotateDivider />
+        </CSSParallaxLayer>
       </NoClickDivider>
-      <NoClickDivider debugOn={this.state.debugOn} speed={0.2} offset={2} >
-        <DividerMiddleBlur />
-      </NoClickDivider>
-      <Content name="page2" debugOn={this.state.debugOn} speed={0.4} offset={this.state.isSmallMobile ? 1 : 1}>
+      <CSSParallaxGroup name="page2" debugOn={this.state.debugOn} offset={this.state.isSmallMobile ? 1 : 1}>
+        <NoClickLayerSVG speed={0.1}>
+          <SVGPageTwo />
+        </NoClickLayerSVG>
+        <ContentLayer speed={0.4}>
         <Inner>
           <Title>PROJECTS</Title>
            <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
@@ -361,11 +375,13 @@ handleCloseArticle() {
               </ProjectAndContentWrapper>
           </div>
         </Inner>
-      </Content>
-      <NoClickDivider debugOn={this.state.debugOn} speed={0.1} offset={2}>
-        <SVGPageThree />
-      </NoClickDivider>
-      <Content name="page3" debugOn={this.state.debugOn} speed={0.4} offset={this.state.isSmallMobile ? 2 : 2}>
+        </ContentLayer>
+      </CSSParallaxGroup>
+      <CSSParallaxGroup name="page3" debugOn={this.state.debugOn} offset={this.state.isSmallMobile ? 2 : 2}>
+        <NoClickLayerSVG speed={0.1}>
+          <SVGPageThree />
+        </NoClickLayerSVG>
+        <ContentLayer speed={0.4}>
         <Inner>
           <Title>ABOUT</Title>
           <AboutHero>
@@ -383,36 +399,37 @@ handleCloseArticle() {
             </AboutDesc>
           </MediaQuery>
         </Inner>
-      </Content>
-      <NoClickDivider debugOn={this.state.debugOn} fill="#23262b" speed={0.2} offset={this.state.isSmallMobile ? 3 : 3}>
-        <WaveWrapper>
-          <InnerWave>
-            <svg viewBox="0 0 800 338.05" preserveAspectRatio="none">
-              <path className={waveAnimation}>
-              </path>
-            </svg>
-          </InnerWave>
-        </WaveWrapper>
-      </NoClickDivider>
-      <Content name="page4" debugOn={this.state.debugOn} speed={0} offset={this.state.isSmallMobile ? 3 : 3}>
-        <Inner>
-          <Title>GET IN TOUCH</Title>
-          <ContactText>
-            Say <a href="mailto:s_alexander@hotmail.de">Hi</a> or find me on other platforms:{' '}
-            <a href={config.siteFacebook}>Facebook</a> &{' '}
-            <a href={config.siteInstagram}>Instagram</a>
-          </ContactText>
-        </Inner>
-        <Footer>
-          <p>&copy; 2018 by Alexander Stricker.{' '}</p>
-          <a href={config.github}>Github Repository</a>.
-        </Footer>
-      </Content>
-      <NoClickDivider debugOn={this.state.debugOn} speed={0.1} offset={3}>
-        <NoOverflow>
+       </ContentLayer>
+      </CSSParallaxGroup>
+      <CSSParallaxGroup name="page4" debugOn={this.state.debugOn} offset={this.state.isSmallMobile ? 3 : 3}>
+        <AnimationParallaxLayer speed={0} fill="#23262b">
+          <WaveWrapper>
+            <InnerWave>
+              <svg viewBox="0 0 800 338.05" preserveAspectRatio="none">
+                <path className={waveAnimation}>
+                </path>
+              </svg>
+            </InnerWave>
+          </WaveWrapper>
+        </AnimationParallaxLayer>
+        <NoClickLayerSVG speed={0.1}>
           <SVGPageFour />
-        </NoOverflow>
-      </NoClickDivider>
+        </NoClickLayerSVG>
+        <ContentLayer speed={0}>
+          <Inner>
+            <Title>GET IN TOUCH</Title>
+            <ContactText>
+              Say <a href="mailto:s_alexander@hotmail.de">Hi</a> or find me on other platforms:{' '}
+              <a href={config.siteFacebook}>Facebook</a> &{' '}
+              <a href={config.siteInstagram}>Instagram</a>
+            </ContactText>
+          </Inner>
+          <Footer>
+            <p>&copy; 2018 by Alexander Stricker.{' '}</p>
+            <a href={config.github}>Github Repository</a>.
+          </Footer>
+        </ContentLayer>
+      </CSSParallaxGroup>
     </CSSParallax>
     <noscript>Your browser does not support JavaScript!</noscript>
   </React.Fragment>
