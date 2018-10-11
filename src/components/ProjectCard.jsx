@@ -8,8 +8,9 @@ import MediaQuery from 'react-responsive';
 //Images
 
 const Wrapper = styled.a`
-  width: 100%;
+  display: inherit;
   ${tw('shadow-lg relative no-underline rounded-lg p-4 text-white')};
+  width: 100%;
   overflow: hidden;
   box-sizing: border-box;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -23,6 +24,10 @@ const Wrapper = styled.a`
     transform: scale(1.02);
   }
   will-change: transform;
+`;
+
+const MarginDiv = styled.div`
+  margin: auto;
 `;
 
 const SubText = styled.p`
@@ -42,6 +47,7 @@ const Title = styled.p`
 
 const ProjectCard = ({ title, onOpenArticle, link, children}) => (
     <Wrapper href="javascript:;" onClick={() => {onOpenArticle(link)}}>
+    <MarginDiv>
         <div>
           <MediaQuery query="(min-width: 800px)">
             <SubText>{children}</SubText>
@@ -49,6 +55,7 @@ const ProjectCard = ({ title, onOpenArticle, link, children}) => (
           </MediaQuery>
         </div>
         <Title>{title}</Title>
+        </MarginDiv>
     </Wrapper>
 );
 

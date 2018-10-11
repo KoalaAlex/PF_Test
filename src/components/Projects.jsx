@@ -20,6 +20,7 @@ const ProjectsWrapper = styled.div`
     grid-template-columns: 1fr;
     grid-gap: 2rem;
   }
+  grid-auto-rows: 1fr;
 `;
 
 const ProjectAndContentWrapper = styled.div`
@@ -37,7 +38,7 @@ class Projects extends React.Component {
             onOpenArticle={this.props.onOpenArticle}
             link="vr-multi"
           >
-            You can play this project with an Oculus or a HTC Vive it is support by SteamVR and you can meet each other virtuell in a game zone.
+            You can play this project with an Oculus or a HTC Vive it is support by SteamVR and you can meet each other virtual in a game zone.
           </ProjectCard>
           <ProjectCard
             title="interactive and touch"
@@ -51,14 +52,15 @@ class Projects extends React.Component {
             onOpenArticle={this.props.onOpenArticle}
             link="simulator"
           >
-            This was a mega project made with Liebherr and also in VR. It was a complete Simulatom for the behaviour of a cran.
+            In those "games" you can change almost everything from day/night behaviour until the mass of a crane load.
+            <br/>The more load weight on the crane, the more it bends.
           </ProjectCard>
           <ProjectCard
             title="augmented reality"
             onOpenArticle={this.props.onOpenArticle}
             link="augmented"
           >
-            This was a mega project made with Liebherr and also in VR. It was a complete Simulatom for the behaviour of a cran.
+            Here you can find some fancy applications that mixes the real world with the virtual one.
           </ProjectCard>
           <ProjectCard
             title="WEB"
