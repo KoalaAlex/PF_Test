@@ -86,9 +86,9 @@ export class CSSParallaxGroup extends React.PureComponent {
     return (
       <WrapperGroup
         name={this.props.name}
-        xoffset={this.props.debugOn ? 6 : 0}
+        xoffset={this.props.debugOn ? -6 : 0}
         zoffset={this.props.debugOn ? -2 : 0}
-        rotatey={this.props.debugOn ? ('rotateY(' + (0.05 * perspective) + 'deg)'): ''}
+        rotatey={this.props.debugOn ? ('rotateY(' + (-0.05 * perspective) + 'deg)'): ''}
         pageoffset={(this.props.offset * 100 / this.state.scale) * this.state.scale}
         indexz={(this.props.offset + 1)}
         className={this.props.className}

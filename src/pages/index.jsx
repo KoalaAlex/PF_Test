@@ -31,7 +31,8 @@ const NoClickDivider = styled(CSSParallaxGroup)`
 `;
 
 const ContentLayer = styled(CSSParallaxLayer)`
-  ${tw('p-6 md:p-12 lg:p-24 justify-center items-center flex')};
+  ${tw('p-6 md:p-12 lg:p-24 justify-center items-center')};
+  display: grid;
 `;
 
 const NoClickLayer = styled(ContentLayer)`
@@ -54,13 +55,23 @@ const AnimationParallaxLayer = styled(CSSParallaxLayer)`
   backface-visibility: none;
 `;
 
-const RotateDivider = styled.div`
-   transform: translateX(-5%) rotateZ(-3deg);
-   width: 110%;
-   background: #23262b;
-   height: 100%;
+const AvatarBackgroundLayer = styled(CSSParallaxLayer)`
+  display: grid;
+  align-items: center;
 `;
 
+const RotateDivider = styled.div`
+  transform: translateX(-5%) rotateZ(-3deg);
+  width: 110%;
+  background: #23262b;
+  height: 100%;
+`;
+
+const AboutBackground = styled.div`
+  background: #171717;
+  width: 100%;
+  height: 80%;
+`;
 
 const DividerMiddleBlur =  styled.div`
   transform: translate3D(2%, 0%, 0) rotateZ(-3deg);
@@ -131,7 +142,7 @@ const InnerWave = styled.div`
 `;
 
 const AboutHero = styled.div`
-  ${tw('flex flex-col lg:flex-row items-center mt-8')};
+  ${tw(' flex flex-col lg:flex-row items-center mt-8')};
 `;
 
 const Avatar = styled.img`
@@ -139,16 +150,12 @@ const Avatar = styled.img`
 `;
 
 const AboutSub = styled.p`
-  ${tw('text-white pt-12 lg:pt-0 lg:pl-12 text-2xl lg:text-3xl xl:text-4xl')};
+  ${tw('text-white pt-12 lg:pt-0 lg:pl-12 text-lg lg:text-xl xl:text-1xl')};
   a {
     color: #ff0057;
     text-decoration: none;
     text-shadow: 0 0.1rem 1rem rgb(30, 31, 36);
   }
-`;
-
-const AboutDesc = styled.p`
-  ${tw('text-grey-light text-lg md:text-xl lg:text-2xl pt-6 md:pt-12 text-justify')};
 `;
 
 const offset = 100;
@@ -200,7 +207,7 @@ toggleDebug(){
 }
 
 moveToPage2(){
-  scroller.scrollTo('page2', {
+  scroller.scrollTo('page3', {
     duration: 1500,
     delay: 0,
     smooth: 'easeInOut',
@@ -345,7 +352,7 @@ handleCloseArticle() {
             Go to first element inside container
         </Link>
         */}
-      <CSSParallaxLayer name="page1" debugOn={this.state.debugOn} offset={0}>
+      <CSSParallaxGroup name="page1" debugOn={this.state.debugOn} offset={0}>
         <NoClickLayerSVG speed={0.2}>
           <SVGPageOne />
         </NoClickLayerSVG>
@@ -357,26 +364,51 @@ handleCloseArticle() {
           <Subtitle>I'm creating beautiful content for VR, AR, web and touch. Go on and have a look at my <a onClick={() => {this.moveToPage2()}}>projects</a></Subtitle>
         </Hero>
         </ContentLayer>
-      </CSSParallaxLayer>
-      <NoClickDivider debugOn={this.state.debugOn} offset={1} >
-      <CSSParallaxLayer speed={-0.2}>
-        <DividerMiddleBlur>
-          <DividerMiddleBoxShadow />
-        </DividerMiddleBlur>
-      </CSSParallaxLayer>
-      </NoClickDivider>
-      <NoClickDivider debugOn={this.state.debugOn} offset={2} >
+      </CSSParallaxGroup>
+      <NoClickDivider debugOn={this.state.debugOn} offset={1.8} >
         <CSSParallaxLayer speed={0.2}>
           <RotateDivider />
         </CSSParallaxLayer>
       </NoClickDivider>
-      <CSSParallaxGroup name="page2" debugOn={this.state.debugOn} offset={this.state.isSmallMobile ? 1 : 1}>
+      <CSSParallaxGroup name="page2" debugOn={this.state.debugOn} offset={this.state.isSmallMobile ? 1 : 0.8}>
+        <NoClickLayerSVG speed={0.1}>
+          <SVGPageThree />
+        </NoClickLayerSVG>
+        <AvatarBackgroundLayer speed={0}>
+          <AboutBackground/>
+        </AvatarBackgroundLayer>
+        <ContentLayer speed={0}>
+        <Inner>
+          <Title>THIS IS WHAT MOTIVATES ME</Title>
+          <AboutHero>
+            <Avatar type="image/jpg" src={avatar} alt="Alexander Stricker" />
+            <div>
+              <MediaQuery query="(min-width: 800px)">
+                <AboutSub>
+                  As a front-end developer I am confident that with the help of the right approaches like
+    agile software development and user centered design almost all technical and human
+    problems can be solved. Working closely with designers and other developers is a very
+    natural thing for me. I love to bring distinct and delightful experiences to life. More
+    importantly these solutions have to serve the ultimate goal to make the users lives
+    easier!
+                </AboutSub>
+              </MediaQuery>
+              <AboutSub>
+                If I would need to point out something that makes me special it would be my urge to
+  add a little something to all of my work - let’s call it <a onClick={() => {this.toggleDebug()}}>easteregg</a> ;)
+              </AboutSub>
+            </div>
+          </AboutHero>
+        </Inner>
+       </ContentLayer>
+      </CSSParallaxGroup>
+      <CSSParallaxGroup name="page3" debugOn={this.state.debugOn} offset={this.state.isSmallMobile ? 2 : 1.8}>
         <NoClickLayerSVG speed={0.1}>
           <SVGPageTwo />
         </NoClickLayerSVG>
         <ContentLayer speed={0.4}>
         <Inner>
-          <Title>PROJECTS</Title>
+          <Title>SOME OF MY NON CONFIDENTIAL ROJECTS</Title>
               <Projects
               onOpenArticle={this.handleOpenArticle}
               timeout={this.state.timeout}
@@ -388,31 +420,7 @@ handleCloseArticle() {
         </Inner>
         </ContentLayer>
       </CSSParallaxGroup>
-      <CSSParallaxGroup name="page3" debugOn={this.state.debugOn} offset={this.state.isSmallMobile ? 2 : 2}>
-        <NoClickLayerSVG speed={0.1}>
-          <SVGPageThree />
-        </NoClickLayerSVG>
-        <ContentLayer speed={0.4}>
-        <Inner>
-          <Title>ABOUT</Title>
-          <AboutHero>
-            <Avatar type="image/jpg" src={avatar} alt="Alexander Stricker" />
-            <AboutSub>
-              In every work i made i am experiences the need to insert a little special. You can call it an Easteregg.
-              It can range from a Ligthsaber sound until a complete minigame.
-              You can try one for yourself <a onClick={() => {this.toggleDebug()}}>here</a>...
-            </AboutSub>
-          </AboutHero>
-          <MediaQuery query="(min-width: 800px)">
-            <AboutDesc>
-              Only your mind is the border of your own limitation. All things you confront creates your own personality. Some of them improves decrease or creates a new one.
-              it can depend on Mangas, movie shows, freindships or your socity. I do like a lot Mangas and Animes.
-            </AboutDesc>
-          </MediaQuery>
-        </Inner>
-       </ContentLayer>
-      </CSSParallaxGroup>
-      <CSSParallaxGroup name="page4" debugOn={this.state.debugOn} offset={this.state.isSmallMobile ? 3 : 3}>
+      <CSSParallaxGroup name="page4" debugOn={this.state.debugOn} offset={this.state.isSmallMobile ? 3 : 2.8}>
         <AnimationParallaxLayer speed={0} fill="#23262b">
           <WaveWrapper>
             <InnerWave>

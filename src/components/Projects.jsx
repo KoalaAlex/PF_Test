@@ -34,40 +34,39 @@ class Projects extends React.Component {
       <React.Fragment>
         <ProjectsWrapper id="projects" style={this.props.timeout ? {display: 'none'} : {}}>
           <ProjectCard
+            title="my portfolio playground"
+            onOpenArticle={this.props.onOpenArticle}
+            link="portfolio"
+          >
+            "Here you can see the make of from my portfolio"
+          </ProjectCard>
+          <ProjectCard
             title="multiplayer vr"
             onOpenArticle={this.props.onOpenArticle}
             link="vr-multi"
           >
-            You can play this project with an Oculus or a HTC Vive it is support by SteamVR and you can meet each other virtual in a game zone.
+            "You can play this project with an Oculus or a HTC Vive it is support by SteamVR and you can meet each other virtual in a game zone."
           </ProjectCard>
           <ProjectCard
             title="interactive and touch"
             onOpenArticle={this.props.onOpenArticle}
             link="touch"
           >
-            Here is a collection of some nice Apps that are made with Unity for Mobile and Dektop Devices.
+            "Here is a collection of some nice Apps that are made with Unity for Mobile and Dektop Devices."
           </ProjectCard>
           <ProjectCard
             title="simulators and configurators"
             onOpenArticle={this.props.onOpenArticle}
             link="simulator"
           >
-            In those "games" you can change almost everything from day/night behaviour until the mass of a crane load.
-            <br/>The more load weight on the crane, the more it bends.
+            "In those 'games' you can change almost everything from day/night behaviour until the mass of a crane load. The more load weight on the crane, the more it bends."
           </ProjectCard>
           <ProjectCard
             title="augmented reality"
             onOpenArticle={this.props.onOpenArticle}
             link="augmented"
           >
-            Here you can find some fancy applications that mixes the real world with the virtual one.
-          </ProjectCard>
-          <ProjectCard
-            title="WEB"
-            onOpenArticle={this.props.onOpenArticle}
-            link="web"
-          >
-            Here you can see some nice websites and fun projects
+            "Here you can find some fancy applications that mixes the real world with the virtual one."
           </ProjectCard>
         </ProjectsWrapper>
         <ProjectContent
