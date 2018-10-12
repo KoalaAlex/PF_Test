@@ -36,7 +36,7 @@ const WrapperTransform = styled.svg`
   }
 `;
 
-const icontTypes = ['triangle', 'circle', 'arrowUp', 'upDown', 'box', 'hexa', 'badge', 'imac', 'ps4', 'smartphone', 'puzzle', 'pencilcase', 'pencil', 'flask', 'cube', 'bubble', 'cloud', 'network' , 'star', 'usb', 'pokeball', 'pin', 'plane', 'key', 'flash', 'blub', 'usbSimple', 'error404', 'bug', 'shield', 'sword', 'coin'];
+const icontTypes = ['triangle', 'circle', 'arrowUp', 'upDown', 'box', 'hexa', 'badge', 'imac', 'ps4', 'smartphone', 'puzzle', 'pencilcase', 'flask', 'cube', 'bubble', 'cloud', 'network' , 'star', 'usb', 'pokeball', 'pin', 'plane', 'key', 'flash', 'blub', 'usbSimple', 'error404', 'bug', 'shield', 'sword', 'coin'];
 
 const icons = {
   triangle: {
@@ -157,16 +157,6 @@ const icons = {
       />
       ),
     viewBox: '0 0 48 48',
-  },
-  pencil: {
-    shape: (
-      <defs>
-        <path id="original-pencil" d="M37.51 13.51L34 10 10.98 33.98l3.51 3.51 23.02-23.98zM39 15L15.98 38.98l2.13 2.13 23.87-23.13L39 15zm-6.49-6.49l-2.1-2.1-23.5 23.5L9.5 32.5 32.51 8.51zm-28.1 28.9l6.19 6.19 5.72-1.28L5.68 31.68 4.4 37.4zm-.55 2.45l-1.23 5.5 5.51-1.22-4.28-4.28zM31.9 4.9l11.6 11.6 1.57-1.53a3 3 0 0 0 .1-4.2l-7.11-7.63a3.02 3.02 0 0 0-4.32-.08l-1.84 1.84zM4.82 29.18L32.34 1.66a5 5 0 0 1 7.2.12l7.11 7.63a5 5 0 0 1-.18 7l-27.66 26.8a4 4 0 0 1-1.91 1.04l-15.37 3.4a1 1 0 0 1-1.19-1.18l3.4-15.33a4 4 0 0 1 1.08-1.96z"
-        />
-      </defs>
-      ),
-    viewBox: '0 0 48 48',
-    duplication: (<use xlinkHref="#original-pencil" />),
   },
   flask: {
     shape: (
@@ -337,25 +327,44 @@ const icons = {
 export class SVG extends React.PureComponent {
   render(){
     return (
-      <Wrapper
-        left={this.props.left}
-        top={this.props.top}
-      >
-        <WrapperTransform
-        id={this.props.id}
-        viewBox={icons[this.props.icon].viewBox}
-        stroke={this.props.stroke}
-        fill={this.props.fill}
-        svgWidth={twWidth[`${this.props.width}`]}
-        left={this.props.left}
-        top={this.props.top}
-        className={this.props.className}
-        originOffsetX={this.props.scaleFromLeft ? '0': '-50%'}
-        originOffsetY={this.props.scaleFromTop ? '0': '-50%'}
-        >
-        {icons[this.props.icon].duplication}
-        </WrapperTransform>
-      </Wrapper>
+      <React.Fragment>
+        {this.props.useSelfAlign ? (
+          <WrapperTransform
+          id={this.props.id}
+          viewBox={icons[this.props.icon].viewBox}
+          stroke={this.props.stroke}
+          fill={this.props.fill}
+          svgWidth={twWidth[`${this.props.width}`]}
+          left={this.props.useSelfAlign ? 0 : this.props.left}
+          top={this.props.useSelfAlign ? 0 : this.props.top}
+          className={this.props.className}
+          originOffsetX={this.props.scaleFromLeft ? '0': '-50%'}
+          originOffsetY={this.props.scaleFromTop ? '0': '-50%'}
+          >
+          {icons[this.props.icon].duplication}
+          </WrapperTransform>
+        ) : (
+          <Wrapper
+            left={this.props.useSelfAlign ? 0 : this.props.left}
+            top={this.props.useSelfAlign ? 0 : this.props.top}
+          >
+            <WrapperTransform
+            id={this.props.id}
+            viewBox={icons[this.props.icon].viewBox}
+            stroke={this.props.stroke}
+            fill={this.props.fill}
+            svgWidth={twWidth[`${this.props.width}`]}
+            left={this.props.useSelfAlign ? 0 : this.props.left}
+            top={this.props.useSelfAlign ? 0 : this.props.top}
+            className={this.props.className}
+            originOffsetX={this.props.scaleFromLeft ? '0': '-50%'}
+            originOffsetY={this.props.scaleFromTop ? '0': '-50%'}
+            >
+            {icons[this.props.icon].duplication}
+            </WrapperTransform>
+          </Wrapper>
+        )}
+      </React.Fragment>
     );
   }
 }
@@ -371,6 +380,7 @@ SVG.propTypes = {
   id: PropTypes.string,
   scaleFromTop: PropTypes.bool,
   scaleFromLeft: PropTypes.bool,
+  useSelfAlign: PropTypes.bool,
 };
 
 SVG.defaultProps = {
@@ -382,6 +392,7 @@ SVG.defaultProps = {
   className: 'fancy-icon',
   scaleFromTop: false,
   scaleFromLeft: false,
+  useSelfAlign: false,
 };
 
 export class SVGOriginal extends React.PureComponent {

@@ -43,33 +43,6 @@ const upDownWideAnimation = keyframes`
   }
 `;
 
-const rotateAndBack = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(10deg);
-  }
-`;
-
-const blurAnim = keyframes`
-  from {
-    filter: blur(4px);
-  }
-  to {
-    filter: blur(24px);
-  }
-`;
-
-const blurAnimBig = keyframes`
-  from {
-    filter: blur(4px);
-  }
-  to {
-    filter: blur(46px);
-  }
-`;
-
 export const boxShadowAnim = keyframes`
   /*
   from {
@@ -85,6 +58,17 @@ export const boxShadowAnim = keyframes`
   to {
     opacity: 1;
   }
+`;
+
+export const hopAnimDown = keyframes`
+	0%, 100% {
+		//filter: blur(4px);
+		transform: translate3d(0,0,0) rotateZ(-180deg);
+	}
+	50%{
+		transform: translate3d(0,1vh,0) rotateZ(-180deg);
+	}
+}
 `;
 
 export const UpDown = styled.div`

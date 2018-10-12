@@ -6,16 +6,19 @@ import { CSSParallax, CSSParallaxGroup, CSSParallaxLayer } from '../components/C
 
 // import Components
 import SEO from '../components/SEO';
-import SVG from '../components/SVG';
-import { SVGOriginals, SVGPageOne, SVGPageTwo, SVGPageThree, SVGPageFour } from '../components/SVGManager';
+import { SVG } from '../components/SVG';
+import { SVGOriginals, SVGPageOne, SVGPageTwo, SVGPageThree, SVGPageFour, SVGPageFive, SVGPageSix } from '../components/SVGManager';
 import Projects from '../components/Projects';
-import { rotate, UpDown, UpDownWide, waveAnimation, blurNormal, blurBig, boxShadowAnim } from '../styles/animations';
+import ProjectContent from '../components/ProjectContent';
+import { waveAnimation, boxShadowAnim, hopAnimDown, fadeAnimation } from '../styles/animations';
 import { hidden } from '../styles/utils';
 import { colors } from '../../tailwind';
 import avatar from '../images/avatar.jpg';
 import '../styles/global';
 import config from '../../config/website';
 import MediaQuery from 'react-responsive';
+
+const commentText = "╔═╗┌─┐┌┬┐┌┬┐┌─┐┌┐┌┌┬┐┌─┐  ┌─┐┌─┐┬  ┬┌─┐  ┬  ┬┬  ┬┌─┐┌─┐┬ \n     ║  │ │││││││├┤ │││ │ └─┐  └─┐├─┤└┐┌┘├┤   │  │└┐┌┘├┤ └─┐│ \n     ╚═╝└─┘┴ ┴┴ ┴└─┘┘└┘ ┴ └─┘  └─┘┴ ┴ └┘ └─┘  ┴─┘┴ └┘ └─┘└─┘o";
 
 // Scroll
 import {Events, Link, scroller} from 'react-scroll'
@@ -32,6 +35,7 @@ const NoClickDivider = styled(CSSParallaxGroup)`
 
 const ContentLayer = styled(CSSParallaxLayer)`
   ${tw('p-6 md:p-12 lg:p-24 justify-center items-center')};
+  justify-items: center;
   display: grid;
 `;
 
@@ -58,6 +62,14 @@ const AnimationParallaxLayer = styled(CSSParallaxLayer)`
 const AvatarBackgroundLayer = styled(CSSParallaxLayer)`
   display: grid;
   align-items: center;
+`;
+
+const ProjectParallaxLayer = styled(CSSParallaxLayer)`
+  padding-left: 3rem;
+  padding-right: 3rem;
+  justify-items: center;
+  adjust-items: center;
+  display: grid;
 `;
 
 const RotateDivider = styled.div`
@@ -97,6 +109,7 @@ const DividerMiddleMain = styled.div`
 const Content = styled(CSSParallaxGroup)`
   position: absolute;
 `;
+
 
 const Hero = styled.div`
   ${tw('w-full xl:w-2/3')};
@@ -143,6 +156,9 @@ const InnerWave = styled.div`
 
 const AboutHero = styled.div`
   ${tw(' flex flex-col lg:flex-row items-center mt-8')};
+  p {
+    font-family:'IBM Plex Sans';
+  }
 `;
 
 const Avatar = styled.img`
@@ -157,8 +173,6 @@ const AboutSub = styled.p`
     text-shadow: 0 0.1rem 1rem rgb(30, 31, 36);
   }
 `;
-
-const offset = 100;
 
 const ContactText = styled.p`
   ${tw('text-grey-light text-xl md:text-2xl lg:text-3xl')};
@@ -178,6 +192,48 @@ const Footer = styled.footer`
   }
 `;
 
+const Albert = styled.div`
+  ${tw(' flex flex-col items-center mt-8')};
+  p {
+    font-family:'IBM Plex Sans';
+  }
+`;
+
+const MoveToPageOne = styled.div`
+  display: inline-grid;
+  pointer-events: all;
+  align-items: center;
+  justify-items: center;
+  position: absolute;
+  height: 6vh;
+  top: 10vh;
+  width: 60vw;
+  background-color: rgba(255, 255, 255, .05);
+  @supports ((-webkit-backdrop-filter: blur(1em)) or (backdrop-filter: blur(1em))) {
+        -webkit-backdrop-filter: blur(1em);
+        backdrop-filter: blur(1em);
+  }
+  border-radius: _size(border-radius);
+  cursor: pointer;
+  text-indent: 4rem;
+  overflow: hidden;
+  white-space: nowrap;
+  svg {
+    animation: ${hopAnimDown} 4s ease-in-out infinite alternate;
+    transform: translate3d(0,0,0) rotateZ(-180deg);
+    will-change: transform;
+  }
+  &:hover {
+    background-color: _palette(border-bg);
+    svg {
+      animation: ${hopAnimDown} 1s ease-in-out infinite alternate;
+    }
+  }
+  &:active {
+    background-color: _palette(border-bg-alt);
+  }
+`;
+
 // const Index = () => (
 class Index extends React.Component {
   constructor(props) {
@@ -189,7 +245,8 @@ class Index extends React.Component {
     article: '',
     loading: 'is-loading',
     isSmallMobile: false,
-    debugOn: false
+    debugOn: false,
+    xOffsetAllPages: 0
   }
   this.timeoutId;
   this.spaceKeyWasPressed;
@@ -200,6 +257,9 @@ class Index extends React.Component {
   this.keyUpFunction = this.keyUpFunction.bind(this);
   this.toggleDebug = this.toggleDebug.bind(this);
   this.moveToPage2 = this.moveToPage2.bind(this);
+  this.moveToPage1 = this.moveToPage1.bind(this);
+  this.moveToProjectCards = this.moveToProjectCards.bind(this);
+  this.moveToProjectContent = this.moveToProjectContent.bind(this);
 }
 
 toggleDebug(){
@@ -208,6 +268,15 @@ toggleDebug(){
 
 moveToPage2(){
   scroller.scrollTo('page3', {
+    duration: 1500,
+    delay: 0,
+    smooth: 'easeInOut',
+    containerId: 'parallax-scroller'
+  });
+}
+
+moveToPage1(){
+  scroller.scrollTo('page2', {
     duration: 1500,
     delay: 0,
     smooth: 'easeInOut',
@@ -243,6 +312,14 @@ keyDownFunction(event){
       }
       */
     }
+}
+
+moveToProjectCards(){
+  this.setState({xOffsetAllPages: 0});
+}
+
+moveToProjectContent(){
+  this.setState({xOffsetAllPages: -100});
 }
 
 keyUpFunction(event){
@@ -282,6 +359,7 @@ componentWillUnmount () {
 }
 
 updateDimensions() {
+  /*
   if(window.innerWidth <= 450){
     this.setState({
       isSmallMobile: true
@@ -292,6 +370,7 @@ updateDimensions() {
       isSmallMobile: false
     })
   }
+  */
 }
 
 
@@ -299,7 +378,7 @@ handleOpenArticle(article) {
   if(this.state.isArticleVisible){
     return;
   }
-
+  this.moveToProjectContent();
   this.setState({
     isArticleVisible: true,
     article
@@ -322,7 +401,7 @@ handleCloseArticle() {
   if(!this.state.articleTimeout){
     return;
   }
-
+  this.moveToProjectCards();
   this.setState({
     articleTimeout: false
   })
@@ -345,6 +424,7 @@ handleCloseArticle() {
     return (
   <React.Fragment>
     <SEO />
+    <div dangerouslySetInnerHTML={{__html: "<!-- " + commentText + " -->"}}/>
     <SVGOriginals />
     <CSSParallax id="parallax-scroller" pages={this.state.isSmallMobile ? 4 : 4}>
     {/*
@@ -352,31 +432,37 @@ handleCloseArticle() {
             Go to first element inside container
         </Link>
         */}
-      <CSSParallaxGroup name="page1" debugOn={this.state.debugOn} offset={0}>
+      <CSSParallaxGroup name="page1" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={0}>
         <NoClickLayerSVG speed={0.2}>
           <SVGPageOne />
         </NoClickLayerSVG>
         <ContentLayer speed={0.4}>
         <Hero>
           <BigTitle>
-            Hello, <br /> I'm Alex.
+            HI,<br />WELCOME<MediaQuery query="(max-width: 600px)"><br /></MediaQuery> TO MY<br />PLAYGROUND
           </BigTitle>
-          <Subtitle>I'm creating beautiful content for VR, AR, web and touch. Go on and have a look at my <a onClick={() => {this.moveToPage2()}}>projects</a></Subtitle>
+          <Subtitle>My name is Alex and I am a frontend developer who loves to create impactful experiences for web, VR/ AR and mobile devices.
+<br/><br/>Check out some of my <a onClick={() => {this.moveToPage2()}}>projects</a></Subtitle>.
         </Hero>
         </ContentLayer>
       </CSSParallaxGroup>
-      <NoClickDivider debugOn={this.state.debugOn} offset={1.8} >
+      <NoClickDivider debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={1.8} >
         <CSSParallaxLayer speed={0.2}>
           <RotateDivider />
         </CSSParallaxLayer>
       </NoClickDivider>
-      <CSSParallaxGroup name="page2" debugOn={this.state.debugOn} offset={this.state.isSmallMobile ? 1 : 0.8}>
-        <NoClickLayerSVG speed={0.1}>
-          <SVGPageThree />
-        </NoClickLayerSVG>
+      <CSSParallaxGroup name="page2" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 1 : 0.8}>
         <AvatarBackgroundLayer speed={0}>
           <AboutBackground/>
         </AvatarBackgroundLayer>
+        <NoClickLayerSVG speed={0.1}>
+          <SVGPageTwo />
+        </NoClickLayerSVG>
+        <ContentLayer speed={0}>
+          <MoveToPageOne onClick={() => {this.moveToPage1()}}>
+            <SVG icon="triangle" width={'8'} fill="#ff006f" useSelfAlign={true}/>
+          </MoveToPageOne>
+        </ContentLayer>
         <ContentLayer speed={0}>
         <Inner>
           <Title>THIS IS WHAT MOTIVATES ME</Title>
@@ -402,25 +488,38 @@ handleCloseArticle() {
         </Inner>
        </ContentLayer>
       </CSSParallaxGroup>
-      <CSSParallaxGroup name="page3" debugOn={this.state.debugOn} offset={this.state.isSmallMobile ? 2 : 1.8}>
+      <CSSParallaxGroup name="page4" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 2.6 : 2.6}>
+        <AvatarBackgroundLayer speed={0}>
+          <AboutBackground/>
+        </AvatarBackgroundLayer>
         <NoClickLayerSVG speed={0.1}>
-          <SVGPageTwo />
+          <SVGPageFour />
         </NoClickLayerSVG>
-        <ContentLayer speed={0.4}>
-        <Inner>
-          <Title>SOME OF MY NON CONFIDENTIAL ROJECTS</Title>
-              <Projects
-              onOpenArticle={this.handleOpenArticle}
-              timeout={this.state.timeout}
-              isArticleVisible={this.state.isArticleVisible}
-              articleTimeout={this.state.articleTimeout}
-              article={this.state.article}
-              onCloseArticle={this.handleCloseArticle}
-              />
-        </Inner>
-        </ContentLayer>
+        <ContentLayer speed={0}>
+          <Inner>
+            <Albert>
+              <AboutSub>
+                “Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning”
+              </AboutSub>
+              <AboutSub>
+                Albert Einstein
+              </AboutSub>
+            </Albert>
+          </Inner>
+       </ContentLayer>
       </CSSParallaxGroup>
-      <CSSParallaxGroup name="page4" debugOn={this.state.debugOn} offset={this.state.isSmallMobile ? 3 : 2.8}>
+      <CSSParallaxGroup name="page3" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 2 : 1.6}>
+        <NoClickLayerSVG speed={0.1}>
+          <SVGPageThree />
+        </NoClickLayerSVG>
+        <ProjectParallaxLayer speed={0.4}>
+          <Inner>
+            <Title>SOME OF MY NON CONFIDENTIAL ROJECTS</Title>
+                <Projects onOpenArticle={this.handleOpenArticle} />
+          </Inner>
+        </ProjectParallaxLayer>
+      </CSSParallaxGroup>
+      <CSSParallaxGroup name="page5" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 3.4 : 3.4}>
         <AnimationParallaxLayer speed={0} fill="#23262b">
           <WaveWrapper>
             <InnerWave>
@@ -432,7 +531,7 @@ handleCloseArticle() {
           </WaveWrapper>
         </AnimationParallaxLayer>
         <LastNoClickLayerSVG speed={0.1}>
-          <SVGPageFour />
+          <SVGPageFive />
         </LastNoClickLayerSVG>
         <ContentLayer speed={0}>
           <Inner>
@@ -448,6 +547,23 @@ handleCloseArticle() {
             <a href={config.github}>Github Repository</a>.
           </Footer>
         </ContentLayer>
+      </CSSParallaxGroup>
+      <CSSParallaxGroup name="page6" debugOn={this.state.debugOn} xoffset={100 + this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 1 : 1.8}>
+        <AvatarBackgroundLayer speed={-0.2}>
+          <AboutBackground/>
+        </AvatarBackgroundLayer>
+        <LastNoClickLayerSVG speed={-0.1}>
+          <SVGPageSix />
+        </LastNoClickLayerSVG>
+        <ContentLayer speed={0}>
+          <ProjectContent
+            isArticleVisible={this.state.isArticleVisible}
+            timeout={this.state.timeout}
+            articleTimeout={this.state.articleTimeout}
+            article={this.state.article}
+            onCloseArticle={this.handleCloseArticle}
+          />
+       </ContentLayer>
       </CSSParallaxGroup>
     </CSSParallax>
     <noscript>Your browser does not support JavaScript!</noscript>

@@ -18,6 +18,7 @@ const Wrapper = styled(Element)`
 
 const WrapperLayer = styled.div`
   position: absolute;
+  pointer-events: none;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -86,16 +87,16 @@ export class CSSParallaxGroup extends React.PureComponent {
     return (
       <WrapperGroup
         name={this.props.name}
-        xoffset={this.props.debugOn ? -6 : 0}
-        zoffset={this.props.debugOn ? -2 : 0}
+        xoffset={this.props.debugOn ? (-6 + (this.props.xoffset)) : this.props.xoffset}
+        zoffset={this.props.debugOn ? (-2 + (this.props.xoffset * 0.0875)) : 0}
         rotatey={this.props.debugOn ? ('rotateY(' + (-0.05 * perspective) + 'deg)'): ''}
-        pageoffset={(this.props.offset * 100 / this.state.scale) * this.state.scale}
-        indexz={(this.props.offset + 1)}
+        pageoffset={(this.props.yoffset * 100 / this.state.scale) * this.state.scale}
+        indexz={(this.props.yoffset + 1)}
         className={this.props.className}
         >
             {React.Children.map(this.props.children, child => {
                 return React.cloneElement(child, {
-                  zoffset: this.state.offset,
+                  zoffset: this.state.yoffset,
                 })}
             )}
       </WrapperGroup>
@@ -105,7 +106,8 @@ export class CSSParallaxGroup extends React.PureComponent {
 
 CSSParallaxGroup.propTypes = {
   speed: PropTypes.number,
-  offset: PropTypes.number,
+  xoffset: PropTypes.number,
+  yoffset: PropTypes.number,
   children: PropTypes.node,
   debugOn: PropTypes.bool,
   className: PropTypes.string,
@@ -114,7 +116,8 @@ CSSParallaxGroup.propTypes = {
 
 CSSParallaxGroup.defaultProps = {
   speed: 0,
-  offset: 0,
+  xoffset: 0,
+  yoffset: 0,
   debugOn: false,
   className: 'parallax-group',
 };

@@ -6,6 +6,26 @@
 
 /* Main */
 
+@keyframes hopAnimComplete {
+	0%, 40%, 60%, 100% {
+		//filter: blur(4px);
+		transform: translate3d(0,0,0) rotateZ(-90deg);
+	}
+	50%{
+		transform: translate3d(-1rem,0,0) rotateZ(-90deg);
+	}
+}
+
+@keyframes hopAnim {
+	0%, 100% {
+		//filter: blur(4px);
+		transform: translate3d(0,0,0) rotateZ(-90deg);
+	}
+	50%{
+		transform: translate3d(-1rem,0,0) rotateZ(-90deg);
+	}
+}
+
 	#project-content {
 		display: grid;
 		@include vendor('align-items', 'center');
@@ -23,6 +43,7 @@
 				'opacity #{_duration(article)} ease-in-out',
 				'transform #{_duration(article)} ease-in-out'
 			));
+			/*
 			@include padding(2.5rem, 2.5rem, (2rem, 0, 1rem, 0));
 			background-color: rgba(255, 255, 255, .05);
 			@supports ((-webkit-backdrop-filter: blur(1em)) or (backdrop-filter: blur(1em))) {
@@ -30,6 +51,7 @@
 						backdrop-filter: blur(1em);
 			}
 			border-radius: _size(border-radius);
+			*/
 			opacity: 0;
 			will-change: opacity, transform;
 
@@ -49,48 +71,51 @@
 			}
 
 			&.active {
-				display: block !important;
+				display: inline-grid !important;
 			}
 
 			.close {
-				display: block;
+				display: inline-grid;
+				align-items: center;
+				justify-items: center;
 				position: absolute;
-				top: 0;
-				right: 0;
-				width: 4rem;
-				height: 4rem;
+				height: 80%;
+				left: -1.5rem;
+				width: 1.5rem;
+				background-color: rgba(255, 255, 255, .05);
+				@supports ((-webkit-backdrop-filter: blur(1em)) or (backdrop-filter: blur(1em))) {
+							-webkit-backdrop-filter: blur(1em);
+							backdrop-filter: blur(1em);
+				}
+				border-radius: _size(border-radius);
+				@media (min-width: 600px) {
+					left: -3rem;
+					width: 3rem;
+				}
+				@media (min-width: 900px) {
+					left: -6rem;
+					width: 6rem;
+				}
 				cursor: pointer;
 				text-indent: 4rem;
 				overflow: hidden;
 				white-space: nowrap;
 
-				&:before {
-					@include vendor('transition', 'background-color #{_duration(transition)} ease-in-out');
-					content: '';
-					display: block;
-					position: absolute;
-					top: 0.75rem;
-					left: 0.75rem;
-					width: 2.5rem;
-					height: 2.5rem;
-					border-radius: 100%;
-					background-position: center;
-					background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 20 20" zoomAndPan="disable"><style>line { stroke: #{_palette(border)}; stroke-width: 1; }</style><line x1="2" y1="2" x2="18" y2="18" /><line x1="18" y1="2" x2="2" y2="18" /></svg>');
-					background-size: 20px 20px;
-					background-repeat: no-repeat;
-					will-change: background-color;
+				svg {
+					animation: hopAnim 4s ease-in-out infinite alternate;
+					transform: translate3d(0,0,0) rotateZ(-90deg);
+					will-change: transform;
 				}
 
 				&:hover {
-					&:before {
-						background-color: _palette(border-bg);
+					background-color: _palette(border-bg);
+					svg {
+						animation: hopAnim 1s ease-in-out infinite alternate;
 					}
 				}
 
 				&:active {
-					&:before {
-						background-color: _palette(border-bg-alt);
-					}
+					background-color: _palette(border-bg-alt);
 				}
 			}
 

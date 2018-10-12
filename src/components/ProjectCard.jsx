@@ -9,6 +9,7 @@ import MediaQuery from 'react-responsive';
 
 const Wrapper = styled.a`
   display: inherit;
+  pointer-events: all;
   ${tw('shadow-lg relative no-underline rounded-lg p-4 text-white')};
   width: 100%;
   overflow: hidden;
@@ -47,15 +48,15 @@ const Title = styled.p`
 
 const ProjectCard = ({ title, onOpenArticle, link, children}) => (
     <Wrapper href="javascript:;" onClick={() => {onOpenArticle(link)}}>
-    <MarginDiv>
-        <div>
-          <MediaQuery query="(min-width: 800px)">
-            <SubText>{children}</SubText>
+      <MarginDiv>
+          <Title>{title}</Title>
+          <div>
+            <MediaQuery query="(min-width: 800px)">
+              <SubText>{children}</SubText>
 
-          </MediaQuery>
-        </div>
-        <Title>{title}</Title>
-        </MarginDiv>
+            </MediaQuery>
+          </div>
+      </MarginDiv>
     </Wrapper>
 );
 

@@ -62,11 +62,10 @@ export class SVGPageOne extends React.PureComponent {
         <SVG icon="triangle" width={'8'} stroke={colors['grey-darker']} left="30" top="8" />
         <SVG icon="triangle" className={hiddenLG} width={'16'} stroke={colors['grey-darkest']} left="30" top="65" />
         <SVG icon="imac" className={hiddenLG} width={'24'} fill={colors['grey-darkest']} left="45" top="26" />
-        <SVG icon="cube" width={'12'} fill={colors['grey-darkest']} left="6" top="10" />
+        <SVG icon="cube" width={'12'} fill={colors['grey-darkest']} left="6" top="30" />
         <SVG icon="ps4" className={hiddenLG} width={'24'} fill={colors['grey-darker']} left="15" top="70" />
         <SVG icon="cloud" width={'24'} fill={colors['grey-darker']} left="55" top="70" />
         <SVG icon="usb" width={'78'} fill={colors['green-light']} left="95" top="20" />
-        <SVG icon="flash" className={hiddenMD} width={'64'} fill='#ff0057' left="5" top="90" />
         <SVG icon="flask" width={'24'} fill={colors['grey-darker']} left="10" top="50" />
         <SVG icon="usbSimple" className={hiddenLG} width={'16'} fill={colors['grey-darker']} left="80" top="50" />
         <UpDownWide>
@@ -86,8 +85,32 @@ export class SVGPageOne extends React.PureComponent {
   }
 };
 
-//export const SVGMiddle = () => {
 export class SVGPageTwo extends React.PureComponent {
+  render(){
+    return (
+      <SVGAbsolute>
+        <UpDown>
+          <SVG icon="usbSimple" className={hiddenLG} width={'8'} fill={colors['grey-darkest']} left="70" top="20" />
+          <SVG icon="imac" className={hiddenLG} width={'24'} fill={colors['green-light']} left="80" top="80" />
+        </UpDown>
+        <UpDownWide>
+          <SVG icon="flash"  width={'24'} fill="#7000ff" left="15" top="80" />
+          <SVG icon="triangle" width={'12'} stroke={colors.white} left="95" top="50" />
+          <SVG icon="cube" width={'24'} fill={colors.white} left="85" top="15" />
+          <SVG icon="blub" className={hiddenLG} width={'16'} fill={colors['grey-darkest']} left="45" top="30" />
+        </UpDownWide>
+        <SVG icon="pin" width={'32'} fill={colors['grey-darkest']} left="58" top="32" />
+        <SVG icon="usb" width={'32'} fill={colors['grey-darkest']} left="18" top="20" />
+        <SVG icon="circle" width={'12'} fill={colors['grey-darkest']} left="70" top="60" />
+        <SVG icon="cube" width={'12'} fill="#ff0057" left="10" top="20" />
+        <SVG icon="flask" width={'48'} fill={colors['grey-darkest']} left="40" top="70" />
+      </SVGAbsolute>
+    );
+  }
+};
+
+//export const SVGMiddle = () => {
+export class SVGPageThree extends React.PureComponent {
   render(){
     return (
       <SVGAbsolute>
@@ -109,24 +132,23 @@ export class SVGPageTwo extends React.PureComponent {
   }
 };
 
-export class SVGPageThree extends React.PureComponent {
+export class SVGPageFour extends React.PureComponent {
   render(){
     return (
       <SVGAbsolute>
         <UpDown>
-          <SVG icon="usbSimple" className={hiddenLG} width={'8'} fill={colors['grey-darkest']} left="70" top="20" />
-          <SVG icon="imac" className={hiddenLG} width={'24'} fill={colors['green-light']} left="80" top="80" />
+          <SVG icon="pokeball" className={hiddenLG} width={'8'} fill={colors['grey-darkest']} left="70" top="20" />
+          <SVG icon="pin" width={'32'} fill={colors['grey-darkest']} left="58" top="32" />
         </UpDown>
         <UpDownWide>
-          <SVG icon="flash"  width={'24'} fill="#7000ff" left="15" top="80" />
-          <SVG icon="triangle" width={'12'} stroke={colors.white} left="95" top="50" />
+          <SVG icon="blub"  width={'24'} fill={colors['grey-darkest']} left="15" top="60" />
+          <SVG icon="usbSimple" width={'12'} fill={colors.white} left="95" top="50" />
           <SVG icon="cube" width={'24'} fill={colors.white} left="85" top="15" />
-          <SVG icon="blub" className={hiddenLG} width={'16'} fill={colors['grey-darkest']} left="45" top="10" />
+          <SVG icon="blub" className={hiddenLG} width={'16'} fill={colors['grey-darkest']} left="45" top="30" />
         </UpDownWide>
-        <SVG icon="pin" width={'32'} fill={colors['grey-darkest']} left="58" top="32" />
-        <SVG icon="usb" width={'32'} fill={colors['grey-darkest']} left="18" top="20" />
+        <SVG icon="imac" width={'32'} fill={colors['grey-darkest']} left="75" top="75" />
         <SVG icon="circle" width={'12'} fill={colors['grey-darkest']} left="70" top="60" />
-        <SVG icon="cube" width={'12'} fill="#ff0057" left="10" top="10" />
+        <SVG icon="flask" width={'96'} fill="#ff0057" left="20" top="25" />
         <SVG icon="flask" width={'48'} fill={colors['grey-darkest']} left="40" top="70" />
       </SVGAbsolute>
     );
@@ -134,7 +156,28 @@ export class SVGPageThree extends React.PureComponent {
 };
 
 //export const SVGDown = () => {
-export class SVGPageFour extends React.PureComponent {
+export class SVGPageFive extends React.PureComponent {
+  render(){
+    return (
+      <SVGAbsolute>
+        <UpDown>
+          <SVG icon="flash" className={hiddenLG} width={'8'} fill={colors['grey-darkest']} left="70" top="20" />
+          <SVG icon="triangle" width={'8'} stroke={colors['grey-darkest']} left="25" top="5" />
+        </UpDown>
+        <UpDownWide>
+          <SVG icon="usbSimple" width={'12'} fill={colors.white} left="85" top="15" />
+          <SVG icon="cloud" className={hiddenLG} width={'16'} fill={colors['grey-darkest']} left="45" top="10" />
+        </UpDownWide>
+        <SVG icon="pin" width={'24'} fill={colors.white} left="4" top="20" />
+        <SVG icon="cube" width={'12'} fill={colors['grey-darkest']} left="60" top="60" />
+        <SVG icon="imac" className={hiddenLG} width={'24'} fill={colors['grey-darkest']} left="20" top="30" />
+        <SVG icon="blub" width={'8'} fill={colors['grey-darkest']} left="20" top="60" />
+      </SVGAbsolute>
+    );
+  }
+};
+
+export class SVGPageSix extends React.PureComponent {
   render(){
     return (
       <SVGAbsolute>

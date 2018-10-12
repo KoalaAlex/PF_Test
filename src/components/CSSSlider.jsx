@@ -41,6 +41,7 @@ const BigImageP= styled.picture`
 
 const SmallImageP= styled.picture`
   display: grid;
+  pointer-events: all;
   grid-template-columns: repeat(1, 1fr);
   width: 100%;
   align-items: center;
