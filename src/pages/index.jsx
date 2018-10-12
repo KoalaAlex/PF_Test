@@ -433,10 +433,10 @@ handleCloseArticle() {
         </Link>
         */}
       <CSSParallaxGroup name="page1" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={0}>
-        <NoClickLayerSVG speed={0.2} zIndex={-1}>
+        <NoClickLayerSVG speed={0.2} zIndex={1}>
           <SVGPageOne />
         </NoClickLayerSVG>
-        <ContentLayer speed={0.4}>
+        <ContentLayer speed={0.4} zIndex={2}>
         <Hero>
           <BigTitle>
             HI,<br />WELCOME<MediaQuery query="(max-width: 600px)"><br /></MediaQuery> TO MY<br />PLAYGROUND
@@ -447,23 +447,23 @@ handleCloseArticle() {
         </ContentLayer>
       </CSSParallaxGroup>
       <NoClickDivider debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={1.8} >
-        <CSSParallaxLayer speed={0.2} zIndex={-2}>
+        <CSSParallaxLayer speed={0.2} zIndex={1}>
           <RotateDivider />
         </CSSParallaxLayer>
       </NoClickDivider>
       <CSSParallaxGroup name="page2" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 1 : 0.8}>
-        <AvatarBackgroundLayer speed={0} zIndex={-2}>
-          <AboutBackground/>
-        </AvatarBackgroundLayer>
-        <NoClickLayerSVG speed={0.1} zIndex={-1}>
-          <SVGPageTwo />
-        </NoClickLayerSVG>
-        <ContentLayer speed={0} zIndex={1}>
+        <ContentLayer speed={0} zIndex={4}>
           <MoveToPageOne onClick={() => {this.moveToPage1()}}>
             <SVG icon="triangle" width={'8'} fill="#ff006f" useSelfAlign={true}/>
           </MoveToPageOne>
         </ContentLayer>
-        <ContentLayer speed={0}>
+        <AvatarBackgroundLayer speed={0} zIndex={2}>
+          <AboutBackground/>
+        </AvatarBackgroundLayer>
+        <NoClickLayerSVG speed={0.1} zIndex={2}>
+          <SVGPageTwo />
+        </NoClickLayerSVG>
+        <ContentLayer speed={0} zIndex={4}>
         <Inner>
           <Title>THIS IS WHAT MOTIVATES ME</Title>
           <AboutHero>
@@ -489,13 +489,13 @@ handleCloseArticle() {
        </ContentLayer>
       </CSSParallaxGroup>
       <CSSParallaxGroup name="page4" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 2.6 : 2.6}>
-        <AvatarBackgroundLayer speed={0} zIndex={-2}>
+        <AvatarBackgroundLayer speed={0} zIndex={1}>
           <AboutBackground/>
         </AvatarBackgroundLayer>
-        <NoClickLayerSVG speed={0.1} zIndex={-1}>
+        <NoClickLayerSVG speed={0.1} zIndex={2}>
           <SVGPageFour />
         </NoClickLayerSVG>
-        <ContentLayer speed={0}>
+        <ContentLayer speed={0} zIndex={3}>
           <Inner>
             <Albert>
               <AboutSub>
@@ -509,10 +509,10 @@ handleCloseArticle() {
        </ContentLayer>
       </CSSParallaxGroup>
       <CSSParallaxGroup name="page3" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 2 : 1.6}>
-        <NoClickLayerSVG speed={0.1} zIndex={-1}>
+        <NoClickLayerSVG speed={0.1} zIndex={2}>
           <SVGPageThree />
         </NoClickLayerSVG>
-        <ProjectParallaxLayer speed={0.4}>
+        <ProjectParallaxLayer speed={0.4} zIndex={3}>
           <Inner>
             <Title>SOME OF MY NON CONFIDENTIAL ROJECTS</Title>
                 <Projects onOpenArticle={this.handleOpenArticle} />
@@ -520,7 +520,7 @@ handleCloseArticle() {
         </ProjectParallaxLayer>
       </CSSParallaxGroup>
       <CSSParallaxGroup name="page5" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 3.4 : 3.4}>
-        <AnimationParallaxLayer speed={0} fill="#23262b" zIndex={-2}>
+        <AnimationParallaxLayer speed={0} fill="#23262b" zIndex={2}>
           <WaveWrapper>
             <InnerWave>
               <svg viewBox="0 0 800 338.05" preserveAspectRatio="none">
@@ -530,10 +530,10 @@ handleCloseArticle() {
             </InnerWave>
           </WaveWrapper>
         </AnimationParallaxLayer>
-        <LastNoClickLayerSVG speed={0.1} zIndex={-1}>
+        <LastNoClickLayerSVG speed={0.1} zIndex={3}>
           <SVGPageFive />
         </LastNoClickLayerSVG>
-        <ContentLayer speed={0}>
+        <ContentLayer speed={0} zIndex={4}>
           <Inner>
             <Title>GET IN TOUCH</Title>
             <ContactText>
@@ -549,13 +549,13 @@ handleCloseArticle() {
         </ContentLayer>
       </CSSParallaxGroup>
       <CSSParallaxGroup name="page6" debugOn={this.state.debugOn} xoffset={125 + this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 1 : 1.8}>
-        <AvatarBackgroundLayer speed={-0.2} zIndex={-2}>
+        <AvatarBackgroundLayer speed={-0.2} zIndex={1}>
           <AboutBackground/>
         </AvatarBackgroundLayer>
-        <LastNoClickLayerSVG speed={-0.1} zIndex={-1}>
+        <LastNoClickLayerSVG speed={-0.1} zIndex={2}>
           <SVGPageSix />
         </LastNoClickLayerSVG>
-        <ContentLayer speed={0}>
+        <ContentLayer speed={0} zIndex={3}>
           <ProjectContent
             isArticleVisible={this.state.isArticleVisible}
             timeout={this.state.timeout}
