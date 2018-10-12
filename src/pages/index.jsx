@@ -319,7 +319,7 @@ moveToProjectCards(){
 }
 
 moveToProjectContent(){
-  this.setState({xOffsetAllPages: -100});
+  this.setState({xOffsetAllPages: -125});
 }
 
 keyUpFunction(event){
@@ -433,7 +433,7 @@ handleCloseArticle() {
         </Link>
         */}
       <CSSParallaxGroup name="page1" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={0}>
-        <NoClickLayerSVG speed={0.2}>
+        <NoClickLayerSVG speed={0.2} zIndex={-1}>
           <SVGPageOne />
         </NoClickLayerSVG>
         <ContentLayer speed={0.4}>
@@ -447,18 +447,18 @@ handleCloseArticle() {
         </ContentLayer>
       </CSSParallaxGroup>
       <NoClickDivider debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={1.8} >
-        <CSSParallaxLayer speed={0.2}>
+        <CSSParallaxLayer speed={0.2} zIndex={-2}>
           <RotateDivider />
         </CSSParallaxLayer>
       </NoClickDivider>
       <CSSParallaxGroup name="page2" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 1 : 0.8}>
-        <AvatarBackgroundLayer speed={0}>
+        <AvatarBackgroundLayer speed={0} zIndex={-2}>
           <AboutBackground/>
         </AvatarBackgroundLayer>
-        <NoClickLayerSVG speed={0.1}>
+        <NoClickLayerSVG speed={0.1} zIndex={-1}>
           <SVGPageTwo />
         </NoClickLayerSVG>
-        <ContentLayer speed={0}>
+        <ContentLayer speed={0} zIndex={1}>
           <MoveToPageOne onClick={() => {this.moveToPage1()}}>
             <SVG icon="triangle" width={'8'} fill="#ff006f" useSelfAlign={true}/>
           </MoveToPageOne>
@@ -489,10 +489,10 @@ handleCloseArticle() {
        </ContentLayer>
       </CSSParallaxGroup>
       <CSSParallaxGroup name="page4" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 2.6 : 2.6}>
-        <AvatarBackgroundLayer speed={0}>
+        <AvatarBackgroundLayer speed={0} zIndex={-2}>
           <AboutBackground/>
         </AvatarBackgroundLayer>
-        <NoClickLayerSVG speed={0.1}>
+        <NoClickLayerSVG speed={0.1} zIndex={-1}>
           <SVGPageFour />
         </NoClickLayerSVG>
         <ContentLayer speed={0}>
@@ -509,7 +509,7 @@ handleCloseArticle() {
        </ContentLayer>
       </CSSParallaxGroup>
       <CSSParallaxGroup name="page3" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 2 : 1.6}>
-        <NoClickLayerSVG speed={0.1}>
+        <NoClickLayerSVG speed={0.1} zIndex={-1}>
           <SVGPageThree />
         </NoClickLayerSVG>
         <ProjectParallaxLayer speed={0.4}>
@@ -520,7 +520,7 @@ handleCloseArticle() {
         </ProjectParallaxLayer>
       </CSSParallaxGroup>
       <CSSParallaxGroup name="page5" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 3.4 : 3.4}>
-        <AnimationParallaxLayer speed={0} fill="#23262b">
+        <AnimationParallaxLayer speed={0} fill="#23262b" zIndex={-2}>
           <WaveWrapper>
             <InnerWave>
               <svg viewBox="0 0 800 338.05" preserveAspectRatio="none">
@@ -530,7 +530,7 @@ handleCloseArticle() {
             </InnerWave>
           </WaveWrapper>
         </AnimationParallaxLayer>
-        <LastNoClickLayerSVG speed={0.1}>
+        <LastNoClickLayerSVG speed={0.1} zIndex={-1}>
           <SVGPageFive />
         </LastNoClickLayerSVG>
         <ContentLayer speed={0}>
@@ -548,11 +548,11 @@ handleCloseArticle() {
           </Footer>
         </ContentLayer>
       </CSSParallaxGroup>
-      <CSSParallaxGroup name="page6" debugOn={this.state.debugOn} xoffset={100 + this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 1 : 1.8}>
-        <AvatarBackgroundLayer speed={-0.2}>
+      <CSSParallaxGroup name="page6" debugOn={this.state.debugOn} xoffset={125 + this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 1 : 1.8}>
+        <AvatarBackgroundLayer speed={-0.2} zIndex={-2}>
           <AboutBackground/>
         </AvatarBackgroundLayer>
-        <LastNoClickLayerSVG speed={-0.1}>
+        <LastNoClickLayerSVG speed={-0.1} zIndex={-1}>
           <SVGPageSix />
         </LastNoClickLayerSVG>
         <ContentLayer speed={0}>

@@ -28,6 +28,7 @@ const WrapperLayer = styled.div`
   transform: translateZ(${(props => props.zoffset)}px) scale(${(props => props.scale)});
   //transition: none;
   transition-timing-function: unset;
+  z-index: ${(props => props.zIndex)};
 `;
 
 const WrapperGroup = styled(Element)`
@@ -36,7 +37,6 @@ const WrapperGroup = styled(Element)`
   width: 100%;
   height: 100%;
   transform: translate3d(${(props => props.xoffset)}vw, ${(props => props.pageoffset)}vh, ${(props => props.zoffset)}vw) ${(props => props.rotatey)};
-  //z-index: ${(props => props.indexz)};
   transition: transform 1000ms cubic-bezier(0.6, -0.600, 0.50, 1.50);
   transition-timing-function: cubic-bezier(0.6, -0.600, 0.50, 1.50);
 `;
@@ -54,7 +54,9 @@ export class CSSParallaxLayer extends React.PureComponent {
         <WrapperLayer
           zoffset={this.state.zoffset}
           scale={this.state.scale}
-          className={this.props.className}>
+          className={this.props.className}
+          zIndex={this.props.zIndex}
+          >
             {this.props.children}
         </WrapperLayer>
     )
@@ -66,12 +68,14 @@ CSSParallaxLayer.propTypes = {
   speed: PropTypes.number,
   children:PropTypes.node,
   className: PropTypes.string,
+  zIndex: PropTypes.number,
   name: PropTypes.string,
 };
 
 CSSParallaxLayer.defaultProps = {
   speed: 0,
   scale: 1,
+  zIndex: 0,
   className: 'parallax-layer',
 };
 
@@ -91,7 +95,6 @@ export class CSSParallaxGroup extends React.PureComponent {
         zoffset={this.props.debugOn ? (-2 + (this.props.xoffset * 0.0875)) : 0}
         rotatey={this.props.debugOn ? ('rotateY(' + (-0.05 * perspective) + 'deg)'): ''}
         pageoffset={(this.props.yoffset * 100 / this.state.scale) * this.state.scale}
-        indexz={(this.props.yoffset + 1)}
         className={this.props.className}
         >
             {React.Children.map(this.props.children, child => {
