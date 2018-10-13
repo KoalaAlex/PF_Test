@@ -68,7 +68,7 @@ const ProjectParallaxLayer = styled(CSSParallaxLayer)`
   padding-left: 3rem;
   padding-right: 3rem;
   justify-items: center;
-  adjust-items: center;
+  align-items: center;
   display: grid;
 `;
 
@@ -76,7 +76,12 @@ const RotateDivider = styled.div`
   transform: translateX(-5%) rotateZ(-3deg);
   width: 110%;
   background: #23262b;
-  height: 100%;
+  height: 90%;
+`;
+
+const RotateDividerProject = styled(RotateDivider)`
+  background: #171717;
+  height: 80%;
 `;
 
 const AboutBackground = styled.div`
@@ -308,10 +313,26 @@ keyDownFunction(event){
 
 moveToProjectCards(){
   this.setState({xOffsetAllPages: 0});
+  if(!this.state.debugOn){
+    scroller.scrollTo('page3', {
+      duration: 1000,
+      delay: 1000,
+      smooth: 'ease',
+      containerId: 'parallax-scroller'
+    });
+  }
 }
 
 moveToProjectContent(){
-  this.setState({xOffsetAllPages: -125});
+  this.setState({xOffsetAllPages: -150});
+  if(!this.state.debugOn){
+    scroller.scrollTo('page6', {
+      duration: 1000,
+      delay: 1000,
+      smooth: 'ease',
+      containerId: 'parallax-scroller'
+    });
+  }
 }
 
 keyUpFunction(event){
@@ -574,12 +595,15 @@ handleCloseArticle() {
           </Footer>
         </ContentLayer>
       </CSSParallaxGroup>
-      <CSSParallaxGroup name="page6" debugOn={this.state.debugOn} xoffset={125 + this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 1 : 1.8}>
-        <AvatarBackgroundLayer speed={-0.2} zIndex={1}>
-          <AboutBackground/>
+      <CSSParallaxGroup name="page6" debugOn={this.state.debugOn} xoffset={150 + this.state.xOffsetAllPages} yoffset={0.5}>
+        <AvatarBackgroundLayer speed={-0.4} zIndex={1}>
+          <RotateDividerProject/>
         </AvatarBackgroundLayer>
-        <AvatarBackgroundLayer speed={-0.2} zIndex={1} yOffset={1.2}>
-          <AboutBackground/>
+        <AvatarBackgroundLayer speed={-0.3} zIndex={1} yOffset={1.2}>
+          <RotateDividerProject/>
+        </AvatarBackgroundLayer>
+        <AvatarBackgroundLayer speed={-0.2} zIndex={1} yOffset={2.3}>
+          <RotateDividerProject/>
         </AvatarBackgroundLayer>
         <LastNoClickLayerSVG speed={-0.1} zIndex={2}>
           <SVGPageSix />

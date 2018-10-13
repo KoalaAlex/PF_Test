@@ -38,8 +38,10 @@ const WrapperGroup = styled(Element)`
   width: 100%;
   height: 100%;
   transform: translate3d(${(props => props.xoffset)}vw, ${(props => props.pageoffset)}vh, ${(props => props.zoffset)}vw) ${(props => props.rotatey)};
-  transition: transform 1000ms cubic-bezier(0.6, -0.600, 0.50, 1.50);
-  transition-timing-function: cubic-bezier(0.6, -0.600, 0.50, 1.50);
+  //transition: transform 1000ms cubic-bezier(0.6, -0.600, 0.50, 1.50);
+  //transition-timing-function: cubic-bezier(0.6, -0.600, 0.50, 1.50);
+  transition: transform 1000ms ease;
+  //transition-timing-function: easeInExpo;
 `;
 
 export class CSSParallaxLayer extends React.PureComponent {

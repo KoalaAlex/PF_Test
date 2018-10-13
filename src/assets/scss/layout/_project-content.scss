@@ -64,51 +64,6 @@
 			&.active {
 				display: inline-grid !important;
 			}
-
-			.close {
-				display: inline-grid;
-				align-items: center;
-				justify-items: center;
-				position: absolute;
-				height: 80%;
-				left: -1.5rem;
-				width: 1.5rem;
-				background-color: rgba(255, 255, 255, .05);
-				@supports ((-webkit-backdrop-filter: blur(1em)) or (backdrop-filter: blur(1em))) {
-							backdrop-filter: blur(1em);
-				}
-				border-radius: _size(border-radius);
-				@media (min-width: 600px) {
-					left: -3rem;
-					width: 3rem;
-				}
-				@media (min-width: 900px) {
-					left: -6rem;
-					width: 6rem;
-				}
-				cursor: pointer;
-				text-indent: 4rem;
-				overflow: hidden;
-				white-space: nowrap;
-
-				svg {
-					animation: hopAnim 4s ease-in-out infinite alternate;
-					transform: translate3d(0,0,0) rotateZ(-90deg);
-					will-change: transform;
-				}
-
-				&:hover {
-					background-color: _palette(border-bg);
-					svg {
-						animation: hopAnim 1s ease-in-out infinite alternate;
-					}
-				}
-
-				&:active {
-					background-color: _palette(border-bg-alt);
-				}
-			}
-
 		}
 
 		@include breakpoint(small) {

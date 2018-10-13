@@ -68,6 +68,50 @@ import '../assets/scss/components/ProjectContent.scss';
 const CloseWrapper = styled.div`
   pointer-events: all;
   //transform: translate3d(0px, 0px, 10px);
+
+    display: inline-grid;
+    align-items: center;
+    justify-items: center;
+    position: absolute;
+    height: 80%;
+    left: 0;
+    width: 1.5rem;
+    background-color: rgba(255, 255, 255, .05);
+    @supports ((-webkit-backdrop-filter: blur(1em)) or (backdrop-filter: blur(1em))) {
+          backdrop-filter: blur(1em);
+    }
+    border-radius: _size(border-radius);
+    @media (min-width: 600px) {
+      width: 3rem;
+    }
+    @media (min-width: 900px) {
+      width: 6rem;
+    }
+    cursor: pointer;
+    text-indent: 4rem;
+    overflow: hidden;
+    white-space: nowrap;
+
+    svg {
+      animation: hopAnim 4s ease-in-out infinite alternate;
+      transform: translate3d(0,0,0) rotateZ(-90deg);
+      will-change: transform;
+    }
+
+    &:hover {
+      background-color: _palette(border-bg);
+      svg {
+        animation: hopAnim 1s ease-in-out infinite alternate;
+      }
+    }
+
+    &:active {
+      background-color: _palette(border-bg-alt);
+    }
+`;
+
+const CloseWrapperOffset = styled(CloseWrapper)`
+  transform: translate3d(0, ${(props => props.yOffset)}vh, 0);
 `;
 
 const Overview = styled.div`
@@ -114,10 +158,8 @@ const TaskTitle = styled(ItemTitel)`
 
 class ProjectContent extends React.Component {
   render() {
-
-    let close = <CloseWrapper className="close" onClick={() => {this.props.onCloseArticle()}}><SVG icon="triangle" width={'8'} fill="#ff006f" useSelfAlign={true}/></CloseWrapper>
-
     return (
+      <React.Fragment>
       <div id="project-content" style={this.props.timeout ? {display: 'grid'} : {display: 'none'}}>
       <article id="portfolio" className={`${this.props.article === 'portfolio' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
         <h2 className="major">My Portfolio Playground</h2>
@@ -152,7 +194,6 @@ class ProjectContent extends React.Component {
           <h1>Platforms</h1>
           <p>web</p>
         </UsedTechnology>
-        {close}
       </article>
         <article id="gemue-vr" className={`${this.props.article === 'gemue-vr' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Gemue VR</h2>
@@ -191,7 +232,6 @@ class ProjectContent extends React.Component {
             <p>Windows Standalone</p>
           </UsedTechnology>
           <a href="https://stollvongati.com/de/projekte/vr-schulungsanwendung-fuer-gemue.html">Project Overview SvG</a>
-          {close}
         </article>
         <article id="gemue-ar" className={`${this.props.article === 'gemue-ar' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Gemue AR</h2>
@@ -225,7 +265,6 @@ class ProjectContent extends React.Component {
             <p>iPad and iPhone</p>
           </UsedTechnology>
           <a href="https://stollvongati.com/de/projekte/lisim-simulator-fuer-liebherr-turmdrehkrane.html">Website SvG</a>
-          {close}
         </article>
         <article id="traction-inverter" className={`${this.props.article === 'traction-inverter' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Traction Inverter</h2>
@@ -255,7 +294,6 @@ class ProjectContent extends React.Component {
             <h1>Platforms</h1>
             <p>iPad and iPhone</p>
           </UsedTechnology>
-          {close}
         </article>
         <article id="simulator" className={`${this.props.article === 'simulator' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Simulator VR</h2>
@@ -287,7 +325,6 @@ class ProjectContent extends React.Component {
           </UsedTechnology>
           <a href="https://stollvongati.com/de/projekte/lisim-simulator-fuer-liebherr-turmdrehkrane.html">Crane Simulator SvG</a>
           <a href="https://stollvongati.com/de/projekte/der-liebherr-turmdrehkran-710-hc-l-als-vr-erlebnis.html">Las Vegas Application - SvG</a>
-          {close}
         </article>
         <article id="intensaDrum" className={`${this.props.article === 'intensaDrum' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Augmented Reality</h2>
@@ -314,7 +351,6 @@ class ProjectContent extends React.Component {
             <h1>Platforms</h1>
             <p>iPad and iPhone, Windows (without AR)</p>
           </UsedTechnology>
-          {close}
         </article>
         <article id="recaro-vr" className={`${this.props.article === 'recaro-vr' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Recaro VR</h2>
@@ -347,9 +383,12 @@ class ProjectContent extends React.Component {
             <p>Windows Standalone</p>
           </UsedTechnology>
           <a href="https://stollvongati.com/de/projekte/virtuelle-flugzeugkabine-fuer-recaro-business-class-sitze.html">Project Overview SvG</a>
-          {close}
         </article>
       </div>
+      <CloseWrapperOffset yOffset={0} onClick={() => {this.props.onCloseArticle()}}><SVG icon="triangle" width={'8'} fill="#ff006f" useSelfAlign={true}/></CloseWrapperOffset>
+      <CloseWrapperOffset yOffset={100} onClick={() => {this.props.onCloseArticle()}}><SVG icon="triangle" width={'8'} fill="#ff006f" useSelfAlign={true}/></CloseWrapperOffset>
+      <CloseWrapperOffset yOffset={200} onClick={() => {this.props.onCloseArticle()}}><SVG icon="triangle" width={'8'} fill="#ff006f" useSelfAlign={true}/></CloseWrapperOffset>
+      </React.Fragment>
     )
   }
 }
