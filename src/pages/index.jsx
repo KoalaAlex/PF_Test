@@ -424,10 +424,10 @@ handleCloseArticle() {
         </Link>
         */}
       <CSSParallaxGroup name="page1" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={0}>
-        <NoClickLayerSVG speed={0.2} zIndex={1}>
+        <NoClickLayerSVG speed={-0.2} zIndex={1}>
           <SVGPageOne />
         </NoClickLayerSVG>
-        <ContentLayer speed={0.3} zIndex={2}>
+        <ContentLayer speed={0.2} zIndex={2}>
         <Hero>
           <BigTitle>
             HI,<br />WELCOME<MediaQuery query="(max-width: 600px)"><br /></MediaQuery> TO MY<br />PLAYGROUND
@@ -443,14 +443,14 @@ handleCloseArticle() {
         </CSSParallaxLayer>
       </NoClickDivider>
       <CSSParallaxGroup name="page2" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 1 : 0.8}>
+        <AvatarBackgroundLayer speed={0} zIndex={2}>
+          <AboutBackground/>
+        </AvatarBackgroundLayer>
         <ContentLayer speed={0} zIndex={4}>
           <MoveToPageOne onClick={() => {this.moveToPage1()}}>
             <SVG icon="triangle" width={'8'} fill="#ff006f" useSelfAlign={true}/>
           </MoveToPageOne>
         </ContentLayer>
-        <AvatarBackgroundLayer speed={0} zIndex={2}>
-          <AboutBackground/>
-        </AvatarBackgroundLayer>
         <NoClickLayerSVG speed={0.1} zIndex={2}>
           <SVGPageTwo />
         </NoClickLayerSVG>
