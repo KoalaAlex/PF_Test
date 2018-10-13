@@ -132,7 +132,13 @@ class ProjectContent extends React.Component {
           />
         <Concept>
           <h1>The Intention</h1>
-          <p></p>
+          <p>It should lead to a presentation of myself and my work in a playful, dynamic and colorful way. it uses state fo the art technology with mostly css manipulations and transitions</p>
+        </Concept>
+        <Concept>
+          <h1>Work in Process</h1>
+          <p>I started with a demo from gatsby <a href="https://github.com/LeKoArts/gatsby-starter-portfolio-cara">starter</a> dor quick development. While working on it I discovered performance issues on my mac book pro (2013). the main issue was on the one hand the parallax effect made with <a href="https://github.com/drcmda/react-spring" >react spring</a> and on the other hand the enormous count of SVGs.
+          <br />I started to redesign the whole parallax effect to work with CSS and not to depend on script. Then I make use of the xlink and "use" tag on all SVGs. This saves me a lot of performance. Also I don't liked the portoflio card wich referenced to a seperate side. For this i found a solution to change the perspective to fade on the hidden right side on the page an there it was the content for the projects.
+          </p>
         </Concept>
         <UsedTechnology>
           <h1>Used UsedTechnology</h1>

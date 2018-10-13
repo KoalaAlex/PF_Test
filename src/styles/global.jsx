@@ -18,6 +18,9 @@ injectGlobal`
   a{
     pointer-events: all;
     cursor: pointer;
+    color: #ff0057;
+    text-decoration: none;
+    text-shadow: 0 0.1rem 1rem rgb(30, 31, 36);
   }
   html, body {
     width: 100%;

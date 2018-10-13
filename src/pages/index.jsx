@@ -167,11 +167,6 @@ const Avatar = styled.img`
 
 const AboutSub = styled.p`
   ${tw('text-white pt-12 lg:pt-0 lg:pl-12 text-lg lg:text-xl xl:text-1xl')};
-  a {
-    color: #ff0057;
-    text-decoration: none;
-    text-shadow: 0 0.1rem 1rem rgb(30, 31, 36);
-  }
 `;
 
 const ContactText = styled.div`
@@ -186,11 +181,6 @@ const ContactText = styled.div`
 const Footer = styled.footer`
   ${tw('text-center text-grey absolute pin-b p-6 text-md lg:text-lg')};
   pointer-events: all;
-  a {
-    color: #ff0057;
-    text-decoration: none;
-    text-shadow: 0 0.1rem 1rem rgb(30, 31, 36);
-  }
 `;
 
 const Albert = styled.div`
