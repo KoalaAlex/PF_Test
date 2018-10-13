@@ -26,7 +26,7 @@ const WrapperLayer = styled.div`
   transform-style: preserve-3d;
   // pageOffset={(-(this.props.speed + 1) * 150) + (this.props.offset * 100 * ((1 + ((this.props.speed + 1))) / 1))}
 //  perspective-origin-x: 100%;
-  transform: translateZ(${(props => props.zoffset)}px) scale(${(props => props.scale)});
+  transform: translate3d(0, ${(props => props.yoffset)}vh, ${(props => props.zoffset)}px) scale(${(props => props.scale)});
   //transition: none;
   transition-timing-function: unset;
   z-index: ${(props => props.zIndex)};
@@ -56,6 +56,7 @@ export class CSSParallaxLayer extends React.PureComponent {
           zoffset={this.state.zoffset}
           scale={this.state.scale}
           className={this.props.className}
+          yoffset={this.props.yOffset * 100}
           zIndex={this.props.zIndex}
           >
             {this.props.children}
@@ -69,6 +70,7 @@ CSSParallaxLayer.propTypes = {
   speed: PropTypes.number,
   children:PropTypes.node,
   className: PropTypes.string,
+  yOffset: PropTypes.number,
   zIndex: PropTypes.number,
   name: PropTypes.string,
 };
@@ -76,6 +78,7 @@ CSSParallaxLayer.propTypes = {
 CSSParallaxLayer.defaultProps = {
   speed: 0,
   scale: 1,
+  yOffset: 0,
   zIndex: 0,
   className: 'parallax-layer',
 };

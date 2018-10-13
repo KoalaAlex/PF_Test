@@ -97,7 +97,7 @@ const ItemTitel = styled.h1`
 `;
 
 const Concept = styled.div`
-  font-size: 2rem;
+  font-size: 1rem;
 `;
 
 const UsedTechnology = styled.div`
@@ -169,6 +169,14 @@ class ProjectContent extends React.Component {
             <h1>The Intention</h1>
             <p></p>
           </Concept>
+          <Concept>
+            <h1>Work in Process</h1>
+            <p>This was one of the funnies and also one of the toughest projects i made.</p>
+            <p>Mostly of the bugs was dicovert via multiplayer because you have to be very specific who is the manipulator of which item i the scene and how the transfer ownership works</p>
+            <p>You start in the Lobby where you can modify your Avatar with outfit and colorpalets when you are at the mirrow. This mode is not connected to multilayer.</p>
+            <p>Then you can choose on of two rooms for multiplayer. One is the workshop room where you can start the maintainance training via a Questline that hints your mistakes and gives you tips. The other one is the meeting room wher you can relax an chitchat with other gemue users. Dont miss the lasersword easter egg and the one with the duck ;)</p>
+            <p>The whole project was made in the GameEngine Unity and is highly driven from 3D objects from 3dsMax. The best part was the Multiplayer Mode. It is so much fun to meet peaple in VR just like the ones are realy in the same room only they appear as an Avatar.  The main aspect is a maintanance of a ventil with membran change.n df</p>
+          </Concept>
           <UsedTechnology>
             <h1>Used UsedTechnology</h1>
             <p>Devlopment: Unity</p>
@@ -182,11 +190,6 @@ class ProjectContent extends React.Component {
             <h1>Platforms</h1>
             <p>Windows Standalone</p>
           </UsedTechnology>
-          <p>This was one of the funnies and also one of the toughest projects i made.</p>
-          <p>Mostly of the bugs was dicovert via multiplayer because you have to be very specific who is the manipulator of which item i the scene and how the transfer ownership works</p>
-          <p>You start in the Lobby where you can modify your Avatar with outfit and colorpalets when you are at the mirrow. This mode is not connected to multilayer.</p>
-          <p>Then you can choose on of two rooms for multiplayer. One is the workshop room where you can start the maintainance training via a Questline that hints your mistakes and gives you tips. The other one is the meeting room wher you can relax an chitchat with other gemue users. Dont miss the lasersword easter egg and the one with the duck ;)</p>
-          <p>The whole project was made in the GameEngine Unity and is highly driven from 3D objects from 3dsMax. The best part was the Multiplayer Mode. It is so much fun to meet peaple in VR just like the ones are realy in the same room only they appear as an Avatar.  The main aspect is a maintanance of a ventil with membran change.n df</p>
           <a href="https://stollvongati.com/de/projekte/vr-schulungsanwendung-fuer-gemue.html">Project Overview SvG</a>
           {close}
         </article>
@@ -203,7 +206,12 @@ class ProjectContent extends React.Component {
             />
           <Concept>
             <h1>The Intention</h1>
-            <p></p>
+            <p>This projects idea was to find a way to present the product of gemue to his customers with the AR technology</p>
+          </Concept>
+          <Concept>
+            <h1>Work in Process</h1>
+            <p>In this project it was realy helpful to rely on the ARKit demo for quick development. But further on it was a little annoying to alwas deplay via XCode to tets the Ar behaviour. While developing we were discovering the Ar Kit Remote Feature that enables you to test directly in Unity Editor while connecting your iPhone via lightning cable. That saved us a lot of time.</p>
+            <p>It was the first app that we made via the Unity Cinemachine and it also had some annoying beaviours... One was when you switch between the cameras that it appears at start a very long frame. when managed to overcome this by scripting our own camera interpolation switch and not to rely on the one from the Framework</p>
           </Concept>
           <UsedTechnology>
             <h1>Used UsedTechnology</h1>
@@ -216,8 +224,6 @@ class ProjectContent extends React.Component {
             <h1>Platforms</h1>
             <p>iPad and iPhone</p>
           </UsedTechnology>
-          <p>This was one of the funnies and also one of the toughest projects i made.</p>
-          <p>The whole project was made in the GameEngine Unity and is highly driven from 3D objects from 3dsMax. The best part was the Multiplayer Mode. It is so much fun to meet peaple in VR just like the ones are realy in the same room only they appear as an Avatar.  The main aspect is a maintanance of a ventil with membran change.n df</p>
           <a href="https://stollvongati.com/de/projekte/lisim-simulator-fuer-liebherr-turmdrehkrane.html">Website SvG</a>
           {close}
         </article>
@@ -236,6 +242,7 @@ class ProjectContent extends React.Component {
             <h1>The Intention</h1>
             <p>This application was made for a messe showcase. The need of the client was to show his product in an interactive and playfull way.
             <br />It should include the new CI of Voith and therefore the style was in close connection to it.</p>
+            <p>In this kind of project the cinemachine was realy handy and we could rely on the the nice smooth camera fade script from <a href="javascript:;" onClick={() => {this.props.onOpenArticle("gemue-ar")}}>gemeu-ar</a></p>
           </Concept>
           <UsedTechnology>
             <h1>Used UsedTechnology</h1>
@@ -320,7 +327,11 @@ class ProjectContent extends React.Component {
             />
           <Concept>
             <h1>The Intention</h1>
-            <p></p>
+            <p>It was an offer from Recaro that he wants an configurator vor his seat product.</p>
+          </Concept>
+          <Concept>
+            <h1>Work in Process</h1>
+            <p>At the time the project starts it was not much available about interaction systems in VR therefore we created our own. At the base of the project we used SteamVR and the common Button Events. At this Events we created to link to our custom behaviours like pointer raycast to objects, check when one is it and so on. It was a lot of recherch needed and also much trial and error for the right beahviour. On top of that the whole system needed to be as dynamic as possible. We created a global material and shader switcher that connects all function for 3D Object called "MOG".</p>
           </Concept>
           <UsedTechnology>
             <h1>Used UsedTechnology</h1>
@@ -348,6 +359,7 @@ ProjectContent.propTypes = {
   article: PropTypes.string,
   articleTimeout: PropTypes.bool,
   onCloseArticle: PropTypes.func,
+  onOpenArticle: PropTypes.func,
   timeout: PropTypes.bool
 }
 

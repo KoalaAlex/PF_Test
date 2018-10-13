@@ -251,6 +251,7 @@ class Index extends React.Component {
   this.moveToPage1 = this.moveToPage1.bind(this);
   this.moveToProjectCards = this.moveToProjectCards.bind(this);
   this.moveToProjectContent = this.moveToProjectContent.bind(this);
+  this.handleGemueArticleClick = this.handleGemueArticleClick.bind(this);
 }
 
 toggleDebug(){
@@ -364,6 +365,43 @@ updateDimensions() {
   */
 }
 
+handleGemueArticleClick(article) {
+  this.setState({
+    articleTimeout: false
+  })
+
+  setTimeout(() => {
+    this.setState({
+      timeout: !this.state.timeout
+    })
+  }, 525)
+
+  setTimeout(() => {
+  this.setState({
+      isArticleVisible: false,
+      article: ''
+    })
+  }, 550)
+
+  setTimeout(() => {
+    this.setState({
+      isArticleVisible: true,
+      article
+    })
+  }, 600)
+
+  setTimeout(() => {
+    this.setState({
+      timeout: !this.state.timeout
+    })
+  }, 1125)
+
+  setTimeout(() => {
+    this.setState({
+      articleTimeout: true
+    })
+  }, 1150)
+}
 
 handleOpenArticle(article) {
   if(this.state.isArticleVisible){
@@ -540,6 +578,9 @@ handleCloseArticle() {
         <AvatarBackgroundLayer speed={-0.2} zIndex={1}>
           <AboutBackground/>
         </AvatarBackgroundLayer>
+        <AvatarBackgroundLayer speed={-0.2} zIndex={1} yOffset={1.2}>
+          <AboutBackground/>
+        </AvatarBackgroundLayer>
         <LastNoClickLayerSVG speed={-0.1} zIndex={2}>
           <SVGPageSix />
         </LastNoClickLayerSVG>
@@ -550,6 +591,7 @@ handleCloseArticle() {
             articleTimeout={this.state.articleTimeout}
             article={this.state.article}
             onCloseArticle={this.handleCloseArticle}
+            onOpenArticle={this.handleGemueArticleClick}
           />
        </ContentLayer>
       </CSSParallaxGroup>
