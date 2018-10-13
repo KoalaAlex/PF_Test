@@ -437,11 +437,6 @@ handleCloseArticle() {
         </Hero>
         </ContentLayer>
       </CSSParallaxGroup>
-      <NoClickDivider debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={1.8} >
-        <CSSParallaxLayer speed={0.2} zIndex={1}>
-          <RotateDivider />
-        </CSSParallaxLayer>
-      </NoClickDivider>
       <CSSParallaxGroup name="page2" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 1 : 0.8}>
         <AvatarBackgroundLayer speed={0} zIndex={2}>
           <AboutBackground/>
@@ -500,6 +495,9 @@ handleCloseArticle() {
        </ContentLayer>
       </CSSParallaxGroup>
       <CSSParallaxGroup name="page3" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 2 : 1.8}>
+        <CSSParallaxLayer speed={0} zIndex={1}>
+          <RotateDivider />
+        </CSSParallaxLayer>
         <NoClickLayerSVG speed={0.1} zIndex={2}>
           <SVGPageThree />
         </NoClickLayerSVG>
