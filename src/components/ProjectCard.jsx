@@ -18,7 +18,6 @@ const Wrapper = styled.a`
   background-color: rgba(255, 255, 255, .05);
   // 0.35em
   @supports ((-webkit-backdrop-filter: blur(1em)) or (backdrop-filter: blur(1em))) {
-        -webkit-backdrop-filter: blur(1em);
         backdrop-filter: blur(1em);
   }
   &:hover {

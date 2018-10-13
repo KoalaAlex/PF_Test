@@ -418,11 +418,6 @@ handleCloseArticle() {
     <div dangerouslySetInnerHTML={{__html: "<!-- " + commentText + " -->"}}/>
     <SVGOriginals />
     <CSSParallax id="parallax-scroller" pages={this.state.isSmallMobile ? 4 : 4}>
-    {/*
-        <Link activeClass="active" to="page3" smooth={true} duration={500} containerId="parallax-scroller">
-            Go to first element inside container
-        </Link>
-        */}
       <CSSParallaxGroup name="page1" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={0}>
         <NoClickLayerSVG speed={-0.2} zIndex={1}>
           <SVGPageOne />

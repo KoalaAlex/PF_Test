@@ -43,15 +43,6 @@
 				'opacity #{_duration(article)} ease-in-out',
 				'transform #{_duration(article)} ease-in-out'
 			));
-			/*
-			@include padding(2.5rem, 2.5rem, (2rem, 0, 1rem, 0));
-			background-color: rgba(255, 255, 255, .05);
-			@supports ((-webkit-backdrop-filter: blur(1em)) or (backdrop-filter: blur(1em))) {
-						-webkit-backdrop-filter: blur(1em);
-						backdrop-filter: blur(1em);
-			}
-			border-radius: _size(border-radius);
-			*/
 			opacity: 0;
 			will-change: opacity, transform;
 
@@ -84,7 +75,6 @@
 				width: 1.5rem;
 				background-color: rgba(255, 255, 255, .05);
 				@supports ((-webkit-backdrop-filter: blur(1em)) or (backdrop-filter: blur(1em))) {
-							-webkit-backdrop-filter: blur(1em);
 							backdrop-filter: blur(1em);
 				}
 				border-radius: _size(border-radius);

@@ -183,6 +183,9 @@ class ProjectContent extends React.Component {
             <p>Windows Standalone</p>
           </UsedTechnology>
           <p>This was one of the funnies and also one of the toughest projects i made.</p>
+          <p>Mostly of the bugs was dicovert via multiplayer because you have to be very specific who is the manipulator of which item i the scene and how the transfer ownership works</p>
+          <p>You start in the Lobby where you can modify your Avatar with outfit and colorpalets when you are at the mirrow. This mode is not connected to multilayer.</p>
+          <p>Then you can choose on of two rooms for multiplayer. One is the workshop room where you can start the maintainance training via a Questline that hints your mistakes and gives you tips. The other one is the meeting room wher you can relax an chitchat with other gemue users. Dont miss the lasersword easter egg and the one with the duck ;)</p>
           <p>The whole project was made in the GameEngine Unity and is highly driven from 3D objects from 3dsMax. The best part was the Multiplayer Mode. It is so much fun to meet peaple in VR just like the ones are realy in the same room only they appear as an Avatar.  The main aspect is a maintanance of a ventil with membran change.n df</p>
           <a href="https://stollvongati.com/de/projekte/vr-schulungsanwendung-fuer-gemue.html">Project Overview SvG</a>
           {close}

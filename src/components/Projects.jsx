@@ -9,7 +9,7 @@ const ProjectsWrapper = styled.div`
   grid-gap: 4rem;
   grid-template-columns: repeat(3, 1fr);
   @media (max-width: 1799px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   @media (max-width: 1199px) {
     grid-template-columns: repeat(2, 1fr);
