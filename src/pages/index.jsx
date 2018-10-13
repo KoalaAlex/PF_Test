@@ -436,7 +436,7 @@ handleCloseArticle() {
         <NoClickLayerSVG speed={0.2} zIndex={1}>
           <SVGPageOne />
         </NoClickLayerSVG>
-        <ContentLayer speed={0.4} zIndex={2}>
+        <ContentLayer speed={0.3} zIndex={2}>
         <Hero>
           <BigTitle>
             HI,<br />WELCOME<MediaQuery query="(max-width: 600px)"><br /></MediaQuery> TO MY<br />PLAYGROUND
@@ -460,10 +460,10 @@ handleCloseArticle() {
         <AvatarBackgroundLayer speed={0} zIndex={2}>
           <AboutBackground/>
         </AvatarBackgroundLayer>
-        <NoClickLayerSVG speed={0.1} zIndex={2}>
+        <NoClickLayerSVG speed={0.2} zIndex={2}>
           <SVGPageTwo />
         </NoClickLayerSVG>
-        <ContentLayer speed={0} zIndex={4}>
+        <ContentLayer speed={0.4} zIndex={4}>
         <Inner>
           <Title>THIS IS WHAT MOTIVATES ME</Title>
           <AboutHero>
@@ -533,7 +533,7 @@ handleCloseArticle() {
         <LastNoClickLayerSVG speed={0.1} zIndex={3}>
           <SVGPageFive />
         </LastNoClickLayerSVG>
-        <ContentLayer speed={0} zIndex={4}>
+        <ContentLayer speed={0.4} zIndex={4}>
           <Inner>
             <Title>GET IN TOUCH</Title>
             <ContactText>
@@ -542,6 +542,8 @@ handleCloseArticle() {
               <a href={config.siteInstagram}>Instagram</a>
             </ContactText>
           </Inner>
+        </ContentLayer>
+        <ContentLayer speed={0} zIndex={4}>
           <Footer>
             <p>&copy; 2018 by Alexander Stricker.{' '}</p>
             <a href={config.github}>Github Repository</a>.

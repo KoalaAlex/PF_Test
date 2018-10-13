@@ -9,6 +9,7 @@ const perspective = 100;
 const Wrapper = styled(Element)`
   position: absolute;
   perspective: ${perspective}px;
+  perspective-origin: 50% 50%;
   height: 100%;
   width: 100%;
   overflow-x: hidden;
@@ -24,7 +25,7 @@ const WrapperLayer = styled.div`
   height: 100%;
   transform-style: preserve-3d;
   // pageOffset={(-(this.props.speed + 1) * 150) + (this.props.offset * 100 * ((1 + ((this.props.speed + 1))) / 1))}
-  perspective-origin-x: 100%;
+//  perspective-origin-x: 100%;
   transform: translateZ(${(props => props.zoffset)}px) scale(${(props => props.scale)});
   //transition: none;
   transition-timing-function: unset;
