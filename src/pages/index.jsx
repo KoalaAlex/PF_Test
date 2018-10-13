@@ -122,17 +122,17 @@ const Inner = styled.div`
 `;
 
 const BigTitle = styled.h1`
-  ${tw('text-5xl lg:text-6xl text-white mb-6 tracking-wide')};
+  ${tw('text-2xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-6xl text-white mb-6 tracking-wide')};
   text-shadow: 0 5px 35px rgba(255, 255, 255, 0.15);
 `;
 
 const Title = styled.h1`
-  ${tw('text-4xl lg:text-4xl text-white mb-8 tracking-wide relative inline-block')};
+  ${tw('text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white mb-8 tracking-wide relative inline-block')};
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 `;
 
 const Subtitle = styled.p`
-  ${tw('text-2xl lg:text-4xl text-white mt-8 xxl:w-3/4')};
+  ${tw('text-xl sm:text-xl md:text-2xl lg:text-3xl text-white mt-8 xxl:w-3/4')};
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
   a {
     color: #ff0057;
@@ -174,7 +174,7 @@ const AboutSub = styled.p`
   }
 `;
 
-const ContactText = styled.p`
+const ContactText = styled.div`
   ${tw('text-grey-light text-xl md:text-2xl lg:text-3xl')};
   a {
     color: #ff0057;
@@ -185,6 +185,7 @@ const ContactText = styled.p`
 
 const Footer = styled.footer`
   ${tw('text-center text-grey absolute pin-b p-6 text-md lg:text-lg')};
+  pointer-events: all;
   a {
     color: #ff0057;
     text-decoration: none;
@@ -460,10 +461,10 @@ handleCloseArticle() {
         <AvatarBackgroundLayer speed={0} zIndex={2}>
           <AboutBackground/>
         </AvatarBackgroundLayer>
-        <NoClickLayerSVG speed={0.2} zIndex={2}>
+        <NoClickLayerSVG speed={0.1} zIndex={2}>
           <SVGPageTwo />
         </NoClickLayerSVG>
-        <ContentLayer speed={0.4} zIndex={4}>
+        <ContentLayer speed={0.2} zIndex={4}>
         <Inner>
           <Title>THIS IS WHAT MOTIVATES ME</Title>
           <AboutHero>
@@ -488,14 +489,14 @@ handleCloseArticle() {
         </Inner>
        </ContentLayer>
       </CSSParallaxGroup>
-      <CSSParallaxGroup name="page4" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 2.6 : 2.6}>
+      <CSSParallaxGroup name="page4" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 3 : 2.8}>
         <AvatarBackgroundLayer speed={0} zIndex={1}>
           <AboutBackground/>
         </AvatarBackgroundLayer>
         <NoClickLayerSVG speed={0.1} zIndex={2}>
           <SVGPageFour />
         </NoClickLayerSVG>
-        <ContentLayer speed={0} zIndex={3}>
+        <ContentLayer speed={0.2} zIndex={3}>
           <Inner>
             <Albert>
               <AboutSub>
@@ -508,18 +509,18 @@ handleCloseArticle() {
           </Inner>
        </ContentLayer>
       </CSSParallaxGroup>
-      <CSSParallaxGroup name="page3" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 2 : 1.6}>
+      <CSSParallaxGroup name="page3" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 2 : 1.8}>
         <NoClickLayerSVG speed={0.1} zIndex={2}>
           <SVGPageThree />
         </NoClickLayerSVG>
-        <ProjectParallaxLayer speed={0.4} zIndex={3}>
+        <ProjectParallaxLayer speed={0.2} zIndex={3}>
           <Inner>
             <Title>SOME OF MY NON CONFIDENTIAL ROJECTS</Title>
                 <Projects onOpenArticle={this.handleOpenArticle} />
           </Inner>
         </ProjectParallaxLayer>
       </CSSParallaxGroup>
-      <CSSParallaxGroup name="page5" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 3.4 : 3.4}>
+      <CSSParallaxGroup name="page5" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 4 : 3.8}>
         <AnimationParallaxLayer speed={0} fill="#23262b" zIndex={2}>
           <WaveWrapper>
             <InnerWave>
@@ -533,13 +534,15 @@ handleCloseArticle() {
         <LastNoClickLayerSVG speed={0.1} zIndex={3}>
           <SVGPageFive />
         </LastNoClickLayerSVG>
-        <ContentLayer speed={0.4} zIndex={4}>
+        <ContentLayer speed={0.2} zIndex={4}>
           <Inner>
             <Title>GET IN TOUCH</Title>
             <ContactText>
-              Say <a href="mailto:s_alexander@hotmail.de">Hi</a> or find me on other platforms:{' '}
-              <a href={config.siteFacebook}>Facebook</a> &{' '}
-              <a href={config.siteInstagram}>Instagram</a>
+              <p>Feel free to say <a href="mailto:s_alexander@hotmail.de">hi</a> to me.</p>
+              <p>Find out more about me on {' '}
+                <a href={config.siteFacebook}>Facebook</a> &{' '}
+                <a href={config.siteInstagram}>Instagram</a>
+              </p>
             </ContactText>
           </Inner>
         </ContentLayer>

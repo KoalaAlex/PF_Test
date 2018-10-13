@@ -55,11 +55,13 @@ import portfolio_03 from '../images/portfolio/portfolio_03_800x500.jpg';
 import portfolio_04 from '../images/portfolio/portfolio_04_800x500.jpg';
 import portfolio_05 from '../images/portfolio/portfolio_05_800x500.jpg';
 
-const multiplayerVRA = [gemuevr01, gemuevr02, gemuevr03, gemuevr04, gemuevr05];
-const interactiveAndTouchA = [traktionsStrom01, traktionsStrom02, traktionsStrom03, traktionsStrom04, traktionsStrom06, intensaDrum01, intensaDrum05, intensaDrum06];
-const simulAndConfigA = [cranesim01, recaro01, recaro02, recaro03];
-const augmentedA =  [gemueAR01, gemueAR02, gemueAR03, gemueAR04, intensaDrum02, intensaDrum03, intensaDrum04];
+const gemueVR_A = [gemuevr01, gemuevr02, gemuevr03, gemuevr04, gemuevr05];
+const gemueAR_A = [gemueAR01, gemueAR02, gemueAR03, gemueAR04];
+const intensadrum_A =  [intensaDrum01, intensaDrum02, intensaDrum03, intensaDrum04, intensaDrum05, intensaDrum06, intensaDrum07];
 const portfolioA =  [portfolio_01, portfolio_02, portfolio_03, portfolio_04, portfolio_05];
+const recaroVR_A = [recaro01, recaro02, recaro03];
+const craneSimul_A = [cranesim01];
+const tractionInverter_A = [traktionsStrom01, traktionsStrom02, traktionsStrom03, traktionsStrom04, traktionsStrom06];
 
 import '../assets/scss/components/ProjectContent.scss';
 
@@ -94,8 +96,12 @@ const ItemTitel = styled.h1`
   font-size: 2rem;
 `;
 
-const Concept = styled.p`
+const Concept = styled.div`
   font-size: 2rem;
+`;
+
+const UsedTechnology = styled.div`
+
 `;
 
 const TaskTitle = styled(ItemTitel)`
@@ -114,11 +120,10 @@ class ProjectContent extends React.Component {
     return (
       <div id="project-content" style={this.props.timeout ? {display: 'grid'} : {display: 'none'}}>
       <article id="portfolio" className={`${this.props.article === 'portfolio' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
-        <h2 className="major">Muliplayer VR</h2>
+        <h2 className="major">My Portfolio Playground</h2>
         <span className="image main">
           <CSSSlider images={portfolioA} images2x={portfolioA}/>
         </span>
-        <p>skill presentation<br />job application</p>
         <ProjectOverview
           projectContext={["skill presentation", "job application"]}
           teamSize={"solo project"}
@@ -126,47 +131,202 @@ class ProjectContent extends React.Component {
           tasks={["front end development", "user experience", "research", "opimisation", "visual design", "quick prototype"]}
           />
         <Concept>
-
+          <h1>The Intention</h1>
+          <p></p>
         </Concept>
-        <p>This was one of the funnies and also one of the toughest projects i made.</p>
-        <p>The whole project was made in the GameEngine Unity and is highly driven from 3D objects from 3dsMax. The best part was the Multiplayer Mode. It is so much fun to meet peaple in VR just like the ones are realy in the same room only they appear as an Avatar.  The main aspect is a maintanance of a ventil with membran change.n df</p>
+        <UsedTechnology>
+          <h1>Used UsedTechnology</h1>
+          <p>Framework: React</p>
+          <p>Deploy: Netlify</p>
+          <p>SourceControl: Github</p>
+          <p>IDE: Atom</p>
+          <p>Side Generator: Gatsby</p>
+        </UsedTechnology>
+        <UsedTechnology>
+          <h1>Platforms</h1>
+          <p>web</p>
+        </UsedTechnology>
         {close}
       </article>
-        <article id="vr-multi" className={`${this.props.article === 'vr-multi' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
-          <h2 className="major">Muliplayer VR</h2>
+        <article id="gemue-vr" className={`${this.props.article === 'gemue-vr' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
+          <h2 className="major">Gemue VR</h2>
           <span className="image main">
-            <CSSSlider images={multiplayerVRA} images2x={multiplayerVRA}/>
+            <CSSSlider images={gemueVR_A} images2x={gemueVR_A}/>
           </span>
+          <ProjectOverview
+            projectContext={["global meetings", "maintainance training", "product presentation"]}
+            teamSize={"middle size project"}
+            projectType={"work project"}
+            tasks={["developer", "network syncronisation", "research", "opimisation", "interaction design"]}
+            />
+          <Concept>
+            <h1>The Intention</h1>
+            <p></p>
+          </Concept>
+          <UsedTechnology>
+            <h1>Used UsedTechnology</h1>
+            <p>Devlopment: Unity</p>
+            <p>VR interaction system: VRTK</p>
+            <p>VR release: SteamVR</p>
+            <p>Network syncronisation: Photon Engine</p>
+            <p>3D models: 3dsMax</p>
+            <p>IDE: Visual Studio</p>
+          </UsedTechnology>
+          <UsedTechnology>
+            <h1>Platforms</h1>
+            <p>Windows Standalone</p>
+          </UsedTechnology>
+          <p>This was one of the funnies and also one of the toughest projects i made.</p>
+          <p>The whole project was made in the GameEngine Unity and is highly driven from 3D objects from 3dsMax. The best part was the Multiplayer Mode. It is so much fun to meet peaple in VR just like the ones are realy in the same room only they appear as an Avatar.  The main aspect is a maintanance of a ventil with membran change.n df</p>
+          <a href="https://stollvongati.com/de/projekte/vr-schulungsanwendung-fuer-gemue.html">Project Overview SvG</a>
+          {close}
+        </article>
+        <article id="gemue-ar" className={`${this.props.article === 'gemue-ar' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
+          <h2 className="major">Gemue AR</h2>
+          <span className="image main">
+            <CSSSlider images={gemueAR_A} images2x={gemueAR_A}/>
+          </span>
+          <ProjectOverview
+            projectContext={["global meetings", "maintainance training", "product presentation"]}
+            teamSize={"small size project"}
+            projectType={"work project"}
+            tasks={["developer", "AR tracking and stability", "research", "opimisation", "interaction design"]}
+            />
+          <Concept>
+            <h1>The Intention</h1>
+            <p></p>
+          </Concept>
+          <UsedTechnology>
+            <h1>Used UsedTechnology</h1>
+            <p>Devlopment: Unity</p>
+            <p>AR Framework: AR Kit Apple</p>
+            <p>3D Models: 3dsMax</p>
+            <p>IDE: Visual Studio</p>
+          </UsedTechnology>
+          <UsedTechnology>
+            <h1>Platforms</h1>
+            <p>iPad and iPhone</p>
+          </UsedTechnology>
           <p>This was one of the funnies and also one of the toughest projects i made.</p>
           <p>The whole project was made in the GameEngine Unity and is highly driven from 3D objects from 3dsMax. The best part was the Multiplayer Mode. It is so much fun to meet peaple in VR just like the ones are realy in the same room only they appear as an Avatar.  The main aspect is a maintanance of a ventil with membran change.n df</p>
           <a href="https://stollvongati.com/de/projekte/lisim-simulator-fuer-liebherr-turmdrehkrane.html">Website SvG</a>
           {close}
         </article>
-        <article id="touch" className={`${this.props.article === 'touch' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
-          <h2 className="major">Interactive and Touch</h2>
+        <article id="traction-inverter" className={`${this.props.article === 'traction-inverter' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
+          <h2 className="major">Traction Inverter</h2>
           <span className="image main">
-            <CSSSlider images={interactiveAndTouchA} images2x={interactiveAndTouchA}/>
+            <CSSSlider images={tractionInverter_A} images2x={tractionInverter_A}/>
           </span>
-          <p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
-          <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat tempus.</p>
+          <ProjectOverview
+            projectContext={["manual camera movement", "use case product", "product presentation"]}
+            teamSize={"middle size project"}
+            projectType={"work project"}
+            tasks={["developer", "dynamic camera movement", "research", "opimisation", "interaction design"]}
+            />
+          <Concept>
+            <h1>The Intention</h1>
+            <p>This application was made for a messe showcase. The need of the client was to show his product in an interactive and playfull way.
+            <br />It should include the new CI of Voith and therefore the style was in close connection to it.</p>
+          </Concept>
+          <UsedTechnology>
+            <h1>Used UsedTechnology</h1>
+            <p>Devlopment: Unity</p>
+            <p>Camera: Cinemachine</p>
+            <p>3D Models: 3dsMax</p>
+            <p>IDE: Visual Studio</p>
+          </UsedTechnology>
+          <UsedTechnology>
+            <h1>Platforms</h1>
+            <p>iPad and iPhone</p>
+          </UsedTechnology>
           {close}
         </article>
         <article id="simulator" className={`${this.props.article === 'simulator' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Simulator VR</h2>
           <span className="image main">
-            <CSSSlider images={simulAndConfigA} images2x={simulAndConfigA}/>
+            <CSSSlider images={craneSimul_A} images2x={craneSimul_A}/>
           </span>
-          <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my </p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
-          <a href="https://stollvongati.com/de/projekte/lisim-simulator-fuer-liebherr-turmdrehkrane.html">Website SvG</a>
+          <ProjectOverview
+            projectContext={["crane bending", "workload testing", "product presentation", "training"]}
+            teamSize={"middle size project"}
+            projectType={"work project"}
+            tasks={["developer", "highscore implementation", "crane bending shader", "research", "opimisation", "interaction design"]}
+            />
+          <Concept>
+            <h1>The Intention</h1>
+            <p></p>
+          </Concept>
+          <UsedTechnology>
+            <h1>Used UsedTechnology</h1>
+            <p>Devlopment: Unity</p>
+            <p>VR release: SteamVR</p>
+            <p>Crane physics: in cooperation with University Stuttgart</p>
+            <p>Physics data transfer: via Beckhoff</p>
+            <p>3D Models: 3dsMax</p>
+            <p>IDE: Visual Studio</p>
+          </UsedTechnology>
+          <UsedTechnology>
+            <h1>Platforms</h1>
+            <p>Windows Standalone</p>
+          </UsedTechnology>
+          <a href="https://stollvongati.com/de/projekte/lisim-simulator-fuer-liebherr-turmdrehkrane.html">Crane Simulator SvG</a>
+          <a href="https://stollvongati.com/de/projekte/der-liebherr-turmdrehkran-710-hc-l-als-vr-erlebnis.html">Las Vegas Application - SvG</a>
           {close}
         </article>
-        <article id="augmented" className={`${this.props.article === 'augmented' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
+        <article id="intensaDrum" className={`${this.props.article === 'intensaDrum' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Augmented Reality</h2>
-            <CSSSlider images={augmentedA} images2x={augmentedA}/>
-          <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my </p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
-          <a href="https://stollvongati.com/de/projekte/lisim-simulator-fuer-liebherr-turmdrehkrane.html">Website SvG</a>
+          <CSSSlider images={intensadrum_A} images2x={intensadrum_A}/>
+          <ProjectOverview
+            projectContext={["crane bending", "workload testing", "product presentation", "training"]}
+            teamSize={"middle size project"}
+            projectType={"work project"}
+            tasks={["developer", "highscore implementation", "crane bending shader", "research", "opimisation", "interaction design"]}
+            />
+          <Concept>
+            <h1>The Intention</h1>
+            <p></p>
+          </Concept>
+          <UsedTechnology>
+            <h1>Used UsedTechnology</h1>
+            <p>Devlopment: Unity</p>
+            <p>AR Framework: Wikitude</p>
+            <p>Camera: Cinemachine</p>
+            <p>3D Models: 3dsMax</p>
+            <p>IDE: Visual Studio</p>
+          </UsedTechnology>
+          <UsedTechnology>
+            <h1>Platforms</h1>
+            <p>iPad and iPhone, Windows (without AR)</p>
+          </UsedTechnology>
+          {close}
+        </article>
+        <article id="recaro-vr" className={`${this.props.article === 'recaro-vr' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
+          <h2 className="major">Recaro VR</h2>
+          <CSSSlider images={recaroVR_A} images2x={recaroVR_A}/>
+          <ProjectOverview
+            projectContext={["crane bending", "workload testing", "product presentation", "training"]}
+            teamSize={"middle size project"}
+            projectType={"work project"}
+            tasks={["developer", "highscore implementation", "crane bending shader", "research", "opimisation", "interaction design"]}
+            />
+          <Concept>
+            <h1>The Intention</h1>
+            <p></p>
+          </Concept>
+          <UsedTechnology>
+            <h1>Used UsedTechnology</h1>
+            <p>Devlopment: Unity</p>
+            <p>VR interaction system: selfmade</p>
+            <p>VR release: SteamVR</p>
+            <p>Camera: Cinemachine</p>
+            <p>3D Models: 3dsMax</p>
+            <p>IDE: Visual Studio</p>
+          </UsedTechnology>
+          <UsedTechnology>
+            <h1>Platforms</h1>
+            <p>Windows Standalone</p>
+          </UsedTechnology>
+          <a href="https://stollvongati.com/de/projekte/virtuelle-flugzeugkabine-fuer-recaro-business-class-sitze.html">Project Overview SvG</a>
           {close}
         </article>
       </div>

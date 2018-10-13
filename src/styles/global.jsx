@@ -27,5 +27,6 @@ injectGlobal`
   }
   h1, p{
       font-family:'IBM Plex Mono';
+      pointer-events: all;
   }
 `;

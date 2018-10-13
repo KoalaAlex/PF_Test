@@ -43,13 +43,15 @@ class ProjectOverview extends React.Component {
   createTaskItems = (columns) => {
     let taskNodes = []
     let j = 0;
-    for (let i = 0; i < columns; i++) {
-      j = (i*columns);
-      for (j ; j <= ((this.props.tasks.length / columns) *(i +1)); j++) {
+    for (let i = 1; i <= columns; i++) {
+      let pNodes = []
+      j = ((i - 1)*(columns -1));
+      for (j ; j < (Math.ceil(this.props.tasks.length / columns) *(i)); j++) {
         if(this.props.tasks[j] != null){
-          taskNodes.push(<OverviewItem key={j}><p>{this.props.tasks[j]}</p></OverviewItem>)
+          pNodes.push(<p key={"p" + j}>{this.props.tasks[j]}</p>)
         }
       }
+      taskNodes.push(<OverviewItem key={"o" + i}>{pNodes}</OverviewItem>)
     }
     return taskNodes
   }

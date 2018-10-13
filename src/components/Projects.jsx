@@ -8,14 +8,14 @@ const ProjectsWrapper = styled.div`
   display: grid;
   grid-gap: 4rem;
   grid-template-columns: repeat(3, 1fr);
-  @media (max-width: 1800px) {
+  @media (max-width: 1799px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  @media (max-width: 1200px) {
+  @media (max-width: 1199px) {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 3rem;
   }
-  @media (max-width: 900px) {
+  @media (max-width: 599px) {
     grid-template-columns: 1fr;
     grid-gap: 2rem;
   }
@@ -32,37 +32,51 @@ class Projects extends React.Component {
     return (
       <ProjectsWrapper id="projects">
         <ProjectCard
-          title="my portfolio playground"
+          title="My Portfolio Playground"
           onOpenArticle={this.props.onOpenArticle}
           link="portfolio"
         >
           "Here you can see the make of from my portfolio"
         </ProjectCard>
         <ProjectCard
-          title="multiplayer vr"
+          title="Gemue VR"
           onOpenArticle={this.props.onOpenArticle}
-          link="vr-multi"
+          link="gemue-vr"
         >
           "You can play this project with an Oculus or a HTC Vive it is support by SteamVR and you can meet each other virtual in a game zone."
         </ProjectCard>
         <ProjectCard
-          title="interactive and touch"
+          title="Traction Inverter"
           onOpenArticle={this.props.onOpenArticle}
-          link="touch"
+          link="traction-inverter"
         >
           "Here is a collection of some nice Apps that are made with Unity for Mobile and Dektop Devices."
         </ProjectCard>
         <ProjectCard
-          title="simulators and configurators"
+          title="Gemue AR"
+          onOpenArticle={this.props.onOpenArticle}
+          link="gemue-ar"
+        >
+          "Here is a collection of some nice Apps that are made with Unity for Mobile and Dektop Devices."
+        </ProjectCard>
+        <ProjectCard
+          title="Recaro"
+          onOpenArticle={this.props.onOpenArticle}
+          link="recaro-vr"
+        >
+          "Here is a collection of some nice Apps that are made with Unity for Mobile and Dektop Devices."
+        </ProjectCard>
+        <ProjectCard
+          title="Crane Simulator"
           onOpenArticle={this.props.onOpenArticle}
           link="simulator"
         >
           "In those 'games' you can change almost everything from day/night behaviour until the mass of a crane load. The more load weight on the crane, the more it bends."
         </ProjectCard>
         <ProjectCard
-          title="augmented reality"
+          title="Intensa Drum"
           onOpenArticle={this.props.onOpenArticle}
-          link="augmented"
+          link="intensaDrum"
         >
           "Here you can find some fancy applications that mixes the real world with the virtual one."
         </ProjectCard>

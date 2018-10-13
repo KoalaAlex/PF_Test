@@ -10,7 +10,7 @@ import MediaQuery from 'react-responsive';
 const Wrapper = styled.a`
   display: inherit;
   pointer-events: all;
-  ${tw('shadow-lg relative no-underline rounded-lg p-4 text-white')};
+  ${tw('shadow-lg relative no-underline rounded-lg md:p-1 lg:p-2 xl:p-3  xl:p-4 text-white')};
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
@@ -39,8 +39,7 @@ const SubText = styled.p`
 `;
 
 const Title = styled.p`
-  ${tw('text-white uppercase text-2xl md:text-3xl xl:text-4xl tracking-wide')};
-  font-size: 2rem;
+  ${tw('text-white uppercase text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl tracking-wide')};
   margin-block-start: 0.67rem;
   margin-block-end: 0.67rem;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -51,7 +50,7 @@ const ProjectCard = ({ title, onOpenArticle, link, children}) => (
       <MarginDiv>
           <Title>{title}</Title>
           <div>
-            <MediaQuery query="(min-width: 800px)">
+            <MediaQuery query="(min-width: 900px)">
               <SubText>{children}</SubText>
 
             </MediaQuery>
