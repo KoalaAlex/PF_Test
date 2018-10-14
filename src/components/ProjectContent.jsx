@@ -178,7 +178,6 @@ const TestVideo = styled.div`
 
 class ProjectContent extends React.Component {
   componentWillUpdate(nextProps, nextState){
-    /*
     this.refs.gemueVideo.pause();
     this.refs.craneSimMovie.pause();
     this.refs.craneSimMovie2.pause();
@@ -193,7 +192,6 @@ class ProjectContent extends React.Component {
     if(nextProps.article === 'recaro-vr'){
       this.refs.recaroMovie.play();
     }
-    */
   }
   render() {
     return (
@@ -236,17 +234,16 @@ class ProjectContent extends React.Component {
         <article id="gemue-vr" className={`${this.props.article === 'gemue-vr' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Gemue VR</h2>
           <span className="image main">
-            {/*
             <CSSSlider
               images={gemueVR_A}
               images2x={gemueVR_A}
               videos={[
-              <video ref="gemueVideo" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" controls={true} loop muted preload="auto">
+              <video ref="gemueVideo" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" controls loop muted preload="auto">
                 <source type="video/mp4" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" />
                 <source type="video/webm" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.webm" />
                 <source type="video/ogg" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.ogv" />
               </video>]}
-              /> */}
+              />
           </span>
           <ProjectOverview
             projectContext={["global meetings", "maintainance training", "product presentation"]}
@@ -348,7 +345,6 @@ class ProjectContent extends React.Component {
         </article>
         <article id="simulator" className={`${this.props.article === 'simulator' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Simulator VR</h2>
-          {/*
           <CSSSlider images={craneSimul_A} images2x={craneSimul_A}
           videos={[
             <video
@@ -367,8 +363,7 @@ class ProjectContent extends React.Component {
             ,
           ]
           }/>
-          */}
-          {/*
+          {/*}
         <TestVideo>
           <video height="300" width="400"
             src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.mp4.mp4" controls loop muted autoPlay preload="auto">
@@ -451,7 +446,6 @@ class ProjectContent extends React.Component {
         </article>
         <article id="recaro-vr" className={`${this.props.article === 'recaro-vr' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Recaro VR</h2>
-          {/*
           <CSSSlider
             images={recaroVR_A}
             images2x={recaroVR_A}
@@ -463,7 +457,7 @@ class ProjectContent extends React.Component {
                 <source type="video/mp4" src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.mp4" />
               </video>
             ]
-            }/> */}
+            }/>
           <ProjectOverview
             projectContext={["configurateable behaviour", "dynamic daytime and light system", "product presentation", "showcase"]}
             teamSize={"middle size project"}
@@ -481,7 +475,7 @@ class ProjectContent extends React.Component {
             <h1>Work in Process</h1>
             <p>At the time the project starts it was not much available about interaction systems in VR therefore we created our own. At the base of the project we used SteamVR and the common Button Events.
               <br />At this Events we created to link to our custom behaviours like pointer raycast to objects and so on. It was a lot of recherch needed and also much trial and error for the right beahviour.
-              <br /> On top of that the whole system needed to be as dynamic as possible. We created a global material manager and a shader switcher which connects all function for 3D Object called "MOG".
+              <br /> On top of that the whole system needed to be as dynamic as possible. We created a global material manager and a shader switcher which connects all function for 3D Object called MOG.
               <br /> The tablet connection was not done by me. But I handled the receiving events in Unity. And also passed the parameter back to the tablet via the socket connection. Some states needed to be bidirectional for example if the VR actor changes the daytime in needed to be visible in the tablet and so on.
             </p>
           </Concept>

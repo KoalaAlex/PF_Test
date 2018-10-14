@@ -44,7 +44,7 @@ const SmallImageP= styled.picture`
   overflow: hidden;
 `;
 
-const Movie = styled.picture`
+const Movie = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   align-items: center;
