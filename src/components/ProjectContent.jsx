@@ -233,26 +233,17 @@ class ProjectContent extends React.Component {
             <CSSSlider
               images={gemueVR_A}
               images2x={gemueVR_A}
-              test={[(
-                  <video controls loop muted>
-                    <source src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.webm" type="video/webm" />
-                    <source src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.ogv" type="video/ogv" />
-                    <source src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>)]
-                }
-                videos={[
-                <video id="type_e_228" className="mediaplayer" width="770" height="433"
-                poster="https://media.stollvongati.com/assets/images/f/GEMUE_VR_Hero-02344cef.jpg"
-                preload="none" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.webm" ref="gemueVideo" controls loop muted>
-                  <source type="video/webm" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.webm" />
-                  <source type="video/ogg" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.ogv" />
-                  <object width="570" height="320" type="application/x-shockwave-flash" data="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf">
-                    <param name="movie" value="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf" />
-                    <param name="flashvars" value="controls=true&amp;file=https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" />
-                    <img src="https://media.stollvongati.com/assets/images/f/GEMUE_VR_Hero-02344cef.jpg" width="570" height="320" title="No video playback capabilities" />
-                  </object>
-                </video>]}
+              videos={[
+              <video
+              src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" ref="gemueVideo" controls loop muted preload="false">
+                <source type="video/webm" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.webm" />
+                <source type="video/ogg" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.ogv" />
+                <object type="application/x-shockwave-flash" data="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf">
+                  <param name="movie" value="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf" />
+                  <param name="flashvars" value="controls=true&amp;file=https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" />
+                  <img src="https://media.stollvongati.com/assets/images/f/GEMUE_VR_Hero-02344cef.jpg" title="No video playback capabilities" />
+                </object>
+              </video>]}
               />
           </span>
           <ProjectOverview
@@ -357,18 +348,28 @@ class ProjectContent extends React.Component {
           <h2 className="major">Simulator VR</h2>
           <CSSSlider images={craneSimul_A} images2x={craneSimul_A}
           videos={[
-            <video controls loop muted ref="craneSimMovie">
-              <source src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.webmhd.webm" type="video/webm" />
-              <source src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.oggtheora.ogv" type="video/ogv" />
-              <source src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.mp4.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>,
-            <video controls loop muted ref="craneSimMovie2">
-              <source src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.webm" type="video/webm" />
-              <source src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.ogv" type="video/ogv" />
-              <source src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>,
+            <video
+            src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.mp4.mp4" ref="craneSimMovie" controls loop muted preload="false">
+              <source type="video/webm" src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.webmhd.webm" />
+              <source type="video/ogg" src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.oggtheora.ogv" />
+              <object type="application/x-shockwave-flash" data="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf">
+                <param name="movie" value="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf" />
+                <param name="flashvars" value="controls=true&amp;file=https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.mp4.mp4" />
+                <img src="https://media.stollvongati.com/assets/images/5/liebherr-lisim_1_video-e769a9b5.jpg" alt="No video playback capabilities" />
+            </object>
+            </video>
+            ,
+            <video
+            src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.mp4" ref="craneSimMovie2" controls loop muted preload="false">
+              <source type="video/webm" src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.webm" />
+              <source type="video/ogg" src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.ogv" />
+              <object type="application/x-shockwave-flash" data="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf">
+                <param name="movie" value="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf" />
+                <param name="flashvars" value="controls=true&amp;file=https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.mp4" />
+                <img src="https://media.stollvongati.com/assets/images/5/liebherr-lisim_1_video-e769a9b5.jpg" alt="No video playback capabilities" />
+            </object>
+            </video>
+            ,
           ]
           }/>
           <ProjectOverview
@@ -445,12 +446,17 @@ class ProjectContent extends React.Component {
             images={recaroVR_A}
             images2x={recaroVR_A}
             videos={[
-              <video controls loop muted ref="recaroMovie">
-                <source src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.webm" type="video/webm" />
-                <source src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.ogv" type="video/ogv" />
-                <source src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>]
+              <video
+              src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.mp4" ref="recaroMovie" controls loop muted preload="false">
+                <source type="video/webm" src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.webm" />
+                <source type="video/ogg" src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.ogv" />
+                <object type="application/x-shockwave-flash" data="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf">
+                  <param name="movie" value="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf" />
+                  <param name="flashvars" value="controls=true&amp;file=https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.mp4" />
+                  <img src="https://media.stollvongati.com/assets/images/5/liebherr-lisim_1_video-e769a9b5.jpg" alt="No video playback capabilities" />
+              </object>
+              </video>
+            ]
             }/>
           <ProjectOverview
             projectContext={["crane bending", "workload testing", "product presentation", "training"]}
