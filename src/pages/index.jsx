@@ -64,6 +64,10 @@ const AvatarBackgroundLayer = styled(CSSParallaxLayer)`
   align-items: center;
 `;
 
+const AvatarStartBackgroundLayer = styled(AvatarBackgroundLayer)`
+  align-items: top;
+`;
+
 const ProjectParallaxLayer = styled(CSSParallaxLayer)`
   padding-left: 3rem;
   padding-right: 3rem;
@@ -85,9 +89,30 @@ const RotateDividerProject = styled(RotateDivider)`
 `;
 
 const AboutBackground = styled.div`
+  position: absolute;
   background: #171717;
   width: 100%;
   height: 80%;
+`;
+
+const AvatarStartBackground = styled(AboutBackground)`
+  top: 15%;
+`;
+
+const AvatarStartBackgroundLeft = styled(AboutBackground)`
+  background: #171717;
+  width: 20%;
+  height: 5%;
+  top: 10%;
+  left: 0%;
+`;
+
+const AvatarStartBackgroundRight = styled(AboutBackground)`
+  background: #171717;
+  width: 20%;
+  height: 5%;
+  top: 10%;
+  right: 0%;
 `;
 
 const DividerMiddleBlur =  styled.div`
@@ -201,9 +226,9 @@ const MoveToPageOne = styled.div`
   align-items: center;
   justify-items: center;
   position: absolute;
-  height: 6vh;
-  top: 10vh;
-  width: 60vw;
+  height: 5%;
+  top: 10%;
+  width: 60%;
   background-color: rgba(255, 255, 255, .05);
   @supports ((-webkit-backdrop-filter: blur(1em)) or (backdrop-filter: blur(1em))) {
         -webkit-backdrop-filter: blur(1em);
@@ -284,7 +309,7 @@ moveToPage1(){
 keyDownFunction(event){
     if(!this.spaceKeyWasPressed && event.keyCode === 32) {
       this.spaceKeyWasPressed = true;
-      console.log(scroller);
+    //  console.log(scroller);
        scroller.scrollTo('page2', {
          duration: 800,
          delay: 0,
@@ -352,11 +377,11 @@ componentDidMount () {
 
   // Scroll Listener
   Events.scrollEvent.register('begin', function () {
-     console.log("begin", arguments);
+     //console.log("begin", arguments);
    });
 
    Events.scrollEvent.register('end', function () {
-     console.log("end", arguments);
+     //console.log("end", arguments);
    });
 }
 
@@ -492,9 +517,11 @@ handleCloseArticle() {
         </ContentLayer>
       </CSSParallaxGroup>
       <CSSParallaxGroup name="page2" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 1 : 0.8}>
-        <AvatarBackgroundLayer speed={0} zIndex={2}>
-          <AboutBackground/>
-        </AvatarBackgroundLayer>
+        <AvatarStartBackgroundLayer speed={0} zIndex={2}>
+          <AvatarStartBackgroundLeft />
+          <AvatarStartBackgroundRight />
+          <AvatarStartBackground/>
+        </AvatarStartBackgroundLayer>
         <ContentLayer speed={0} zIndex={4}>
           <MoveToPageOne onClick={() => {this.moveToPage1()}}>
             <SVG icon="triangle" width={'8'} fill="#ff006f" useSelfAlign={true}/>
@@ -608,7 +635,7 @@ handleCloseArticle() {
         <LastNoClickLayerSVG speed={-0.1} zIndex={2}>
           <SVGPageSix />
         </LastNoClickLayerSVG>
-        <ContentLayer speed={0} zIndex={3}>
+        <ContentLayer speed={0.1} zIndex={3}>
           <ProjectContent
             isArticleVisible={this.state.isArticleVisible}
             timeout={this.state.timeout}

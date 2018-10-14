@@ -61,6 +61,7 @@ class ProjectOverview extends React.Component {
       <Overview>
         <OverviewItem>
           <ItemTitel>Project Context</ItemTitel>
+          {this.props.video && this.props.video}
           {this.props.projectContext.map((value, i) => (
               <p key={i}>{value}</p>
           ))}

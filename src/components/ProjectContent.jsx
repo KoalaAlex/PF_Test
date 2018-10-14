@@ -32,6 +32,9 @@ import recaro02 from '../images/recaro/rec_02_800x565.jpg';
 import recaro03 from '../images/recaro/rec_03_800x480.jpg';
 // liebherr
 import cranesim01 from '../images/cranesim/cranesim01_800x450.jpg';
+import cranesim02 from '../images/cranesim/cranesim_cabine_1024_576.jpg';
+import cranesim03 from '../images/cranesim/cranesim_LasVegas_1600x900.jpg';
+import cranesim04 from '../images/cranesim/cranesim_avard_570x320.jpg';
 
 //IntensaDrum
 import intensaDrum01 from '../images/intensa-drum/id_01_800x600.jpg';
@@ -60,7 +63,7 @@ const gemueAR_A = [gemueAR01, gemueAR02, gemueAR03, gemueAR04];
 const intensadrum_A =  [intensaDrum01, intensaDrum02, intensaDrum03, intensaDrum04, intensaDrum05, intensaDrum06, intensaDrum07];
 const portfolioA =  [portfolio_01, portfolio_02, portfolio_03, portfolio_04, portfolio_05];
 const recaroVR_A = [recaro01, recaro02, recaro03];
-const craneSimul_A = [cranesim01];
+const craneSimul_A = [cranesim01, cranesim02, cranesim03, cranesim04];
 const tractionInverter_A = [traktionsStrom01, traktionsStrom02, traktionsStrom03, traktionsStrom04, traktionsStrom06];
 
 import '../assets/scss/components/ProjectContent.scss';
@@ -156,7 +159,36 @@ const TaskTitle = styled(ItemTitel)`
   }
 `;
 
+const Movie = styled.div`
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  height: 100%;
+  width: 100%;
+  pointer-events: all;
+  cursor: pointer;
+  video {
+      max-width: 980px;
+  }
+`;
+
 class ProjectContent extends React.Component {
+  componentWillUpdate(nextProps, nextState){
+    this.refs.gemueVideo.pause();
+    this.refs.craneSimMovie.pause();
+    this.refs.craneSimMovie2.pause();
+    this.refs.recaroMovie.pause();
+    if(nextProps.article === 'gemue-vr'){
+      this.refs.gemueVideo.play();
+    }
+    if(nextProps.article === 'simulator'){
+      this.refs.craneSimMovie.play();
+      this.refs.craneSimMovie2.play();
+    }
+    if(nextProps.article === 'recaro-vr'){
+      this.refs.recaroMovie.play();
+    }
+  }
   render() {
     return (
       <React.Fragment>
@@ -198,7 +230,18 @@ class ProjectContent extends React.Component {
         <article id="gemue-vr" className={`${this.props.article === 'gemue-vr' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Gemue VR</h2>
           <span className="image main">
-            <CSSSlider images={gemueVR_A} images2x={gemueVR_A}/>
+            <CSSSlider
+              images={gemueVR_A}
+              images2x={gemueVR_A}
+              videos={[(
+                  <video controls loop muted ref="gemueVideo">
+                    <source src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.webm" type="video/webm" />
+                    <source src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.ogv" type="video/ogv" />
+                    <source src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>)]
+                }
+              />
           </span>
           <ProjectOverview
             projectContext={["global meetings", "maintainance training", "product presentation"]}
@@ -281,6 +324,9 @@ class ProjectContent extends React.Component {
             <h1>The Intention</h1>
             <p>This application was made for a messe showcase. The need of the client was to show his product in an interactive and playfull way.
             <br />It should include the new CI of Voith and therefore the style was in close connection to it.</p>
+          </Concept>
+          <Concept>
+            <h1>Work in Process</h1>
             <p>In this kind of project the cinemachine was realy handy and we could rely on the the nice smooth camera fade script from <a href="javascript:;" onClick={() => {this.props.onOpenArticle("gemue-ar")}}>gemeu-ar</a></p>
           </Concept>
           <UsedTechnology>
@@ -297,18 +343,35 @@ class ProjectContent extends React.Component {
         </article>
         <article id="simulator" className={`${this.props.article === 'simulator' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Simulator VR</h2>
-          <span className="image main">
-            <CSSSlider images={craneSimul_A} images2x={craneSimul_A}/>
-          </span>
+          <CSSSlider images={craneSimul_A} images2x={craneSimul_A}
+          videos={[
+            <video controls loop muted ref="craneSimMovie">
+              <source src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.webmhd.webm" type="video/webm" />
+              <source src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.oggtheora.ogv" type="video/ogv" />
+              <source src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.mp4.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>,
+            <video controls loop muted ref="craneSimMovie2">
+              <source src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.webm" type="video/webm" />
+              <source src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.ogv" type="video/ogv" />
+              <source src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>,
+          ]
+          }/>
           <ProjectOverview
             projectContext={["crane bending", "workload testing", "product presentation", "training"]}
-            teamSize={"middle size project"}
+            teamSize={"big size project"}
             projectType={"work project"}
             tasks={["developer", "highscore implementation", "crane bending shader", "research", "opimisation", "interaction design"]}
             />
           <Concept>
             <h1>The Intention</h1>
             <p></p>
+          </Concept>
+          <Concept>
+            <h1>Work in Process</h1>
+            <p> </p>
           </Concept>
           <UsedTechnology>
             <h1>Used UsedTechnology</h1>
@@ -337,7 +400,19 @@ class ProjectContent extends React.Component {
             />
           <Concept>
             <h1>The Intention</h1>
-            <p></p>
+            <p>The client wants to show his product and its functionality in an interactive App / AR App.</p>
+            <p>The App starts with a normal 3D Mode where you can move via touch/scroll/pinch/tap to the 3D Object and you can click some of the hotspots.<br />
+            On one of them you can start the Physic to work. Some containers will start moving into the drum and will be shreddered to a liquid molasse.<br />
+            The other hotspots traverse you to a specific part of the facility where you can get adittional informations and play video descriptions.</p>
+            <p>The App has to rely on an Image Target what can be downloaded via the homepage or from a prospect of Voith<br />
+            After placing the image in front of the camera it start the AR behaviour an the 3D Models can be surveyed.</p>
+          </Concept>
+          <Concept>
+            <h1>Work in Process</h1>
+            <p>The client want's a AR App that works on his iPad Air so therefore we could not integrate the ARKit and so we choose the Wikitude Framework</p>
+            <p>The AR Framework had a major downgrade on build time because aftre every export to XCode it needed to be asigned in XCode binarys and also manualy insert a runscript to remove the simulator achitecture. we get along with it by scripting a linker script right from Unity.</p>
+            <p>We made the moving packages </p>
+            <p>Another difficulty was the physic to work in AR Mode because because at default it rotates the 3D Model an the physic got realy messed up. So we changed it to rotate and scale the camera so the object stays static.</p>
           </Concept>
           <UsedTechnology>
             <h1>Used UsedTechnology</h1>
@@ -354,7 +429,17 @@ class ProjectContent extends React.Component {
         </article>
         <article id="recaro-vr" className={`${this.props.article === 'recaro-vr' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Recaro VR</h2>
-          <CSSSlider images={recaroVR_A} images2x={recaroVR_A}/>
+          <CSSSlider
+            images={recaroVR_A}
+            images2x={recaroVR_A}
+            videos={[
+              <video controls loop muted ref="recaroMovie">
+                <source src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.webm" type="video/webm" />
+                <source src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.ogv" type="video/ogv" />
+                <source src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>]
+            }/>
           <ProjectOverview
             projectContext={["crane bending", "workload testing", "product presentation", "training"]}
             teamSize={"middle size project"}
@@ -394,7 +479,6 @@ class ProjectContent extends React.Component {
 }
 
 ProjectContent.propTypes = {
-  route: PropTypes.object,
   article: PropTypes.string,
   articleTimeout: PropTypes.bool,
   onCloseArticle: PropTypes.func,

@@ -4,24 +4,19 @@ import styled from 'react-emotion';
 
 import '../assets/scss/components/CSSSlider.scss';
 
+import movieDefault from '../images/movie_800x450.jpg';
+
 const FullWideImgStyle = styled.img`
   width: 100%;
 `;
 
 const Container = styled.div`
-/*
-  display: flex;
-  align-items: center;
-  max-height: 10vh;
-  overflow: hidden;
-  margin: 1rem;
-  */
   ${tw('justify-between mt-8')};
   display: grid;
   grid-gap: 1rem;
-  //  grid-row: 1;
-  //  grid-column: ${props => props.column};
   grid-template-columns: repeat(${props => props.column}, 1fr);
+  padding-left: 2rem;
+  padding-right: 2rem;
 `;
 
 const Wrapper = styled.div`
@@ -30,8 +25,8 @@ const Wrapper = styled.div`
 `;
 
 const BigImageP= styled.picture`
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  display: flex;
+  //grid-template-columns: repeat(1, 1fr);
   width: 100%;
   max-height: 60vh;
   height: 40vw;
@@ -47,6 +42,22 @@ const SmallImageP= styled.picture`
   align-items: center;
   justify-items: center;
   overflow: hidden;
+`;
+
+const Movie = styled.picture`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  align-items: center;
+  justify-items: center;
+  height: 40vw;
+  max-height: 60vh;
+  width: 100%;
+  pointer-events: all;
+  cursor: pointer;
+  video {
+    height: 100%;
+    width: 100%;
+  }
 `;
 
 class WideImg extends React.Component {
@@ -66,15 +77,23 @@ class WideImg extends React.Component {
 
   render() {
     return (
-      <BigImageP className={this.state.isHidden ? this.props.hiddenClass : ""}>
-        <source media="(max-width: 600px)" srcSet={this.props.srcSet} type="image/jpg" />
-        <FullWideImgStyle onClick={this.props.click} src={this.props.src} className={this.props.className} src={this.props.src}/>
-      </BigImageP>
+      <React.Fragment>
+      	{this.props.video ? (
+            <Movie className={this.state.isHidden ? this.props.hiddenClass : ""}>{this.props.video}</Movie>
+          )
+          : (
+          <BigImageP className={this.state.isHidden ? this.props.hiddenClass : ""}>
+            <source media="(max-width: 600px)" srcSet={this.props.srcSet} type="image/jpg" />
+            <FullWideImgStyle src={this.props.src} className={this.props.className} src={this.props.src}/>
+          </BigImageP>
+        )}
+      </React.Fragment>
     )
   }
 }
 
 WideImg.propTypes = {
+  video: PropTypes.node,
   className: PropTypes.string,
   hiddenClass: PropTypes.string,
   srcSet: PropTypes.string,
@@ -171,12 +190,22 @@ export default class CSSSlider extends React.PureComponent {
   render() {
     return (
       <Wrapper>
+      {this.props.videos && (
+        this.props.videos.map((value, i) => (
+          <WideImg key={i+"bv"} className="mySlides" hiddenClass="hideThis" video={this.props.videos[i]} ref={c => this._refArrayImg.set(i, c)}/>
+          ))
+        )}
         {this.props.images.map((value, i) => (
-            <WideImg key={i + this.props.images.length} className="mySlides" hiddenClass="hideThis" src={value} srcSet={this.props.images2x[i]} ref={c => this._refArrayImg.set(i, c)}/>
+            <WideImg key={i + this.props.images.length} className="mySlides" hiddenClass="hideThis" src={value} srcSet={this.props.images2x[i]} ref={c => this._refArrayImg.set(this.props.videos ? (i+this.props.videos.length) : i, c)}/>
         ))}
-        <Container column={this.props.images.length}>
+        <Container column={this.props.videos ? (this.props.images.length+this.props.videos.length) : this.props.images.length}>
+        {this.props.videos && (
+          this.props.videos.map((value, i) => (
+            <SmallImg key={i + "v"} className="opacity" hiddenClass="opacity-off" src={movieDefault} srcSet={movieDefault} click={() => this.clickImg(i)} ref={c => this._refArrayDots.set(i, c)}/>
+            ))
+          )}
           {this.props.images.map((value, i) => (
-            <SmallImg key={i} className="opacity" hiddenClass="opacity-off" src={value} srcSet={this.props.images2x[i]} click={() => this.clickImg(i)}  ref={c => this._refArrayDots.set(i, c)}/>
+            <SmallImg key={i} className="opacity" hiddenClass="opacity-off" src={value} srcSet={this.props.images2x[i]} click={() => this.clickImg(this.props.videos ? (i+this.props.videos.length) : i)}  ref={c => this._refArrayDots.set(this.props.videos ? (i+this.props.videos.length) : i, c)}/>
           ))}
         </Container>
       </Wrapper>
@@ -185,6 +214,7 @@ export default class CSSSlider extends React.PureComponent {
 }
 
 CSSSlider.propTypes = {
+  videos: PropTypes.array,
   images: PropTypes.array.isRequired,
   images2x: PropTypes.array,
 };
