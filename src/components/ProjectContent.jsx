@@ -238,11 +238,7 @@ class ProjectContent extends React.Component {
               src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" ref="gemueVideo" controls loop muted preload="false">
                 <source type="video/webm" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.webm" />
                 <source type="video/ogg" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.ogv" />
-                <object type="application/x-shockwave-flash" data="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf">
-                  <param name="movie" value="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf" />
-                  <param name="flashvars" value="controls=true&amp;file=https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" />
-                  <img src="https://media.stollvongati.com/assets/images/f/GEMUE_VR_Hero-02344cef.jpg" title="No video playback capabilities" />
-                </object>
+                <source type="video/mp4" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" />
               </video>]}
               />
           </span>
@@ -352,22 +348,14 @@ class ProjectContent extends React.Component {
             src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.mp4.mp4" ref="craneSimMovie" controls loop muted preload="false">
               <source type="video/webm" src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.webmhd.webm" />
               <source type="video/ogg" src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.oggtheora.ogv" />
-              <object type="application/x-shockwave-flash" data="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf">
-                <param name="movie" value="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf" />
-                <param name="flashvars" value="controls=true&amp;file=https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.mp4.mp4" />
-                <img src="https://media.stollvongati.com/assets/images/5/liebherr-lisim_1_video-e769a9b5.jpg" alt="No video playback capabilities" />
-            </object>
+              <source type="video/mp4" src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.mp4.mp4" />
             </video>
             ,
             <video
             src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.mp4" ref="craneSimMovie2" controls loop muted preload="false">
               <source type="video/webm" src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.webm" />
               <source type="video/ogg" src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.ogv" />
-              <object type="application/x-shockwave-flash" data="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf">
-                <param name="movie" value="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf" />
-                <param name="flashvars" value="controls=true&amp;file=https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.mp4" />
-                <img src="https://media.stollvongati.com/assets/images/5/liebherr-lisim_1_video-e769a9b5.jpg" alt="No video playback capabilities" />
-            </object>
+              <source type="video/mp4" src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.mp4" />
             </video>
             ,
           ]
@@ -450,11 +438,7 @@ class ProjectContent extends React.Component {
               src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.mp4" ref="recaroMovie" controls loop muted preload="false">
                 <source type="video/webm" src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.webm" />
                 <source type="video/ogg" src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.ogv" />
-                <object type="application/x-shockwave-flash" data="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf">
-                  <param name="movie" value="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf" />
-                  <param name="flashvars" value="controls=true&amp;file=https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.mp4" />
-                  <img src="https://media.stollvongati.com/assets/images/5/liebherr-lisim_1_video-e769a9b5.jpg" alt="No video playback capabilities" />
-              </object>
+                <source type="video/mp4" src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.mp4" />
               </video>
             ]
             }/>
