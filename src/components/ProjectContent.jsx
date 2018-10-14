@@ -176,6 +176,16 @@ const TestVideo = styled.div`
   position: relative:
 `;
 
+const CodeHTML = styled.span`
+background: #303030;
+  :before {
+    Content : "<";
+  }
+  :after {
+    Content : ">";
+  }
+`;
+
 class ProjectContent extends React.Component {
   componentWillUpdate(nextProps, nextState){
     this.refs.gemueVideo.pause();
@@ -203,19 +213,21 @@ class ProjectContent extends React.Component {
           <CSSSlider images={portfolioA} images2x={portfolioA}/>
         </span>
         <ProjectOverview
-          projectContext={["skill presentation", "job application"]}
+          projectContext={["skill presentation", "job application", "show projects"]}
           teamSize={"solo project"}
           projectType={"portfolio"}
           tasks={["front end development", "user experience", "research", "opimisation", "visual design", "quick prototype"]}
           />
         <Concept>
           <h1>The Intention</h1>
-          <p>It should lead to a presentation of myself and my work in a playful, dynamic and colorful way. it uses state fo the art technology with mostly css manipulations and transitions</p>
+          <p>One platform for a presentation of my work in a playful, dynamic and colorful way. It should use state fo the art technology like react and rely mostly on css manipulations and transitions.</p>
         </Concept>
         <Concept>
           <h1>Work in Process</h1>
-          <p>I started with a demo from gatsby <a href="https://github.com/LeKoArts/gatsby-starter-portfolio-cara">starter</a> dor quick development. While working on it I discovered performance issues on my mac book pro (2013). the main issue was on the one hand the parallax effect made with <a href="https://github.com/drcmda/react-spring" >react spring</a> and on the other hand the enormous count of SVGs.
-          <br />I started to redesign the whole parallax effect to work with CSS and not to depend on script. Then I make use of the xlink and "use" tag on all SVGs. This saves me a lot of performance. Also I don't liked the portoflio card wich referenced to a seperate side. For this i found a solution to change the perspective to fade on the hidden right side on the page an there it was the content for the projects.
+          <p>I started with a demo from gatsby <a href="https://github.com/LeKoArts/gatsby-starter-portfolio-cara">starter</a> for quick development. While working on it I discovered performance issues on my mac book pro (2013). The main issue was on the one hand the parallax effect made with <a href="https://github.com/drcmda/react-spring" >react spring</a> and on the other hand the enormous count of SVGs.
+          <br />I started to redesign the whole parallax effect to work with CSS and not to depend on javascript. While developing i found the <a onClick={() => {this.props.easteregg()}}>esteregg</a> which was orginaly designed for debuging the Layer effect.<br />
+          Also I don't liked the portoflio card wich referenced to a seperate side. For this I found a solution to change the perspective to fade on the hidden right side of the page an there lie's the content for the projects.
+          <a href="https://www.facebook.com/StrickerTobi">My brother</a> helped me out with the svg's. Then I made use of the href attribute and the <CodeHTML>use</CodeHTML> element on all SVGs. This saves me a lot of performance.
           </p>
         </Concept>
         <UsedTechnology>
@@ -253,15 +265,16 @@ class ProjectContent extends React.Component {
             />
           <Concept>
             <h1>The Intention</h1>
-            <p></p>
+            <p>The Main Idea was to build a trainings system for engineers in regards to the VR Technology. On top of that the client wanted to have a virtual meeting place for all his headquarters.
+            <br />So it should be possible to meet other engineers or start the training as a group via network connection.</p>
           </Concept>
           <Concept>
             <h1>Work in Process</h1>
             <p>This was one of the funnies and also one of the toughest projects i made.</p>
-            <p>Mostly of the bugs was dicovert via multiplayer because you have to be very specific who is the manipulator of which item i the scene and how the transfer ownership works</p>
-            <p>You start in the Lobby where you can modify your Avatar with outfit and colorpalets when you are at the mirrow. This mode is not connected to multilayer.</p>
-            <p>Then you can choose on of two rooms for multiplayer. One is the workshop room where you can start the maintainance training via a Questline that hints your mistakes and gives you tips. The other one is the meeting room wher you can relax an chitchat with other gemue users. Dont miss the lasersword easter egg and the one with the duck ;)</p>
-            <p>The whole project was made in the GameEngine Unity and is highly driven from 3D objects from 3dsMax. The best part was the Multiplayer Mode. It is so much fun to meet peaple in VR just like the ones are realy in the same room only they appear as an Avatar.  The main aspect is a maintanance of a ventil with membran change.n df</p>
+            <p>Most of the bugs were discovert via multiplayer because you have to be very specific who is the manipulator of which item in the scene and how the transfer ownership works</p>
+            <p>You start the application in the Lobby where you can modify your Avatar with outfit and colorplaets when you are at the mirrow. This mode is not connected to multiplayer in regards to new players wich zero knowledge. This players has to acclimate first about the interaction system and the possibilities in VR. Then they join the training or the meeting mode via a doorknob like in the real world.</p>
+            <p>Both modis are possible to play via multiplayer. One is the workshop room where you can start the maintainance training step by step along a questline that hints your mistakes and gives you tips. The other one is the meeting room wher you can relax an chitchat with other gemue users. Dont miss the lasersword easter egg and the one with the duck ;)</p>
+            <p>The whole project was made in the gameengine Unity and is highly driven from 3D objects from 3dsMax. The best part was the multiplayer mode. It is so much fun to meet peaple in VR just like the ones are realy in the same room only they appear as an Avatar.  The main aspect is a maintanance of a ventil with a membran change with tighten or loosen a screw.</p>
           </Concept>
           <UsedTechnology>
             <h1>Used UsedTechnology</h1>
@@ -291,11 +304,11 @@ class ProjectContent extends React.Component {
             />
           <Concept>
             <h1>The Intention</h1>
-            <p>This projects idea was to find a way to present the product of gemue to his customers with the AR technology</p>
+            <p>This projects idea was to find a way to present the product of gemue to his customers with the AR technology. Not to forget the normal 3D scene where you can get additional informations about a specific product.</p>
           </Concept>
           <Concept>
             <h1>Work in Process</h1>
-            <p>In this project it was realy helpful to rely on the ARKit demo for quick development. But further on it was a little annoying to alwas deplay via XCode to tets the Ar behaviour. While developing we were discovering the Ar Kit Remote Feature that enables you to test directly in Unity Editor while connecting your iPhone via lightning cable. That saved us a lot of time.</p>
+            <p>In this project it was realy helpful to rely on the ARKit demo for quick development. But further on it was a little annoying to alwas deploy via XCode to tets the ar mode. While developing we were discovering the arkit remote feature that enables you to test directly in the Unity Editor while connecting your iPhone via lightning cable. That saved us a lot of time.</p>
             <p>It was the first app that we made via the Unity Cinemachine and it also had some annoying beaviours... One was when you switch between the cameras that it appears at start a very long frame. when managed to overcome this by scripting our own camera interpolation switch and not to rely on the one from the Framework</p>
           </Concept>
           <UsedTechnology>
@@ -318,7 +331,7 @@ class ProjectContent extends React.Component {
           </span>
           <ProjectOverview
             projectContext={["manual camera movement", "use case product", "product presentation"]}
-            teamSize={"middle size project"}
+            teamSize={"small size project"}
             projectType={"work project"}
             tasks={["developer", "dynamic camera movement", "research", "opimisation", "interaction design"]}
             />
@@ -363,19 +376,9 @@ class ProjectContent extends React.Component {
             ,
           ]
           }/>
-          {/*}
-        <TestVideo>
-          <video height="300" width="400"
-            src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.mp4.mp4" controls loop muted autoPlay preload="auto">
-              <source type="video/webm" src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.webmhd.webm" />
-              <source type="video/ogg" src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.oggtheora.ogv" />
-              <source type="video/mp4" src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.mp4.mp4" />
-            </video>
-          </TestVideo>
-          */}
           <ProjectOverview
             projectContext={["crane bending", "workload testing", "product presentation", "training", "showcase", "greenscreen", "map real cabin with virtual world"]}
-            teamSize={"big size project"}
+            teamSize={"middle size project"}
             projectType={"work project"}
             tasks={["developer", "highscore implementation", "crane bending shader", "research", "opimisation", "interaction design", "rope physics", "greenscreen shader"]}
             />
@@ -504,6 +507,7 @@ class ProjectContent extends React.Component {
 }
 
 ProjectContent.propTypes = {
+  easteregg: PropTypes.func,
   article: PropTypes.string,
   articleTimeout: PropTypes.bool,
   onCloseArticle: PropTypes.func,

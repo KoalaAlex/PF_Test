@@ -18,7 +18,9 @@ import '../styles/global';
 import config from '../../config/website';
 import MediaQuery from 'react-responsive';
 
-const commentText = "╔═╗┌─┐┌┬┐┌┬┐┌─┐┌┐┌┌┬┐┌─┐  ┌─┐┌─┐┬  ┬┌─┐  ┬  ┬┬  ┬┌─┐┌─┐┬ \n     ║  │ │││││││├┤ │││ │ └─┐  └─┐├─┤└┐┌┘├┤   │  │└┐┌┘├┤ └─┐│ \n     ╚═╝└─┘┴ ┴┴ ┴└─┘┘└┘ ┴ └─┘  └─┘┴ ┴ └┘ └─┘  ┴─┘┴ └┘ └─┘└─┘o";
+const commentText1 = "<!-- ╔═╗┌─┐┌┬┐┌┬┐┌─┐┌┐┌┌┬┐┌─┐  ┌─┐┌─┐┬  ┬┌─┐  ┬  ┬┬  ┬┌─┐┌─┐┬ -->";
+const commentText2 = "<!-- ║  │ │││││││├┤ │││ │ └─┐  └─┐├─┤└┐┌┘├┤   │  │└┐┌┘├┤ └─┐│ -->";
+const commentText3 = "<!-- ╚═╝└─┘┴ ┴┴ ┴└─┘┘└┘ ┴ └─┘  └─┘┴ ┴ └┘ └─┘  ┴─┘┴ └┘ └─┘└─┘o -->";
 
 // Scroll
 import {Events, Link, scroller} from 'react-scroll'
@@ -499,7 +501,7 @@ handleCloseArticle() {
     return (
   <React.Fragment>
     <SEO />
-    <div dangerouslySetInnerHTML={{__html: "<!-- " + commentText + " -->"}}/>
+    <div dangerouslySetInnerHTML={{__html: commentText1 + commentText2 + commentText3}}/>
     <SVGOriginals />
     <CSSParallax id="parallax-scroller" pages={this.state.isSmallMobile ? 4 : 4}>
       <CSSParallaxGroup name="page1" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={0}>
@@ -637,6 +639,7 @@ handleCloseArticle() {
         </LastNoClickLayerSVG>
         <ContentLayer speed={0.1} zIndex={3}>
           <ProjectContent
+            easteregg={this.toggleDebug}
             isArticleVisible={this.state.isArticleVisible}
             timeout={this.state.timeout}
             articleTimeout={this.state.articleTimeout}
