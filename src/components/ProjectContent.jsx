@@ -234,7 +234,7 @@ class ProjectContent extends React.Component {
               images={gemueVR_A}
               images2x={gemueVR_A}
               videos={[
-              <video ref="gemueVideo" controls={true} loop muted>
+              <video ref="gemueVideo" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" controls={true} loop muted>
                 <source type="video/mp4" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" />
                 <source type="video/webm" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.webm" />
                 <source type="video/ogg" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.ogv" />
