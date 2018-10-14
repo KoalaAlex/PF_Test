@@ -10,7 +10,7 @@
 	}
 }
 
-picture.hideThis{
+picture.hideThis, #project-content span.hideThis{
 	display: none;
 	animation: opacityAnim 1s ease-in;
 	will-change: opacity;
