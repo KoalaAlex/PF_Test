@@ -230,6 +230,8 @@ class ProjectContent extends React.Component {
         <article id="gemue-vr" className={`${this.props.article === 'gemue-vr' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Gemue VR</h2>
           <span className="image main">
+            <iframe height="300" width="400" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4">
+            </iframe>
             <CSSSlider
               images={gemueVR_A}
               images2x={gemueVR_A}
@@ -360,21 +362,24 @@ class ProjectContent extends React.Component {
           ]
           }/>
           <ProjectOverview
-            projectContext={["crane bending", "workload testing", "product presentation", "training"]}
+            projectContext={["crane bending", "workload testing", "product presentation", "training", "showcase", "greenscreen", "map real cabin with virtual world"]}
             teamSize={"big size project"}
             projectType={"work project"}
-            tasks={["developer", "highscore implementation", "crane bending shader", "research", "opimisation", "interaction design"]}
+            tasks={["developer", "highscore implementation", "crane bending shader", "research", "opimisation", "interaction design", "rope physics"]}
             />
           <Concept>
             <h1>The Intention</h1>
-            <p></p>
+            <p>This was a mega project the offer was to create an training system for Liebherr with the VR Google Oculus. It relys on real physic calculation for the crane bending if the workload is to big or the wind to strong the physics starts working on the crane. It was calculated via an seperate system from the University. <br />
+            the actor should sit in a cabin the windows there were all green. In the end it should record the actors sight via an extra camera sitting in front of the Oculus. This camera renders out the green Color of the windows an maps the virtual world over it. So that the actor can see his hands and the real interface.
+            </p>
           </Concept>
           <Concept>
             <h1>Work in Process</h1>
-            <p> </p>
+            <p>The greenscreen shader was written in Unitys shader system in which you can select one color range to be rendered as transparent.
+              At the start almost everything was calculated on the CPU like image capturing via the 120fps camera, the physic, the data transphere via the Beckhoff computer and so on. </p>
           </Concept>
           <UsedTechnology>
-            <h1>Used UsedTechnology</h1>
+            <h1>Used Technology</h1>
             <p>Devlopment: Unity</p>
             <p>VR release: SteamVR</p>
             <p>Crane physics: in cooperation with University Stuttgart</p>
@@ -393,10 +398,10 @@ class ProjectContent extends React.Component {
           <h2 className="major">Augmented Reality</h2>
           <CSSSlider images={intensadrum_A} images2x={intensadrum_A}/>
           <ProjectOverview
-            projectContext={["crane bending", "workload testing", "product presentation", "training"]}
-            teamSize={"middle size project"}
+            projectContext={["augmented reality", "interactive", "product presentation", "product information"]}
+            teamSize={"small size project"}
             projectType={"work project"}
-            tasks={["developer", "highscore implementation", "crane bending shader", "research", "opimisation", "interaction design"]}
+            tasks={["developer", "augmented reality kit", "cinemachine", "world UI", "opimisation", "interaction design"]}
             />
           <Concept>
             <h1>The Intention</h1>
@@ -442,14 +447,14 @@ class ProjectContent extends React.Component {
             ]
             }/>
           <ProjectOverview
-            projectContext={["crane bending", "workload testing", "product presentation", "training"]}
+            projectContext={["configurateable behaviour", "dynamic daytime and light system", "product presentation", "showcase"]}
             teamSize={"middle size project"}
             projectType={"work project"}
-            tasks={["developer", "highscore implementation", "crane bending shader", "research", "opimisation", "interaction design"]}
+            tasks={["developer", "inteaction system", "model/color switcher", "dynamic light system", "research", "opimisation", "interaction design"]}
             />
           <Concept>
             <h1>The Intention</h1>
-            <p>It was an offer from Recaro that he wants an configurator vor his seat product.</p>
+            <p>It was an offer from Recaro that he wants an configurator vor his seat product. It should be the light version of an prototype configurator because it startet only wich one product... the </p>
           </Concept>
           <Concept>
             <h1>Work in Process</h1>
