@@ -88,7 +88,7 @@ const CloseWrapper = styled.div`
       width: 3rem;
     }
     @media (min-width: 900px) {
-      width: 6rem;
+      width: 5rem;
     }
     cursor: pointer;
     text-indent: 4rem;
@@ -122,10 +122,9 @@ const Overview = styled.div`
   justify-items: center;
   align-items:top;
   grid-template-columns: repeat(3, 1fr);
-  @media (max-width: 800px) {
+  @media (max-width: 899px) {
       grid-template-columns: repeat(2, 1fr);
   }
-  padding: 3rem;
 `;
 
 const OverviewItem = styled.div`
@@ -133,7 +132,7 @@ const OverviewItem = styled.div`
 `;
 
 const ProjectTypeItem = styled(OverviewItem)`
-  @media (max-width: 800px) {
+  @media (max-width: 899px) {
       grid-column-start: 1;
       grid-column-end: 3;
   }
@@ -154,7 +153,7 @@ const UsedTechnology = styled.div`
 const TaskTitle = styled(ItemTitel)`
   grid-column-start: 1;
   grid-column-end: 4;
-  @media (max-width: 800px) {
+  @media (max-width: 799px) {
       grid-column-end: 3;
   }
 `;
@@ -186,6 +185,29 @@ background: #303030;
   }
 `;
 
+const TextToLeftSide = styled.span`
+  text-align: start;
+`;
+
+const Article = styled.article`
+  padding: 3rem;
+  @media (min-width: 500px) {
+    padding: 4rem;
+  }
+  @media (min-width: 900px) {
+    padding: 6rem;
+  }
+`;
+
+const Wrapper = styled.div`
+@media (min-width: 500px) {
+  padding: 1rem;
+}
+@media (min-width: 900px) {
+  padding: 3rem;
+}
+`;
+
 class ProjectContent extends React.Component {
   componentWillUpdate(nextProps, nextState){
     this.refs.gemueVideo.pause();
@@ -206,44 +228,51 @@ class ProjectContent extends React.Component {
   render() {
     return (
       <React.Fragment>
-      <div id="project-content" style={this.props.timeout ? {display: 'grid'} : {display: 'none'}}>
-      <article id="portfolio" className={`${this.props.article === 'portfolio' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
+      <div id="project-content" style={this.props.timeout ? {display: 'block'} : {display: 'none'}}>
+      <Article id="portfolio" className={`${this.props.article === 'portfolio' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
         <h2 className="major">My Portfolio Playground</h2>
         <span className="image main">
           <CSSSlider images={portfolioA} images2x={portfolioA}/>
         </span>
-        <ProjectOverview
-          projectContext={["skill presentation", "job application", "show projects"]}
-          teamSize={"solo project"}
-          projectType={"portfolio"}
-          tasks={["front end development", "user experience", "research", "opimisation", "visual design", "quick prototype"]}
-          />
-        <Concept>
-          <h1>The Intention</h1>
-          <p>One platform for a presentation of my work in a playful, dynamic and colorful way. It should use state fo the art technology like react and rely mostly on css manipulations and transitions.</p>
-        </Concept>
-        <Concept>
-          <h1>Work in Process</h1>
-          <p>I started with a demo from gatsby <a href="https://github.com/LeKoArts/gatsby-starter-portfolio-cara">starter</a> for quick development. While working on it I discovered performance issues on my mac book pro (2013). The main issue was on the one hand the parallax effect made with <a href="https://github.com/drcmda/react-spring" >react spring</a> and on the other hand the enormous count of SVGs.
-          <br />I started to redesign the whole parallax effect to work with CSS and not to depend on javascript. While developing i found the <a onClick={() => {this.props.easteregg()}}>esteregg</a> which was orginaly designed for debuging the Layer effect.<br />
-          Also I don't liked the portoflio card wich referenced to a seperate side. For this I found a solution to change the perspective to fade on the hidden right side of the page an there lie's the content for the projects.
-          <a href="https://www.facebook.com/StrickerTobi">My brother</a> helped me out with the svg's. Then I made use of the href attribute and the <CodeHTML>use</CodeHTML> element on all SVGs. This saves me a lot of performance.
-          </p>
-        </Concept>
-        <UsedTechnology>
-          <h1>Used UsedTechnology</h1>
-          <p>Framework: React</p>
-          <p>Deploy: Netlify</p>
-          <p>SourceControl: Github</p>
-          <p>IDE: Atom</p>
-          <p>Side Generator: Gatsby</p>
-        </UsedTechnology>
-        <UsedTechnology>
-          <h1>Platforms</h1>
-          <p>web</p>
-        </UsedTechnology>
-      </article>
-        <article id="gemue-vr" className={`${this.props.article === 'gemue-vr' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
+        <Wrapper>
+          <ProjectOverview
+            projectContext={["skill presentation", "job application", "show projects"]}
+            teamSize={"solo project"}
+            projectType={"portfolio"}
+            tasks={["front end development", "user experience", "research", "opimisation", "visual design", "quick prototype"]}
+            />
+          <Concept>
+            <h1>The Intention</h1>
+            <TextToLeftSide>
+              <p>One platform for a presentation of my work in a playful, dynamic and colorful way. It should use state fo the art technology like react and rely mostly on css manipulations and transitions.</p>
+            </TextToLeftSide>
+          </Concept>
+          <Concept>
+            <h1>Work in Process</h1>
+
+            <TextToLeftSide>
+              <p>I started with a demo from gatsby <a href="https://github.com/LeKoArts/gatsby-starter-portfolio-cara">starter</a> for quick development. While working on it I discovered performance issues on my mac book pro (2013). The main issue was on the one hand the parallax effect made with <a href="https://github.com/drcmda/react-spring" >react spring</a> and on the other hand the enormous count of SVGs.
+              <br />I started to redesign the whole parallax effect to work with CSS and not to depend on javascript. While developing i found the <a onClick={() => {this.props.easteregg()}}>esteregg</a> which was orginaly designed for debuging the Layer effect.<br />
+              Also I don't liked the portoflio card wich referenced to a seperate side. For this I found a solution to change the perspective to fade on the hidden right side of the page an there lie's the content for the projects.
+              <a href="https://www.facebook.com/StrickerTobi">My brother</a> helped me out with the svg's. Then I made use of the href attribute and the <CodeHTML>use</CodeHTML> element on all SVGs. This saves me a lot of performance.
+              </p>
+            </TextToLeftSide>
+          </Concept>
+          <UsedTechnology>
+            <h1>Used Technology</h1>
+            <p>Framework: React</p>
+            <p>Deploy: Netlify</p>
+            <p>SourceControl: Github</p>
+            <p>IDE: Atom</p>
+            <p>Side Generator: Gatsby</p>
+          </UsedTechnology>
+          <UsedTechnology>
+            <h1>Platforms</h1>
+            <p>web</p>
+          </UsedTechnology>
+        </Wrapper>
+      </Article>
+        <Article id="gemue-vr" className={`${this.props.article === 'gemue-vr' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Gemue VR</h2>
           <span className="image main">
             <CSSSlider
@@ -271,13 +300,13 @@ class ProjectContent extends React.Component {
           <Concept>
             <h1>Work in Process</h1>
             <p>This was one of the funnies and also one of the toughest projects i made.</p>
-            <p>Most of the bugs were discovert via multiplayer because you have to be very specific who is the manipulator of which item in the scene and how the transfer ownership works</p>
-            <p>You start the application in the Lobby where you can modify your Avatar with outfit and colorplaets when you are at the mirrow. This mode is not connected to multiplayer in regards to new players wich zero knowledge. This players has to acclimate first about the interaction system and the possibilities in VR. Then they join the training or the meeting mode via a doorknob like in the real world.</p>
+            <p>Most of the bugs were discovert via multiplayer because you have to be very specific who is the manipulator of which item in the scene and how the transfer ownership works.</p>
+            <p>You start the application in the Lobby where you can modify your Avatar. Therefore you have to go the the mirrow and start selecting outfits and change the color via colorplates. This mode is not connected to multiplayer in regards to new players wich zero knowledge. This players has to acclimate first about the interaction system and the possibilities in VR. Then they join the training or the meeting mode via a doorknob like in the real world.</p>
             <p>Both modis are possible to play via multiplayer. One is the workshop room where you can start the maintainance training step by step along a questline that hints your mistakes and gives you tips. The other one is the meeting room wher you can relax an chitchat with other gemue users. Dont miss the lasersword easter egg and the one with the duck ;)</p>
             <p>The whole project was made in the gameengine Unity and is highly driven from 3D objects from 3dsMax. The best part was the multiplayer mode. It is so much fun to meet peaple in VR just like the ones are realy in the same room only they appear as an Avatar.  The main aspect is a maintanance of a ventil with a membran change with tighten or loosen a screw.</p>
           </Concept>
           <UsedTechnology>
-            <h1>Used UsedTechnology</h1>
+            <h1>Used Technology</h1>
             <p>Devlopment: Unity</p>
             <p>VR interaction system: VRTK</p>
             <p>VR release: SteamVR</p>
@@ -290,8 +319,8 @@ class ProjectContent extends React.Component {
             <p>Windows Standalone</p>
           </UsedTechnology>
           <a href="https://stollvongati.com/de/projekte/vr-schulungsanwendung-fuer-gemue.html">Project Overview SvG</a>
-        </article>
-        <article id="gemue-ar" className={`${this.props.article === 'gemue-ar' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
+        </Article>
+        <Article id="gemue-ar" className={`${this.props.article === 'gemue-ar' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Gemue AR</h2>
           <span className="image main">
             <CSSSlider images={gemueAR_A} images2x={gemueAR_A}/>
@@ -312,7 +341,7 @@ class ProjectContent extends React.Component {
             <p>It was the first app that we made via the Unity Cinemachine and it also had some annoying beaviours... One was when you switch between the cameras that it appears at start a very long frame. when managed to overcome this by scripting our own camera interpolation switch and not to rely on the one from the Framework</p>
           </Concept>
           <UsedTechnology>
-            <h1>Used UsedTechnology</h1>
+            <h1>Used Technology</h1>
             <p>Devlopment: Unity</p>
             <p>AR Framework: AR Kit Apple</p>
             <p>3D Models: 3dsMax</p>
@@ -323,8 +352,8 @@ class ProjectContent extends React.Component {
             <p>iPad and iPhone</p>
           </UsedTechnology>
           <a href="https://stollvongati.com/de/projekte/lisim-simulator-fuer-liebherr-turmdrehkrane.html">Website SvG</a>
-        </article>
-        <article id="traction-inverter" className={`${this.props.article === 'traction-inverter' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
+        </Article>
+        <Article id="traction-inverter" className={`${this.props.article === 'traction-inverter' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Traction Inverter</h2>
           <span className="image main">
             <CSSSlider images={tractionInverter_A} images2x={tractionInverter_A}/>
@@ -345,7 +374,7 @@ class ProjectContent extends React.Component {
             <p>In this kind of project the cinemachine was realy handy and we could rely on the the nice smooth camera fade script from <a href="javascript:;" onClick={() => {this.props.onOpenArticle("gemue-ar")}}>gemeu-ar</a></p>
           </Concept>
           <UsedTechnology>
-            <h1>Used UsedTechnology</h1>
+            <h1>Used Technology</h1>
             <p>Devlopment: Unity</p>
             <p>Camera: Cinemachine</p>
             <p>3D Models: 3dsMax</p>
@@ -355,8 +384,8 @@ class ProjectContent extends React.Component {
             <h1>Platforms</h1>
             <p>iPad and iPhone</p>
           </UsedTechnology>
-        </article>
-        <article id="simulator" className={`${this.props.article === 'simulator' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
+        </Article>
+        <Article id="simulator" className={`${this.props.article === 'simulator' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Simulator VR</h2>
           <CSSSlider images={craneSimul_A} images2x={craneSimul_A}
           videos={[
@@ -408,8 +437,8 @@ class ProjectContent extends React.Component {
           </UsedTechnology>
           <a href="https://stollvongati.com/de/projekte/lisim-simulator-fuer-liebherr-turmdrehkrane.html">Crane Simulator SvG</a>
           <a href="https://stollvongati.com/de/projekte/der-liebherr-turmdrehkran-710-hc-l-als-vr-erlebnis.html">Las Vegas Application - SvG</a>
-        </article>
-        <article id="intensaDrum" className={`${this.props.article === 'intensaDrum' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
+        </Article>
+        <Article id="intensaDrum" className={`${this.props.article === 'intensaDrum' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Augmented Reality</h2>
           <CSSSlider images={intensadrum_A} images2x={intensadrum_A}/>
           <ProjectOverview
@@ -435,7 +464,7 @@ class ProjectContent extends React.Component {
             <p>Another difficulty was the physic to work in AR Mode because because at default it rotates the 3D Model an the physic got realy messed up. So we changed it to rotate and scale the camera so the object stays static.</p>
           </Concept>
           <UsedTechnology>
-            <h1>Used UsedTechnology</h1>
+            <h1>Used Technology</h1>
             <p>Devlopment: Unity</p>
             <p>AR Framework: Wikitude</p>
             <p>Camera: Cinemachine</p>
@@ -446,8 +475,8 @@ class ProjectContent extends React.Component {
             <h1>Platforms</h1>
             <p>iPad and iPhone, Windows (without AR)</p>
           </UsedTechnology>
-        </article>
-        <article id="recaro-vr" className={`${this.props.article === 'recaro-vr' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
+        </Article>
+        <Article id="recaro-vr" className={`${this.props.article === 'recaro-vr' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Recaro VR</h2>
           <CSSSlider
             images={recaroVR_A}
@@ -483,7 +512,7 @@ class ProjectContent extends React.Component {
             </p>
           </Concept>
           <UsedTechnology>
-            <h1>Used UsedTechnology</h1>
+            <h1>Used Technology</h1>
             <p>Devlopment: Unity</p>
             <p>VR interaction system: selfmade</p>
             <p>VR release: SteamVR</p>
@@ -496,7 +525,7 @@ class ProjectContent extends React.Component {
             <p>Windows Standalone</p>
           </UsedTechnology>
           <a href="https://stollvongati.com/de/projekte/virtuelle-flugzeugkabine-fuer-recaro-business-class-sitze.html">Project Overview SvG</a>
-        </article>
+        </Article>
       </div>
       <CloseWrapperOffset yOffset={0} onClick={() => {this.props.onCloseArticle()}}><SVG icon="triangle" width={'8'} fill="#ff006f" useSelfAlign={true}/></CloseWrapperOffset>
       <CloseWrapperOffset yOffset={100} onClick={() => {this.props.onCloseArticle()}}><SVG icon="triangle" width={'8'} fill="#ff006f" useSelfAlign={true}/></CloseWrapperOffset>

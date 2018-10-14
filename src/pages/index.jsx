@@ -36,12 +36,17 @@ const NoClickDivider = styled(CSSParallaxGroup)`
 `;
 
 const ContentLayer = styled(CSSParallaxLayer)`
-  ${tw('p-6 md:p-12 lg:p-24 justify-center items-center')};
+  ${tw('justify-center items-center')};
   justify-items: center;
   display: grid;
+  align-items_ center;
 `;
 
-const NoClickLayer = styled(ContentLayer)`
+const BeforeGridLayer = styled(CSSParallaxLayer)`
+  ${tw('p-6 md:p-12 lg:p-24')};
+`;
+
+const NoClickLayer = styled(CSSParallaxLayer)`
   pointer-events: none;
   backface-visibility: none;
 `;
@@ -144,8 +149,15 @@ const Content = styled(CSSParallaxGroup)`
 
 
 const Hero = styled.div`
-  ${tw('w-full xl:w-2/3')};
+  ${tw('p-6 md:p-12 lg:p-24 w-full xl:w-2/3')};
   margin: auto;
+`;
+
+const GridContainer = styled.div`
+  display: grid;
+  justify-items: center;
+  height: 100%;
+  width: 100%;
 `;
 
 const Inner = styled.div`
@@ -532,30 +544,32 @@ handleCloseArticle() {
         <NoClickLayerSVG speed={0.1} zIndex={2}>
           <SVGPageTwo />
         </NoClickLayerSVG>
-        <ContentLayer speed={0.2} zIndex={4}>
-        <Inner>
-          <Title>THIS IS WHAT MOTIVATES ME</Title>
-          <AboutHero>
-            <Avatar type="image/jpg" src={avatar} alt="Alexander Stricker" />
-            <div>
-              <MediaQuery query="(min-width: 800px)">
+        <BeforeGridLayer speed={0.2} zIndex={4}>
+          <GridContainer>
+          <Inner>
+            <Title>THIS IS WHAT MOTIVATES ME</Title>
+            <AboutHero>
+              <Avatar type="image/jpg" src={avatar} alt="Alexander Stricker" />
+              <div>
+                <MediaQuery query="(min-width: 800px)">
+                  <AboutSub>
+                    As a front-end developer I am confident that with the help of the right approaches like
+      agile software development and user centered design almost all technical and human
+      problems can be solved. Working closely with designers and other developers is a very
+      natural thing for me. I love to bring distinct and delightful experiences to life. More
+      importantly these solutions have to serve the ultimate goal to make the users lives
+      easier!
+                  </AboutSub>
+                </MediaQuery>
                 <AboutSub>
-                  As a front-end developer I am confident that with the help of the right approaches like
-    agile software development and user centered design almost all technical and human
-    problems can be solved. Working closely with designers and other developers is a very
-    natural thing for me. I love to bring distinct and delightful experiences to life. More
-    importantly these solutions have to serve the ultimate goal to make the users lives
-    easier!
+                  If I would need to point out something that makes me special it would be my urge to
+    add a little something to all of my work - let’s call it <a onClick={() => {this.toggleDebug()}}>easteregg</a> ;)
                 </AboutSub>
-              </MediaQuery>
-              <AboutSub>
-                If I would need to point out something that makes me special it would be my urge to
-  add a little something to all of my work - let’s call it <a onClick={() => {this.toggleDebug()}}>easteregg</a> ;)
-              </AboutSub>
-            </div>
-          </AboutHero>
-        </Inner>
-       </ContentLayer>
+              </div>
+            </AboutHero>
+          </Inner>
+        </GridContainer>
+       </BeforeGridLayer>
       </CSSParallaxGroup>
       <CSSParallaxGroup name="page4" debugOn={this.state.debugOn} xoffset={this.state.xOffsetAllPages} yoffset={this.state.isSmallMobile ? 3 : 2.8}>
         <AvatarBackgroundLayer speed={0} zIndex={1}>
@@ -637,7 +651,7 @@ handleCloseArticle() {
         <LastNoClickLayerSVG speed={-0.1} zIndex={2}>
           <SVGPageSix />
         </LastNoClickLayerSVG>
-        <ContentLayer speed={0.1} zIndex={3}>
+        <CSSParallaxLayer speed={0.1} zIndex={3}>
           <ProjectContent
             easteregg={this.toggleDebug}
             isArticleVisible={this.state.isArticleVisible}
@@ -647,7 +661,7 @@ handleCloseArticle() {
             onCloseArticle={this.handleCloseArticle}
             onOpenArticle={this.handleGemueArticleClick}
           />
-       </ContentLayer>
+       </CSSParallaxLayer>
       </CSSParallaxGroup>
     </CSSParallax>
     <noscript>Your browser does not support JavaScript!</noscript>

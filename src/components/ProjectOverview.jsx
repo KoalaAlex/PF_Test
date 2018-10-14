@@ -11,7 +11,6 @@ const Overview = styled.div`
   @media (max-width: 800px) {
       grid-template-columns: repeat(2, 1fr);
   }
-  padding: 3rem;
 `;
 
 const OverviewItem = styled.div`
@@ -58,25 +57,25 @@ class ProjectOverview extends React.Component {
 
   render() {
       return (
-      <Overview>
-        <OverviewItem>
-          <ItemTitel>Project Context</ItemTitel>
-          {this.props.video && this.props.video}
-          {this.props.projectContext.map((value, i) => (
-              <p key={i}>{value}</p>
-          ))}
-        </OverviewItem>
-        <OverviewItem>
-          <ItemTitel>Teamsize</ItemTitel>
-          <p>{this.props.teamSize}</p>
-        </OverviewItem>
-        <ProjectTypeItem>
-          <ItemTitel>Project Type</ItemTitel>
-          <p>{this.props.projectType}</p>
-        </ProjectTypeItem>
-        <TaskTitle>Task</TaskTitle>
-        {this.createTaskItems(3)}
-      </Overview>
+        <Overview>
+          <OverviewItem>
+            <ItemTitel>Project Context</ItemTitel>
+            {this.props.video && this.props.video}
+            {this.props.projectContext.map((value, i) => (
+                <p key={i}>{value}</p>
+            ))}
+          </OverviewItem>
+          <OverviewItem>
+            <ItemTitel>Teamsize</ItemTitel>
+            <p>{this.props.teamSize}</p>
+          </OverviewItem>
+          <ProjectTypeItem>
+            <ItemTitel>Project Type</ItemTitel>
+            <p>{this.props.projectType}</p>
+          </ProjectTypeItem>
+          <TaskTitle>Task</TaskTitle>
+          {this.createTaskItems(3)}
+        </Overview>
     )
   }
 }
