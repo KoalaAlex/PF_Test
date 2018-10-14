@@ -89,6 +89,7 @@ export class SVGPageTwo extends React.PureComponent {
   render(){
     return (
       <SVGAbsolute>
+        {/*
         <UpDown>
           <SVG icon="usbSimple" className={hiddenLG} width={'8'} fill={colors['grey-darkest']} left="70" top="20" />
           <SVG icon="imac" className={hiddenLG} width={'24'} fill={colors['green-light']} left="80" top="80" />
@@ -104,6 +105,9 @@ export class SVGPageTwo extends React.PureComponent {
         <SVG icon="circle" width={'12'} fill={colors['grey-darkest']} left="70" top="60" />
         <SVG icon="cube" width={'12'} fill="#ff0057" left="10" top="20" />
         <SVG icon="flask" width={'48'} fill={colors['grey-darkest']} left="40" top="70" />
+        <SVG icon="flask" width={'48'} fill={colors['grey-darkest']} left="80" top="80" />
+        */}
+        <SVG icon="cube" width={'12'} fill="#ff0057" left="10" top="20" />
       </SVGAbsolute>
     );
   }
@@ -136,6 +140,7 @@ export class SVGPageFour extends React.PureComponent {
   render(){
     return (
       <SVGAbsolute>
+        {/*
         <UpDown>
           <SVG icon="pokeball" className={hiddenLG} width={'8'} fill={colors['grey-darkest']} left="70" top="20" />
           <SVG icon="pin" width={'32'} fill={colors['grey-darkest']} left="58" top="32" />
@@ -150,6 +155,8 @@ export class SVGPageFour extends React.PureComponent {
         <SVG icon="circle" width={'12'} fill={colors['grey-darkest']} left="70" top="60" />
         <SVG icon="flask" width={'96'} fill="#ff0057" left="20" top="25" />
         <SVG icon="flask" width={'48'} fill={colors['grey-darkest']} left="40" top="70" />
+        */}
+        <SVG icon="flask" width={'48'} fill="#ff0057" left="15" top="25" />
       </SVGAbsolute>
     );
   }
