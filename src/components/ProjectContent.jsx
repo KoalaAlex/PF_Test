@@ -233,14 +233,26 @@ class ProjectContent extends React.Component {
             <CSSSlider
               images={gemueVR_A}
               images2x={gemueVR_A}
-              videos={[(
-                  <video controls loop muted ref="gemueVideo">
+              test={[(
+                  <video controls loop muted>
                     <source src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.webm" type="video/webm" />
                     <source src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.ogv" type="video/ogv" />
                     <source src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>)]
                 }
+                videos={[
+                <video id="type_e_228" className="mediaplayer" width="770" height="433"
+                poster="https://media.stollvongati.com/assets/images/f/GEMUE_VR_Hero-02344cef.jpg"
+                preload="none" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.webm" ref="gemueVideo" controls loop muted>
+                  <source type="video/webm" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.webm" />
+                  <source type="video/ogg" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.ogv" />
+                  <object width="570" height="320" type="application/x-shockwave-flash" data="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf">
+                    <param name="movie" value="https://media.stollvongati.com/assets/svg-framework/js/lib/flashmediaelement.swf" />
+                    <param name="flashvars" value="controls=true&amp;file=https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" />
+                    <img src="https://media.stollvongati.com/assets/images/f/GEMUE_VR_Hero-02344cef.jpg" width="570" height="320" title="No video playback capabilities" />
+                  </object>
+                </video>]}
               />
           </span>
           <ProjectOverview
