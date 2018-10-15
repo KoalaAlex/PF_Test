@@ -201,7 +201,7 @@ const InnerWave = styled.div`
 const AboutHero = styled.div`
   ${tw(' flex flex-col lg:flex-row items-center mt-8')};
   p {
-    font-family:'IBM Plex Sans';
+    font-family:'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
   }
 `;
 
@@ -230,7 +230,7 @@ const Footer = styled.footer`
 const Albert = styled.div`
   ${tw(' flex flex-col items-center mt-8')};
   p {
-    font-family:'IBM Plex Sans';
+    font-family:'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
   }
 `;
 

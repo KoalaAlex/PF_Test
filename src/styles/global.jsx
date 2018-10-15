@@ -1,5 +1,6 @@
 /* eslint no-unused-expressions: 0 */
 import { injectGlobal } from 'emotion';
+import '../../node_modules/@ibm/plex/scss/ibm-plex.scss';
 
 injectGlobal`
   html {
@@ -29,7 +30,7 @@ injectGlobal`
     padding: 0;
   }
   h1, p{
-      font-family:'IBM Plex Mono';
+      font-family:'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace;
       pointer-events: all;
   }
 `;
