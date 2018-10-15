@@ -7,16 +7,24 @@ import '../assets/scss/components/CSSSlider.scss';
 import movieDefault from '../images/movie_800x450.jpg';
 
 const FullWideImgStyle = styled.img`
-  width: 100%;
+  //width: 100%;
+  margin: auto;
+`;
+
+const SmallWideImgStyle = styled.img`
+  pointer-events: auto;
+  max-width: 100%;
+  max-height: 100%;
 `;
 
 const Container = styled.div`
-  ${tw('justify-between mt-8')};
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: 2rem;
+  justify-items: center;
+  align-items: center;
   grid-template-columns: repeat(${props => props.column}, 1fr);
-  padding-left: 2rem;
-  padding-right: 2rem;
+  height: 10vh;
+  max-height: 15vh;
 `;
 
 const Wrapper = styled.div`
@@ -31,17 +39,17 @@ const BigImageP= styled.picture`
   max-height: 60vh;
   height: 40vw;
   align-items: center;
+  justify-items: center;
   overflow: hidden;
 `;
 
 const SmallImageP= styled.picture`
-  display: grid;
-  pointer-events: all;
   grid-template-columns: repeat(1, 1fr);
-  width: 100%;
   align-items: center;
   justify-items: center;
   overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
 `;
 
 const Movie = styled.span`
@@ -51,8 +59,7 @@ const Movie = styled.span`
   justify-items: center;
   height: 40vw;
   max-height: 60vh;
-  width: 100%;
-  pointer-events: all;
+  pointer-events: auto;
   cursor: pointer;
   video {
     height: 100%;
@@ -126,7 +133,7 @@ class SmallImg extends React.Component {
     return (
       <SmallImageP>
         <source media="(max-width: 600px)" srcSet={this.props.srcSet} type="image/jpg" />
-        <FullWideImgStyle onClick={this.props.click} src={this.props.src} className={this.state.isHidden ? this.props.hiddenClass : this.props.className} src={this.props.src}/>
+        <SmallWideImgStyle onClick={this.props.click} src={this.props.src} className={this.state.isHidden ? this.props.hiddenClass : this.props.className} src={this.props.src} />
       </SmallImageP>
     )
   }

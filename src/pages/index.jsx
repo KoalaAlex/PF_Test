@@ -224,7 +224,7 @@ const ContactText = styled.div`
 
 const Footer = styled.footer`
   ${tw('text-center text-grey absolute pin-b p-6 text-md lg:text-lg')};
-  pointer-events: all;
+  pointer-events: auto;
 `;
 
 const Albert = styled.div`
@@ -236,7 +236,7 @@ const Albert = styled.div`
 
 const MoveToPageOne = styled.div`
   display: inline-grid;
-  pointer-events: all;
+  pointer-events: auto;
   align-items: center;
   justify-items: center;
   position: absolute;

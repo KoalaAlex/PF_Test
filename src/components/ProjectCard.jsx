@@ -9,7 +9,7 @@ import MediaQuery from 'react-responsive';
 
 const Wrapper = styled.a`
   display: inherit;
-  pointer-events: all;
+  pointer-events: auto;
   ${tw('shadow-lg relative no-underline rounded-lg md:p-1 lg:p-2 xl:p-3  xl:p-4 text-white')};
   width: 100%;
   overflow: hidden;

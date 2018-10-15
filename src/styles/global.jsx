@@ -17,7 +17,7 @@ injectGlobal`
     //backface-visibility: hidden;
   }
   a{
-    pointer-events: all;
+    pointer-events: auto;
     cursor: pointer;
     color: #ff0057;
     text-decoration: none;
@@ -31,6 +31,6 @@ injectGlobal`
   }
   h1, p{
       font-family:'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace;
-      pointer-events: all;
+      pointer-events: auto;
   }
 `;

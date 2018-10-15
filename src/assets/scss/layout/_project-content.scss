@@ -47,12 +47,6 @@
 			opacity: 0;
 			will-change: opacity, transform;
 
-			span{
-				img{
-					width: 100%;
-				}
-			}
-
 			&.timeout {
 				display: none;
 			}

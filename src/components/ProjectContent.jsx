@@ -69,7 +69,7 @@ const tractionInverter_A = [traktionsStrom01, traktionsStrom02, traktionsStrom03
 import '../assets/scss/components/ProjectContent.scss';
 
 const CloseWrapper = styled.div`
-  pointer-events: all;
+  pointer-events: auto;
   //transform: translate3d(0px, 0px, 10px);
 
     display: inline-grid;
@@ -165,7 +165,7 @@ const Movie = styled.div`
   height: 100%;
   width: 100%;
   video {
-      pointer-events: all;
+      pointer-events: auto;
       max-width: 980px;
       cursor: pointer;
   }
@@ -243,12 +243,13 @@ class ProjectContent extends React.Component {
         this.recaroMovie.current.pause();
         this.setState({recaroIsPlaying: false});
       }
-    }, 2000)
+    }, 1500)
   }
 
   startVideos(){
     if(this.props.article === 'gemue-vr'){
       if(!this.state.gemeuVRIsPlaying){
+        this.gemueVideo.current.load();
         setTimeout(() => {
           var playPromise = this.gemueVideo.current.play();
           if (playPromise !== undefined) {
@@ -266,6 +267,7 @@ class ProjectContent extends React.Component {
     }
     if(this.props.article === 'simulator'){
       if(!this.state.craneSimMovie){
+        this.craneSimMovie.current.load();
         setTimeout(() => {
           var playPromise = this.craneSimMovie.current.play();
           if (playPromise !== undefined) {
@@ -298,6 +300,7 @@ class ProjectContent extends React.Component {
     }
     if(this.props.article === 'recaro-vr'){
       if(!this.state.recaroMovie){
+        this.recaroMovie.current.load();
         setTimeout(() => {
           var playPromise = this.recaroMovie.current.play();
           if (playPromise !== undefined) {
@@ -317,11 +320,12 @@ class ProjectContent extends React.Component {
 
   componentDidUpdate(prevProps, prevState, snapshot){
     if(prevProps.article !== this.props.article){
-      if(this.props.article == ''){
+      if(this.props.article === ''){
         this.cancelVideos();
-        //console.log("cancel");
+        console.log("cancel");
       }
       else{
+        console.log("start");
         this.startVideos();
         //console.log("start");
       }
