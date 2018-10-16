@@ -32,53 +32,53 @@ class Projects extends React.Component {
     return (
       <ProjectsWrapper id="projects">
         <ProjectCard
-          title="My Portfolio Playground"
+          title="PORTFOLIO PLAYGROUND"
           onOpenArticle={this.props.onOpenArticle}
           link="portfolio"
         >
-          "Here you can see the make of from my portfolio"
+          Find out how I have created my online portfolio. You know… the one you are looking at right now.
         </ProjectCard>
         <ProjectCard
-          title="Gemue VR"
+          title="GEMUE - Schulungsanwendung"
           onOpenArticle={this.props.onOpenArticle}
           link="gemue-vr"
         >
-          "You can play this project with an Oculus or a HTC Vive it is support by SteamVR and you can meet each other virtual in a game zone."
+          VR training and MEETING system for Engineers.
         </ProjectCard>
         <ProjectCard
           title="Traction Inverter"
           onOpenArticle={this.props.onOpenArticle}
           link="traction-inverter"
         >
-          "Here is a collection of some nice Apps that are made with Unity for Mobile and Dektop Devices."
+          Here is a collection of some nice Apps that are made with Unity for Mobile and Dektop Devices.
         </ProjectCard>
         <ProjectCard
-          title="Gemue AR"
+          title="GEMUE - AR App"
           onOpenArticle={this.props.onOpenArticle}
           link="gemue-ar"
         >
-          "Here is a collection of some nice Apps that are made with Unity for Mobile and Dektop Devices."
+          Explore the products of gemue in augmented reality.
         </ProjectCard>
         <ProjectCard
-          title="Recaro"
+          title="Recaro - Seat configurator"
           onOpenArticle={this.props.onOpenArticle}
           link="recaro-vr"
         >
-          "Here is a collection of some nice Apps that are made with Unity for Mobile and Dektop Devices."
+          Configure a plane seat in virtual reality.
         </ProjectCard>
         <ProjectCard
-          title="Crane Simulator"
+          title="Liebherr - Crane Simulator"
           onOpenArticle={this.props.onOpenArticle}
           link="simulator"
         >
-          "In those 'games' you can change almost everything from day/night behaviour until the mass of a crane load. The more load weight on the crane, the more it bends."
+          Experience how it feels to operate a crane
         </ProjectCard>
         <ProjectCard
-          title="Intensa Drum"
+          title="VOITH - INTENSA DRUM"
           onOpenArticle={this.props.onOpenArticle}
           link="intensaDrum"
         >
-          "Here you can find some fancy applications that mixes the real world with the virtual one."
+          Explore Intensa drum in an interactive app.
         </ProjectCard>
       </ProjectsWrapper>
     )

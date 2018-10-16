@@ -12,6 +12,7 @@ module.exports = {
 
   siteFBAppID: '123456789', // Facebook App ID
   siteFacebook: 'https://www.facebook.com/alexander.stricker.12',
+  siteLinkedIn: 'https://www.linkedin.com/in/alexander-stricker-9a6404173/',
   siteInstagram: 'https://www.instagram.com/alexanderstricker',
   userTwitter: '@alexanderstricker', // Twitter Username
   ogSiteName: 'alexander.stricker.12', // Facebook Site Name

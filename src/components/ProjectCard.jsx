@@ -6,7 +6,6 @@ import styled from 'react-emotion';
 import MediaQuery from 'react-responsive';
 
 //Images
-
 const Wrapper = styled.a`
   display: inherit;
   pointer-events: auto;
@@ -35,6 +34,7 @@ const SubText = styled.p`
   font-size: 1rem;
   margin-block-start: 0.67rem;
   margin-block-end: 0.67rem;
+  font-family:'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
 `;
 
 const Title = styled.p`

@@ -600,7 +600,7 @@ handleCloseArticle() {
         </NoClickLayerSVG>
         <ProjectParallaxLayer speed={0.2} zIndex={3}>
           <Inner>
-            <Title>SOME OF MY NON CONFIDENTIAL ROJECTS</Title>
+            <Title>SOME OF MY NON CONFIDENTIAL PROJECTS</Title>
                 <Projects onOpenArticle={this.handleOpenArticle} />
           </Inner>
         </ProjectParallaxLayer>
@@ -625,7 +625,7 @@ handleCloseArticle() {
             <ContactText>
               <p>Feel free to say <a href="mailto:s_alexander@hotmail.de">hi</a> to me.</p>
               <p>Find out more about me on {' '}
-                <a href={config.siteFacebook}>Facebook</a> &{' '}
+                <a href={config.siteLinkedIn}>LinkedIn</a> &{' '}
                 <a href={config.siteInstagram}>Instagram</a>
               </p>
             </ContactText>
