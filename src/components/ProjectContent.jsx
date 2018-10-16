@@ -228,20 +228,40 @@ class ProjectContent extends React.Component {
   cancelVideos(){
     setTimeout(() => {
       if(this.state.gemeuVRIsPlaying){
-        this.gemueVideo.current.pause();
-        this.setState({gemeuVRIsPlaying: false});
+        try {
+          this.gemueVideo.current.pause();
+          this.setState({gemeuVRIsPlaying: false});
+        }
+        catch(error){
+
+        }
       }
       if(this.state.craneSim1IsPlaying){
-        this.craneSimMovie.current.pause();
-        this.setState({craneSim1IsPlaying: false});
+        try {
+          this.craneSimMovie.current.pause();
+          this.setState({craneSim1IsPlaying: false});
+        }
+        catch(error){
+
+        }
       }
       if(this.state.craneSim2IsPlaying){
-        this.craneSimMovie2.current.pause();
-        this.setState({craneSim2IsPlaying: false});
+        try {
+          this.craneSimMovie2.current.pause();
+          this.setState({craneSim2IsPlaying: false});
+        }
+        catch(error){
+
+        }
       }
       if(this.state.recaroIsPlaying){
-        this.recaroMovie.current.pause();
-        this.setState({recaroIsPlaying: false});
+        try {
+          this.recaroMovie.current.pause();
+          this.setState({recaroIsPlaying: false});
+        }
+        catch(error){
+
+        }
       }
     }, 1500)
   }
@@ -249,36 +269,56 @@ class ProjectContent extends React.Component {
   startVideos(){
     if(this.props.article === 'gemue-vr'){
       if(!this.state.gemeuVRIsPlaying){
-        this.gemueVideo.current.load();
+        try {
+          this.gemueVideo.current.load();
+        }
+        catch(error){
+
+        }
         setTimeout(() => {
-          var playPromise = this.gemueVideo.current.play();
-          if (playPromise !== undefined) {
-          playPromise.then(_ => {
-            // Automatic playback started! // Show playing UI. // We can now safely pause video...
-            this.setState({gemeuVRIsPlaying: true});
-          })
-          .catch(error => {
-            // Auto-play was prevented // Show paused UI.
-            //console.log("Gemue Movie Failed ");
-          });
+          try {
+            var playPromise = this.gemueVideo.current.play();
+            if (playPromise !== undefined) {
+            playPromise.then(_ => {
+              // Automatic playback started! // Show playing UI. // We can now safely pause video...
+              this.setState({gemeuVRIsPlaying: true});
+            })
+            .catch(error => {
+              // Auto-play was prevented // Show paused UI.
+              //console.log("Gemue Movie Failed ");
+            });
+            }
+          }
+          catch(error){
+
           }
         }, 4000)
       }
     }
     if(this.props.article === 'simulator'){
       if(!this.state.craneSimMovie){
-        this.craneSimMovie.current.load();
+        try {
+          this.craneSimMovie.current.load();
+        }
+        catch(error){
+
+        }
         setTimeout(() => {
-          var playPromise = this.craneSimMovie.current.play();
-          if (playPromise !== undefined) {
-          playPromise.then(_ => {
-            // Automatic playback started! // Show playing UI. // We can now safely pause video...
-            this.setState({craneSim1IsPlaying: true});
-          })
-          .catch(error => {
-            // Auto-play was prevented // Show paused UI.
-            //console.log("CraneSim Movie Failed");
-          });
+            try {
+              var playPromise = this.craneSimMovie.current.play();
+              if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                  // Automatic playback started! // Show playing UI. // We can now safely pause video...
+                  this.setState({craneSim1IsPlaying: true});
+                })
+                .catch(error => {
+                  // Auto-play was prevented // Show paused UI.
+                  //console.log("CraneSim Movie Failed");
+                });
+              }
+            }
+          catch(error){
+
           }
         }, 4000)
       }
@@ -300,19 +340,29 @@ class ProjectContent extends React.Component {
     }
     if(this.props.article === 'recaro-vr'){
       if(!this.state.recaroMovie){
-        this.recaroMovie.current.load();
+        try {
+          this.recaroMovie.current.load();
+        }
+        catch(error){
+
+        }
         setTimeout(() => {
-          var playPromise = this.recaroMovie.current.play();
-          if (playPromise !== undefined) {
-          playPromise.then(_ => {
-            // Automatic playback started! // Show playing UI. // We can now safely pause video...
-            this.setState({recaroIsPlaying: true});
-          })
-          .catch(error => {
-            // Auto-play was prevented // Show paused UI.
-            //console.log("Recaro Movie Failed ");
-          });
+          try {
+            var playPromise = this.recaroMovie.current.play();
+            if (playPromise !== undefined) {
+            playPromise.then(_ => {
+              // Automatic playback started! // Show playing UI. // We can now safely pause video...
+              this.setState({recaroIsPlaying: true});
+            })
+            .catch(error => {
+              // Auto-play was prevented // Show paused UI.
+              //console.log("Recaro Movie Failed ");
+            });
           }
+        }
+        catch(error){
+
+        }
       }, 4000)
       }
     }
@@ -322,10 +372,10 @@ class ProjectContent extends React.Component {
     if(prevProps.article !== this.props.article){
       if(this.props.article === ''){
         this.cancelVideos();
-        console.log("cancel");
+        //console.log("cancel");
       }
       else{
-        console.log("start");
+        //console.log("start");
         this.startVideos();
         //console.log("start");
       }
@@ -351,7 +401,7 @@ class ProjectContent extends React.Component {
           <Concept>
             <h1>The Intention</h1>
             <TextToLeftSide>
-              <p>One platform for a presentation of my work in a playful, dynamic and colorful way. It should use state fo the art technology like react and rely mostly on css manipulations and transitions.</p>
+              <p>One platform for a presentation of my work in a playful, dynamic and colorful way. It should rely on state fo the art technology like react and use css manipulations and transitions.</p>
             </TextToLeftSide>
           </Concept>
           <Concept>
@@ -359,9 +409,9 @@ class ProjectContent extends React.Component {
 
             <TextToLeftSide>
               <p>I started with a demo from gatsby <a href="https://github.com/LeKoArts/gatsby-starter-portfolio-cara">starter</a> for quick development. While working on it I discovered performance issues on my mac book pro (2013). The main issue was on the one hand the parallax effect made with <a href="https://github.com/drcmda/react-spring" >react spring</a> and on the other hand the enormous count of SVGs.
-              <br />I started to redesign the whole parallax effect to work with CSS and not to depend on javascript. While developing i found the <a onClick={() => {this.props.easteregg()}}>esteregg</a> which was orginaly designed for debuging the Layer effect.<br />
-              Also I don't liked the portoflio card wich referenced to a seperate side. For this I found a solution to change the perspective to fade on the hidden right side of the page an there lie's the content for the projects.
-              <a href="https://www.facebook.com/StrickerTobi">My brother</a> helped me out with the svg's. Then I made use of the href attribute and the <CodeHTML>use</CodeHTML> element on all SVGs. This saves me a lot of performance.
+              <br />I started to redesign the whole parallax effect to work with css and not to depend on javascript. While developing I found the <a onClick={() => {this.props.easteregg()}}>esteregg</a> which was orginaly designed for debuging the layer effect.<br />
+              Also I don't liked the portoflio cards system from the starter, wich only referenced to a seperate side. For this I found a solution to change the perspective to fade on the hidden right side of the page an there lie's the content.
+              <a href="https://www.facebook.com/StrickerTobi">My brother</a> helped me out with the svg's. For performance issues and reusability of the calculated svgs I made of the href attribute and the<CodeHTML>use</CodeHTML> element on all SVGs.
               </p>
             </TextToLeftSide>
           </Concept>
@@ -403,15 +453,19 @@ class ProjectContent extends React.Component {
             <Concept>
               <h1>The Intention</h1>
               <p>The Main Idea was to build a trainings system for engineers in regards to the VR Technology. On top of that the client wanted to have a virtual meeting place for all his headquarters.
-              <br />So it should be possible to meet other engineers or start the training as a group via network connection.</p>
+              <br />So it should be possible to meet other engineers or start the training as a group via network connection.
+              <br />You start the application in the lobby where you can modify your avatar. <br/>Therefore you have to go the the mirrow and start selecting outfits and change the color via colorplates.
+              <br />This mode is not connected to multiplayer in regards to new players wich zero knowledge. This players has to acclimate first about the interaction system and the possibilities in VR. Then they join the training or the meeting mode via a doorknob like in the real world.
+              <br />Both modes are possible to play via multiplayer. One is the workshop room where you can start the maintainance training step by step along a questline that hints your mistakes and gives you tips. The maintanance is made on a ventil with a membran change there you can tighten or loosen a screw.
+              <br />The other one is the meeting room wher you can relax an chitchat with other gemue users. Dont miss the lasersword easter egg and the one with the duck ;).</p>
             </Concept>
             <Concept>
               <h1>Work in Process</h1>
-              <p>This was one of the funnies and also one of the toughest projects i made.</p>
-              <p>Most of the bugs were discovert via multiplayer because you have to be very specific who is the manipulator of which item in the scene and how the transfer ownership works.</p>
-              <p>You start the application in the Lobby where you can modify your Avatar. Therefore you have to go the the mirrow and start selecting outfits and change the color via colorplates. This mode is not connected to multiplayer in regards to new players wich zero knowledge. This players has to acclimate first about the interaction system and the possibilities in VR. Then they join the training or the meeting mode via a doorknob like in the real world.</p>
-              <p>Both modis are possible to play via multiplayer. One is the workshop room where you can start the maintainance training step by step along a questline that hints your mistakes and gives you tips. The other one is the meeting room wher you can relax an chitchat with other gemue users. Dont miss the lasersword easter egg and the one with the duck ;)</p>
-              <p>The whole project was made in the gameengine Unity and is highly driven from 3D objects from 3dsMax. The best part was the multiplayer mode. It is so much fun to meet peaple in VR just like the ones are realy in the same room only they appear as an Avatar.  The main aspect is a maintanance of a ventil with a membran change with tighten or loosen a screw.</p>
+              <p>This was one of the funnies and also one of the toughest projects I made.</p>
+              <p>Most of the bugs were discovert via multiplayer because you have to be very specific who is the manipulator of which item in the scene and how the transfer ownership works.
+              <br /> Because of limitations in transfering data and limitations not all variable where synconrisaed.  in the scene and how the transfer ownership works. The objects which had o be syncred where all items that can be manipulated in position/rotation/item-/buttonstates or the questsystem.
+              <br /> To prevent further bugs in the questline we had to make a check before a new player enters the workshop room. This check was realy simple it had to inspect if the quest in the workshoproom is not active then he can join otherwise he will be rejected.
+              </p>
             </Concept>
             <UsedTechnology>
               <h1>Used Technology</h1>
@@ -443,12 +497,12 @@ class ProjectContent extends React.Component {
               />
             <Concept>
               <h1>The Intention</h1>
-              <p>This projects idea was to find a way to present the product of gemue to his customers with the AR technology. Not to forget the normal 3D scene where you can get additional informations about a specific product.</p>
+              <p>This projects idea was to find a way to present the product of gemue to his customers with the AR technology. There will also be a normal 3D scene where you can get additional informations about a specific product. This scene should map a collection oft the ventils (product) where you can select one from a slidebar.</p>
             </Concept>
             <Concept>
               <h1>Work in Process</h1>
-              <p>In this project it was realy helpful to rely on the ARKit demo for quick development. But further on it was a little annoying to alwas deploy via XCode to tets the ar mode. While developing we were discovering the arkit remote feature that enables you to test directly in the Unity Editor while connecting your iPhone via lightning cable. That saved us a lot of time.</p>
-              <p>It was the first app that we made via the Unity Cinemachine and it also had some annoying beaviours... One was when you switch between the cameras that it appears at start a very long frame. when managed to overcome this by scripting our own camera interpolation switch and not to rely on the one from the Framework</p>
+              <p>In this project it was realy helpful to rely on the ARKit for quick development. But further on it was a little annoying to always deploy via XCode to tets the ar behaviour. While developing we were discovering the arkit remote feature that enables you to test directly in the Unity Editor while connecting your iPhone via lightning cable. That saved us a lot of time.</p>
+              <p>It was the first app that we made via the Unity <a href="https://assetstore.unity.com/packages/essentials/cinemachine-79898" >Cinemachine</a> and it also had some annoying beaviours... One was when you switch between the cameras that a very long frame appears. When managed to overcome this by scripting our own camera interpolation switch instead of relying to the origional one which instantiate the new camera after clicking (a no go for smartphones).</p>
             </Concept>
             <UsedTechnology>
               <h1>Used Technology</h1>
@@ -478,12 +532,14 @@ class ProjectContent extends React.Component {
               />
             <Concept>
               <h1>The Intention</h1>
-              <p>This application was made for a messe showcase. The need of the client was to show his product in an interactive and playfull way.
-              <br />It should include the new CI of Voith and therefore the style was in close connection to it.</p>
+              <p>This application is designed to be shown at an exposition. The need of the client was to present his product in an interactive and playfull way. It should include the new CI of Voith and therefore the style is in close connection to it. The target platform is windows standalone and the reference resolution is set to full hd.</p>
             </Concept>
             <Concept>
               <h1>Work in Process</h1>
-              <p>In this kind of project the cinemachine was realy handy and we could rely on the the nice smooth camera fade script from <a href="javascript:;" onClick={() => {this.props.onOpenArticle("gemue-ar")}}>gemeu-ar</a></p>
+              <p>In this kind of project the cinemachine was realy handy and we could rely on the the nice smooth camera fade script from <a href="javascript:;" onClick={() => {this.props.onOpenArticle("gemue-ar")}}>gemeu-ar</a>
+              <br />In this kind of project the cinemachine was realy handy and we could rely on the the nice smooth camera fade script from gemeu-ar. The interaction was simple made by touch and pinch inputs to move the camera around. The referenced origin for this could be set manuly and so every hotspot feels a little different.
+              <br />In the high performance hotspot happens the most logik connections. The accelerate and decellerate buttons were connected to the speed oft he train plus and eventsystem/ animator that will call specific events at a specific timeset.
+              <br />To prevent end of int/float values and weird camera bugs for the infinit moving train  we managed to rotate the surrounding in an big loop and not moving the train directly. Fort he illusion of moving it doesnt matter which one is manipulated but for weird camera effect we chose the moving surrounding instead oft he mooving train. This also saved us a lot of performance because the train does have more vertices and some parts fit could be set as static objects</p>
             </Concept>
             <UsedTechnology>
               <h1>Used Technology</h1>
@@ -527,14 +583,17 @@ class ProjectContent extends React.Component {
               />
             <Concept>
               <h1>The Intention</h1>
-              <p>This was a mega project the offer was to create an training system for Liebherr with the VR Google Oculus. It relys on real physic calculation for the crane bending if the workload is to big or the wind to strong the physics starts working on the crane. It was calculated via an seperate system from the University. <br />
-              the actor should sit in a cabin the windows there were all green. In the end it should record the actors sight via an extra camera sitting in front of the Oculus. This camera renders out the green Color of the windows an maps the virtual world over it. So that the actor can see his hands and the real interface.
+              <p>The offer was to create an training system for Liebherr with the VR Google Oculus. It relys on real physic calculation for the crane behaviour. A bending systemb with vertice connection so that if the workload is to big or the wind to strong the physics starts working and bends/twists the crane. It was calculated via an seperate system from the University.
+              <br />There will also be a real crane cabin available for the interested party where they sit in and put ont the VR Goggles. The windows were all green there. In the end it should record the actors sight via an extra camera in front of the Oulus. This camera renders out the green color of the windows and maps the virtual world over them. So that the actor can see his hands and the real interface while playing the VR application.
               </p>
             </Concept>
             <Concept>
               <h1>Work in Process</h1>
               <p>The greenscreen shader was written in Unitys shader system in which you can select one color range to be rendered as transparent.
-                At the start almost everything was calculated on the CPU like image capturing via the 120fps camera, the physic, the data transphere via the Beckhoff computer and so on.</p>
+              <br />At the start almost everything was calculated on the CPU like image capturing via the 120fps camera, the physic, the data transfer via the Beckhoff computer and so on.
+              <br />We managed to seperate some of them into threads for multicore cpu usage. But at this time Unity does only support a maximum of 2 cores... so the tread system was relativ simple.
+              <br />The first attempt connecting the unity physics via the external calculated physic system leads to an special gimmic aka easteregg ;) _> an swingboat crane... None of us could stay more than 2 minutes in the application before getting see sick...
+              <br />The problem was that floating point errors while transfering and converting the positions and rotations data to the external system was one reason. The other one was the latency we got while passing the data and receiving the new one. We git along with it after damping the output value and interpolating the data of the last couple of frames</p>
             </Concept>
             <UsedTechnology>
               <h1>Used Technology</h1>
@@ -616,17 +675,18 @@ class ProjectContent extends React.Component {
               />
             <Concept>
               <h1>The Intention</h1>
-              <p>Recaro wants an configurator vor his seat product. It should be the light version of an prototype configurator because it startet only wich one product... the CL6710<br />
-              Almost every part can be tintent witch a color and some parts completly changed. The interaction is made with controllers. The left one is for global states like daytime, cabin, seat position etc. The right one is for picking a color, change animatons (e.g. monitor or seat divider).
-              <br />So the interaction was a little overloaded completely new persons in VR therfore we developed a connection via an iPad in which an operator can change all the states in the VR Scene as well. Plus he has a collection of color preset tha can be quickli presented to the interested party.
-            </p>
+              <p>Recaro wants an configurator vor his seat product as application that is shown a the exhibition. It should be the light version of an prototype configurator. why light? -> because it started only wich one product... the CL6710<br />
+              Almost every part can be tinted witch a color and some parts can be completely changed. The interaction is made with controllers. The left one is for global states like daytime, cabin light, seat position etc. The right one is for picking a color, change animatons (e.g. monitor or seat divider).
+              <br />So the interaction was a little overloaded... Originaly the interaction system was designed for engineers which have little until medium skill level in VR. But at the exhibition it should be possibble to show an interested party the application with zero knowledge in VR.
+              Therefore we should create an Tablet connection in there a qualified person can also make some input for the VR application. This could be trigger animation, change the daytime or choos a color theme etc</p>
             </Concept>
             <Concept>
               <h1>Work in Process</h1>
-              <p>At the time the project starts it was not much available about interaction systems in VR therefore we created our own. At the base of the project we used SteamVR and the common Button Events.
-                <br />At this Events we created to link to our custom behaviours like pointer raycast to objects and so on. It was a lot of recherch needed and also much trial and error for the right beahviour.
-                <br /> On top of that the whole system needed to be as dynamic as possible. We created a global material manager and a shader switcher which connects all function for 3D Object called MOG.
-                <br /> The tablet connection was not done by me. But I handled the receiving events in Unity. And also passed the parameter back to the tablet via the socket connection. Some states needed to be bidirectional for example if the VR actor changes the daytime in needed to be visible in the tablet and so on.
+              <p>At the time the project started it was not much available about an interaction systems in VR. Therefore we created our own one. At the base of the project we used SteamVR for the common button inputs.
+                <br />At this Events we linked to our custom behaviours like pointer raycast on objects and so on. It was a lot of recherch needed and also much trial and error for the right beahviour.
+                <br />On top of that the whole system needed to be as dynamic as possible. We created a global material manager and a shader switcher which connects all function for 3D Object called MOG.
+                <br />The tablet connection was not done by me. But I handled the received informations from the socket connection in Unity. And also passed the parameter some information back via the socket connection to the tablet.
+                <br />Some states needed to be bidirectional for example if the VR actor changes the daytime.It also needed to be visible at the tablet and so on.
               </p>
             </Concept>
             <UsedTechnology>
