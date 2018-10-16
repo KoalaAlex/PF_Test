@@ -59,5 +59,13 @@
 			&.active {
 				display: block !important;
 			}
+
+			h1, h2{
+				text-transform: uppercase;
+			}
+
+			p{
+				font-family:'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+			}
 		}
 	}

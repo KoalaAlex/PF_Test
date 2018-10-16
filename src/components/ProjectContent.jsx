@@ -114,10 +114,12 @@ const CloseWrapper = styled.div`
 `;
 
 const CloseWrapperOffset = styled(CloseWrapper)`
-  //transform: translate3d(0, ${(props => props.yOffset)}vh, 0);
+  transform: translate3d(0, ${(props => props.yOffset)}vh, 0);
+  /*
   position: fixed;
   bottom: 0;
   right: 0;
+  */
 `;
 
 const Overview = styled.div`
