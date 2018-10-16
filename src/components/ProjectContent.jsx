@@ -583,8 +583,10 @@ class ProjectContent extends React.Component {
               />
             <Concept>
               <h1>The Intention</h1>
-              <p>The offer was to create an training system for Liebherr with the VR Google Oculus. It relys on real physic calculation for the crane behaviour. A bending systemb with vertice connection so that if the workload is to big or the wind to strong the physics starts working and bends/twists the crane. It was calculated via an seperate system from the University.
-              <br />There will also be a real crane cabin available for the interested party where they sit in and put ont the VR Goggles. The windows were all green there. In the end it should record the actors sight via an extra camera in front of the Oulus. This camera renders out the green color of the windows and maps the virtual world over them. So that the actor can see his hands and the real interface while playing the VR application.
+              <p>The offer was to create an VR training system for Liebherr with the Oculus. The crane behaviour should be as realistic as possible. Therefore it should rely on real physics. For example if the wind is too strong or the workload on the crane too big the crane/-arm will start moving or bending.
+              <br />We know that the Unity Phyics was not arrurate enought , therefore we got help from the University STuttgart. They should be responsible for the calculation stuff and how the forces. There will also be a real crane cabin available for the interested party.
+              <br />The cabin is connected with hydraulic so that it is able to rotate or start tilting. All the windows in the cabin are tinted in a green color. In the end it should record the actors sight via an extra camera in front of the Oulus.
+              <br />This camera renders out the green color from the windows and maps the virtual world over them. So that the actor can see his hands and the real interface while playing the VR application.
               </p>
             </Concept>
             <Concept>
