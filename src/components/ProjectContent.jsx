@@ -68,60 +68,6 @@ const tractionInverter_A = [traktionsStrom01, traktionsStrom02, traktionsStrom03
 
 import '../assets/scss/components/ProjectContent.scss';
 
-const CloseWrapper = styled.div`
-  pointer-events: auto;
-  //transform: translate3d(0px, 0px, 10px);
-
-    display: inline-grid;
-    align-items: center;
-    justify-items: center;
-    position: absolute;
-    height: 80%;
-    left: 0;
-    width: 1.5rem;
-    background-color: rgba(255, 255, 255, .05);
-    @supports ((-webkit-backdrop-filter: blur(1em)) or (backdrop-filter: blur(1em))) {
-          backdrop-filter: blur(1em);
-    }
-    border-radius: _size(border-radius);
-    @media (min-width: 600px) {
-      width: 3rem;
-    }
-    @media (min-width: 900px) {
-      width: 5rem;
-    }
-    cursor: pointer;
-    text-indent: 4rem;
-    overflow: hidden;
-    white-space: nowrap;
-
-    svg {
-      animation: hopAnim 4s ease-in-out infinite alternate;
-      transform: translate3d(0,0,0) rotateZ(-90deg);
-      will-change: transform;
-    }
-
-    &:hover {
-      background-color: _palette(border-bg);
-      svg {
-        animation: hopAnim 1s ease-in-out infinite alternate;
-      }
-    }
-
-    &:active {
-      background-color: _palette(border-bg-alt);
-    }
-`;
-
-const CloseWrapperOffset = styled(CloseWrapper)`
-  transform: translate3d(0, ${(props => props.yOffset)}vh, 0);
-  /*
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  */
-`;
-
 const Overview = styled.div`
   display: grid;
   justify-items: center;
@@ -160,19 +106,6 @@ const TaskTitle = styled(ItemTitel)`
   grid-column-end: 4;
   @media (max-width: 799px) {
       grid-column-end: 3;
-  }
-`;
-
-const Movie = styled.div`
-  display: block;
-  align-items: center;
-  justify-items: center;
-  height: 100%;
-  width: 100%;
-  video {
-      pointer-events: auto;
-      max-width: 980px;
-      cursor: pointer;
   }
 `;
 
@@ -447,7 +380,7 @@ class ProjectContent extends React.Component {
               images={gemueVR_A}
               images2x={gemueVR_A}
               videos={[
-              <video ref={this.gemueVideo} src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" controls loop muted preload="auto">
+              <video ref={this.gemueVideo} controls loop muted preload="none">
                 <source type="video/mp4" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" />
                 <source type="video/webm" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.webm" />
                 <source type="video/ogg" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.ogv" />
@@ -576,15 +509,13 @@ class ProjectContent extends React.Component {
           <h2 className="major">Simulator VR</h2>
           <CSSSlider images={craneSimul_A} images2x={craneSimul_A}
           videos={[
-            <video
-            src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.mp4.mp4" ref={this.craneSimMovie} controls loop muted preload="auto">
+            <video ref={this.craneSimMovie} controls loop muted preload="none">
               <source type="video/webm" src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.webmhd.webm" />
               <source type="video/ogg" src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.oggtheora.ogv" />
               <source type="video/mp4" src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.mp4.mp4" />
             </video>
             ,
-            <video
-            src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.mp4" ref={this.craneSimMovie2} controls loop muted preload="auto">
+            <video ref={this.craneSimMovie2} controls loop muted preload="none">
               <source type="video/webm" src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.webm" />
               <source type="video/ogg" src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.ogv" />
               <source type="video/mp4" src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.mp4" />
@@ -676,8 +607,7 @@ class ProjectContent extends React.Component {
             images={recaroVR_A}
             images2x={recaroVR_A}
             videos={[
-              <video
-              src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.mp4" ref={this.recaroMovie} controls loop muted preload="auto">
+              <video ref={this.recaroMovie} controls loop muted preload="none">
                 <source type="video/webm" src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.webm" />
                 <source type="video/ogg" src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.ogv" />
                 <source type="video/mp4" src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.mp4" />
@@ -724,9 +654,6 @@ class ProjectContent extends React.Component {
           </Wrapper>
         </Article>
       </div>
-      <CloseWrapperOffset yOffset={0} onClick={() => {this.props.onCloseArticle()}}><SVG icon="triangle" width={'8'} fill="#ff006f" useSelfAlign={true}/></CloseWrapperOffset>
-      <CloseWrapperOffset yOffset={100} onClick={() => {this.props.onCloseArticle()}}><SVG icon="triangle" width={'8'} fill="#ff006f" useSelfAlign={true}/></CloseWrapperOffset>
-      <CloseWrapperOffset yOffset={200} onClick={() => {this.props.onCloseArticle()}}><SVG icon="triangle" width={'8'} fill="#ff006f" useSelfAlign={true}/></CloseWrapperOffset>
       </React.Fragment>
     )
   }

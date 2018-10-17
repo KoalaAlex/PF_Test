@@ -269,6 +269,52 @@ const MoveToPageOne = styled.div`
   }
 `;
 
+const CloseWrapper = styled.div`
+  pointer-events: auto;
+  position: absolute;
+  //transform: translate3d(0px, 0px, 10px);
+  display: inline-grid;
+  align-items: center;
+  justify-items: center;
+  position: absolute;
+  top: 10%;
+  height: 80%;
+  left: 0;
+  width: 1.5rem;
+  background-color: rgba(255, 255, 255, .05);
+  @supports ((-webkit-backdrop-filter: blur(1em)) or (backdrop-filter: blur(1em))) {
+        backdrop-filter: blur(1em);
+  }
+  border-radius: _size(border-radius);
+  @media (min-width: 600px) {
+    width: 3rem;
+  }
+  @media (min-width: 900px) {
+    width: 5rem;
+  }
+  cursor: pointer;
+  text-indent: 4rem;
+  overflow: hidden;
+  white-space: nowrap;
+
+  svg {
+    animation: hopAnim 4s ease-in-out infinite alternate;
+    transform: translate3d(0,0,0) rotateZ(-90deg);
+    will-change: transform;
+  }
+
+  &:hover {
+    background-color: _palette(border-bg);
+    svg {
+      animation: hopAnim 1s ease-in-out infinite alternate;
+    }
+  }
+
+  &:active {
+    background-color: _palette(border-bg-alt);
+  }
+`;
+
 // const Index = () => (
 class Index extends React.Component {
   constructor(props) {
@@ -664,6 +710,7 @@ handleCloseArticle() {
        </CSSParallaxLayer>
       </CSSParallaxGroup>
     </CSSParallax>
+    <CloseWrapper style={this.state.timeout ? {display: 'grid'} : {display: 'none'}} onClick={() => {this.handleCloseArticle()}}><SVG icon="triangle" width={'8'} fill="#ff006f" useSelfAlign={true}/></CloseWrapper>
     <noscript>Your browser does not support JavaScript!</noscript>
   </React.Fragment>
 );

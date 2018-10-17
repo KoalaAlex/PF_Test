@@ -6,25 +6,7 @@
 
 /* Main */
 
-@keyframes hopAnimComplete {
-	0%, 40%, 60%, 100% {
-		//filter: blur(4px);
-		transform: translate3d(0,0,0) rotateZ(-90deg);
-	}
-	50%{
-		transform: translate3d(-1rem,0,0) rotateZ(-90deg);
-	}
-}
 
-@keyframes hopAnim {
-	0%, 100% {
-		//filter: blur(4px);
-		transform: translate3d(0,0,0) rotateZ(-90deg);
-	}
-	50%{
-		transform: translate3d(-1rem,0,0) rotateZ(-90deg);
-	}
-}
 
 	#project-content {
 		display: block;

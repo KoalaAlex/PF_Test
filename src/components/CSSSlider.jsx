@@ -53,8 +53,7 @@ const SmallImageP= styled.picture`
 `;
 
 const Movie = styled.span`
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  display: block;
   align-items: center;
   justify-items: center;
   height: 40vw;
@@ -62,8 +61,9 @@ const Movie = styled.span`
   pointer-events: auto;
   cursor: pointer;
   video {
+    object-fit: contain;
     height: 100%;
-    width: 100%;
+    max-width: 100%;
   }
 `;
 
