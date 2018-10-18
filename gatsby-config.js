@@ -12,7 +12,12 @@ module.exports = {
   /* Plugins */
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-emotion',
+    {
+      resolve: `gatsby-plugin-emotion`,
+      options: {
+        // Accepts all options defined by `babel-plugin-emotion` plugin.
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

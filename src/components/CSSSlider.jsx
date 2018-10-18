@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
+import Img from "gatsby-image"
 
 import '../assets/scss/components/CSSSlider.scss';
 

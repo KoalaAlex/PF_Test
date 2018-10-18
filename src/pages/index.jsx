@@ -3,7 +3,8 @@ import React from 'react';
 import styled from 'react-emotion';
 import { Parallax, ParallaxLayer } from 'react-spring';
 import { CSSParallax, CSSParallaxGroup, CSSParallaxLayer } from '../components/CSSParallax';
-
+import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 // import Components
 import SEO from '../components/SEO';
 import { SVG } from '../components/SVG';
@@ -26,9 +27,6 @@ const commentText3 = "<!-- ╚═╝└─┘┴ ┴┴ ┴└─┘┘└┘ �
 import {Events, Link, scroller} from 'react-scroll'
 
 import '../assets/scss/base/_page.scss';
-
-// import Fonts
-import '../../node_modules/@ibm/plex/scss/ibm-plex.scss';
 
 const NoClickDivider = styled(CSSParallaxGroup)`
   pointer-events: none;
@@ -559,6 +557,7 @@ handleCloseArticle() {
     return (
   <React.Fragment>
     <SEO />
+  {/*  <Img fluid={this.props.data.imageOne.childImageSharp.fluid} /> */}
     <div dangerouslySetInnerHTML={{__html: commentText1 + commentText2 + commentText3}}/>
     <SVGOriginals />
     <CSSParallax id="parallax-scroller" pages={this.state.isSmallMobile ? 4 : 4}>
@@ -718,3 +717,15 @@ handleCloseArticle() {
 }
 
 export default Index;
+
+export const pageQuery = graphql`
+  query {
+    imageOne: file(relativePath: { eq: "avatar.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`
