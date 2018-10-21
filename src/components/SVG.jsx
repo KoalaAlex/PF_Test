@@ -36,7 +36,7 @@ const WrapperTransform = styled.svg`
   }
 `;
 
-const icontTypes = ['triangle', 'circle', 'arrowUp', 'upDown', 'box', 'hexa', 'badge', 'imac', 'ps4', 'smartphone', 'puzzle', 'pencilcase', 'flask', 'cube', 'bubble', 'cloud', 'network' , 'star', 'usb', 'pokeball', 'pin', 'plane', 'key', 'flash', 'blub', 'usbSimple', 'error404', 'bug', 'shield', 'sword', 'coin'];
+const icontTypes = ['triangle', 'circle', 'arrowUp', 'upDown', 'box', 'hexa', 'badge', 'imac', 'ps4', 'smartphone', 'puzzle', 'pencilcase', 'flask', 'cube', 'bubble', 'cloud', 'network' , 'star', 'usb', 'pokeball', 'pin', 'plane', 'key', 'flash', 'blub', 'usbSimple', 'error404', 'bug', 'shield', 'sword', 'coin', 'easteregg', 'blockchain'];
 
 const icons = {
   triangle: {
@@ -306,6 +306,26 @@ const icons = {
       />
       ),
     viewBox: '0 0 48 48',
+  },
+  blockchain: {
+    shape: (
+      <defs>
+        <path id ="original-blockchain" d="M17 15v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v3h3v2h-3v4h6c.6 0 1-.4 1-1v-2h2v2a3 3 0 0 1-3 3h-6zm-2-1V4H3v12h12v-2zm2 30v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V33c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v3h3v2h-3v4h6c.6 0 1-.4 1-1v-2h2v2a3 3 0 0 1-3 3h-6zm-2-1V33H3v12h12v-2zm15-9v-1c0-1.1.9-2 2-2h3v-3h2v3h4v-6c0-.6-.4-1-1-1h-2v-2h2a3 3 0 0 1 3 3v6h1a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H32a2 2 0 0 1-2-2v-3h-3v-2h3v-4h-6a1 1 0 0 0-1 1v2h-2v-2a3 3 0 0 1 3-3h6zm2 1v10h12V33H32v2zm0-23v4h12V4H32v8zm-2-7V4c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3v3h-2v-3h-4v6c0 .6.4 1 1 1h2v2h-2a3 3 0 0 1-3-3v-6h-1a2 2 0 0 1-2-2v-3h-3v-2h3V7h-6a1 1 0 0 0-1 1v2h-2V8a3 3 0 0 1 3-3h6z"
+        />
+      </defs>
+      ),
+    viewBox: '0 0 48 48',
+    duplication: (<use xlinkHref="#original-blockchain" />),
+  },
+  easteregg: {
+    shape: (
+      <defs>
+        <path id="original-easteregg" d="M37 28.6c0-2.3-.5-4.8-1.3-7.4l-4.5.8a1 1 0 0 1-1-.4l-5.3-7-6.2 6.1a1 1 0 0 1-1.4 0l-1.5-1.5-3.3 1.3a28.3 28.3 0 0 0-1.5 9l3.6-1.4c.5-.2 1 0 1.3.4l2.4 4.1 7.2-4.4a1 1 0 0 1 1 0l6.4 4.5 4.1-4.1zm-.3 3l-3 3.1a1 1 0 0 1-1.3.1L26 30.2l-7.5 4.6a1 1 0 0 1-1.4-.3l-2.5-4.3-3.3 1.4a13 13 0 0 0 25.4 0zm-1.6-12.3C32.5 12.3 28 6 24 6c-3.8 0-8 5.7-10.6 12.2l2.2-1.1c.4-.2.8 0 1.1.2l1.3 1.3 6.3-6.3a1 1 0 0 1 1.5.1l5.6 7.5 3.7-.6zM24 44A15 15 0 0 1 9 29c0-8.3 6.7-25 15-25s15 16.7 15 25a15 15 0 0 1-15 15zm.3-19.7a1 1 0 0 1 1.4 1.4l-1 1a1 1 0 0 1-1.4 0l-1-1a1 1 0 0 1 1.4-1.4l.3.3.3-.3zM26 23c-.6 0-1-.7-1-1.5s.4-1.5 1-1.5 1 .7 1 1.5-.4 1.5-1 1.5zm-4 0c-.6 0-1-.7-1-1.5s.4-1.5 1-1.5 1 .7 1 1.5-.4 1.5-1 1.5z"
+        />
+      </defs>
+      ),
+    viewBox: '0 0 48 48',
+    duplication: (<use xlinkHref="#original-easteregg" />),
   },
   sword: {
     shape: (

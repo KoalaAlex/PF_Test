@@ -49,6 +49,8 @@ export class SVGOriginals extends React.PureComponent {
         <SVGOriginal icon="usbSimple"/>
         <SVGOriginal icon="flask"/>
         <SVGOriginal icon="triangle"/>
+        <SVGOriginal icon="easteregg"/>
+        <SVGOriginal icon="blockchain"/>
       </SVGAbsoluteOriginal>
     );
   }
@@ -107,6 +109,7 @@ export class SVGPageTwo extends React.PureComponent {
         <SVG icon="flask" width={'48'} fill={colors['grey-darkest']} left="40" top="70" />
         <SVG icon="flask" width={'48'} fill={colors['grey-darkest']} left="80" top="80" />
         */}
+        <SVG icon="easteregg" width={'24'} fill="#ff0057" left="90" top="80" />
         <SVG icon="cube" width={'12'} fill="#ff0057" left="10" top="20" />
       </SVGAbsolute>
     );
@@ -199,7 +202,8 @@ export class SVGPageSix extends React.PureComponent {
         <SVG icon="pin" width={'24'} fill={colors.white} left="4" top="20" />
         <SVG icon="cube" width={'12'} fill={colors['grey-darkest']} left="60" top="60" />
         <SVG icon="imac" className={hiddenLG} width={'24'} fill={colors['grey-darkest']} left="20" top="30" />
-        <SVG icon="blub" width={'8'} fill={colors['grey-darkest']} left="20" top="60" />
+        <SVG icon="easteregg" width={'24'} fill={colors['grey-darkest']} left="90" top="80" />
+        <SVG icon="blockchain" width={'24'} fill={colors['grey-darkest']} left="10" top="60" />
       </SVGAbsolute>
     );
   }

@@ -18,8 +18,6 @@ import '../styles/global';
 import config from '../../config/website';
 import MediaQuery from 'react-responsive';
 
-import ImageTest from './ImageTest';
-
 const commentText1 = "<!-- ╔═╗┌─┐┌┬┐┌┬┐┌─┐┌┐┌┌┬┐┌─┐  ┌─┐┌─┐┬  ┬┌─┐  ┬  ┬┬  ┬┌─┐┌─┐┬ -->";
 const commentText2 = "<!-- ║  │ │││││││├┤ │││ │ └─┐  └─┐├─┤└┐┌┘├┤   │  │└┐┌┘├┤ └─┐│ -->";
 const commentText3 = "<!-- ╚═╝└─┘┴ ┴┴ ┴└─┘┘└┘ ┴ └─┘  └─┘┴ ┴ └┘ └─┘  ┴─┘┴ └┘ └─┘└─┘o -->";

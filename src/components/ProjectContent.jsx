@@ -359,13 +359,6 @@ class ProjectContent extends React.Component {
           </Concept>
           <Concept>
             <h1>Process</h1>
-              {/*
-              <p>I started with a demo from gatsby <a href="https://github.com/LeKoArts/gatsby-starter-portfolio-cara">starter</a> for quick development. While working on it I discovered performance issues on my mac book pro (2013). The main issue was on the one hand the parallax effect made with <a href="https://github.com/drcmda/react-spring" >react spring</a> and on the other hand the enormous count of SVGs.
-              <br />I started to redesign the whole parallax effect to work with css and not to depend on javascript. While developing I found the <a onClick={() => {this.props.easteregg()}}>esteregg</a> which was orginaly designed for debuging the layer effect.<br />
-              Also I don't liked the portoflio cards system from the starter, wich only referenced to a seperate side. For this I found a solution to change the perspective to fade on the hidden right side of the page an there lie's the content.
-              <a href="https://www.facebook.com/StrickerTobi">My brother</a> helped me out with the svg's. For performance issues and reusability of the calculated svgs I made of the href attribute and the<CodeHTML>use</CodeHTML> element on all SVGs.
-              </p>
-              */}
             <TextToLeftSide>
               <p>I kicked off this project with a quick research activity on understanding what the current state of the art for such kind of portfolios is. Besides that I’ve created a rapid prototype on pen and paper to showed it to friends and colleagues in order to collect their opinion on it. After some fixes I was ready with the concept and knew where I’d like to go with it. I have decided to use a demo template from GatsbyJS to have a quick jump into development. </p>
               <p>However while working on it I’ve discovered bigger performance issues on my MacBook Pro (2013). The biggest problems were related to the parallax effect created with the React spring node module and the big count of SVGs used. As a solution to this I’ve restructured the whole parallax effect to work with CSS and not depend on JavaScript. In order resolve the SVG problem I’ve created href-attributes for them in order to make them reusable through the <CodeHTML>use</CodeHTML> element.</p>
