@@ -8,6 +8,7 @@ module.exports = {
   siteMetadata: {
     title: "Portfolio - Alex",
     siteUrl: config.siteUrl + pathPrefix,
+    description: "This is where I write my thoughts.",
   },
   /* Plugins */
   plugins: [
@@ -23,6 +24,27 @@ module.exports = {
       options: {
         path: `${__dirname}/src/images/`,
         name: 'images',
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data/`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          "gatsby-remark-copy-linked-files",
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1000,
+            },
+          },
+      ],
       },
     },
     'gatsby-transformer-sharp',

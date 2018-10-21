@@ -1,9 +1,13 @@
 {
-  "name": "alex-portfolio",
+  "name": "portfolio-alex",
   "description": "Portfolio Alex",
   "version": "1.0.0",
   "author": "Alexander Stricker",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KoalaAlex/PF_Test.git"
+  },
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^9.0.0",
@@ -12,7 +16,7 @@
     "bin-wrapper": "^4.0.0",
     "emotion": "^9.2.12",
     "emotion-server": "^9.2.12",
-    "gatsby": "^2.0.25",
+    "gatsby": "^2.0.28",
     "gatsby-image": "^2.0.15",
     "gatsby-plugin-emotion": "^2.0.5",
     "gatsby-plugin-manifest": "^2.0.5",
@@ -20,11 +24,14 @@
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-sass": "^2.0.1",
     "gatsby-plugin-sharp": "^2.0.7",
-    "gatsby-source-filesystem": "^2.0.4",
+    "gatsby-remark-copy-linked-files": "^2.0.5",
+    "gatsby-remark-images": "^2.0.4",
+    "gatsby-source-filesystem": "^2.0.5",
+    "gatsby-transformer-remark": "^2.1.8",
     "gatsby-transformer-sharp": "^2.1.4",
     "node-sass": "4.9.3",
     "postcss": "^7.0.5",
-    "postcss-cli": "^6.0.0",
+    "postcss-cli": "^6.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
@@ -34,7 +41,8 @@
     "react-scroll": "^1.7.10",
     "react-spring": "^5.9.2",
     "slate": "^0.40.4",
-    "tailwindcss": "^0.6.6"
+    "tailwindcss": "^0.6.6",
+    "video-react": "^0.13.0"
   },
   "keywords": [
     "gatsby",

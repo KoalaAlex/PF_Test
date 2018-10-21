@@ -1,10 +1,9 @@
 /* global tw */
 import React from 'react';
 import styled from 'react-emotion';
-import { Parallax, ParallaxLayer } from 'react-spring';
 import { CSSParallax, CSSParallaxGroup, CSSParallaxLayer } from '../components/CSSParallax';
-import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 // import Components
 import SEO from '../components/SEO';
 import { SVG } from '../components/SVG';
@@ -18,6 +17,8 @@ import avatar from '../images/avatar.jpg';
 import '../styles/global';
 import config from '../../config/website';
 import MediaQuery from 'react-responsive';
+
+import ImageTest from './ImageTest';
 
 const commentText1 = "<!-- ╔═╗┌─┐┌┬┐┌┬┐┌─┐┌┐┌┌┬┐┌─┐  ┌─┐┌─┐┬  ┬┌─┐  ┬  ┬┬  ┬┌─┐┌─┐┬ -->";
 const commentText2 = "<!-- ║  │ │││││││├┤ │││ │ └─┐  └─┐├─┤└┐┌┘├┤   │  │└┐┌┘├┤ └─┐│ -->";
@@ -557,7 +558,6 @@ handleCloseArticle() {
     return (
   <React.Fragment>
     <SEO />
-  {/*  <Img fluid={this.props.data.imageOne.childImageSharp.fluid} /> */}
     <div dangerouslySetInnerHTML={{__html: commentText1 + commentText2 + commentText3}}/>
     <SVGOriginals />
     <CSSParallax id="parallax-scroller" pages={this.state.isSmallMobile ? 4 : 4}>
@@ -705,6 +705,7 @@ handleCloseArticle() {
             article={this.state.article}
             onCloseArticle={this.handleCloseArticle}
             onOpenArticle={this.handleGemueArticleClick}
+            articlesContentQuery={this.props.data.allMarkdownRemark.edges}
           />
        </CSSParallaxLayer>
       </CSSParallaxGroup>
@@ -718,14 +719,27 @@ handleCloseArticle() {
 
 export default Index;
 
-export const pageQuery = graphql`
-  query {
-    imageOne: file(relativePath: { eq: "avatar.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1000) {
-          ...GatsbyImageSharpFluid
+export const query = graphql`
+query IndexQuery{
+  allMarkdownRemark(sort : {
+    fields: [frontmatter___title],
+    order: ASC
+  }) {
+    edges {
+      node {
+        frontmatter {
+          title
+          images {
+            publicURL
+            childImageSharp {
+              fluid(maxWidth: 800) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }
   }
-`
+}
+`;
