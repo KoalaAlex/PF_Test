@@ -1,11 +1,11 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled'
 import PropTypes from 'prop-types';
 
 // Import Components
 import { SVG, SVGOriginal }from '../components/SVG';
 import { colors } from '../../tailwind';
-import { hiddenMD, hiddenLG, hiddenXL } from '../styles/utils';
+import { hiddenLG, hiddenXL } from '../styles/utils';
 import { UpDown, UpDownWide} from '../styles/animations';
 
 import '../assets/scss/components/blurAnim.scss';

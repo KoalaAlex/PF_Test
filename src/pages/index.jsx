@@ -1,8 +1,8 @@
 /* global tw */
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled'
+import { Global } from "@emotion/core"
 import { CSSParallax, CSSParallaxGroup, CSSParallaxLayer } from '../components/CSSParallax';
-import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 // import Components
 import SEO from '../components/SEO';
@@ -14,9 +14,11 @@ import { waveAnimation, boxShadowAnim, hopAnimDown, fadeAnimation } from '../sty
 import { hidden } from '../styles/utils';
 import { colors } from '../../tailwind';
 import avatar from '../images/avatar.jpg';
-import '../styles/global';
+// css string
+import GlobalString from '../styles/global'
 import config from '../../config/website';
 import MediaQuery from 'react-responsive';
+import { detect } from 'detect-browser';
 
 const commentText1 = "<!-- ╔═╗┌─┐┌┬┐┌┬┐┌─┐┌┐┌┌┬┐┌─┐  ┌─┐┌─┐┬  ┬┌─┐  ┬  ┬┬  ┬┌─┐┌─┐┬ -->";
 const commentText2 = "<!-- ║  │ │││││││├┤ │││ │ └─┐  └─┐├─┤└┐┌┘├┤   │  │└┐┌┘├┤ └─┐│ -->";
@@ -26,6 +28,8 @@ const commentText3 = "<!-- ╚═╝└─┘┴ ┴┴ ┴└─┘┘└┘ �
 import {Events, Link, scroller} from 'react-scroll'
 
 import '../assets/scss/base/_page.scss';
+
+const browser = detect();
 
 const NoClickDivider = styled(CSSParallaxGroup)`
   pointer-events: none;
@@ -324,7 +328,8 @@ class Index extends React.Component {
     loading: 'is-loading',
     isSmallMobile: false,
     debugOn: false,
-    xOffsetAllPages: 0
+    xOffsetAllPages: 0,
+    browser: '',
   }
   this.timeoutId;
   this.spaceKeyWasPressed;
@@ -424,6 +429,7 @@ keyUpFunction(event){
 }
 
 componentDidMount () {
+  this.setState({browser: browser.name});
   this.timeoutId = setTimeout(() => {
       this.setState({loading: ''});
   }, 100);
@@ -555,6 +561,9 @@ handleCloseArticle() {
   render() {
     return (
   <React.Fragment>
+  <Global
+     styles={GlobalString}
+   />
     <SEO />
     <div dangerouslySetInnerHTML={{__html: commentText1 + commentText2 + commentText3}}/>
     <SVGOriginals />
@@ -694,7 +703,7 @@ handleCloseArticle() {
         <LastNoClickLayerSVG speed={-0.1} zIndex={2}>
           <SVGPageSix />
         </LastNoClickLayerSVG>
-        <CSSParallaxLayer speed={0.1} zIndex={3}>
+        <CSSParallaxLayer speed={0.1} zIndex={3} browserName={this.state.browser}>
           <ProjectContent
             easteregg={this.toggleDebug}
             isArticleVisible={this.state.isArticleVisible}
@@ -703,7 +712,6 @@ handleCloseArticle() {
             article={this.state.article}
             onCloseArticle={this.handleCloseArticle}
             onOpenArticle={this.handleGemueArticleClick}
-            articlesContentQuery={this.props.data.allMarkdownRemark.edges}
           />
        </CSSParallaxLayer>
       </CSSParallaxGroup>
@@ -716,28 +724,3 @@ handleCloseArticle() {
 }
 
 export default Index;
-
-export const query = graphql`
-query IndexQuery{
-  allMarkdownRemark(sort : {
-    fields: [frontmatter___title],
-    order: ASC
-  }) {
-    edges {
-      node {
-        frontmatter {
-          title
-          images {
-            publicURL
-            childImageSharp {
-              fluid(maxWidth: 800) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-`;

@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled'
 import MediaQuery from 'react-responsive';
+import { StaticQuery, graphql } from 'gatsby';
 
 import CSSSlider from  './CSSSlider';
 import CSSSliderGastbyImg from  './CSSSliderGastbyImg';
 import ProjectOverview from  './ProjectOverview';
 import Img from 'gatsby-image';
 
-import { Player as VideoPlayer} from 'video-react';
+import VideoPlayer from './VideoPlayer'
+
+import '../styles/video-player.css'
 
 import pic03 from '../images/pic03.jpg';
 
@@ -71,7 +74,13 @@ const craneSimul_A = [cranesim01, cranesim02, cranesim03, cranesim04];
 const tractionInverter_A = [traktionsStrom01, traktionsStrom02, traktionsStrom03, traktionsStrom04, traktionsStrom06];
 
 import '../assets/scss/components/ProjectContent.scss';
-import "../../node_modules/video-react/dist/video-react.css";
+
+const VideoPlayerFlex = styled(VideoPlayer)`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+`
 
 const Overview = styled.div`
   display: grid;
@@ -323,7 +332,7 @@ class ProjectContent extends React.Component {
         //console.log("start");
       }
     }
-  //  console.log(this.props.articlesContentQuery);
+  //  console.log(markdownFileArray);
   }
 
   checkIfDataExists(props) {
@@ -335,13 +344,102 @@ class ProjectContent extends React.Component {
   }
 
   render() {
+    const markdownFileArray = this.props.data.allMarkdownRemark.edges
+    const videoJsOptionsGemue = {
+      autoplay: false,
+      controls: true,
+      loop: true,
+      muted: true,
+      fluid: true,
+      preload: 'none',
+      sources: [
+        {
+        src: 'https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4',
+        type: 'video/mp4'
+        },
+        {
+          src: 'https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.webm',
+          type: 'video/webm'
+        },
+        {
+          src: 'https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.ogv',
+          type: 'video/ogg'
+        }
+      ]
+    }
+    const videoJsOptionsCraneSim1 = {
+      autoplay: false,
+      controls: true,
+      loop: true,
+      muted: true,
+      fluid: true,
+      preload: 'none',
+      sources: [
+        {
+        src: 'https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.mp4.mp4',
+        type: 'video/mp4'
+        },
+        {
+          src: 'https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.webmhd.webm',
+          type: 'video/webm'
+        },
+        {
+          src: 'https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.oggtheora.ogv',
+          type: 'video/ogg'
+        }
+      ]
+    }
+    const videoJsOptionsCraneSim2 = {
+      autoplay: false,
+      controls: true,
+      loop: true,
+      muted: true,
+      fluid: true,
+      preload: 'none',
+      sources: [
+        {
+        src: 'https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.mp4',
+        type: 'video/mp4'
+        },
+        {
+          src: 'https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.webm',
+          type: 'video/webm'
+        },
+        {
+          src: 'https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.ogv',
+          type: 'video/ogg'
+        }
+      ]
+    }
+    const videoJsOptionsRecaro = {
+      autoplay: false,
+      controls: true,
+      loop: true,
+      muted: true,
+      fluid: true,
+      preload: 'none',
+      sources: [
+        {
+        src: 'https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.mp4',
+        type: 'video/mp4'
+        },
+        {
+          src: 'https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.webm',
+          type: 'video/webm'
+        },
+        {
+          src: 'https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.ogv',
+          type: 'video/ogg'
+        }
+      ]
+    }
     return (
       <React.Fragment>
       <div id="project-content" style={this.props.timeout ? {display: 'block'} : {display: 'none'}}>
       <Article id="portfolio" className={`${this.props.article === 'portfolio' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
         <h2 className="major">PORTFOLIO PLAYGROUND</h2>
         <span className="image main">
-          <CSSSliderGastbyImg images={this.props.articlesContentQuery[4].node.frontmatter.images} />
+          <CSSSliderGastbyImg images={markdownFileArray[4].node.frontmatter.images} />
         </span>
         <Wrapper>
           <ProjectOverview
@@ -384,13 +482,9 @@ class ProjectContent extends React.Component {
           <h2 className="major">GEMUE - VR Schulungsanwendung</h2>
           <span className="image main">
             <CSSSliderGastbyImg
-              images={this.props.articlesContentQuery[1].node.frontmatter.images}
+              images={markdownFileArray[1].node.frontmatter.images}
               videos={[
-                <VideoPlayer ref={this.gemueVideo} controls loop muted preload="none">
-                  <source type="video/mp4" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4" />
-                  <source type="video/webm" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.webm" />
-                  <source type="video/ogg" src="https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.ogv" />
-                </VideoPlayer>
+                <VideoPlayerFlex ref={this.gemueVideo} { ...videoJsOptionsGemue } />
               ]}
               />
           </span>
@@ -437,7 +531,7 @@ class ProjectContent extends React.Component {
         <Article id="gemue-ar" className={`${this.props.article === 'gemue-ar' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">GEMUE - AR App</h2>
           <span className="image main">
-            <CSSSliderGastbyImg images={this.props.articlesContentQuery[0].node.frontmatter.images} />
+            <CSSSliderGastbyImg images={markdownFileArray[0].node.frontmatter.images} />
           </span>
           <Wrapper>
             <ProjectOverview
@@ -475,7 +569,7 @@ class ProjectContent extends React.Component {
         <Article id="traction-inverter" className={`${this.props.article === 'traction-inverter' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Voith - EmCon Traction Inverter</h2>
           <span className="image main">
-            <CSSSliderGastbyImg images={this.props.articlesContentQuery[6].node.frontmatter.images} />
+            <CSSSliderGastbyImg images={markdownFileArray[6].node.frontmatter.images} />
           </span>
           <Wrapper>
             <ProjectOverview
@@ -514,21 +608,11 @@ class ProjectContent extends React.Component {
         </Article>
         <Article id="simulator" className={`${this.props.article === 'simulator' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Simulator VR</h2>
-          <CSSSliderGastbyImg images={this.props.articlesContentQuery[3].node.frontmatter.images}
+          <CSSSliderGastbyImg images={markdownFileArray[3].node.frontmatter.images}
 
           videos={[
-            <VideoPlayer ref={this.craneSimMovie} controls loop muted preload="none">
-              <source type="video/mp4" src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.mp4.mp4" />
-              <source type="video/webm" src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.webmhd.webm" />
-              <source type="video/ogg" src="https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.oggtheora.ogv" />
-            </VideoPlayer>
-            ,
-            <VideoPlayer ref={this.craneSimMovie2} controls loop muted preload="none">
-              <source type="video/mp4" src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.mp4" />
-              <source type="video/webm" src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.webm" />
-              <source type="video/ogg" src="https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.ogv" />
-            </VideoPlayer>
-            ,
+            <VideoPlayerFlex ref={this.craneSimMovie} { ...videoJsOptionsCraneSim1 } />,
+            <VideoPlayerFlex ref={this.craneSimMovie2} { ...videoJsOptionsCraneSim2 } />
           ]
           }/>
           <Wrapper>
@@ -571,7 +655,7 @@ class ProjectContent extends React.Component {
         </Article>
         <Article id="intensaDrum" className={`${this.props.article === 'intensaDrum' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">VOITH - INTENSA DRUM</h2>
-            <CSSSliderGastbyImg images={this.props.articlesContentQuery[2].node.frontmatter.images} />
+            <CSSSliderGastbyImg images={markdownFileArray[2].node.frontmatter.images} />
           <Wrapper>
             <ProjectOverview
               projectContext={["Client Project (2017)"]}
@@ -611,13 +695,9 @@ class ProjectContent extends React.Component {
         </Article>
         <Article id="recaro-vr" className={`${this.props.article === 'recaro-vr' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Recaro - Seat configurator</h2>
-          <CSSSliderGastbyImg images={this.props.articlesContentQuery[5].node.frontmatter.images}
+          <CSSSliderGastbyImg images={markdownFileArray[5].node.frontmatter.images}
             videos={[
-              <VideoPlayer ref={this.recaroMovie} controls loop muted preload="none">
-                <source type="video/mp4" src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.mp4" />
-                <source type="video/webm" src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.webm" />
-                <source type="video/ogg" src="https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.ogv" />
-              </VideoPlayer>
+              <VideoPlayerFlex ref={this.recaroMovie} { ...videoJsOptionsRecaro } />
             ]
             }/>
           <Wrapper>
@@ -671,8 +751,35 @@ ProjectContent.propTypes = {
   articleTimeout: PropTypes.bool,
   onCloseArticle: PropTypes.func,
   onOpenArticle: PropTypes.func,
-  articlesContentQuery: PropTypes.array,
   timeout: PropTypes.bool
 }
 
-export default ProjectContent
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query IndexQuery{
+        allMarkdownRemark(sort : {
+          fields: [frontmatter___title],
+          order: ASC
+        }) {
+          edges {
+            node {
+              frontmatter {
+                title
+                images {
+                  publicURL
+                  childImageSharp {
+                    fluid(maxWidth: 2048, quality: 90, cropFocus: CENTER) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={data => <ProjectContent data={data} {...props} />}
+  />
+)

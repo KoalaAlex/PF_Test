@@ -1,7 +1,7 @@
 /* eslint no-unused-expressions: 0 */
-import { injectGlobal } from 'emotion';
+import { css } from '@emotion/core'
 
-injectGlobal`
+const GlobalString = css`
   html {
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
@@ -33,3 +33,5 @@ injectGlobal`
       pointer-events: auto;
   }
 `;
+
+export default GlobalString;

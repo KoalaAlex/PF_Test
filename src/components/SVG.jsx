@@ -1,7 +1,7 @@
 /* global tw */
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled'
 import { width as twWidth } from '../../tailwind';
 
 const myCoolBg = 'linear-gradient( to bottom,#46C9E5 0%,#D26AC2 100% )';
@@ -396,7 +396,6 @@ SVG.propTypes = {
   icon: PropTypes.oneOf(icontTypes).isRequired,
   left: PropTypes.string,
   top: PropTypes.string,
-  className: PropTypes.string,
   id: PropTypes.string,
   scaleFromTop: PropTypes.bool,
   scaleFromLeft: PropTypes.bool,

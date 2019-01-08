@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled'
 
 import {Element} from 'react-scroll'
 
@@ -24,10 +24,7 @@ const WrapperLayer = styled.div`
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  // pageOffset={(-(this.props.speed + 1) * 150) + (this.props.offset * 100 * ((1 + ((this.props.speed + 1))) / 1))}
-//  perspective-origin-x: 100%;
   transform: translate3d(0, ${(props => props.yoffset)}vh, ${(props => props.zoffset)}px) scale(${(props => props.scale)});
-  //transition: none;
   transition-timing-function: unset;
   z-index: ${(props => props.zIndex)};
 `;
@@ -49,14 +46,31 @@ export class CSSParallaxLayer extends React.PureComponent {
     super(props)
     this.state = {
       zoffset: -Math.floor(-this.props.speed * 1 * perspective),
+      isEdge: false,
       scale: (perspective + (-Math.floor(this.props.speed * 1 * perspective))) / perspective,
     }
   }
+
+  componentDidUpdate(prevProps, prevState, snapshot){
+    switch(this.props.browserName){
+      case 'edge':
+      //console.log("edge BB");
+      this.setState({isEdge: true});
+        break;
+      case '':
+      //console.log(" -- BB");
+        break;
+      default:
+      //console.log("default BB");
+        break;
+    }
+  }
+
   render() {
     return (
         <WrapperLayer
-          zoffset={this.state.zoffset}
-          scale={this.state.scale}
+          zoffset={!this.state.isEdge ? this.state.zoffset : 0}
+          scale={!this.state.isEdge ? this.state.scale : 1}
           className={this.props.className}
           yoffset={this.props.yOffset * 100}
           zIndex={this.props.zIndex}
@@ -75,6 +89,7 @@ CSSParallaxLayer.propTypes = {
   yOffset: PropTypes.number,
   zIndex: PropTypes.number,
   name: PropTypes.string,
+  browserName: PropTypes.string
 };
 
 CSSParallaxLayer.defaultProps = {
@@ -83,6 +98,7 @@ CSSParallaxLayer.defaultProps = {
   yOffset: 0,
   zIndex: 0,
   className: 'parallax-layer',
+  browserName: ''
 };
 
 export class CSSParallaxGroup extends React.PureComponent {

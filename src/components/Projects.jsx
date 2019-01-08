@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled'
 import ProjectCard from '../components/ProjectCard';
 
 const ProjectsWrapper = styled.div`

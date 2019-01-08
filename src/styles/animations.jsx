@@ -1,5 +1,6 @@
 /* global tw */
-import styled, { keyframes, css } from 'react-emotion';
+import styled from '@emotion/styled'
+import { keyframes, css } from '@emotion/core';
 
 export const rotate = keyframes`
   from {
