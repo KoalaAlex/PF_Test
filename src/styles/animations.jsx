@@ -45,14 +45,6 @@ const upDownWideAnimation = keyframes`
 `;
 
 export const boxShadowAnim = keyframes`
-  /*
-  from {
-    box-shadow: 0px 0px 1rem #7f00ff;
-  }
-  to {
-    box-shadow: 0px 0px 4rem #7f00ff;
-  }
-  */
   from {
     opacity: 0.4;
   }
@@ -63,13 +55,21 @@ export const boxShadowAnim = keyframes`
 
 export const hopAnimDown = keyframes`
 	0%, 100% {
-		//filter: blur(4px);
 		transform: translate3d(0,0,0) rotateZ(-180deg);
 	}
 	50%{
 		transform: translate3d(0,1vh,0) rotateZ(-180deg);
 	}
 }
+`;
+
+export const hopAnimClose = keyframes`
+  0%, 100% {
+    transform: translate3d(0,0,0) rotateZ(-90deg);
+  }
+  50%{
+    transform: translate3d(-1rem,0,0) rotateZ(-90deg);
+  }
 `;
 
 export const UpDown = styled.div`

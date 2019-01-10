@@ -1,8 +1,8 @@
 ---
-path: "intensa-drum"
+path: "projects/intensa-drum"
 date: "2018-10-20T17:08:58.246Z"
 title: "intensa-drum"
-tags: design, development
+tags: [design, development, project]
 images : [
   "../images/intensa-drum/id_01_800x600.jpg",
   "../images/intensa-drum/id_02_800x600.jpg",

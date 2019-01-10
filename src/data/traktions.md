@@ -1,8 +1,8 @@
 ---
-path: "traktions"
+path: "projects/traktions"
 date: "2018-10-20T17:10:04.246Z"
 title: "traktions"
-tags: design, development
+tags: [design, development, project]
 images : [
   "../images/traktions/rec_01_800x500.jpg",
   "../images/traktions/rec_02_800x455.jpg",

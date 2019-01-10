@@ -757,8 +757,16 @@ ProjectContent.propTypes = {
 export default props => (
   <StaticQuery
     query={graphql`
-      query IndexQuery{
-        allMarkdownRemark(sort : {
+      query ProjectQuery{
+        allMarkdownRemark(
+          filter : {
+             frontmatter: {
+               tags: {
+                 in: ["project"]
+               }
+             }
+           },
+          sort : {
           fields: [frontmatter___title],
           order: ASC
         }) {
