@@ -2,8 +2,6 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import config from '../../config/website';
 
-//import faviconIco from '../../static/favicons/favicon.ico';
-
 const title = config.siteTitle;
 const description = config.siteDescription;
 const realPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
@@ -25,8 +23,7 @@ const schemaOrgJSONLD = [
   },
 ];
 
-//const SEO = () => {
-const SEO = React.memo((props) => {
+export const SEO = React.memo((props) => {
   return (
     <Helmet>
       <html lang={config.siteLanguage} />
@@ -59,5 +56,3 @@ const SEO = React.memo((props) => {
     </Helmet>
   )
 });
-
-export default SEO;

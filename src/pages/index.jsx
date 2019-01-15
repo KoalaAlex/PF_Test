@@ -9,7 +9,7 @@ import Quote  from '../components/parts/quote'
 import ContactMe  from '../components/parts/contact-me'
 import ProjectContent  from '../components/parts/project-content'
 // import Components
-import SEO from '../components/seo'
+import { SEO } from '../components/seo'
 import { SVGOriginals } from '../components/svg-manager'
 import { Parallax } from '../components/parallax'
 import CloseWrapper from '../components/close-wrapper'
