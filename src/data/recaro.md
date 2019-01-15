@@ -31,12 +31,12 @@ process: [
   The general tablet connection was not implemented by me but I handled the received informations from the socket connection in Unity and passed some parameter information back via to the tablet. Some states needed to be implemented bidirectional for example if the VR user changes the daytime it also needed to be reflected on the tablet client."
 ]
 technology: [
-"<p>"Devlopment: Unity",
-"<p>"VR Interaction System: Selfmade",
-"<p>"VR Release: SteamVR",
-"<p>"Camera: Cinemachine",
-"<p>"3D Models: 3dsMax",
-"<p>"IDE: Visual Studio"
+"Devlopment: Unity",
+"VR Interaction System: Selfmade",
+"VR Release: SteamVR",
+"Camera: Cinemachine",
+"3D Models: 3dsMax",
+"IDE: Visual Studio"
 ]
 platforms: ["Windows Standalone"]
 ---
