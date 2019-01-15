@@ -20,7 +20,7 @@ const schemaOrgJSONLD = [
     url: blogURL,
     name: title,
     alternateName: config.siteTitleAlt ? config.siteTitleAlt : '',
-  },
+  }
 ];
 
 export const SEO = () => {
