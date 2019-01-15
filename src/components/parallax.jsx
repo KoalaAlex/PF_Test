@@ -34,14 +34,11 @@ const WrapperGroup = styled(Element)`
   transform-style: preserve-3d;
   width: 100%;
   height: 100%;
-  transform: translate3d(${(props => props.xoffset)}vw, ${(props => props.pageoffset)}vh, ${(props => props.zoffset)}vw) ${(props => props.rotatey)};
-  //transition: transform 1000ms cubic-bezier(0.6, -0.600, 0.50, 1.50);
-  //transition-timing-function: cubic-bezier(0.6, -0.600, 0.50, 1.50);
+  transform: translate3d(${(props => props.xoffset)}vw, ${(props => props.pageoffset)}vh, ${(props => props.zoffset)}vw) ${(props => props.yrotate)};
   transition: transform 1000ms ease;
-  //transition-timing-function: easeInExpo;
 `;
 
-export class CSSParallaxLayer extends React.PureComponent {
+export class ParallaxLayer extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
@@ -54,14 +51,11 @@ export class CSSParallaxLayer extends React.PureComponent {
   componentDidUpdate(prevProps, prevState, snapshot){
     switch(this.props.browserName){
       case 'edge':
-      //console.log("edge BB");
       this.setState({isEdge: true});
         break;
       case '':
-      //console.log(" -- BB");
         break;
       default:
-      //console.log("default BB");
         break;
     }
   }
@@ -81,7 +75,7 @@ export class CSSParallaxLayer extends React.PureComponent {
   }
 }
 
-CSSParallaxLayer.propTypes = {
+ParallaxLayer.propTypes = {
   scale: PropTypes.number,
   speed: PropTypes.number,
   children:PropTypes.node,
@@ -92,7 +86,7 @@ CSSParallaxLayer.propTypes = {
   browserName: PropTypes.string
 };
 
-CSSParallaxLayer.defaultProps = {
+ParallaxLayer.defaultProps = {
   speed: 0,
   scale: 1,
   yOffset: 0,
@@ -101,73 +95,65 @@ CSSParallaxLayer.defaultProps = {
   browserName: ''
 };
 
-export class CSSParallaxGroup extends React.PureComponent {
+const rotateValue = 'rotateY(' + (-0.05 * perspective) + 'deg)'
+
+export class ParallaxGroup extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      zoffset: -Math.floor(-this.props.speed * 1 * perspective),
-      scale: (perspective + (-Math.floor(this.props.speed * 1 * perspective))) / perspective,
+      scale: (perspective + (-Math.floor(this.props.speed * 1 * perspective))) / perspective
     }
   }
   render() {
     return (
       <WrapperGroup
         name={this.props.name}
-        xoffset={this.props.debugOn ? (-6 + (this.props.xoffset)) : this.props.xoffset}
-        zoffset={this.props.debugOn ? (-2 + (this.props.xoffset * 0.0875)) : 0}
-        rotatey={this.props.debugOn ? ('rotateY(' + (-0.05 * perspective) + 'deg)'): ''}
+        xoffset={this.props.easterEggOn ? (-6 + (this.props.xoffset)) : this.props.xoffset}
+        zoffset={this.props.easterEggOn ? (-2 + (this.props.xoffset * 0.0875)) : 0}
+        yrotate={this.props.easterEggOn ? rotateValue : ''}
         pageoffset={(this.props.yoffset * 100 / this.state.scale) * this.state.scale}
         className={this.props.className}
         >
-            {React.Children.map(this.props.children, child => {
-                return React.cloneElement(child, {
-                  zoffset: this.state.yoffset,
-                })}
-            )}
+        {this.props.children}
       </WrapperGroup>
     )
   }
 }
 
-CSSParallaxGroup.propTypes = {
+ParallaxGroup.propTypes = {
   speed: PropTypes.number,
   xoffset: PropTypes.number,
   yoffset: PropTypes.number,
   children: PropTypes.node,
-  debugOn: PropTypes.bool,
+  easterEggOn: PropTypes.bool,
   className: PropTypes.string,
   name: PropTypes.string,
 };
 
-CSSParallaxGroup.defaultProps = {
+ParallaxGroup.defaultProps = {
   speed: 0,
   xoffset: 0,
   yoffset: 0,
-  debugOn: false,
+  easterEggOn: false,
   className: 'parallax-group',
 };
 
-export class CSSParallax extends React.PureComponent {
-  constructor(props) {
-    super(props)
-  }
-  render() {
-    return (
-      <Wrapper id={this.props.id} pages={this.props.pages} className={this.props.className}>
-        {this.props.children}
-      </Wrapper>
-    )
-  }
-}
+export const Parallax = React.memo((props) => {
+  return (
+    <Wrapper id={props.id} pages={props.pages} className={props.className}>
+      {props.children}
+    </Wrapper>
+  )
+});
 
-CSSParallax.propTypes = {
+Parallax.propTypes = {
   pages: PropTypes.number,
   id: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
 };
 
-CSSParallax.defaultProps = {
+Parallax.defaultProps = {
   pages: 1,
   className: 'parallax',
 };

@@ -3,10 +3,10 @@ import React from 'react';
 import styled from '@emotion/styled'
 import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import { CSSParallaxGroup } from '../CSSParallax';
-import { SVGPageTwo } from '../SVGManager';
+import { ParallaxGroup } from '../parallax';
+import { SVGPageTwo } from '../svg-manager';
 import MediaQuery from 'react-responsive';
-import { SVG } from '../../components/SVG';
+import { SVG } from '../../components/svg-utils';
 import avatar from '../../images/avatar.jpg';
 
 import { hopAnimDown } from '../../styles/animations';
@@ -93,55 +93,53 @@ const AboutSub = styled.p`
 `;
 
 
-class PartTwo extends React.PureComponent {
-  render() {
-    return (
-      <CSSParallaxGroup name="page2" debugOn={this.props.debugOn} xoffset={this.props.xOffset} yoffset={this.props.yOffset}>
-        <AvatarStartBackgroundLayer speed={0} zIndex={2}>
-          <AvatarStartBackgroundLeft />
-          <AvatarStartBackgroundRight />
-          <AvatarStartBackground/>
-        </AvatarStartBackgroundLayer>
-        <ContentLayer speed={0} zIndex={4}>
-          <MoveToPageOne onClick={() => {this.props.moveToPage1()}}>
-            <SVG icon="triangle" width={'8'} fill="#ff006f" useSelfAlign={true}/>
-          </MoveToPageOne>
-        </ContentLayer>
-        <NoClickLayerSVG speed={0.1} zIndex={2}>
-          <SVGPageTwo />
-        </NoClickLayerSVG>
-        <BeforeGridLayer speed={0.2} zIndex={4}>
-          <GridContainer>
-          <Inner>
-            <Title>THIS IS WHAT MOTIVATES ME</Title>
-            <AboutHero>
-              <Avatar type="image/jpg" src={avatar} alt="Alexander Stricker" />
-              <div>
-                <MediaQuery query="(min-width: 800px)">
-                  <AboutSub>
-                    {this.props.data.allMarkdownRemark.edges[0].node.frontmatter.text}
-                  </AboutSub>
-                </MediaQuery>
+const AboutMe = React.memo((props) => {
+  return (
+    <ParallaxGroup name="page2" easterEggOn={props.easterEggOn} xoffset={props.xOffset} yoffset={props.yOffset}>
+      <AvatarStartBackgroundLayer speed={0} zIndex={2}>
+        <AvatarStartBackgroundLeft />
+        <AvatarStartBackgroundRight />
+        <AvatarStartBackground/>
+      </AvatarStartBackgroundLayer>
+      <ContentLayer speed={0} zIndex={4}>
+        <MoveToPageOne onClick={() => {props.moveToPage1()}}>
+          <SVG icon="triangle" width={'8'} fill="#ff006f" useSelfAlign={true}/>
+        </MoveToPageOne>
+      </ContentLayer>
+      <NoClickLayerSVG speed={0.1} zIndex={2}>
+        <SVGPageTwo />
+      </NoClickLayerSVG>
+      <BeforeGridLayer speed={0.2} zIndex={4}>
+        <GridContainer>
+        <Inner>
+          <Title>THIS IS WHAT MOTIVATES ME</Title>
+          <AboutHero>
+            <Avatar type="image/jpg" src={avatar} alt="Alexander Stricker" />
+            <div>
+              <MediaQuery query="(min-width: 800px)">
                 <AboutSub>
-                  If I would need to point out something that makes me special it would be my urge to
-    add a little something to all of my work - let’s call it <a onClick={() => {this.props.toggleDebug()}}>easteregg</a> ;)
+                  {props.data.allMarkdownRemark.edges[0].node.frontmatter.text}
                 </AboutSub>
-              </div>
-            </AboutHero>
-          </Inner>
-        </GridContainer>
-       </BeforeGridLayer>
-      </CSSParallaxGroup>
-    );
-  }
-}
+              </MediaQuery>
+              <AboutSub>
+                If I would need to point out something that makes me special it would be my urge to
+  add a little something to all of my work - let’s call it <a onClick={() => {props.toggleEasterEgg()}}>easteregg</a> ;)
+              </AboutSub>
+            </div>
+          </AboutHero>
+        </Inner>
+      </GridContainer>
+     </BeforeGridLayer>
+    </ParallaxGroup>
+  );
+});
 
-PartTwo.propTypes = {
-  debugOn: PropTypes.bool.isRequired,
+AboutMe.propTypes = {
+  easterEggOn: PropTypes.bool.isRequired,
   xOffset: PropTypes.number.isRequired,
   yOffset: PropTypes.number.isRequired,
   moveToPage1: PropTypes.func.isRequired,
-  toggleDebug: PropTypes.func.isRequired
+  toggleEasterEgg: PropTypes.func.isRequired
 }
 
 export default props => (
@@ -171,6 +169,6 @@ export default props => (
         }
       }
     `}
-    render={data => <PartTwo data={data} {...props} />}
+    render={data => <AboutMe data={data} {...props} />}
   />
 )

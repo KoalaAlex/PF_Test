@@ -72,6 +72,38 @@ export const hopAnimClose = keyframes`
   }
 `;
 
+export const opacityAnim = keyframes`
+	from {
+    opacity: 1;
+    display: block
+  }
+  to {
+		opacity: 0;
+    display: none;
+	}
+`;
+
+export const rotateAnim = keyframes`
+	0% {
+    transform:  scale(1.1) rotateZ(0deg);
+  }
+  50% {
+    transform:  scale(1.1) rotateZ(10deg);
+  }
+	100%{
+    transform:  scale(1.1) rotateZ(0deg);
+  }
+`;
+
+export const grayScaleAnim = keyframes`
+	from {
+    filter: grayscale(100%); transform: scale(1);
+  }
+  to {
+    filter: grayscale(0%); transform: scale(1.1);
+  }
+`;
+
 export const UpDown = styled.div`
   animation: ${upDownAnimation} 4s ease-in-out infinite alternate;
   will-change: transform;

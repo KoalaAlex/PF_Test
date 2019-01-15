@@ -44,25 +44,26 @@ const Title = styled.p`
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 `;
 
-const ProjectCard = ({ title, onOpenArticle, link, children}) => (
-    <Wrapper href="javascript:;" onClick={() => {onOpenArticle(link)}}>
+const ProjectCard = React.memo((props) => {
+  return(
+    <Wrapper href="javascript:;" onClick={() => {props.openProject(props.link)}}>
       <MarginDiv>
-          <Title>{title}</Title>
+          <Title>{props.title}</Title>
           <div>
             <MediaQuery query="(min-width: 900px)">
-              <SubText>{children}</SubText>
-
+              <SubText>{props.children}</SubText>
             </MediaQuery>
           </div>
       </MarginDiv>
     </Wrapper>
-);
+  );
+});
 
 export default ProjectCard;
 
 ProjectCard.propTypes = {
   title: PropTypes.string.isRequired,
-  onOpenArticle: PropTypes.func,
+  openProject: PropTypes.func,
   link: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
 };

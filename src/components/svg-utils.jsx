@@ -343,51 +343,48 @@ const icons = {
   },
 };
 
-//const SVG = ({ stroke, fill, width, icon, left, top, className }) => (
-export class SVG extends React.PureComponent {
-  render(){
-    return (
-      <React.Fragment>
-        {this.props.useSelfAlign ? (
+export const SVG = React.memo((props) => {
+  return (
+    <>
+      {props.useSelfAlign ? (
+        <WrapperTransform
+        id={props.id}
+        viewBox={icons[props.icon].viewBox}
+        stroke={props.stroke}
+        fill={props.fill}
+        svgWidth={twWidth[`${props.width}`]}
+        left={props.useSelfAlign ? 0 : props.left}
+        top={props.useSelfAlign ? 0 : props.top}
+        className={props.className}
+        originOffsetX={props.scaleFromLeft ? '0': '-50%'}
+        originOffsetY={props.scaleFromTop ? '0': '-50%'}
+        >
+        {icons[props.icon].duplication}
+        </WrapperTransform>
+      ) : (
+        <Wrapper
+          left={props.useSelfAlign ? 0 : props.left}
+          top={props.useSelfAlign ? 0 : props.top}
+        >
           <WrapperTransform
-          id={this.props.id}
-          viewBox={icons[this.props.icon].viewBox}
-          stroke={this.props.stroke}
-          fill={this.props.fill}
-          svgWidth={twWidth[`${this.props.width}`]}
-          left={this.props.useSelfAlign ? 0 : this.props.left}
-          top={this.props.useSelfAlign ? 0 : this.props.top}
-          className={this.props.className}
-          originOffsetX={this.props.scaleFromLeft ? '0': '-50%'}
-          originOffsetY={this.props.scaleFromTop ? '0': '-50%'}
+          id={props.id}
+          viewBox={icons[props.icon].viewBox}
+          stroke={props.stroke}
+          fill={props.fill}
+          svgWidth={twWidth[`${props.width}`]}
+          left={props.useSelfAlign ? 0 : props.left}
+          top={props.useSelfAlign ? 0 : props.top}
+          className={props.className}
+          originOffsetX={props.scaleFromLeft ? '0': '-50%'}
+          originOffsetY={props.scaleFromTop ? '0': '-50%'}
           >
-          {icons[this.props.icon].duplication}
+          {icons[props.icon].duplication}
           </WrapperTransform>
-        ) : (
-          <Wrapper
-            left={this.props.useSelfAlign ? 0 : this.props.left}
-            top={this.props.useSelfAlign ? 0 : this.props.top}
-          >
-            <WrapperTransform
-            id={this.props.id}
-            viewBox={icons[this.props.icon].viewBox}
-            stroke={this.props.stroke}
-            fill={this.props.fill}
-            svgWidth={twWidth[`${this.props.width}`]}
-            left={this.props.useSelfAlign ? 0 : this.props.left}
-            top={this.props.useSelfAlign ? 0 : this.props.top}
-            className={this.props.className}
-            originOffsetX={this.props.scaleFromLeft ? '0': '-50%'}
-            originOffsetY={this.props.scaleFromTop ? '0': '-50%'}
-            >
-            {icons[this.props.icon].duplication}
-            </WrapperTransform>
-          </Wrapper>
-        )}
-      </React.Fragment>
-    );
-  }
-}
+        </Wrapper>
+      )}
+    </>
+  )
+});
 
 SVG.propTypes = {
   stroke: PropTypes.string,
@@ -414,15 +411,13 @@ SVG.defaultProps = {
   useSelfAlign: false,
 };
 
-export class SVGOriginal extends React.PureComponent {
-  render(){
-    return (
-      <svg viewBox={icons[this.props.icon].viewBox}>
-        {icons[this.props.icon].shape}
-      </svg>
-    );
-  }
-}
+export const SVGOriginal = React.memo((props) => {
+  return (
+    <svg viewBox={icons[props.icon].viewBox}>
+      {icons[props.icon].shape}
+    </svg>
+  )
+});
 
 SVGOriginal.propTypes = {
   icon: PropTypes.oneOf(icontTypes).isRequired,

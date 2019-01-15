@@ -1,14 +1,20 @@
 import React from 'react';
 import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 import PropTypes from 'prop-types';
-import { SVG } from './SVG'
+import { SVG } from './svg-utils'
 
 import { hopAnimClose } from '../styles/animations';
 
 const Wrapper = styled.div`
+  ${({ isVisible }) => isVisible ? css`
+      display: grid;
+    ` : css`
+      display: none;
+    `
+  }
   pointer-events: auto;
   position: absolute;
-  display: inline-grid;
   align-items: center;
   justify-items: center;
   position: absolute;
@@ -50,25 +56,23 @@ const Wrapper = styled.div`
   }
 `;
 
-class CloseWrapper extends React.PureComponent {
-  render() {
-    return (
-    <Wrapper
-      style={this.props.timeout ? {display: 'grid'} : {display: 'none'}}
-      onClick={() => {this.props.onClick()}}>
-      <SVG
-        icon="triangle"
-        width={'8'}
-        fill="#ff006f"
-        useSelfAlign={true}/>
-    </Wrapper>
-    );
-  }
-}
+const CloseWrapper = React.memo((props) => {
+  return (
+  <Wrapper
+    isVisible={props.isArticleVisible}
+    onClick={() => {props.onClick()}}>
+    <SVG
+      icon="triangle"
+      width={'8'}
+      fill="#ff006f"
+      useSelfAlign={true}/>
+  </Wrapper>
+  );
+});
 
 export default CloseWrapper;
 
 CloseWrapper.propTypes = {
-  timeout: PropTypes.bool.isRequired,
+  isArticleVisible: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired
 }
