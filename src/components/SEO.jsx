@@ -23,7 +23,7 @@ const schemaOrgJSONLD = [
   },
 ];
 
-export const SEO = React.memo((props) => {
+export const SEO = () => {
   return (
     <Helmet>
       <html lang={config.siteLanguage} />
