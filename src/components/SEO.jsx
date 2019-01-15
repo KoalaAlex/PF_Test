@@ -55,4 +55,4 @@ export const SEO = () => {
       <meta name="twitter:image" content={image} />
     </Helmet>
   )
-});
+};
