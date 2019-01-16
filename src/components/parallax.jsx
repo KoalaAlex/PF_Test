@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled'
 
@@ -38,42 +38,70 @@ const WrapperGroup = styled(Element)`
   transition: transform 1000ms ease;
 `;
 
-export class ParallaxLayer extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      zoffset: -Math.floor(-this.props.speed * 1 * perspective),
-      isEdge: false,
-      scale: (perspective + (-Math.floor(this.props.speed * 1 * perspective))) / perspective,
-    }
-  }
+function mulWihPerspAndCalc(speed){
+  return Math.floor(speed * 1 * perspective)
+}
 
-  componentDidUpdate(prevProps, prevState, snapshot){
-    switch(this.props.browserName){
+function calcScale(speed){
+  return ((perspective - mulWihPerspAndCalc(speed)) / perspective)
+}
+
+// declare custom Hook
+function useScale(speed){
+  const [scale, setScale] = useState(calcScale(speed));
+  useEffect(() => {
+     setScale(calcScale(speed))
+   }, [speed]
+  );
+  return scale;
+}
+
+// declare custom Hook
+function useZOffset(speed){
+  const [zoffset, setZoffset] = useState(mulWihPerspAndCalc(speed));
+  useEffect(() => {
+    setZoffset(mulWihPerspAndCalc(speed));
+   }, [speed]
+  );
+  return zoffset;
+}
+
+// declare custom Hook
+function useIsEdge(browserName){
+  const [isEdge, setIsEdge] = useState(false);
+  useEffect(() => {
+    switch(browserName){
       case 'edge':
-      this.setState({isEdge: true});
+        setIsEdge(true);
         break;
       case '':
         break;
       default:
         break;
     }
-  }
-
-  render() {
-    return (
-        <WrapperLayer
-          zoffset={!this.state.isEdge ? this.state.zoffset : 0}
-          scale={!this.state.isEdge ? this.state.scale : 1}
-          className={this.props.className}
-          yoffset={this.props.yOffset * 100}
-          zIndex={this.props.zIndex}
-          >
-            {this.props.children}
-        </WrapperLayer>
-    )
-  }
+   }, [browserName]
+  );
+  return isEdge;
 }
+
+export const ParallaxLayer = React.memo((props) => {
+  // use custom Hooks
+  const scale = useScale(props.speed);
+  const zoffset = useZOffset(props.speed);
+  const isEdge = useIsEdge(props.browserName);
+
+  return (
+    <WrapperLayer
+      zoffset={!isEdge ? zoffset : 0}
+      scale={!isEdge ? scale : 1}
+      className={props.className}
+      yoffset={props.yOffset * 100}
+      zIndex={props.zIndex}
+    >
+      {props.children}
+    </WrapperLayer>
+  )
+});
 
 ParallaxLayer.propTypes = {
   scale: PropTypes.number,
@@ -97,28 +125,22 @@ ParallaxLayer.defaultProps = {
 
 const rotateValue = 'rotateY(' + (-0.05 * perspective) + 'deg)'
 
-export class ParallaxGroup extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      scale: (perspective + (-Math.floor(this.props.speed * 1 * perspective))) / perspective
-    }
-  }
-  render() {
-    return (
-      <WrapperGroup
-        name={this.props.name}
-        xoffset={this.props.easterEggOn ? (-6 + (this.props.xoffset)) : this.props.xoffset}
-        zoffset={this.props.easterEggOn ? (-2 + (this.props.xoffset * 0.0875)) : 0}
-        yrotate={this.props.easterEggOn ? rotateValue : ''}
-        pageoffset={(this.props.yoffset * 100 / this.state.scale) * this.state.scale}
-        className={this.props.className}
-        >
-        {this.props.children}
-      </WrapperGroup>
-    )
-  }
-}
+export const ParallaxGroup = React.memo((props) => {
+  // use custom Hook
+  const scale = useScale(props.speed);
+  return (
+    <WrapperGroup
+      name={props.name}
+      xoffset={props.easterEggOn ? (-6 + (props.xoffset)) : props.xoffset}
+      zoffset={props.easterEggOn ? (-2 + (props.xoffset * 0.0875)) : 0}
+      yrotate={props.easterEggOn ? rotateValue : ''}
+      pageoffset={(props.yoffset * 100 / scale) * scale}
+      className={props.className}
+      >
+      {props.children}
+    </WrapperGroup>
+  )
+});
 
 ParallaxGroup.propTypes = {
   speed: PropTypes.number,
