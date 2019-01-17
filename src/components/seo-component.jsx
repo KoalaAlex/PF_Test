@@ -22,7 +22,7 @@ const schemaOrgJSONLD = [
   }
 ];
 
-export const SEO = () => {
+export const Seo = React.memo((props) => {
   return (
     <Helmet>
       <html lang={config.siteLanguage} />
@@ -53,4 +53,4 @@ export const SEO = () => {
       <meta name="twitter:image" content={image} />
     </Helmet>
   )
-};
+});
