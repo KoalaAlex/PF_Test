@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { StaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled'
 import { keyframes, css } from '@emotion/core'
 import Img from 'gatsby-image';
 
 import { opacityAnim, rotateAnim, grayScaleAnim } from '../../styles/animations';
-
-import movieDefault from '../../images/movie_800x450.jpg';
 
 const FullWideImgStyle = styled(Img)`
   width: 100%;
@@ -38,7 +37,7 @@ const SmallWideImgStyle = styled(Img)`
   `}
 `
 
-const SmallVideoImgStyle = styled.img`
+const SmallVideoImgStyle = styled(Img)`
   pointer-events: auto;
   max-width: 100%;
   max-height: 100%;
@@ -168,8 +167,7 @@ const SmallImg = React.memo((props) => {
   return (
     <SmallImageP onClick={props.click}>
       {props.isVideo ? (
-        <SmallVideoImgStyle src={props.src} isActive={props.isActive}/>
-
+        <SmallVideoImgStyle fluid={props.src.childImageSharp.fluid} isActive={props.isActive}/>
       ) : (
       <SmallWideImgStyle fluid={props.src.childImageSharp.fluid} isActive={props.isActive}/>
     )}
@@ -187,72 +185,67 @@ SmallImg.defaultProps = {
   isVideo: false,
 };
 
-export default class SliderGastbyImg extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      activeIndex: 0,
-    }
-    this.clickImg = this.clickImg.bind(this);
-  }
+function useIndex(speed){
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    setZoffset(mulWihPerspAndCalc(speed));
+   }, [speed]
+  );
+  return activeIndex;
+}
 
-  clickImg(n){
-    if(n == this.state.activeIndex){
-      return;
+const SliderGastbyImg = React.memo((props) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const videos = props.videos
+  const images = props.images
+  const maxIndex = (videos.length + images.length)
+  function clickImg(index){
+    if(index !== activeIndex){
+      setActiveIndex(index)
     }
-    this.setState({
-      activeIndex: n
-    })
   }
-
-  render() {
-    const videos = this.props.videos
-    const images = this.props.images
-    const activeI = this.state.activeIndex
-    const maxIndex = (videos.length + images.length)
-    return (
-      <Wrapper>
-        <ContainerBigImg>
-          {videos.map((value, i) => (
-              <BigImg
-                key={i}
-                src={videos[i]}
-                isActive={!((activeI-i)%maxIndex)}
-                isVideo={true}
-              />
-            ))
-          }
-          {images.map((value, i) => (
-              <BigImg
-                key={i}
-                src={value}
-                isActive={!((activeI-(i+videos.length))%maxIndex)}
-              />
-          ))}
-        </ContainerBigImg>
-        <Container column={maxIndex}>
-          {videos.map((value, i) => (
-            <SmallImg
+  return (
+    <Wrapper>
+      <ContainerBigImg>
+        {videos.map((value, i) => (
+            <BigImg
               key={i}
-              src={movieDefault}
-              click={() => this.clickImg(i)}
-              isActive={!((activeI-i)%maxIndex)}
+              src={videos[i]}
+              isActive={!((activeIndex-i)%maxIndex)}
               isVideo={true}
             />
-            ))}
-          {images.map((value, i) => (
-            <SmallImg
+          ))
+        }
+        {images.map((value, i) => (
+            <BigImg
               key={i}
               src={value}
-              click={() => this.clickImg(i+videos.length)}
-              isActive={!((activeI-(i+videos.length))%maxIndex)}
+              isActive={!((activeIndex-(i+videos.length))%maxIndex)}
             />
+        ))}
+      </ContainerBigImg>
+      <Container column={maxIndex}>
+        {videos.map((value, i) => (
+          <SmallImg
+            key={i}
+            src={props.data.allMarkdownRemark.edges[0].node.frontmatter.image}
+            click={() => clickImg(i)}
+            isActive={!((activeIndex-i)%maxIndex)}
+            isVideo={true}
+          />
           ))}
-        </Container>
-      </Wrapper>
-    )
-  }
-}
+        {images.map((value, i) => (
+          <SmallImg
+            key={i}
+            src={value}
+            click={() => clickImg(i+videos.length)}
+            isActive={!((activeIndex-(i+videos.length))%maxIndex)}
+          />
+        ))}
+      </Container>
+    </Wrapper>
+  )
+});
 
 SliderGastbyImg.propTypes = {
   videos: PropTypes.array,
@@ -263,3 +256,41 @@ SliderGastbyImg.defaultProps = {
   videos: [],
   images: []
 };
+
+
+
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query VideoQuery{
+        allMarkdownRemark(
+          filter : {
+             frontmatter: {
+               tags: {
+                 in: ["default-video"]
+               }
+             }
+           },
+          sort : {
+          fields: [frontmatter___title],
+          order: ASC
+        }) {
+          edges {
+            node {
+              frontmatter {
+                image {
+                  childImageSharp {
+                    fluid(maxWidth: 2048, quality: 90, cropFocus: CENTER) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={data => <SliderGastbyImg data={data} {...props} />}
+  />
+)

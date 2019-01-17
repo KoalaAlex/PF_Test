@@ -6,7 +6,7 @@ import videojs from 'video.js'
 import 'video.js/dist/video-js.css'
 import '../styles/video-player.css'
 
-export default class VideoPlayer extends React.Component {
+export class VideoPlayer extends React.PureComponent {
   componentDidMount() {
     // instantiate Video.js
     this.player = videojs(this.videoNode, this.props, function onPlayerReady() {

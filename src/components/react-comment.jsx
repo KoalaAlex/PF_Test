@@ -1,21 +1,18 @@
-import React, {Component, PropTypes} from 'react';
+import React, { useEffect, PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 
-export class ReactComment extends React.Component {
-
-    componentDidMount() {
-        let el = ReactDOM.findDOMNode(this);
-        ReactDOM.unmountComponentAtNode(el);
-        el.outerHTML = this.createComment();
+export const ReactComment = React.memo((props) => {
+    function  createComment() {
+      return `<!-- ${props.textCom} -->`;
     }
-
-    createComment() {
-        return `<!-- ${this.props.textCom} -->`;
-    }
-
-    render() {
-        return <React.Fragment />;
-    }
+    // cDM
+    useEffect(() => {
+      let el = ReactDOM.findDOMNode(this);
+      ReactDOM.unmountComponentAtNode(el);
+      el.outerHTML = this.createComment();
+    }, [props.textCom]
+    );
+    return </>;
 }
 
 ReactComment.propTypes = {

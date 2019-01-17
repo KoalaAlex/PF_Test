@@ -9,4 +9,5 @@ problems can be solved. Working closely with designers and other developers is a
 natural thing for me. I love to bring distinct and delightful experiences to life. More
 importantly these solutions have to serve the ultimate goal to make the users lives
 easier!"
+image: "../../images/avatar.jpg"
 ---

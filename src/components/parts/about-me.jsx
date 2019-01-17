@@ -8,6 +8,7 @@ import { SVGPageTwo } from '../svg-manager';
 import MediaQuery from 'react-responsive';
 import { SVG } from '../../components/svg-utils';
 import avatar from '../../images/avatar.jpg';
+import Img from 'gatsby-image';
 
 import { hopAnimDown } from '../../styles/animations';
 
@@ -84,8 +85,9 @@ const AboutHero = styled.div`
   }
 `;
 
-const Avatar = styled.img`
+const Avatar = styled(Img)`
   ${tw('rounded-full w-32 xl:w-48 shadow-lg h-full')};
+  min-width: 160px;
 `;
 
 const AboutSub = styled.p`
@@ -114,7 +116,7 @@ const AboutMe = React.memo((props) => {
         <Inner>
           <Title>THIS IS WHAT MOTIVATES ME</Title>
           <AboutHero>
-            <Avatar type="image/jpg" src={avatar} alt="Alexander Stricker" />
+            <Avatar fluid={props.data.allMarkdownRemark.edges[0].node.frontmatter.image.childImageSharp.fluid} alt="Alexander Stricker" />
             <div>
               <MediaQuery query="(min-width: 800px)">
                 <AboutSub>
@@ -163,6 +165,13 @@ export default props => (
               frontmatter {
                 title
                 text
+                image {
+                  childImageSharp {
+                    fluid(maxWidth: 2048, quality: 90, cropFocus: CENTER) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
               }
             }
           }
