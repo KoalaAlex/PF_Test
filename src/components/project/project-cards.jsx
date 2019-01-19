@@ -20,10 +20,19 @@ const ProjectsWrapper = styled.div`
     grid-gap: 2rem;
   }
   grid-auto-rows: 1fr;
-`;
-
-const ProjectAndContentWrapper = styled.div`
-  box-sizing: border-box;
+  max-width: 100%;
+  text-align: center;
+  .body.is-article-visible & {
+    transform: scale(0.95);
+    filter: blur(0.1rem);
+    opacity: 0;
+  }
+  .body.is-loading & {
+    > * {
+      opacity: 0;
+    }
+    filter: blur(0.125rem);
+  }
 `;
 
 const ProjectCards = React.memo((props) => {

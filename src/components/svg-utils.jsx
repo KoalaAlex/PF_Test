@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled'
 import { width as twWidth } from '../../tailwind';
 
-const myCoolBg = 'linear-gradient( to bottom,#46C9E5 0%,#D26AC2 100% )';
-
 const Wrapper = styled.div`
   position: relative;
   @supports (transform: translate3d(0,0,0)) or (-webkit-transform: translate3d(0,0,0)) {

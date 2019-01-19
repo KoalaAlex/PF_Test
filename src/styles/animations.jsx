@@ -104,6 +104,26 @@ export const grayScaleAnim = keyframes`
   }
 `;
 
+export const changeOpacity = keyframes`
+	0% {
+		opacity:0.3;
+	}
+	100% {
+		opacity: 1.0;
+	}
+}
+`;
+
+export const changeOpacityMonitor = keyframes`
+	0% {
+		opacity:1.0;
+	}
+	100% {
+		opacity: 0.3;
+	}
+}
+`;
+
 export const UpDown = styled.div`
   animation: ${upDownAnimation} 4s ease-in-out infinite alternate;
   will-change: transform;

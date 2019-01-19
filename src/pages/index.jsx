@@ -13,12 +13,10 @@ import { Seo } from '../components/seo-component'
 import { SVGOriginals } from '../components/svg-manager'
 import { Parallax } from '../components/parallax'
 import CloseWrapper from '../components/close-wrapper'
-// Style
-import { hidden } from '../styles/utils'
 // CSS
 import GlobalString from '../styles/global'
 // Scroll
-import {Events, scroller} from 'react-scroll'
+import {scroller} from 'react-scroll'
 
 export default function Index(props) {
   const [isArticleVisible, setIsArticleVisible] = useState(false);

@@ -13,11 +13,8 @@ const Overview = styled.div`
   }
 `;
 
-const OverviewItem = styled.div`
 
-`;
-
-const ProjectTypeItem = styled(OverviewItem)`
+const ProjectTypeItem = styled.div`
   @media (max-width: 800px) {
       grid-column-start: 1;
       grid-column-end: 3;
@@ -48,23 +45,23 @@ const ProjectOverview = React.memo((props) => {
           pNodes.push(<p key={"p" + j}>{props.tasks[j]}</p>)
         }
       }
-      taskNodes.push(<OverviewItem key={"o" + i}>{pNodes}</OverviewItem>)
+      taskNodes.push(<div key={"o" + i}>{pNodes}</div>)
     }
     return taskNodes
   }
     return (
       <Overview>
-        <OverviewItem>
+        <div>
           <ItemTitel>Project Context</ItemTitel>
           {props.video && props.video}
           {props.projectContext.map((value, i) => (
               <p key={i}>{value}</p>
           ))}
-        </OverviewItem>
-        <OverviewItem>
+        </div>
+        <div>
           <ItemTitel>Teamsize</ItemTitel>
           <p>{props.teamSize}</p>
-        </OverviewItem>
+        </div>
         <ProjectTypeItem>
           <ItemTitel>Project Type</ItemTitel>
           <p>{props.projectType}</p>

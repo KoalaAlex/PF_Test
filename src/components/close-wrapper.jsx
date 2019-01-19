@@ -1,9 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
-import PropTypes from 'prop-types';
+
+// components
 import { SVG } from './svg-utils'
 
+// animations
 import { hopAnimClose } from '../styles/animations';
 
 const Wrapper = styled.div`

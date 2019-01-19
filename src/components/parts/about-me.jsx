@@ -7,7 +7,6 @@ import { ParallaxGroup } from '../parallax';
 import { SVGPageTwo } from '../svg-manager';
 import MediaQuery from 'react-responsive';
 import { SVG } from '../../components/svg-utils';
-import avatar from '../../images/avatar.jpg';
 import Img from 'gatsby-image';
 
 import { hopAnimDown } from '../../styles/animations';

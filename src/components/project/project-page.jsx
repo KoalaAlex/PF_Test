@@ -39,16 +39,6 @@ const Wrapper = styled.div`
   }
 `;
 
-const CodeHTML = styled.span`
-background: #303030;
-  :before {
-    Content : "<";
-  }
-  :after {
-    Content : ">";
-  }
-`;
-
 const ProjectPage = React.memo((props) => {
   const projectData = props.markdownData.node.frontmatter
   return (

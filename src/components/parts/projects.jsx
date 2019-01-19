@@ -1,14 +1,12 @@
 /* global tw */
 import React from 'react';
-import styled from '@emotion/styled'
 import PropTypes from 'prop-types';
+
+// components
 import { ParallaxGroup, ParallaxLayer } from '../parallax';
 import { SVGPageThree } from '../svg-manager';
-
 import { NoClickLayerSVG, ProjectParallaxLayer } from '../../styles/parallax/parallax'
-
 import { RotateDivider, Inner, Title } from '../../styles/general'
-
 import ProjectCards from '../project/project-cards';
 
 const Projects = React.memo((props) => {

@@ -1,14 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled'
-import PropTypes from 'prop-types';
 
 // Import Components
 import { SVG, SVGOriginal }from '../components/svg-utils';
 import { colors } from '../../tailwind';
 import { hiddenLG, hiddenXL } from '../styles/utils';
-import { UpDown, UpDownWide} from '../styles/animations';
-
-import '../assets/scss/components/blurAnim.scss';
+import { UpDown, UpDownWide, changeOpacity, changeOpacityMonitor} from '../styles/animations';
 
 const SVGAbsolute = styled.div`
   position: absolute;
@@ -29,6 +26,24 @@ const SVGAbsoluteOriginal = styled.div`
   svg {
     position: absolute;
   }
+`;
+
+const TriangleBlur = styled(SVG)`
+  position: absolute;
+	//animation: myBlur 3s ease-in-out infinite alternate;
+	animation: changeOpacity 2s ease-in-out infinite alternate;
+  will-change: opacity;
+	-webkit-filter: blur(46px);
+  filter: blur(46px);
+`;
+
+const IMacBlur = styled(SVG)`
+  pposition: absolute;
+	animation: changeOpacityMonitor 3s ease-in-out infinite alternate;
+	will-change: opacity;
+	//animation: myBlur 3s ease-in-out infinite alternate;
+	-webkit-filter: blur(24px);
+	filter: blur(24px);
 `;
 
 export const SVGOriginals = () => {
@@ -70,12 +85,12 @@ export const SVGPageOne = () => {
         <SVG icon="cube" className={hiddenXL} width={'24'} fill='#7000ff' left="80" top="10" />
         <SVG icon="circle" width={'16'} fill={colors['grey-darker']} left="70" top="36" />
         <SVG icon="pin" className={hiddenLG} width={'8'} fill={colors['grey-darkest']} left="60" top="5" />
-        <SVG icon="imac" id="imac-blur"className={hiddenLG} width={'78'} fill="#00dcff" left="15" top="15" />
+        <IMacBlur icon="imac" className={hiddenLG} width={'78'} fill="#00dcff" left="15" top="15" />
       </UpDownWide>
       <UpDown>
         <SVG icon="pokeball" className={hiddenLG} width={'12'} fill={colors['grey-darkest']} left="90" top="55" />
         <SVG icon="triangle" scaleFromTop={true} width={'100v'} stroke="#ff006f" left="60" top="10" />
-        <SVG icon="triangle" scaleFromTop={true} id="tiangle-blur" width={'100v'} stroke="#ff0057" left="60" top="10" />
+        <TriangleBlur icon="triangle" scaleFromTop={true} width={'100v'} stroke="#ff0057" left="60" top="10" />
       </UpDown>
     </SVGAbsolute>
   )

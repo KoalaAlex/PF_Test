@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled'
-import { keyframes, css } from '@emotion/core'
+import { css } from '@emotion/core'
 import Img from 'gatsby-image';
 
 import { opacityAnim, rotateAnim, grayScaleAnim } from '../../styles/animations';

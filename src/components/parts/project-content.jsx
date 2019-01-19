@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
+import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
-import MediaQuery from 'react-responsive';
-import { StaticQuery, graphql } from 'gatsby';
 
 import { ParallaxGroup, ParallaxLayer } from '../parallax';
 
@@ -20,7 +19,6 @@ import { RotateDivider } from '../../styles/general'
 
 // CSS
 import '../../styles/video-player.css'
-import '../../assets/scss/components/project-content.scss';
 
 const VideoPlayerFlex = styled(VideoPlayer)`
   display: flex;
@@ -34,10 +32,6 @@ const RotateDividerProject = styled(RotateDivider)`
   height: 80%;
 `;
 
-import { detect } from 'detect-browser'
-
-const browserDetect = detect();
-
 const ProjectsWrapper = styled.div`
   ${({ isVisible }) => isVisible ? css`
       display: block;
@@ -45,7 +39,26 @@ const ProjectsWrapper = styled.div`
       display: none;
     `
   }
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  color: white;
+  z-index: 3;
+  font-family: 'IBM Plex Mono';
+  text-align: center;
+  article {
+    h1, h2{
+      text-transform: uppercase;
+    }
+    p{
+      font-family:'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+    }
+  }
 `
+
+import { detect } from 'detect-browser'
+const browserDetect = detect();
 
 const ProjectContent = React.memo((props) => {
   const [browser, setBrowser] = useState(browserDetect.name);
