@@ -1,7 +1,7 @@
 ---
-path: "projects/portfolio"
+path: "projects/portfolio-tobi"
 date: "2017-09-18T23:19:51.246Z"
-title: "portfolio"
+title: "portfolio-tobi"
 tags: [design, development, project]
 images: [
   "../images/portfolio/portfolio_01_800x500.jpg",
@@ -10,9 +10,9 @@ images: [
   "../images/portfolio/portfolio_04_800x500.jpg",
   "../images/portfolio/portfolio_05_800x500.jpg"
   ]
-projectTitle: "PORTFOLIO PLAYGROUND"
-cardText: "Find out how I have created my online portfolio. You know… the one you are looking at right now."
-projectContext: ["Personal Project (2018)"]
+projectTitle: "PORTFOLIO TOBI"
+cardText: "Find out how I have created an second online portfolio for my brother."
+projectContext: ["Personal Project (2019)"]
 teamSize: "Solo Project"
 projectType: "Web Project"
 tasks: [

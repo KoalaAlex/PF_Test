@@ -3,13 +3,14 @@ path: "projects/liebherr"
 date: "2018-10-20T17:06:58.246Z"
 title: "liebherr"
 tags: [design, development, project]
-images : [
+images: [
   "../images/cranesim/cranesim01.jpg",
   "../images/cranesim/cranesim_cabine_1024x576.jpg",
   "../images/cranesim/cranesim_LasVegas_1600x900.jpg",
   "../images/cranesim/cranesim01.jpg",
   ]
 projectTitle: "Simulator VR"
+cardText: "Experience how it feels to operate a crane"
 projectContext: ["Client Project (2016)"]
 teamSize: "Big Size Team (~30 people)"
 projectType: "Virtual Reality Application"
@@ -41,4 +42,35 @@ technology: [
   "IDE: Visual Studio"
 ]
 platforms: ["Windows Standalone"]
+videos: [
+  [
+    [
+      'https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.mp4.mp4',
+      'video/mp4'
+    ],
+    [
+      'https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.webmhd.webm',
+      'video/webm'
+    ],
+    [
+      'https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.oggtheora.ogv',
+      'video/ogg'
+    ]
+  ],
+  [
+    [
+     'https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.mp4',
+     'video/mp4'
+    ],
+      [
+        'https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.webm',
+        'video/webm'
+    ],
+      [
+        'https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.ogv',
+        'video/ogg'
+    ]
+  ]
+]
 ---
+Check out the project <a href="https://stollvongati.com/de/projekte/lisim-simulator-fuer-liebherr-turmdrehkrane.html">here</a> and <a href="https://stollvongati.com/de/projekte/der-liebherr-turmdrehkran-710-hc-l-als-vr-erlebnis.html">here</a>!

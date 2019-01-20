@@ -3,14 +3,15 @@ path: "projects/gemue-vr"
 date: "2018-10-20T17:01:50.246Z"
 title: "gemue-vr"
 tags: [design, development, project]
-images : [
+images: [
   "../images/gemue-vr/gm_vr_01_800x450.jpg",
   "../images/gemue-vr/gm_vr_02_800x450.jpg",
   "../images/gemue-vr/gm_vr_03_800x450.jpg",
   "../images/gemue-vr/gm_vr_04_800x450.jpg",
   "../images/gemue-vr/gm_vr_05_800x450.jpg",
   ]
-projectTitle: "GEMUE - VR Schulungsanwendung"
+projectTitle: "GEMUE - Schulungsanwendung"
+cardText: "VR training and MEETING system for Engineers."
 projectContext: ["Client Project (2017-now)"]
 teamSize: "Middle Size Team (~10 people)"
 projectType: "Virtual Reality Application"
@@ -35,4 +36,21 @@ technology: [
   "IDE: Visual Studio"
 ]
 platforms: ["Windows Standalone"]
+videos: [
+  [
+    [
+      'https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4',
+      'video/mp4'
+    ],
+    [
+      'https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.webm',
+      'video/webm'
+    ],
+    [
+      'https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.ogv',
+      'video/ogg'
+    ],
+  ]
+]
 ---
+<a href="https://stollvongati.com/de/projekte/vr-schulungsanwendung-fuer-gemue.html">Check out the project here!</a>

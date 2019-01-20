@@ -3,12 +3,13 @@ path: "projects/recaro"
 date: "2018-10-20T17:03:34.246Z"
 title: "recaro"
 tags: [design, development, project]
-images : [
+images: [
   "../images/recaro/rec_01_800x565.jpg",
   "../images/recaro/rec_02_800x565.jpg",
   "../images/recaro/rec_03_800x480.jpg"
   ]
 projectTitle: "Recaro - Seat configurator"
+cardText: "Configure a plane seat in virtual reality."
 projectContext: ["Client Project (2016-2017)"]
 teamSize: "Middle Size Team (~8 people)"
 projectType: "Virtual Reality Application"
@@ -39,4 +40,21 @@ technology: [
 "IDE: Visual Studio"
 ]
 platforms: ["Windows Standalone"]
+videos: [
+  [
+    [
+      'https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.mp4',
+      'video/mp4'
+    ],
+    [
+      'https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.webm',
+      'video/webm'
+    ],
+    [
+      'https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.ogv',
+      'video/ogg'
+    ]
+  ]
+]
 ---
+<a href="https://stollvongati.com/de/projekte/virtuelle-flugzeugkabine-fuer-recaro-business-class-sitze.html">Check out the project here!</a>

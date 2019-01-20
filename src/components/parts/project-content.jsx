@@ -63,93 +63,14 @@ const browserDetect = detect();
 const ProjectContent = React.memo((props) => {
   const [browser, setBrowser] = useState(browserDetect.name);
   const markdownFileArray = props.data.allMarkdownRemark.edges;
-  const videoJsOptionsGemue = {
+
+  const videoJsOptions = {
     autoplay: false,
     controls: true,
     loop: true,
     muted: true,
     fluid: true,
     preload: 'none',
-    sources: [
-      {
-      src: 'https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.mp4',
-      type: 'video/mp4'
-      },
-      {
-        src: 'https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.webm',
-        type: 'video/webm'
-      },
-      {
-        src: 'https://media.stollvongati.com/files/media/StollvonGati_VR_Schulungsanwendung.ogv',
-        type: 'video/ogg'
-      }
-    ]
-  }
-  const videoJsOptionsCraneSim1 = {
-    autoplay: false,
-    controls: true,
-    loop: true,
-    muted: true,
-    fluid: true,
-    preload: 'none',
-    sources: [
-      {
-      src: 'https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.mp4.mp4',
-      type: 'video/mp4'
-      },
-      {
-        src: 'https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.webmhd.webm',
-        type: 'video/webm'
-      },
-      {
-        src: 'https://media.stollvongati.com/files/media/liebherr_lisim_bauma_video.oggtheora.ogv',
-        type: 'video/ogg'
-      }
-    ]
-  }
-  const videoJsOptionsCraneSim2 = {
-    autoplay: false,
-    controls: true,
-    loop: true,
-    muted: true,
-    fluid: true,
-    preload: 'none',
-    sources: [
-      {
-      src: 'https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.mp4',
-      type: 'video/mp4'
-      },
-      {
-        src: 'https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.webm',
-        type: 'video/webm'
-      },
-      {
-        src: 'https://media.stollvongati.com/files/media/Liebherr_710_Applikation_final.ogv',
-        type: 'video/ogg'
-      }
-    ]
-  }
-  const videoJsOptionsRecaro = {
-    autoplay: false,
-    controls: true,
-    loop: true,
-    muted: true,
-    fluid: true,
-    preload: 'none',
-    sources: [
-      {
-      src: 'https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.mp4',
-      type: 'video/mp4'
-      },
-      {
-        src: 'https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.webm',
-        type: 'video/webm'
-      },
-      {
-        src: 'https://media.stollvongati.com/files/media/AircraftInteriors_RECARO.ogv',
-        type: 'video/ogg'
-      }
-    ]
   }
 
   const memoNoRerender = useMemo(() =>
@@ -168,62 +89,52 @@ const ProjectContent = React.memo((props) => {
     </LastNoClickLayerSVG>
   </>), () => { return true });
 
+  function createSourcesObjs(value){
+    const returnValue = []
+    for (var i = 0; i < value.length; i++) {
+      returnValue.push({
+          src: value[i][0],
+          type: value[i][1]
+      });
+    }
+    return returnValue;
+  }
+
+  function createVideoPlayerArray(videos){
+    const returnValue = []
+    for (var i = 0; i < videos.length; i++) {
+      returnValue.push(<VideoPlayerFlex key={i} {...videoJsOptions} sources={createSourcesObjs(videos[i])} />)
+    }
+    return returnValue;
+  }
+
+  function createVideosIfNeeded(video){
+    if(video.length > 0){
+      return {videos: createVideoPlayerArray(video)}
+    }
+    else{
+      return {}
+    }
+  }
+
   const memoArtikel = useMemo(() =>
   (
     <ProjectsWrapper id="project-content" isVisible={props.activeArticle}>
-      <ProjectPage
-        id="portfolio"
-        markdownData={markdownFileArray[4]}
-        isVisible={props.activeArticle === 'portfolio'}
-      />
-      <ProjectPage
-        id="gemue-vr"
-        markdownData={markdownFileArray[1]}
-        videos={[
-          <VideoPlayerFlex { ...videoJsOptionsGemue } />
-        ]}
-        isVisible={props.activeArticle === 'gemue-vr'}
-      >
-        <a href="https://stollvongati.com/de/projekte/vr-schulungsanwendung-fuer-gemue.html">Check out the project here!</a>
-      </ProjectPage>
-      <ProjectPage
-        id="gemue-ar"
-        markdownData={markdownFileArray[0]}
-        isVisible={props.activeArticle === 'gemue-ar'}
-      />
-      <ProjectPage
-        id="simulator"
-        markdownData={markdownFileArray[3]}
-        videos={[
-          <VideoPlayerFlex { ...videoJsOptionsCraneSim1 } />,
-          <VideoPlayerFlex { ...videoJsOptionsCraneSim2 } />
-        ]}
-        isVisible={props.activeArticle === 'simulator'}
-      >
-        Check out the project <a href="https://stollvongati.com/de/projekte/lisim-simulator-fuer-liebherr-turmdrehkrane.html">here</a> and <a href="https://stollvongati.com/de/projekte/der-liebherr-turmdrehkran-710-hc-l-als-vr-erlebnis.html">here</a>!
-      </ProjectPage>
-      <ProjectPage
-        id="intensaDrum"
-        markdownData={markdownFileArray[2]}
-        isVisible={props.activeArticle === 'intensaDrum'}
-      />
-      <ProjectPage
-        id="recaro-vr"
-        markdownData={markdownFileArray[5]}
-        videos={[
-          <VideoPlayerFlex { ...videoJsOptionsRecaro } />
-        ]}
-        isVisible={props.activeArticle === 'recaro-vr'}
-      >
-        <a href="https://stollvongati.com/de/projekte/virtuelle-flugzeugkabine-fuer-recaro-business-class-sitze.html">Check out the project here!</a>
-      </ProjectPage>
-      <ProjectPage
-        id="traction-inverter"
-        markdownData={markdownFileArray[5]}
-        isVisible={props.activeArticle === 'traction-inverter'}
-      />
+      {markdownFileArray.map((value, i) => (
+        <ProjectPage
+          key={value.node.frontmatter.title}
+          markdownData={value}
+          {...createVideosIfNeeded(value.node.frontmatter.videos)}
+          isVisible={props.activeArticle === value.node.frontmatter.title}
+        >
+          <div
+            dangerouslySetInnerHTML={{ __html: value.node.html }}
+          />
+        </ProjectPage>
+      ))}
     </ProjectsWrapper>
   ), [props.activeArticle]);
+
   return (
     <ParallaxGroup name="page6" easterEggOn={props.easterEggOn} xoffset={150 + props.xOffset} yoffset={0.5}>
       {memoNoRerender}
@@ -258,8 +169,10 @@ export default props => (
         }) {
           edges {
             node {
+              html
               frontmatter {
                 title
+                videos
                 projectTitle
                 projectContext
                 teamSize

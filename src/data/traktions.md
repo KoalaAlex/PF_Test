@@ -3,14 +3,15 @@ path: "projects/traktions"
 date: "2018-10-20T17:10:04.246Z"
 title: "traktions"
 tags: [design, development, project]
-images : [
+images: [
   "../images/traktions/rec_01_800x500.jpg",
   "../images/traktions/rec_02_800x455.jpg",
   "../images/traktions/rec_03_800x454.jpg",
   "../images/traktions/rec_04_800x452.jpg",
   "../images/traktions/rec_06_800x450.jpg"
   ]
-projectTitle: "Voith - EmCon Traction Inverter"
+projectTitle: "Traction Inverter"
+cardText: "Here is a collection of some nice Apps that are made with Unity for Mobile and Dektop Devices."
 projectContext: ["Client Project (2018)"]
 teamSize: "Small Size Team (~3 people)"
 projectType: "Windows Touch Application"
@@ -36,4 +37,5 @@ technology: [
   "IDE: Visual Studio"
 ]
 platforms: ["Windows Touch Device"]
+videos: []
 ---

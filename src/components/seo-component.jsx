@@ -10,6 +10,7 @@ const blogURL = config.siteUrl + config.pathPrefix;
 
 import favicon16 from '../images/favicons/favicon-16x16.jpg';
 import favicon32 from '../images/favicons/favicon-32x32.jpg';
+import faviconICO from '../images/favicons/favicon.ico';
 import faviconAppleTouch from '../images/favicons/apple-touch-icon.jpg';
 
 const schemaOrgJSONLD = [
@@ -35,6 +36,7 @@ export const Seo = React.memo((props) => {
       <link rel="apple-touch-icon" sizes="180x180" href={faviconAppleTouch} />
       <link rel="icon" type="image/jpg" sizes="32x32" href={favicon32} />
       <link rel="icon" type="image/jpg" sizes="16x16" href={favicon16} />
+      <link rel="shortcut icon" href={faviconICO} />
       <meta name="msapplication-TileColor" content={config.backgroundColor} />
       <meta name="msapplication-config" content="browserconfig.xml" />
       <meta name="description" content={description} />

@@ -3,7 +3,7 @@ path: "projects/intensa-drum"
 date: "2018-10-20T17:08:58.246Z"
 title: "intensa-drum"
 tags: [design, development, project]
-images : [
+images: [
   "../images/intensa-drum/id_01_800x600.jpg",
   "../images/intensa-drum/id_02_800x600.jpg",
   "../images/intensa-drum/id_03_800x600.jpg",
@@ -13,6 +13,7 @@ images : [
   "../images/intensa-drum/id_07_800x440.jpg"
   ]
 projectTitle: "VOITH - INTENSA DRUM"
+cardText: "Explore Intensa drum in an interactive app."
 projectContext: ["Client Project (2017)"]
 teamSize: "Small Size Team (~5 people)"
 projectType: "Desktop-/Augmented Reality Application"
@@ -41,4 +42,5 @@ technology: [
   "IDE: Visual Studio"
 ]
 platforms: ["iOS Devices, Windows (without AR)"]
+videos: []
 ---

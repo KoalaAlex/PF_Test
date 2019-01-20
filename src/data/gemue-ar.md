@@ -3,13 +3,14 @@ path: "projects/gemue-ar"
 date: "2017-09-18T23:19:51.246Z"
 title: "gemue-ar"
 tags: [design, development, project]
-images : [
+images: [
   "../images/gemue-ar/gm_01_800x600.jpg",
   "../images/gemue-ar/gm_02_800x600.jpg",
   "../images/gemue-ar/gm_03_800x600.jpg",
   "../images/gemue-ar/gm_04_800x600.jpg",
   ]
 projectTitle: "GEMUE - AR App"
+cardText: "Explore the products of gemue in augmented reality."
 projectContext: []
 teamSize: "Small Size Team (~4 people)"
 projectType: "Augmented Reality Application"
@@ -34,4 +35,5 @@ technology: [
   "IDE: Visual Studio",
 ]
 platforms: ["iOS Devices"]
+videos: []
 ---
