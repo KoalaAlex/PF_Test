@@ -1,5 +1,5 @@
 /* global tw */
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from '@emotion/styled'
 import PropTypes from 'prop-types';
 import { ParallaxGroup } from '../parallax';
@@ -29,20 +29,27 @@ const Subtitle = styled.p`
 `;
 
 const Welcome = React.memo((props) => {
+  // Only re-rendered if `b` changes:
+  const memoNoRerender = useMemo(() =>
+  (<>
+    <NoClickLayerSVG speed={-0.2} zIndex={1}>
+    <SVGPageOne />
+    </NoClickLayerSVG>
+    <ContentLayer speed={0.2} zIndex={2}>
+    <Hero>
+      <BigTitle>
+        HI,<br />WELCOME<MediaQuery query="(max-width: 600px)"><br /></MediaQuery> TO MY<br />PLAYGROUND
+      </BigTitle>
+      <Subtitle>My name is Alex and I am a frontend developer who loves to create impactful experiences for web, VR/ AR and mobile devices.
+  <br/><br/>Check out some of my <a onClick={() => {props.moveToPage2()}}>projects</a></Subtitle>.
+    </Hero>
+    </ContentLayer>
+  </>), () => {return true });
+
+
   return (
     <ParallaxGroup name="page1" easterEggOn={props.easterEggOn} xoffset={props.xOffset} yoffset={0}>
-      <NoClickLayerSVG speed={-0.2} zIndex={1}>
-        <SVGPageOne />
-      </NoClickLayerSVG>
-      <ContentLayer speed={0.2} zIndex={2}>
-      <Hero>
-        <BigTitle>
-          HI,<br />WELCOME<MediaQuery query="(max-width: 600px)"><br /></MediaQuery> TO MY<br />PLAYGROUND
-        </BigTitle>
-        <Subtitle>My name is Alex and I am a frontend developer who loves to create impactful experiences for web, VR/ AR and mobile devices.
-<br/><br/>Check out some of my <a onClick={() => {props.moveToPage2()}}>projects</a></Subtitle>.
-      </Hero>
-      </ContentLayer>
+      {memoNoRerender}
     </ParallaxGroup>
   );
 });

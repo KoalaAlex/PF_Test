@@ -56,8 +56,8 @@ const ProjectCard = React.memo((props) => {
           </div>
       </MarginDiv>
     </Wrapper>
-  );
-});
+  )
+}, () => { return true });
 
 export default ProjectCard;
 

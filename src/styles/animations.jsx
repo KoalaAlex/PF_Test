@@ -124,6 +124,15 @@ export const changeOpacityMonitor = keyframes`
 }
 `;
 
+export const loading = keyframes`
+  0% {
+    background-position: -200vw 0
+  }
+  100% {
+    background-position: 200vw 0
+  }
+`;
+
 export const UpDown = styled.div`
   animation: ${upDownAnimation} 4s ease-in-out infinite alternate;
   will-change: transform;

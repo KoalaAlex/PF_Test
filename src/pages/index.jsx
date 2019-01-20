@@ -1,13 +1,9 @@
 /* global tw */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , Suspense, lazy} from 'react';
 import { Global } from "@emotion/core"
+import styled from '@emotion/styled'
 //Parts
-import Welcome from '../components/parts/welcome'
-import AboutMe from '../components/parts/about-me'
-import Projects  from '../components/parts/projects'
-import Quote  from '../components/parts/quote'
-import ContactMe  from '../components/parts/contact-me'
-import ProjectContent  from '../components/parts/project-content'
+//import Welcome from '../components/parts/welcome'
 // import Components
 import { Seo } from '../components/seo-component'
 import { SVGOriginals } from '../components/svg-manager'
@@ -15,8 +11,28 @@ import { Parallax } from '../components/parallax'
 import CloseWrapper from '../components/close-wrapper'
 // CSS
 import GlobalString from '../styles/global'
+import { loading } from '../styles/animations';
 // Scroll
 import {scroller} from 'react-scroll'
+
+const Welcome = lazy(() => import('../components/parts/welcome'))
+const AboutMe = lazy(() => import('../components/parts/about-me'))
+const Projects = lazy(() => import('../components/parts/projects'))
+const Quote = lazy(() => import('../components/parts/quote'))
+const ContactMe = lazy(() => import('../components/parts/contact-me'))
+const ProjectContent = lazy(() => import('../components/parts/project-content'))
+
+const LazySkeleton = styled.div`
+  width: 100%;
+  height: 100%;
+  color: red;
+  display:block;
+  border-radius:6px;
+  background-color: #171717;
+  background-image: linear-gradient(90deg, #171717 30%, #ff006d 50%,#171717 70%);
+  background-repeat: no-repeat;
+  animation: ${loading} 1.5s linear infinite;
+`;
 
 export default function Index(props) {
   const [isArticleVisible, setIsArticleVisible] = useState(false);
@@ -25,7 +41,6 @@ export default function Index(props) {
   const [easterEggOn, setEasterEggOn] = useState(false);
   const [xOffsetAllPages, setXOffsetAllPages] = useState(0);
   const [spaceKeyWasPressed, setSpaceKeyWasPressed] = useState(false);
-  const [timeoutId, setTimeoutId] = useState(null);
 
   // cDM , cWU
   useEffect(() => {
@@ -123,41 +138,51 @@ export default function Index(props) {
      <Seo />
       <SVGOriginals />
       <Parallax id="parallax-scroller" pages={isSmallMobile ? 4 : 4}>
-        <Welcome
-          easterEggOn={easterEggOn}
-          xOffset={xOffsetAllPages}
-          moveToPage2={moveToPage2}
-         />
-        <AboutMe
-          easterEggOn={easterEggOn}
-          xOffset={xOffsetAllPages}
-          yOffset={isSmallMobile ? 1 : 0.8}
-          moveToPage1={moveToPage1}
-          toggleEasterEgg={() => setEasterEggOn(!easterEggOn)}
-        />
-        <Quote
-          easterEggOn={easterEggOn}
-          xOffset={xOffsetAllPages}
-          yOffset={isSmallMobile ? 3 : 2.8}
-        />
-        <Projects
-          easterEggOn={easterEggOn}
-          xOffset={xOffsetAllPages}
-          yOffset={isSmallMobile ? 2 : 1.8}
-          openProject={openProject}
-        />
-        <ContactMe
-          easterEggOn={easterEggOn}
-          xOffset={xOffsetAllPages}
-          yOffset={isSmallMobile ? 4 : 3.8}
-        />
-        <ProjectContent
-          easterEggOn={easterEggOn}
-          xOffset={xOffsetAllPages}
-          easteregg={() => setEasterEggOn(!easterEggOn)}
-          isArticleVisible={isArticleVisible}
-          activeArticle={activeArticle}
-        />
+        <Suspense fallback={<LazySkeleton />}>
+          <Welcome
+            easterEggOn={easterEggOn}
+            xOffset={xOffsetAllPages}
+            moveToPage2={moveToPage2}
+          />
+        </Suspense>
+        <Suspense fallback={<LazySkeleton />}>
+          <AboutMe
+            easterEggOn={easterEggOn}
+            xOffset={xOffsetAllPages}
+            yOffset={isSmallMobile ? 1 : 0.8}
+            moveToPage1={moveToPage1}
+            toggleEasterEgg={() => setEasterEggOn(!easterEggOn)}
+          />
+        </Suspense>
+        <Suspense fallback={<LazySkeleton />}>
+          <Quote
+            easterEggOn={easterEggOn}
+            xOffset={xOffsetAllPages}
+            yOffset={isSmallMobile ? 3 : 2.8}
+          />
+        </Suspense>
+        <Suspense fallback={<LazySkeleton />}>
+          <Projects
+            easterEggOn={easterEggOn}
+            xOffset={xOffsetAllPages}
+            yOffset={isSmallMobile ? 2 : 1.8}
+            openProject={openProject}
+          />
+        </Suspense>
+        <Suspense fallback={<LazySkeleton />}>
+          <ContactMe
+            easterEggOn={easterEggOn}
+            xOffset={xOffsetAllPages}
+            yOffset={isSmallMobile ? 4 : 3.8}
+          />
+        </Suspense>
+        <Suspense fallback={<div />}>
+          <ProjectContent
+            easterEggOn={easterEggOn}
+            xOffset={xOffsetAllPages}
+            activeArticle={activeArticle}
+          />
+        </Suspense>
       </Parallax>
       <CloseWrapper
         isArticleVisible={isArticleVisible}

@@ -1,5 +1,5 @@
 /* global tw */
-import React from 'react'
+import React, { useMemo } from 'react'
 import styled from '@emotion/styled'
 import { StaticQuery, graphql } from 'gatsby'
 import PropTypes from 'prop-types'
@@ -22,27 +22,31 @@ const AboutSub = styled.p`
 `;
 
 const Quote = React.memo((props) => {
-  const markdownData = props.data.markdownRemark.frontmatter
+  const markdownData = props.data.markdownRemark
+  const memoNoRerender = useMemo(() =>
+  (<>
+    <AvatarBackgroundLayer speed={0} zIndex={1}>
+      <AboutBackground/>
+    </AvatarBackgroundLayer>
+    <NoClickLayerSVG speed={0.1} zIndex={2}>
+      <SVGPageFour />
+    </NoClickLayerSVG>
+    <ContentLayer speed={0.2} zIndex={3}>
+      <Inner>
+        <Albert>
+          <AboutSub>
+            {markdownData.excerpt}
+          </AboutSub>
+          <AboutSub>
+            {markdownData.frontmatter.title}
+          </AboutSub>
+        </Albert>
+      </Inner>
+   </ContentLayer>
+  </>), () => {return true });
   return (
     <ParallaxGroup name="page4" easterEggOn={props.easterEggOn} xoffset={props.xOffset} yoffset={props.yOffset}>
-      <AvatarBackgroundLayer speed={0} zIndex={1}>
-        <AboutBackground/>
-      </AvatarBackgroundLayer>
-      <NoClickLayerSVG speed={0.1} zIndex={2}>
-        <SVGPageFour />
-      </NoClickLayerSVG>
-      <ContentLayer speed={0.2} zIndex={3}>
-        <Inner>
-          <Albert>
-            <AboutSub>
-              {markdownData.text}
-            </AboutSub>
-            <AboutSub>
-              {markdownData.title}
-            </AboutSub>
-          </Albert>
-        </Inner>
-     </ContentLayer>
+      {memoNoRerender}
     </ParallaxGroup>
   );
 });
@@ -58,11 +62,11 @@ export default props => (
     query={graphql`
       query QuoteQuery{
         markdownRemark(frontmatter: { path : { regex : "\/quote/"} }){
-         frontmatter {
-           title
-           text
-         }
-       }
+          excerpt
+          frontmatter {
+            title
+          }
+        }
       }
     `}
     render={data => <Quote data={data} {...props} />}

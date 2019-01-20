@@ -1,5 +1,5 @@
 /* global tw */
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from '@emotion/styled'
 import PropTypes from 'prop-types';
 import { ParallaxGroup } from '../parallax';
@@ -38,39 +38,45 @@ const Footer = styled.footer`
 `;
 
 const ContactMe = React.memo((props) => {
+
+  const memoNoRerender = useMemo(() =>
+  (<>
+    <AnimationParallaxLayer speed={0} fill="#23262b" zIndex={2}>
+      <WaveWrapper>
+        <InnerWave>
+          <svg viewBox="0 0 800 338.05" preserveAspectRatio="none">
+            <path className={waveAnimation}>
+            </path>
+          </svg>
+        </InnerWave>
+      </WaveWrapper>
+    </AnimationParallaxLayer>
+    <LastNoClickLayerSVG speed={0.1} zIndex={3}>
+      <SVGPageFive />
+    </LastNoClickLayerSVG>
+    <ContentLayer speed={0.2} zIndex={4}>
+      <Inner>
+        <Title>GET IN TOUCH</Title>
+        <ContactText>
+          <p>Feel free to say <a href="mailto:s_alexander@hotmail.de">hi</a> to me.</p>
+          <p>Find out more about me on {' '}
+            <a href={config.siteLinkedIn}>LinkedIn</a> &{' '}
+            <a href={config.siteInstagram}>Instagram</a>
+          </p>
+        </ContactText>
+      </Inner>
+    </ContentLayer>
+    <ContentLayer speed={0} zIndex={4}>
+      <Footer>
+        <p>&copy; 2018 by Alexander Stricker.{' '}</p>
+        <a href={config.github}>Github Repository</a>.
+      </Footer>
+    </ContentLayer>
+  </>), () => {return true });
+
   return (
     <ParallaxGroup name="page5" easterEggOn={props.easterEggOn} xoffset={props.xOffset} yoffset={props.yOffset}>
-      <AnimationParallaxLayer speed={0} fill="#23262b" zIndex={2}>
-        <WaveWrapper>
-          <InnerWave>
-            <svg viewBox="0 0 800 338.05" preserveAspectRatio="none">
-              <path className={waveAnimation}>
-              </path>
-            </svg>
-          </InnerWave>
-        </WaveWrapper>
-      </AnimationParallaxLayer>
-      <LastNoClickLayerSVG speed={0.1} zIndex={3}>
-        <SVGPageFive />
-      </LastNoClickLayerSVG>
-      <ContentLayer speed={0.2} zIndex={4}>
-        <Inner>
-          <Title>GET IN TOUCH</Title>
-          <ContactText>
-            <p>Feel free to say <a href="mailto:s_alexander@hotmail.de">hi</a> to me.</p>
-            <p>Find out more about me on {' '}
-              <a href={config.siteLinkedIn}>LinkedIn</a> &{' '}
-              <a href={config.siteInstagram}>Instagram</a>
-            </p>
-          </ContactText>
-        </Inner>
-      </ContentLayer>
-      <ContentLayer speed={0} zIndex={4}>
-        <Footer>
-          <p>&copy; 2018 by Alexander Stricker.{' '}</p>
-          <a href={config.github}>Github Repository</a>.
-        </Footer>
-      </ContentLayer>
+      {memoNoRerender}
     </ParallaxGroup>
   );
 });

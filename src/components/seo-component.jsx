@@ -22,6 +22,8 @@ const schemaOrgJSONLD = [
   }
 ];
 
+
+// do not rerender component
 export const Seo = React.memo((props) => {
   return (
     <Helmet>
@@ -53,4 +55,4 @@ export const Seo = React.memo((props) => {
       <meta name="twitter:image" content={image} />
     </Helmet>
   )
-});
+}, () => { return true });

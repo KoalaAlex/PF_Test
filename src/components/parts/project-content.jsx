@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useMemo} from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled'
@@ -152,21 +152,24 @@ const ProjectContent = React.memo((props) => {
     ]
   }
 
-  return (
-    <ParallaxGroup name="page6" easterEggOn={props.easterEggOn} xoffset={150 + props.xOffset} yoffset={0.5}>
-      <AvatarBackgroundLayer speed={-0.4} zIndex={1}>
-        <RotateDividerProject/>
-      </AvatarBackgroundLayer>
-      <AvatarBackgroundLayer speed={-0.3} zIndex={1} yOffset={1.2}>
-        <RotateDividerProject/>
-      </AvatarBackgroundLayer>
-      <AvatarBackgroundLayer speed={-0.2} zIndex={1} yOffset={2.3}>
-        <RotateDividerProject/>
-      </AvatarBackgroundLayer>
-      <LastNoClickLayerSVG speed={-0.1} zIndex={2}>
-        <SVGPageSix />
-      </LastNoClickLayerSVG>
-      <ParallaxLayer speed={0.1} zIndex={3} browserName={browser}>
+  const memoNoRerender = useMemo(() =>
+  (<>
+    <AvatarBackgroundLayer speed={-0.4} zIndex={1}>
+      <RotateDividerProject/>
+    </AvatarBackgroundLayer>
+    <AvatarBackgroundLayer speed={-0.3} zIndex={1} yOffset={1.2}>
+      <RotateDividerProject/>
+    </AvatarBackgroundLayer>
+    <AvatarBackgroundLayer speed={-0.2} zIndex={1} yOffset={2.3}>
+      <RotateDividerProject/>
+    </AvatarBackgroundLayer>
+    <LastNoClickLayerSVG speed={-0.1} zIndex={2}>
+      <SVGPageSix />
+    </LastNoClickLayerSVG>
+  </>), () => { return true });
+
+  const memoArtikel = useMemo(() =>
+  (
     <ProjectsWrapper id="project-content" isVisible={props.activeArticle}>
       <ProjectPage
         id="portfolio"
@@ -220,17 +223,21 @@ const ProjectContent = React.memo((props) => {
         isVisible={props.activeArticle === 'traction-inverter'}
       />
     </ProjectsWrapper>
-    </ParallaxLayer>
-   </ParallaxGroup>
+  ), [props.activeArticle]);
+  return (
+    <ParallaxGroup name="page6" easterEggOn={props.easterEggOn} xoffset={150 + props.xOffset} yoffset={0.5}>
+      {memoNoRerender}
+      <ParallaxLayer speed={0.1} zIndex={3} browserName={browser}>
+        {memoArtikel}
+      </ParallaxLayer>
+    </ParallaxGroup>
   )
 });
 
 ProjectContent.propTypes = {
   easterEggOn: PropTypes.bool.isRequired,
   xOffset: PropTypes.number.isRequired,
-  easteregg: PropTypes.func,
   activeArticle: PropTypes.string,
-  timeout: PropTypes.bool
 }
 
 export default props => (

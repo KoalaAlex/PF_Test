@@ -46,7 +46,9 @@ const IMacBlur = styled(SVG)`
 	filter: blur(24px);
 `;
 
-export const SVGOriginals = () => {
+// all components do not rerender at all, because of React.memo + second parameter always true
+
+export const SVGOriginals = React.memo((props) => {
   return (
     <SVGAbsoluteOriginal>
       <SVGOriginal icon="imac"/>
@@ -66,9 +68,9 @@ export const SVGOriginals = () => {
       <SVGOriginal icon="blockchain"/>
     </SVGAbsoluteOriginal>
   )
-};
+}, () => { return true });
 
-export const SVGPageOne = () => {
+export const SVGPageOne = React.memo((props) => {
   return (
     <SVGAbsolute>
       <SVG icon="triangle" width={'8'} stroke={colors['grey-darker']} left="30" top="8" />
@@ -94,18 +96,18 @@ export const SVGPageOne = () => {
       </UpDown>
     </SVGAbsolute>
   )
-};
+}, () => { return true });
 
-export const SVGPageTwo = () => {
+export const SVGPageTwo = React.memo((props) => {
     return (
       <SVGAbsolute>
         <SVG icon="easteregg" width={'24'} fill="#ff0057" left="90" top="80" />
         <SVG icon="cube" width={'12'} fill="#ff0057" left="10" top="20" />
       </SVGAbsolute>
     )
-};
+}, () => { return true });
 
-export const SVGPageThree = () => {
+export const SVGPageThree = React.memo((props) => {
   return (
     <SVGAbsolute>
       <UpDown>
@@ -123,17 +125,17 @@ export const SVGPageThree = () => {
       <SVG icon="flask" className={hiddenLG} width={'96'} fill="#7000ff" left="70" top="15" />
     </SVGAbsolute>
   )
-};
+}, () => { return true });
 
-export const SVGPageFour = () => {
+export const SVGPageFour = React.memo((props) => {
     return (
       <SVGAbsolute>
         <SVG icon="flask" width={'48'} fill="#ff0057" left="15" top="25" />
       </SVGAbsolute>
     )
-};
+}, () => { return true });
 
-export const SVGPageFive = () => {
+export const SVGPageFive = React.memo((props) => {
   return (
     <SVGAbsolute>
       <UpDown>
@@ -150,9 +152,9 @@ export const SVGPageFive = () => {
       <SVG icon="blub" width={'8'} fill={colors['grey-darkest']} left="20" top="60" />
     </SVGAbsolute>
   )
-};
+}, () => { return true });
 
-export const SVGPageSix = () => {
+export const SVGPageSix = React.memo((props) => {
   return (
     <SVGAbsolute>
       <UpDown>
@@ -170,4 +172,4 @@ export const SVGPageSix = () => {
       <SVG icon="blockchain" width={'24'} fill={colors['grey-darkest']} left="10" top="60" />
     </SVGAbsolute>
   )
-};
+}, () => { return true });

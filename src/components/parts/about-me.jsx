@@ -1,5 +1,5 @@
 /* global tw */
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from '@emotion/styled'
 import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
@@ -95,8 +95,11 @@ const AboutSub = styled.p`
 
 
 const AboutMe = React.memo((props) => {
-  return (
-    <ParallaxGroup name="page2" easterEggOn={props.easterEggOn} xoffset={props.xOffset} yoffset={props.yOffset}>
+
+  // do not rerender inner component
+  const memoInnerComp = useMemo(() =>
+  (
+    <>
       <AvatarStartBackgroundLayer speed={0} zIndex={2}>
         <AvatarStartBackgroundLeft />
         <AvatarStartBackgroundRight />
@@ -115,11 +118,11 @@ const AboutMe = React.memo((props) => {
         <Inner>
           <Title>THIS IS WHAT MOTIVATES ME</Title>
           <AboutHero>
-            <Avatar fluid={props.data.allMarkdownRemark.edges[0].node.frontmatter.image.childImageSharp.fluid} alt="Alexander Stricker" />
+            <Avatar fluid={props.data.markdownRemark.frontmatter.image.childImageSharp.fluid} alt="Alexander Stricker" />
             <div>
               <MediaQuery query="(min-width: 800px)">
                 <AboutSub>
-                  {props.data.allMarkdownRemark.edges[0].node.frontmatter.text}
+                  {props.data.markdownRemark.excerpt}
                 </AboutSub>
               </MediaQuery>
               <AboutSub>
@@ -131,6 +134,12 @@ const AboutMe = React.memo((props) => {
         </Inner>
       </GridContainer>
      </BeforeGridLayer>
+   </>
+  ), [props.toggleEasterEgg]);
+
+  return (
+    <ParallaxGroup name="page2" easterEggOn={props.easterEggOn} xoffset={props.xOffset} yoffset={props.yOffset}>
+     {memoInnerComp}
     </ParallaxGroup>
   );
 });
@@ -147,29 +156,14 @@ export default props => (
   <StaticQuery
     query={graphql`
       query AvatarQuery{
-        allMarkdownRemark(
-          filter : {
-             frontmatter: {
-               tags: {
-                 in: ["about"]
-               }
-             }
-           },
-          sort : {
-          fields: [frontmatter___title],
-          order: ASC
-        }) {
-          edges {
-            node {
-              frontmatter {
-                title
-                text
-                image {
-                  childImageSharp {
-                    fluid(maxWidth: 2048, quality: 90, cropFocus: CENTER) {
-                      ...GatsbyImageSharpFluid
-                    }
-                  }
+        markdownRemark(frontmatter: { path : { regex : "\/about-me/"} }){
+          excerpt(pruneLength: 500)
+          frontmatter {
+            title
+            image {
+              childImageSharp {
+                fluid(maxWidth: 2048, quality: 90, cropFocus: CENTER) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }

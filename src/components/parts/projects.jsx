@@ -1,5 +1,5 @@
 /* global tw */
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 // components
@@ -10,8 +10,9 @@ import { RotateDivider, Inner, Title } from '../../styles/general'
 import ProjectCards from '../project/project-cards';
 
 const Projects = React.memo((props) => {
-  return (
-    <ParallaxGroup name="page3" easterEggOn={props.easterEggOn} xoffset={props.xOffset} yoffset={props.yOffset}>
+  const memoInnerProject = useMemo(() =>
+  (
+    <>
       <ParallaxLayer speed={0} zIndex={1}>
         <RotateDivider />
       </ParallaxLayer>
@@ -24,6 +25,12 @@ const Projects = React.memo((props) => {
               <ProjectCards openProject={props.openProject} />
         </Inner>
       </ProjectParallaxLayer>
+    </>
+  ), [props.openProject]);
+
+  return (
+    <ParallaxGroup name="page3" easterEggOn={props.easterEggOn} xoffset={props.xOffset} yoffset={props.yOffset}>
+      {memoInnerProject}
     </ParallaxGroup>
   );
 });

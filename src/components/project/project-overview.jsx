@@ -67,7 +67,7 @@ const ProjectOverview = React.memo((props) => {
           <p>{props.projectType}</p>
         </ProjectTypeItem>
         <TaskTitle>Task</TaskTitle>
-        {createTaskItems(3)}
+          {createTaskItems(3)}
       </Overview>
   )
 });

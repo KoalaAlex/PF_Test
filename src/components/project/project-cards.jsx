@@ -89,7 +89,7 @@ const ProjectCards = React.memo((props) => {
       </ProjectCard>
     </ProjectsWrapper>
   )
-});
+}, () => { return true });
 
 ProjectCards.propTypes = {
     openProject: PropTypes.func,
