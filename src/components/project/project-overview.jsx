@@ -23,6 +23,9 @@ const ProjectTypeItem = styled.div`
 
 const ItemTitel = styled.h1`
   font-size: 2rem;
+  @media (max-width: 800px) {
+      font-size: 1.2rem;
+  }
 `;
 
 const TaskTitle = styled(ItemTitel)`

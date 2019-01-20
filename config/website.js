@@ -17,7 +17,7 @@ module.exports = {
   userTwitter: '@alexanderstricker', // Twitter Username
   ogSiteName: 'alexander.stricker.12', // Facebook Site Name
   ogLanguage: 'de_DE', // Facebook Language
-  github: 'https://github.com/KoalaAlex/PF_Test',
+  github: 'https://github.com/KoalaAlex/portfolio-alex',
 
   // Manifest and Progress color
   themeColor: tailwind.colors.orange,

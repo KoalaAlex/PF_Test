@@ -6,22 +6,11 @@ import ProjectCard from './project-card';
 
 const ProjectsWrapper = styled.div`
   ${tw('justify-between mt-8')};
-  display: grid;
-  grid-gap: 4rem;
-  grid-template-columns: repeat(3, 1fr);
-  @media (max-width: 1799px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media (max-width: 1199px) {
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 3rem;
-  }
-  @media (max-width: 599px) {
-    grid-template-columns: 1fr;
-    grid-gap: 2rem;
-  }
-  grid-auto-rows: 1fr;
-  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  align-items: stretch;
   text-align: center;
   .body.is-article-visible & {
     transform: scale(0.95);

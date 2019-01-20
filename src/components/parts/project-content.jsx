@@ -42,7 +42,7 @@ const ProjectsWrapper = styled.div`
   position: absolute;
   align-items: center;
   justify-content: center;
-  max-width: 100%;
+  width: 100%;
   color: white;
   z-index: 3;
   font-family: 'IBM Plex Mono';

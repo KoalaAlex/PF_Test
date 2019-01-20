@@ -63,21 +63,33 @@ const SmallVideoImgStyle = styled(Img)`
 `
 
 const Container = styled.div`
-  display: grid;
-  grid-gap: 2rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
   justify-items: center;
   align-items: center;
-  grid-template-columns: repeat(${props => props.column}, 1fr);
-  padding-top: 2rem;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  margin-top: 2rem;
+  grid-gap: 2rem;
+  @media (max-width: 800px) {
+    padding-top: 1rem;
+    grid-gap: 1rem;
+  }
+  @media (max-width: 500px) {
+    padding-top: 0.5rem;
+    grid-gap: 0.5rem;
+  }
 `;
 
 const ContainerBigImg = styled.div`
-  display: grid;
+  display: flex;
   justify-items: center;
   align-items: center;
-  grid-template-columns: repeat(1, 1fr);
-  width: 80vw;
+  width: 100%;
   max-width: 980px;
+  margin: auto;
   height: 50vw;
   max-height:720px;
   background-color: rgba(255, 255, 255, 0.05);
@@ -88,13 +100,13 @@ const ContainerBigImg = styled.div`
 `;
 
 const Wrapper = styled.div`
-  max-width:980px;
   margin:auto;
 `;
 
 const BigImageP= styled.span`
   display: flex;
   width: 100%;
+  max-width:980px;
   max-height: 100%;
   height: auto;
   align-items: center;
@@ -109,14 +121,17 @@ const BigImageP= styled.span`
 `;
 
 const SmallImageP= styled.picture`
-  grid-template-columns: repeat(1, 1fr);
   align-items: center;
   justify-items: center;
   overflow: hidden;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
+  max-width: 50%;
+  min-width: 12.5%;
   max-height: 100%;
+  margin: 1.25%;
+  @media (max-width: 800px) {
+    min-width: 28%;
+    margin: 2.5%;
+  }
 `;
 
 const Movie = styled.span`
