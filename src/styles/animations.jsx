@@ -124,12 +124,15 @@ export const changeOpacityMonitor = keyframes`
 }
 `;
 
-export const loading = keyframes`
-  0% {
-    background-position: -200vw 0
-  }
-  100% {
-    background-position: 200vw 0
+export const loadingAnim = keyframes`
+  to {
+    background-position:
+      50% 20%,
+      100% 0, /* move highlight to right */
+      50% 60%,
+      50% 70%,
+      50% 80%,
+      50% 90%;
   }
 `;
 

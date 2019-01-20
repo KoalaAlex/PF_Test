@@ -1,8 +1,8 @@
 /* global tw */
 import React, { useState, useEffect } from 'react';
-import Loadable from 'react-loadable';
 import { Global } from "@emotion/core"
 import styled from '@emotion/styled'
+import Loadable from 'react-loadable';
 //Parts
 //import Welcome from '../components/parts/welcome'
 // import Components
@@ -12,66 +12,87 @@ import { Parallax } from '../components/parallax'
 import CloseWrapper from '../components/close-wrapper'
 // CSS
 import GlobalString from '../styles/global'
-import { loading } from '../styles/animations';
+import { loadingAnim } from '../styles/animations';
 // Scroll
 import {scroller} from 'react-scroll'
 
-//const Welcome = lazy(() => import('../components/parts/welcome'))
-//const AboutMe = lazy(() => import('../components/parts/about-me'))
-//const Projects = lazy(() => import('../components/parts/projects'))
-//const Quote = lazy(() => import('../components/parts/quote'))
-//const ContactMe = lazy(() => import('../components/parts/contact-me'))
-//const ProjectContent = lazy(() => import('../components/parts/project-content'))
-
 const LazySkeleton = styled.div`
-  width: 100%;
-  height: 100%;
-  color: red;
-  display:block;
-  border-radius:6px;
-  background-color: #171717;
-  background-image: linear-gradient(90deg, #171717 30%, #ff006d 50%,#171717 70%);
-  background-repeat: no-repeat;
-  animation: ${loading} 1.5s linear infinite;
+  position: absolute;
+    &:empty{
+      margin: auto;
+  		width: 100vw;
+  		height: 100vh;
+      background-color: #171717;
+  		background-image:
+  			radial-gradient( circle 10vh at 20vh 20vh, #404040 99%, transparent 0 ),
+  			linear-gradient( 100deg, rgba(23, 23, 23, 0), rgba(23, 23, 23, 0.5) 50%, rgba(23, 23, 23, 0) 80% ),
+  			linear-gradient( #404040 20px, transparent 0 ),
+  			linear-gradient( #404040 20px, transparent 0 ),
+  			linear-gradient( #404040 20px, transparent 0 ),
+  			linear-gradient( #404040 20px, transparent 0 );
+  		background-repeat: no-repeat;
+  		background-size:
+  			40vh 40vh, /* circle */
+  			50px 100%, /* highlight */
+  			80% 5%,
+  			60% 5%,
+  			40% 5%,
+  			20% 5%;
+  		background-position:
+  			50% 20%, /* circle */
+  			0 0, /* highlight */
+  			50% 60%,
+  			50% 70%,
+  			50% 80%,
+  			50% 90%;
+  		animation: ${loadingAnim} 1s infinite;
+      transform: translate3d(${(props => props.xOffset)}vw, ${(props => props.yOffset * 100)}vh, 0);
+    }
 `;
 
 const LazyWelcome = Loadable({
   loader: () => import('../components/parts/welcome'),
   loading() {
-    return <LazySkeleton/>;
-  }
+    return <LazySkeleton yOffset={0}/>;
+  },
+  delay: 3000
 });
 
 const LazyAboutMe = Loadable({
   loader: () => import('../components/parts/about-me'),
   loading() {
-    return <LazySkeleton/>;
-  }
+    return <LazySkeleton yOffset={1} xOffset={0}/>;
+  },
+  delay: 3000
 });
 
 const LazyProjects = Loadable({
   loader: () => import('../components/parts/projects'),
   loading() {
-    return <LazySkeleton/>;
-  }
+    return <LazySkeleton yOffset={2} xOffset={0}/>;
+  },
+  delay: 3000
 });
 const LazyQuote = Loadable({
   loader: () => import('../components/parts/quote'),
   loading() {
-    return <LazySkeleton/>;
-  }
+    return <LazySkeleton yOffset={3} xOffset={0}/>;
+  },
+  delay: 3000
 });
 const LazyContactMe = Loadable({
   loader: () => import('../components/parts/contact-me'),
   loading() {
-    return <LazySkeleton/>;
-  }
+    return <LazySkeleton yOffset={4} xOffset={0}/>;
+  },
+  delay: 3000
 });
 const LazyProjectContent = Loadable({
   loader: () => import('../components/parts/project-content'),
   loading() {
-    return <LazySkeleton/>;
-  }
+    return <LazySkeleton xOffset={-150} yOffset={0}/>;
+  },
+  delay: 3000
 });
 
 export default function Index(props) {
@@ -184,40 +205,34 @@ export default function Index(props) {
           xOffset={xOffsetAllPages}
           moveToPage2={moveToPage2}
         />
-
-      <LazyAboutMe
-            easterEggOn={easterEggOn}
-            xOffset={xOffsetAllPages}
-            yOffset={isSmallMobile ? 1 : 0.8}
-            moveToPage1={moveToPage1}
-            toggleEasterEgg={() => setEasterEggOn(!easterEggOn)}
-          />
-
-          <LazyQuote
-            easterEggOn={easterEggOn}
-            xOffset={xOffsetAllPages}
-            yOffset={isSmallMobile ? 3 : 2.8}
-          />
-
-
-          <LazyProjects
-            easterEggOn={easterEggOn}
-            xOffset={xOffsetAllPages}
-            yOffset={isSmallMobile ? 2 : 1.8}
-            openProject={openProject}
-          />
-
-          <LazyContactMe
-            easterEggOn={easterEggOn}
-            xOffset={xOffsetAllPages}
-            yOffset={isSmallMobile ? 4 : 3.8}
-          />
-
-          <LazyProjectContent
-            easterEggOn={easterEggOn}
-            xOffset={xOffsetAllPages}
-            activeArticle={activeArticle}
-          />
+        <LazyAboutMe
+          easterEggOn={easterEggOn}
+          xOffset={xOffsetAllPages}
+          yOffset={isSmallMobile ? 1 : 0.8}
+          moveToPage1={moveToPage1}
+          toggleEasterEgg={() => setEasterEggOn(!easterEggOn)}
+        />
+        <LazyQuote
+          easterEggOn={easterEggOn}
+          xOffset={xOffsetAllPages}
+          yOffset={isSmallMobile ? 3 : 2.8}
+        />
+        <LazyProjects
+          easterEggOn={easterEggOn}
+          xOffset={xOffsetAllPages}
+          yOffset={isSmallMobile ? 2 : 1.8}
+          openProject={openProject}
+        />
+        <LazyContactMe
+          easterEggOn={easterEggOn}
+          xOffset={xOffsetAllPages}
+          yOffset={isSmallMobile ? 4 : 3.8}
+        />
+        <LazyProjectContent
+          easterEggOn={easterEggOn}
+          xOffset={xOffsetAllPages}
+          activeArticle={activeArticle}
+        />
       </Parallax>
       <CloseWrapper
         isArticleVisible={isArticleVisible}
