@@ -36,21 +36,21 @@ const ProjectCards = React.memo((props) => {
           onMouseEnter={props.onMouseEnter}
           openProject={props.openProject}
           link={value.node.frontmatter.title}
-          isArticleVisible={props.isArticleVisible}
-          activeArticle={props.activeArticle}
+          activeArticleRef={props.activeArticleRef}
+          isArticleVisibleRef={props.isArticleVisibleRef}
         >
           {value.node.frontmatter.cardText}
         </ProjectCard>
       ))}
     </ProjectsWrapper>
   )
-});
+}, () => { return true });
 
 ProjectCards.propTypes = {
     openProject: PropTypes.func,
     onMouseEnter: PropTypes.func,
-    isArticleVisible: PropTypes.bool,
-    activeArticle: PropTypes.string
+    activeArticleRef: PropTypes.object,
+    isArticleVisibleRef: PropTypes.object
 }
 
 export default props => (

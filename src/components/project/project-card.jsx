@@ -54,7 +54,7 @@ const Title = styled.p`
 
 const ProjectCard = React.memo((props) => {
   return(
-    <Wrapper href="javascript:;" onMouseEnter={() => {props.onMouseEnter(props.activeArticle, props.link)}} onClick={() => {props.openProject(props.isArticleVisible, props.link)}}>
+    <Wrapper href="javascript:;" onMouseEnter={() => {props.onMouseEnter(props.activeArticleRef, props.link)}} onClick={() => {props.openProject(props.isArticleVisibleRef, props.link)}}>
       <MarginDiv>
           <Title>{props.title}</Title>
           <div>
@@ -65,7 +65,7 @@ const ProjectCard = React.memo((props) => {
       </MarginDiv>
     </Wrapper>
   )
-});
+}, () => { return true });
 
 export default ProjectCard;
 
@@ -75,6 +75,6 @@ ProjectCard.propTypes = {
   onMouseEnter: PropTypes.func,
   link: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
-  isArticleVisible: PropTypes.bool,
-  activeArticle: PropTypes.string
+  activeArticleRef: PropTypes.object,
+  isArticleVisibleRef: PropTypes.object
 };

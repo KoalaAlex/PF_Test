@@ -171,7 +171,7 @@ const ProjectContent = React.memo((props) => {
             key={value.node.frontmatter.title}
             markdownData={value}
             {...createVideosIfNeeded(value.node.frontmatter.videos)}
-            isVisible={true}
+            isVisible={props.isArticleVisible}
           >
             <div
               dangerouslySetInnerHTML={{ __html: value.node.html }}
@@ -179,7 +179,7 @@ const ProjectContent = React.memo((props) => {
           </LazyProjectPage>
       ))}
     </ProjectsWrapper>
-  ), [props.activeArticle]);
+  ), [props.activeArticle, props.isArticleVisible]);
 
   return (
     <ParallaxGroup name="page6" easterEggOn={props.easterEggOn} xoffset={150 + props.xOffset} yoffset={0.5}>
@@ -195,6 +195,7 @@ ProjectContent.propTypes = {
   easterEggOn: PropTypes.bool.isRequired,
   xOffset: PropTypes.number.isRequired,
   activeArticle: PropTypes.string,
+  isArticleVisible: PropTypes.bool
 }
 
 export default props => (

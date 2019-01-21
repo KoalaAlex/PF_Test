@@ -1,5 +1,5 @@
 /* global tw */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Global } from "@emotion/core"
 import styled from '@emotion/styled'
 import Loadable from 'react-loadable';
@@ -97,7 +97,9 @@ const LazyProjectContent = Loadable({
 
 export default function Index(props) {
   const [isArticleVisible, setIsArticleVisible] = useState(false);
+  const isArticleVisibleRef = useRef();
   const [activeArticle, setActiveArticle] = useState("");
+  const activeArticleRef = useRef();
   const [isSmallMobile, setIsSmallMobile] = useState(false);
   const [easterEggOn, setEasterEggOn] = useState(false);
   const [xOffsetAllPages, setXOffsetAllPages] = useState(0);
@@ -107,6 +109,8 @@ export default function Index(props) {
   useEffect(() => {
     document.addEventListener("keydown", keyDownFunction, false)
     document.addEventListener("keyup", keyUpFunction, false)
+    activeArticleRef.current = activeArticle;
+    isArticleVisibleRef.current = isArticleVisible;
     return () => {
       document.removeEventListener("keydown", keyDownFunction, false)
       document.removeEventListener("keyup", keyUpFunction, false)
@@ -174,18 +178,21 @@ export default function Index(props) {
     }
   }
 
-  function openProject(isVisible, article) {
-    if(isVisible){
+  function openProject(isArticleVisibleRef, article) {
+    if(isArticleVisibleRef.current){
       return;
     }
     setIsArticleVisible(true)
+    isArticleVisibleRef = true;
     setActiveArticle(article);
+    activeArticleRef.current = article;
     moveToProjectContent();
   }
 
-  function onMouseEnterHandler(activeOne, article) {
-    if(activeOne !== article){
+  function onMouseEnterHandler(activeArticleRef, article) {
+    if(activeArticleRef !== article){
       setActiveArticle(article);
+      activeArticleRef.current = article;
     }
   }
 
@@ -194,7 +201,9 @@ export default function Index(props) {
       return;
     }
     setIsArticleVisible(false)
+    isArticleVisibleRef.current = false;
     setActiveArticle("");
+    activeArticleRef.current = "";
     moveToProjectCards();
   }
 
@@ -229,8 +238,8 @@ export default function Index(props) {
           yOffset={isSmallMobile ? 2 : 1.8}
           openProject={openProject}
           onMouseEnter={onMouseEnterHandler}
-          isArticleVisible={isArticleVisible}
-          activeArticle={activeArticle}
+          activeArticleRef={activeArticleRef}
+          isArticleVisibleRef={isArticleVisibleRef}
         />
         <LazyContactMe
           easterEggOn={easterEggOn}
@@ -241,6 +250,7 @@ export default function Index(props) {
           easterEggOn={easterEggOn}
           xOffset={xOffsetAllPages}
           activeArticle={activeArticle}
+          isArticleVisible={isArticleVisible}
         />
       </Parallax>
       <CloseWrapper
