@@ -3,6 +3,9 @@ import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
+import Loadable from 'react-loadable';
+
+import { loadingAnim } from '../../styles/animations';
 
 import { ParallaxGroup, ParallaxLayer } from '../parallax';
 
@@ -12,7 +15,49 @@ import { LastNoClickLayerSVG, AvatarBackgroundLayer } from '../../styles/paralla
 
 import { VideoPlayer } from '../video-player'
 
-import ProjectPage from '../project/project-page'
+//import ProjectPage from '../project/project-page'
+
+const LazySkeleton = styled.div`
+  position: absolute;
+    &:empty{
+      margin: auto;
+  		width: 100vw;
+  		height: 100vh;
+      background-color: #171717;
+  		background-image:
+  			radial-gradient( circle 10vh at 20vh 20vh, #404040 99%, transparent 0 ),
+  			linear-gradient( 100deg, rgba(23, 23, 23, 0), rgba(23, 23, 23, 0.5) 50%, rgba(23, 23, 23, 0) 80% ),
+  			linear-gradient( #404040 20px, transparent 0 ),
+  			linear-gradient( #404040 20px, transparent 0 ),
+  			linear-gradient( #404040 20px, transparent 0 ),
+  			linear-gradient( #404040 20px, transparent 0 );
+  		background-repeat: no-repeat;
+  		background-size:
+  			40vh 40vh, /* circle */
+  			50px 100%, /* highlight */
+  			80% 5%,
+  			60% 5%,
+  			40% 5%,
+  			20% 5%;
+  		background-position:
+  			50% 20%, /* circle */
+  			0 0, /* highlight */
+  			50% 60%,
+  			50% 70%,
+  			50% 80%,
+  			50% 90%;
+  		animation: ${loadingAnim} 1s infinite;
+      transform: translate3d(${(props => props.xOffset)}vw, ${(props => props.yOffset * 100)}vh, 0);
+    }
+`;
+
+const LazyProjectPage = Loadable({
+  loader: () => import('../project/project-page'),
+  loading() {
+    return <LazySkeleton yOffset={0} xOffset={0}/>;
+  },
+  delay: 3000
+});
 
 //style
 import { RotateDivider } from '../../styles/general'
@@ -121,16 +166,17 @@ const ProjectContent = React.memo((props) => {
   (
     <ProjectsWrapper id="project-content" isVisible={props.activeArticle}>
       {markdownFileArray.map((value, i) => (
-        <ProjectPage
-          key={value.node.frontmatter.title}
-          markdownData={value}
-          {...createVideosIfNeeded(value.node.frontmatter.videos)}
-          isVisible={props.activeArticle === value.node.frontmatter.title}
-        >
-          <div
-            dangerouslySetInnerHTML={{ __html: value.node.html }}
-          />
-        </ProjectPage>
+        (props.activeArticle === value.node.frontmatter.title) &&
+          <LazyProjectPage
+            key={value.node.frontmatter.title}
+            markdownData={value}
+            {...createVideosIfNeeded(value.node.frontmatter.videos)}
+            isVisible={true}
+          >
+            <div
+              dangerouslySetInnerHTML={{ __html: value.node.html }}
+            />
+          </LazyProjectPage>
       ))}
     </ProjectsWrapper>
   ), [props.activeArticle]);

@@ -63,7 +63,7 @@ const CloseWrapper = React.memo((props) => {
   return (
   <Wrapper
     isVisible={props.isArticleVisible}
-    onClick={() => {props.onClick()}}>
+    onClick={() => {props.onClick(props.isArticleVisible)}}>
     <SVG
       icon="triangle"
       width={'8'}

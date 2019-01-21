@@ -174,21 +174,27 @@ export default function Index(props) {
     }
   }
 
-  function openProject(article) {
-    if(isArticleVisible){
+  function openProject(isVisible, article) {
+    if(isVisible){
       return;
     }
     setIsArticleVisible(true)
-    setActiveArticle(article)
+    setActiveArticle(article);
     moveToProjectContent();
   }
 
-  function closeProject() {
-    if(!isArticleVisible){
+  function onMouseEnterHandler(activeOne, article) {
+    if(activeOne !== article){
+      setActiveArticle(article);
+    }
+  }
+
+  function closeProject(isVisible) {
+    if(!isVisible){
       return;
     }
     setIsArticleVisible(false)
-    setActiveArticle("")
+    setActiveArticle("");
     moveToProjectCards();
   }
 
@@ -222,6 +228,9 @@ export default function Index(props) {
           xOffset={xOffsetAllPages}
           yOffset={isSmallMobile ? 2 : 1.8}
           openProject={openProject}
+          onMouseEnter={onMouseEnterHandler}
+          isArticleVisible={isArticleVisible}
+          activeArticle={activeArticle}
         />
         <LazyContactMe
           easterEggOn={easterEggOn}

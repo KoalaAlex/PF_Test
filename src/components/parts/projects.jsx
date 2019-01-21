@@ -22,11 +22,16 @@ const Projects = React.memo((props) => {
       <ProjectParallaxLayer speed={0.2} zIndex={3}>
         <Inner>
           <Title>SOME OF MY NON CONFIDENTIAL PROJECTS</Title>
-              <ProjectCards openProject={props.openProject} />
+              <ProjectCards
+              openProject={props.openProject}
+              onMouseEnter={props.onMouseEnter}
+              isArticleVisible={props.isArticleVisible}
+              activeArticle={props.activeArticle}
+              />
         </Inner>
       </ProjectParallaxLayer>
     </>
-  ), [props.openProject]);
+  ));
 
   return (
     <ParallaxGroup name="page3" easterEggOn={props.easterEggOn} xoffset={props.xOffset} yoffset={props.yOffset}>
@@ -41,5 +46,8 @@ Projects.propTypes = {
   easterEggOn: PropTypes.bool.isRequired,
   xOffset: PropTypes.number.isRequired,
   yOffset: PropTypes.number.isRequired,
-  openProject: PropTypes.func.isRequired
+  openProject: PropTypes.func.isRequired,
+  onMouseEnter: PropTypes.func,
+  isArticleVisible: PropTypes.bool,
+  activeArticle: PropTypes.string
 }

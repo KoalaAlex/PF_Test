@@ -13,7 +13,7 @@ images: [
 projectTitle: "PORTFOLIO TOBI"
 cardText: "Find out how I have created an second online portfolio for my brother."
 projectContext: ["Personal Project (2019)"]
-teamSize: "Solo Project"
+teamSize: "Small Size Team (2 people)"
 projectType: "Web Project"
 tasks: [
   "Frontend Development",
@@ -24,14 +24,13 @@ tasks: [
   "Rapid Prototyping"
   ]
 intention: [
-  "I felt the urge to create a platform where I could present my work to the world. One very important aspect for me was that this platform represents myself as a human being. Therefore it was clear from the beginning that it needed to be playful, dynamic and colorful. The portfolio should make clear to its viewers how I love to work and highlight what is important for me when it comes to frontend development.",
-  "One platform for a presentation of my work in a playful, dynamic and colorful way. It should rely on state fo the art technology like react and use css manipulations and transitions."
+  "My Bother wants an online portfolio for his projects just like I did with my online portfolio. As an UI Designer he wanted to make the concept and design by himself. So we separated the work. I was responsible for development and my brother for the design, so that he can present also his skills right at the start."
 ]
 process: [
-  "I kicked off this project with a quick research activity on understanding what the current state of the art for such kind of portfolios is. Besides that I’ve created a rapid prototype on pen and paper to showed it to friends and colleagues in order to collect their opinion on it. After some fixes I was ready with the concept and knew where I’d like to go with it. I have decided to use a demo template from GatsbyJS to have a quick jump into development.",
-  "However while working on it I’ve discovered bigger performance issues on my MacBook Pro (2013). The biggest problems were related to the parallax effect created with the React spring node module and the big count of SVGs used. As a solution to this I’ve restructured the whole parallax effect to work with CSS and not depend on JavaScript. In order resolve the SVG problem I’ve created href-attributes for them in order to make them reusable through the <CodeHTML>use</CodeHTML> element.",
-  "The templates modal card system used for the projects part of the portfolio was also not fitting with what I had envisioned. My solution was to enable a pagination navigation pattern which slides to the right in order to display the projects content. I worked closely with my brother, who is a UI/UX designer to create the SVGs used in the background. While developing the website I also implemented a little easteregg for you to discover.",
-  "This portfolio is still in a work in progress state and is constantly updated by me."
+  "We started with an Invision Project as an prototyping process and. I got the screens an the layout for the first screens. Before I started with coding, I had a short discussion with my brother about elements that can be chaged and the elements that are fixed. This was necessary to start with the concept of the react modules and which parameters inherited from the parent.",
+  "After the first Milestone me and my brother had a discussion about improvements and some changes to make the user experience es smooth as possible. ",
+  "At the time of development the new Hook System for the React was introduced. So I decided to change all my classes into javascript functions that uses the new feature. With this change the code looked nicer and more reusable.",
+  "The portfolio is currently under development and it is missing the correct texts and images."
 ]
 technology: [
   "Framework: React",

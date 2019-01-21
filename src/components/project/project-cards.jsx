@@ -33,18 +33,24 @@ const ProjectCards = React.memo((props) => {
         <ProjectCard
           key={value.node.frontmatter.title}
           title={value.node.frontmatter.projectTitle}
+          onMouseEnter={props.onMouseEnter}
           openProject={props.openProject}
           link={value.node.frontmatter.title}
+          isArticleVisible={props.isArticleVisible}
+          activeArticle={props.activeArticle}
         >
           {value.node.frontmatter.cardText}
         </ProjectCard>
       ))}
     </ProjectsWrapper>
   )
-}, () => { return true });
+});
 
 ProjectCards.propTypes = {
     openProject: PropTypes.func,
+    onMouseEnter: PropTypes.func,
+    isArticleVisible: PropTypes.bool,
+    activeArticle: PropTypes.string
 }
 
 export default props => (
