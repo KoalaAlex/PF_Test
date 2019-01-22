@@ -60,8 +60,8 @@ const ContactMe = React.memo((props) => {
         <ContactText>
           <p>Feel free to say <a href="mailto:s_alexander@hotmail.de">hi</a> to me.</p>
           <p>Find out more about me on {' '}
-            <a href={config.siteLinkedIn}>LinkedIn</a> &{' '}
-            <a href={config.siteInstagram}>Instagram</a>
+            <a href={config.siteLinkedIn} target="_blank">LinkedIn</a> &{' '}
+            <a href={config.siteInstagram} target="_blank">Instagram</a>
           </p>
         </ContactText>
       </Inner>
@@ -69,7 +69,7 @@ const ContactMe = React.memo((props) => {
     <ContentLayer speed={0} zIndex={4}>
       <Footer>
         <p>&copy; 2018 by Alexander Stricker.{' '}</p>
-        <a href={config.github}>Github Repository</a>.
+        <a href={config.github} target="_blank">Github Repository</a>.
       </Footer>
     </ContentLayer>
   </>), () => {return true });

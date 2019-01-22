@@ -53,4 +53,4 @@ videos: [
   ]
 ]
 ---
-<a href="https://stollvongati.com/de/projekte/vr-schulungsanwendung-fuer-gemue.html">Check out the project here!</a>
+<a href="https://stollvongati.com/de/projekte/vr-schulungsanwendung-fuer-gemue.html" target="_blank">Check out the project here!</a>

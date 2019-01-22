@@ -4,11 +4,10 @@ date: "2017-09-18T23:19:51.246Z"
 title: "portfolio-tobi"
 tags: [design, development, project]
 images: [
-  "../images/portfolio/portfolio_01_800x500.jpg",
-  "../images/portfolio/portfolio_02_800x500.jpg",
-  "../images/portfolio/portfolio_03_800x500.jpg",
-  "../images/portfolio/portfolio_04_800x500.jpg",
-  "../images/portfolio/portfolio_05_800x500.jpg"
+  "../images/portfolio-tobi/portfoli-tobi_01.jpg",
+  "../images/portfolio-tobi/portfoli-tobi_02.jpg",
+  "../images/portfolio-tobi/portfoli-tobi_03.jpg",
+  "../images/portfolio-tobi/portfoli-tobi_04.jpg"
   ]
 projectTitle: "PORTFOLIO TOBI"
 cardText: "Find out how I have created an second online portfolio for my brother."
@@ -42,3 +41,4 @@ technology: [
 platforms: [Web]
 videos: []
 ---
+<a href="https://portfolio-tobi.netlify.com/" target="_blank">Check out the project here!</a>

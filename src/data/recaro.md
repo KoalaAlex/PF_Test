@@ -57,4 +57,4 @@ videos: [
   ]
 ]
 ---
-<a href="https://stollvongati.com/de/projekte/virtuelle-flugzeugkabine-fuer-recaro-business-class-sitze.html">Check out the project here!</a>
+<a href="https://stollvongati.com/de/projekte/virtuelle-flugzeugkabine-fuer-recaro-business-class-sitze.html" target="_blank">Check out the project here!</a>
