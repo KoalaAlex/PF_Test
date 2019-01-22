@@ -117,6 +117,17 @@ export default function Index(props) {
     };
   }, [props]);
 
+  // save state in a ref to check it in a function
+  useEffect(() => {
+    isArticleVisibleRef.current = isArticleVisible;
+    console.log("Change" + isArticleVisible);
+  }, [isArticleVisible]);
+
+  useEffect(() => {
+    activeArticleRef.current = activeArticle;
+    console.log("Change" + activeArticle);
+  }, [activeArticle]);
+
   function moveToPage2(){
     scroller.scrollTo('page3', {
       duration: 1500,
@@ -183,16 +194,13 @@ export default function Index(props) {
       return;
     }
     setIsArticleVisible(true)
-    isArticleVisibleRef = true;
     setActiveArticle(article);
-    activeArticleRef.current = article;
     moveToProjectContent();
   }
 
   function onMouseEnterHandler(activeArticleRef, article) {
     if(activeArticleRef !== article){
       setActiveArticle(article);
-      activeArticleRef.current = article;
     }
   }
 
@@ -201,9 +209,7 @@ export default function Index(props) {
       return;
     }
     setIsArticleVisible(false)
-    isArticleVisibleRef.current = false;
     setActiveArticle("");
-    activeArticleRef.current = "";
     moveToProjectCards();
   }
 

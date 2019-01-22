@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   top: 10%;
   height: 80%;
   left: 0;
-  width: 1.5rem;
+  width: 2.5rem;
   background-color: rgba(255, 255, 255, .05);
   @supports ((-webkit-backdrop-filter: blur(1em)) or (backdrop-filter: blur(1em))) {
         backdrop-filter: blur(1em);

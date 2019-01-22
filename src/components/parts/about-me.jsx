@@ -17,12 +17,18 @@ import { AboutBackground, Inner, Title } from '../../styles/general'
 
 const AvatarStartBackground = styled(AboutBackground)`
   top: 15%;
+  @media (max-width: 800px) {
+    top: 18%;
+  }
 `;
 
 const AvatarStartBackgroundLeft = styled(AboutBackground)`
   background: #171717;
   width: 20%;
   height: 5%;
+  @media (max-width: 800px) {
+    height: 8%;
+  }
   top: 10%;
   left: 0%;
 `;
@@ -31,17 +37,22 @@ const AvatarStartBackgroundRight = styled(AboutBackground)`
   background: #171717;
   width: 20%;
   height: 5%;
+  @media (max-width: 800px) {
+    height: 8%;
+  }
   top: 10%;
   right: 0%;
 `;
 
 const MoveToPageOne = styled.div`
-  display: inline-grid;
+  display: grid;
   pointer-events: auto;
-  align-items: center;
   justify-items: center;
   position: absolute;
   height: 5%;
+  @media (max-width: 800px) {
+    height: 8%;
+  }
   top: 10%;
   width: 60%;
   background-color: rgba(255, 255, 255, .05);
@@ -49,7 +60,6 @@ const MoveToPageOne = styled.div`
         -webkit-backdrop-filter: blur(1em);
         backdrop-filter: blur(1em);
   }
-  border-radius: _size(border-radius);
   cursor: pointer;
   text-indent: 4rem;
   overflow: hidden;
