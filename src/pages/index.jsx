@@ -120,12 +120,12 @@ export default function Index(props) {
   // save state in a ref to check it in a function
   useEffect(() => {
     isArticleVisibleRef.current = isArticleVisible;
-    console.log("Change" + isArticleVisible);
+    //console.log("Change" + isArticleVisible);
   }, [isArticleVisible]);
 
   useEffect(() => {
     activeArticleRef.current = activeArticle;
-    console.log("Change" + activeArticle);
+    //console.log("Change" + activeArticle);
   }, [activeArticle]);
 
   function moveToPage2(){
@@ -199,7 +199,7 @@ export default function Index(props) {
   }
 
   function onMouseEnterHandler(activeArticleRef, article) {
-    if(activeArticleRef !== article){
+    if(activeArticleRef.current !== article){
       setActiveArticle(article);
     }
   }
