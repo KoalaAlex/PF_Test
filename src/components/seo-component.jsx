@@ -36,7 +36,8 @@ export const Seo = React.memo((props) => {
       <link rel="apple-touch-icon" sizes="180x180" href={faviconAppleTouch} />
       <link rel="icon" type="image/jpg" sizes="32x32" href={favicon32} />
       <link rel="icon" type="image/jpg" sizes="16x16" href={favicon16} />
-      <link rel="shortcut icon" href={faviconICO} />
+      <link rel="icon" href={faviconICO} type="image/x-icon" />
+      <link rel="shortcut icon" href={faviconICO} type="image/x-icon" />
       <meta name="msapplication-TileColor" content={config.backgroundColor} />
       <meta name="msapplication-config" content="browserconfig.xml" />
       <meta name="description" content={description} />
