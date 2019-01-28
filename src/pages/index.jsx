@@ -198,7 +198,11 @@ export default function Index(props) {
     moveToProjectContent();
   }
 
-  function onMouseEnterHandler(activeArticleRef, article) {
+  function onMouseEnterHandler(isArticleVisibleRef, activeArticleRef, article) {
+    // return if article will be shown
+    if(isArticleVisibleRef.current){
+      return;
+    }
     if(activeArticleRef.current !== article){
       setActiveArticle(article);
     }

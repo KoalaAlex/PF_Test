@@ -54,7 +54,7 @@ const Title = styled.p`
 
 const ProjectCard = React.memo((props) => {
   return(
-    <Wrapper href="javascript:;" onMouseEnter={() => {props.onMouseEnter(props.activeArticleRef, props.link)}} onClick={() => {props.openProject(props.isArticleVisibleRef, props.link)}}>
+    <Wrapper href="javascript:;" onMouseEnter={() => {props.onMouseEnter(props.isArticleVisibleRef, props.activeArticleRef, props.link)}} onClick={() => {props.openProject(props.isArticleVisibleRef, props.link)}}>
       <MarginDiv>
           <Title>{props.title}</Title>
           <div>
